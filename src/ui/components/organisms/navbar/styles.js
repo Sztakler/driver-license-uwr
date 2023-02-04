@@ -14,13 +14,12 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-    
     elevation: 10,
   },
   logo: {
     color: "white",
     fontSize: 25,
-    fontWeight: 600
+    fontWeight: "600",
   },
   navigationItems: {
     flexDirection: "row",
@@ -29,6 +28,6 @@ export default StyleSheet.create({
   navigationItem: {
     color: "white",
     fontSize: 25,
-    fontWeight: 600
-  }
+    fontWeight: "600",
+  },
 });
