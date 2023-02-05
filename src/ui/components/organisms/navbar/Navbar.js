@@ -1,6 +1,5 @@
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import Logo from "../../../../assets/images/adidas.svg";
 
 import styles from "./styles.js";
 
@@ -13,7 +12,7 @@ export default function Navbar() {
       style={styles.container}
     >
       <View style={styles.logoContainer}>
-        <Logo width="20%" height="20%"/>
+        <Text style={styles.logo}>Logo</Text>
       </View>
       <View style={styles.navigationContainer}>
         <View style={styles.navigationItems}>
