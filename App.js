@@ -1,13 +1,16 @@
 import { StyleSheet, View } from 'react-native';
-import MainPage from './src/ui/pages/MainPage';
+import HomePage from './src/ui/pages/HomePage';
 
 export default function App() {
   return (
-    <View>
-      <MainPage></MainPage>
+    <View style={styles.body}>
+      <HomePage></HomePage>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  body: {
+    height: "100%",
+  }
 });

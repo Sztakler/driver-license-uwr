@@ -4,9 +4,12 @@ import Navbar from '../components/organisms/navbar/Navbar';
 import MainContent from '../components/organisms/MainContent';
 import Footer from '../components/organisms/Footer';
 
-export default function MainPage() {
+import styles from "../components/templates/homepage/styles.js";
+
+
+export default function HomePage() {
   return (
-    <View>
+    <View style={styles.container}>
       <Navbar></Navbar>
       <MainContent></MainContent>
       <Footer></Footer>
