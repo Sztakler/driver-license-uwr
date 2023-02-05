@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import styles from "./styles.js";
@@ -12,7 +12,8 @@ export default function Navbar() {
       style={styles.container}
     >
       <View style={styles.logoContainer}>
-        <Text style={styles.logo}>Logo</Text>
+        {/* <Logo width="5%" height="5%"/> */}
+        <Image source={require("../../../../assets/images/mercedes-benz.png")} style={styles.logo}/>
       </View>
       <View style={styles.navigationContainer}>
         <View style={styles.navigationItems}>

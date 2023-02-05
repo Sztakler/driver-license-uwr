@@ -16,10 +16,14 @@ export default StyleSheet.create({
     shadowRadius: 6.27,
     elevation: 10,
   },
+  logoContainer: {
+  },
   logo: {
     color: "white",
     fontSize: 25,
     fontWeight: "600",
+    width: 60,
+    height: 60,
   },
   navigationItems: {
     flexDirection: "row",
