@@ -13,7 +13,6 @@ export default function Navbar() {
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <NavigationLogo text="Superlogo"></NavigationLogo>
-        {/* <Text style={styles.logo}>Superlogo</Text> */}
       </View>
       <View style={styles.navigationContainer}>
         <View style={styles.navigationItems}>
@@ -21,10 +20,6 @@ export default function Navbar() {
           <NavigationButton text="Nauka"></NavigationButton>
           <NavigationButton text="Kontakt"></NavigationButton>
           <NavigationButton image={userLogo}></NavigationButton>
-          {/* <Text style={styles.navigationItem}>Egzamin</Text>
-          <Text style={styles.navigationItem}>Nauka</Text>
-          <Text style={styles.navigationItem}>Kontakt</Text> */}
-          {/* <Image style={styles.userLogo} source={userLogo} /> */}
         </View>
       </View>
     </View>

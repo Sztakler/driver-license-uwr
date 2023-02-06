@@ -1,18 +1,14 @@
-import { View } from 'react-native';
-
-import Navbar from '../components/organisms/navbar/Navbar';
-import MainContent from '../components/organisms/MainContent';
-import Footer from '../components/organisms/Footer';
-
-import styles from "../components/templates/homepage/styles.js";
-
+import PageTemplate from "../components/templates/page-template/PageTemplate";
+import HomeContent from "../components/organisms/HomeContent/HomeContent";
+import Navbar from "../components/organisms/navbar/Navbar";
+import Footer from "../components/organisms/footer/Footer";
 
 export default function HomePage() {
   return (
-    <View style={styles.container}>
-      <Navbar></Navbar>
-      <MainContent></MainContent>
-      <Footer></Footer>
-    </View>
+    <PageTemplate
+      header={<Navbar />}
+      content={<HomeContent />}
+      footer={<Footer />}
+    ></PageTemplate>
   );
 }
