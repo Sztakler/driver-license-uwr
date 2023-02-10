@@ -12,13 +12,22 @@ export default function Navbar() {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <NavigationLogo text="Superlogo"></NavigationLogo>
+        <NavigationLogo text="Superlogo" navigationTarget="Home"></NavigationLogo>
       </View>
       <View style={styles.navigationContainer}>
         <View style={styles.navigationItems}>
-          <NavigationButton text="Egzamin"></NavigationButton>
-          <NavigationButton text="Nauka"></NavigationButton>
-          <NavigationButton text="Kontakt"></NavigationButton>
+          <NavigationButton
+            text="Egzamin"
+            navigationTarget="Exam"
+          ></NavigationButton>
+          <NavigationButton
+            text="Nauka"
+            navigationTarget="Learning"
+          ></NavigationButton>
+          <NavigationButton
+            text="Kontakt"
+            navigationTarget="Contact"
+          ></NavigationButton>
           <NavigationButton image={userLogo}></NavigationButton>
         </View>
       </View>
