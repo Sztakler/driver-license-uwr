@@ -1,7 +1,7 @@
-import PageTemplate from "../components/templates/page-template/PageTemplate";
-import ExamContent from "../components/organisms/ExamContent/ExamContent";
-import Navbar from "../components/organisms/navbar/Navbar";
-import Footer from "../components/organisms/footer/Footer";
+import PageTemplate from "../components/templates/page-template";
+import ExamContent from "../components/organisms/exam-content";
+import Navbar from "../components/organisms/navbar";
+import Footer from "../components/organisms/footer";
 
 export default function HomePage() {
   return (

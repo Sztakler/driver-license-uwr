@@ -1,7 +1,7 @@
-import PageTemplate from "../components/templates/page-template/PageTemplate";
-import ContactContent from "../components/organisms/ContactContent/ContactContent";
-import Navbar from "../components/organisms/navbar/Navbar";
-import Footer from "../components/organisms/footer/Footer";
+import PageTemplate from "../components/templates/page-template";
+import ContactContent from "../components/organisms/contact-content";
+import Navbar from "../components/organisms/navbar";
+import Footer from "../components/organisms/footer";
 
 export default function ContactPage() {
   return (

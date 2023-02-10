@@ -1,7 +1,7 @@
-import PageTemplate from "../components/templates/page-template/PageTemplate";
-import LearningContent from "../components/organisms/LearningContent/LearningContent";
-import Navbar from "../components/organisms/navbar/Navbar";
-import Footer from "../components/organisms/footer/Footer";
+import PageTemplate from "../components/templates/page-template";
+import LearningContent from "../components/organisms/learning-content";
+import Navbar from "../components/organisms/navbar";
+import Footer from "../components/organisms/footer";
 
 export default function LearningPage() {
   return (

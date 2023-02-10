@@ -1,8 +1,8 @@
 import { View, Text, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import NavigationButton from "../../molecules/navigation-button/NavigationButton";
-import NavigationLogo from "../../molecules/navigation-logo/NavigationLogo";
+import NavigationButton from "../../molecules/navigation-button";
+import NavigationLogo from "../../molecules/navigation-logo";
 
 import styles from "./styles.js";
 
