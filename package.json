@@ -1,5 +1,5 @@
 {
-  "name": "driver-license-uwr",
+  "name": "my-webpack-project",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -8,7 +8,12 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "devtools": "react-devtools",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
@@ -26,14 +31,28 @@
     "react-native-web": "~0.18.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@webpack-cli/generators": "^3.0.1",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
+    "mini-css-extract-plugin": "^2.7.2",
     "prettier": "2.8.4",
-    "react-devtools": "^4.27.1"
+    "react-devtools": "^4.27.1",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "workbox-webpack-plugin": "^6.5.4"
   },
   "private": true,
   "lint-staged": {
     "*.{js,css,md}": "prettier --write"
-  }
+  },
+  "description": "My webpack project"
 }
