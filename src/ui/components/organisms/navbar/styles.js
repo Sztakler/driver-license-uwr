@@ -5,19 +5,13 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 10,
-    marginBottom: 30,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
-    elevation: 10,
+  },
+  logoContainer: {
+    justifyContent: "center",
+    alignItems: "center",
   },
   logo: {
-    color: "white",
+    color: "#444",
     fontSize: 25,
     fontWeight: "600",
   },
@@ -29,5 +23,11 @@ export default StyleSheet.create({
     color: "white",
     fontSize: 25,
     fontWeight: "600",
+  },
+  userLogo: {
+    alignSelf: "center",
+    width: 40,
+    height: 40,
+    tintColor: "#444",
   },
 });
