@@ -19,6 +19,6 @@ export default StyleSheet.create({
   image: {
     width: 24,
     height: 24,
-    tintColor: "#444"
+    tintColor: "#444",
   },
 });

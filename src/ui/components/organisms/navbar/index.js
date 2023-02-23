@@ -12,7 +12,10 @@ export default function Navbar() {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <NavigationLogo text="Superlogo" navigationTarget="Home"></NavigationLogo>
+        <NavigationLogo
+          text="Superlogo"
+          navigationTarget="Home"
+        ></NavigationLogo>
       </View>
       <View style={styles.navigationContainer}>
         <View style={styles.navigationItems}>

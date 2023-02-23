@@ -3,11 +3,10 @@ import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles.js";
 
-export default function NavigationButton({text, image, navigationTarget}) {
-  
+export default function NavigationButton({ text, image, navigationTarget }) {
   const navigation = useNavigation();
   let displayedComponent = <Text>Provide text or image path in props</Text>;
-  
+
   if (text) {
     displayedComponent = <Text style={styles.text}>{text}</Text>;
   } else if (image) {
@@ -15,11 +14,12 @@ export default function NavigationButton({text, image, navigationTarget}) {
   }
 
   return (
-    <Pressable 
-    title={"Go to " + navigationTarget}
-    onPress={() => navigation.navigate(navigationTarget)}
-    style={styles.container}>
-     {displayedComponent}
+    <Pressable
+      title={"Go to " + navigationTarget}
+      onPress={() => navigation.navigate(navigationTarget)}
+      style={styles.container}
+    >
+      {displayedComponent}
     </Pressable>
   );
 }

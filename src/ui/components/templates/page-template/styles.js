@@ -6,12 +6,12 @@ export default StyleSheet.create({
     height: "100%",
   },
   header: {
-    paddingHorizontal: 32, 
+    paddingHorizontal: 32,
     paddingVertical: 40,
-    marginBottom: 30, 
+    marginBottom: 30,
   },
-  content:{
+  content: {
     flex: 1,
     width: "100%",
-  }
+  },
 });

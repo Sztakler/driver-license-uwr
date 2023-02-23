@@ -7,7 +7,7 @@ export default StyleSheet.create({
     flexGrow: 1,
     flexBasis: "auto",
     flexShrink: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     paddingHorizontal: 32,
     paddingVertical: containerPadding,
     gap: 110,
