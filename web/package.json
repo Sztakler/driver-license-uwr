@@ -17,7 +17,7 @@
     "tailwindcss": "^3.2.7"
   },
   "scripts": {
-    "start": "parcel serve ./index.html",
+    "start": "npx tailwindcss -i ./src/ui/styles/index.css -o ./dist/output.css --watch & parcel serve ./index.html",
     "build": "parcel build ./index.html"
   }
 }
