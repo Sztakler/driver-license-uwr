@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Label({ htmlFor, children = "default", size = "m" }) {
+function assignFontSize(size) {
 	let fontSize = "text-base";
 
 	if (size === "s") {
@@ -20,7 +20,14 @@ function Label({ htmlFor, children = "default", size = "m" }) {
 		fontSize = "text-2xl";
 	}
 
-	const labelClasses = fontSize;
+	return fontSize;
+}
+
+function Label({ htmlFor, children, size, primary, secondary }) {
+	let labelClasses = "";
+	let fontSize = assignFontSize(size);
+
+	labelClasses = [labelClasses, fontSize].join(" ");
 
 	return (
 		<label htmlFor={htmlFor} className={labelClasses}>
@@ -28,10 +35,5 @@ function Label({ htmlFor, children = "default", size = "m" }) {
 		</label>
 	);
 }
-
-Label.propTypes = {
-	children: PropTypes.string,
-	size: PropTypes.oneOf(["s", "m", "l", "xl", "2xl"]),
-};
 
 export default Label;

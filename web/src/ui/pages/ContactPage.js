@@ -1,16 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import PageTemplate from '../components/templates/page-template';
-import ContactContent from '../components/organisms/contents/Contact';
-import Navbar from '../components/organisms/navbar';
-import Footer from '../components/organisms/footer';
+import PageTemplate from "../components/templates/PageTemplate";
+import Contact from "../components/organisms/Contact";
+import Navbar from "../components/organisms/Navbar";
+import Footer from "../components/organisms/Footer";
 
 export default function ContactPage() {
-  return (
-    <PageTemplate
-      header={<Navbar />}
-      content={<ContactContent />}
-      footer={<Footer />}
-    />
-  );
+	return (
+		<PageTemplate header={<Navbar />} footer={<Footer />}>
+			<Contact />
+		</PageTemplate>
+	);
 }
