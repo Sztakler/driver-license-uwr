@@ -1,0 +1,13 @@
+#Sat Mar 04 21:52:19 CET 2023
+path.3=9/classes.dex
+path.2=14/classes.dex
+path.1=0/classes.dex
+path.0=classes.dex
+base.3=/home/bartosz/Study/driver-license-uwr/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+base.2=/home/bartosz/Study/driver-license-uwr/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+base.1=/home/bartosz/Study/driver-license-uwr/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.0=/home/bartosz/Study/driver-license-uwr/android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
