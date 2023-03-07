@@ -1,22 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router";
 
 const buttonDefaultClasses = "py-2 px-6";
 
 const buttonPrimaryClasses =
 	"border-2 border-solid border-gray-500 bg-black text-white rounded-full";
 
-const buttonSecondaryClasses = "";
+const buttonNavbarClasses =
+	"py-3 px-6 rounded-half border border-solid border-black bg-white hover:bg-gray-200";
 
 const buttonHoverClasses = "hover:cursor-pointer hover:bg-[#aeadad]";
 
-function assignMainStyling(primary, secondary, hover) {
+export default function Button({
+	primary,
+	navbar,
+	hover,
+	size,
+	children,
+	navigationTarget,
+	image,
+}) {
+	const navigate = useNavigate();
+
+	let buttonStyles = assignMainStyling(primary, navbar, hover);
+	let fontSize = assignFontSize(size);
+
+	buttonStyles = [buttonStyles, fontSize].join(" ");
+
+	let displayedComponent = <span>Provide text or image path in props</span>;
+	if (image) {
+		displayedComponent = <img className="w-10 h-auto" src={image} />;
+	} else {
+		displayedComponent = <span>{children}</span>;
+	}
+	return (
+		<button
+			className={buttonStyles}
+			onClick={() =>
+				navigationTarget !== "" ? navigate(navigationTarget) : null
+			}
+		>
+			{displayedComponent}
+		</button>
+	);
+}
+
+function assignMainStyling(primary, navbar, hover) {
 	let mainStyling = buttonDefaultClasses;
 
 	if (primary) {
 		mainStyling = [mainStyling, buttonPrimaryClasses].join(" ");
 	}
-	if (secondary) {
-		mainStyling = [mainStyling, buttonSecondaryClasses].join(" ");
+	if (navbar) {
+		mainStyling = [mainStyling, buttonNavbarClasses].join(" ");
 	}
 	if (hover) {
 		mainStyling = [mainStyling, buttonHoverClasses].join(" ");
@@ -45,13 +81,4 @@ function assignFontSize(size) {
 	}
 
 	return fontSize;
-}
-
-export default function Button({ primary, secondary, hover, size, children }) {
-	let buttonStyles = assignMainStyling(primary, secondary, hover);
-	let fontSize = assignFontSize(size);
-
-	buttonStyles = [buttonStyles, fontSize].join(" ");
-
-	return <button className={buttonStyles}>{children}</button>;
 }

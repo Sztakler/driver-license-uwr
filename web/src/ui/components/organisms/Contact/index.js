@@ -1,18 +1,27 @@
 import React from "react";
+import Image from "../../atoms/Image";
+
+import {
+	ContactContainer,
+	UpperSection,
+	LowerSection,
+	Title,
+	SubTitle,
+} from "./styles";
 
 export default function Contact() {
 	return (
-		<div className="container flex p-10 h-full items-center justify-center flex-col gap-32">
-			<section className="flex flex-col w-full items-center justify-center gap-12">
-				<span className="text-4xl">JESTESMY PROFESJONALNI SERIO</span>
-				<span className="text-8xl">Tu będzie kiedyś kontakt</span>
-			</section>
-			<div>
-				<img
+		<ContactContainer>
+			<UpperSection>
+				<SubTitle>JESTESMY PROFESJONALNI SERIO</SubTitle>
+				<Title>Tu będzie kiedyś kontakt</Title>
+			</UpperSection>
+			<LowerSection>
+				<Image
+					primary
 					src={require("../../../../../../src/assets/images/car.png")}
-					className="h-56 w-auto"
 				/>
-			</div>
-		</div>
+			</LowerSection>
+		</ContactContainer>
 	);
 }

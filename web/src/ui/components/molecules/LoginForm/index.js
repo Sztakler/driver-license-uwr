@@ -1,24 +1,44 @@
 import React from "react";
 
-import Heading from "../../atoms/Heading";
 import Label from "../../atoms/Label";
 import Input from "../../atoms/Input";
+import {
+	LoginFormContainer,
+	InnerWrapper,
+	LabelSection,
+	InputSection,
+	Heading,
+} from "./styles";
+import Image from "../../atoms/Image";
 
 export default function LoginForm(props) {
 	return (
-		<div
-			className="h-full w-1/2 rounded-3xl 
-						 flex flex-col items-center justify-center p-6"
-		>
-			<Heading level={2}>Zaloguj się</Heading>
-			<div className="w-full">
-				<Label size="2xl">Login</Label>
-				<Input primary />
-			</div>
-			<div className="w-full">
-				<Label size="2xl">Hasło</Label>
-				<Input type="password" primary />
-			</div>
-		</div>
+		<LoginFormContainer>
+			<Heading>Zaloguj się</Heading>
+			<InnerWrapper>
+				<InputSection>
+					<Image
+						icon
+						src={require("../../../../../../src/assets/images/mail.png")}
+					/>
+					<Input login />
+					<Label login size="2xl">
+						Login
+					</Label>
+				</InputSection>
+			</InnerWrapper>
+			<InnerWrapper>
+				<InputSection>
+					<Image
+						icon
+						src={require("../../../../../../src/assets/images/lock.png")}
+					/>
+					<Input login type="password" />
+					<Label login size="2xl">
+						Hasło
+					</Label>
+				</InputSection>
+			</InnerWrapper>
+		</LoginFormContainer>
 	);
 }

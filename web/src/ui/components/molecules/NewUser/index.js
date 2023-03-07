@@ -1,23 +1,24 @@
 import React from "react";
 
-import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
 import Separator from "../../atoms/Separator";
 import UnorderedList from "../../atoms/UnorderedList";
 
+import { NewUserContainer, Row, Column, Heading4, Heading5 } from "./styles";
+
 export default function NewUser(props) {
 	return (
-		<div className="h-full w-1/2 rounded-3xl ">
-			<div className="container flex flex-col p-4">
-				<div className="flex flex-col items-start justify-start p-4 gap-4">
-					<Heading level={4}>Jesteś nowym użytkownikiem?</Heading>
+		<NewUserContainer>
+			<Column>
+				<Row>
+					<Heading4>Jesteś nowym użytkownikiem?</Heading4>
 					<Button primary size="xl">
 						Załóż konto
 					</Button>
-				</div>
+				</Row>
 				<Separator horizontal />
-				<div className="flex flex-col items-start justify-start p-4">
-					<Heading level={5}>Co zyskujesz?</Heading>
+				<Row>
+					<Heading5>Co zyskujesz?</Heading5>
 					<UnorderedList primary>
 						<li>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -36,8 +37,8 @@ export default function NewUser(props) {
 							pellentesque venenatis ipsum sed mollis. Quisque.
 						</li>
 					</UnorderedList>
-				</div>
-			</div>
-		</div>
+				</Row>
+			</Column>
+		</NewUserContainer>
 	);
 }

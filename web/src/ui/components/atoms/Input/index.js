@@ -2,10 +2,10 @@ import React from "react";
 
 const inputDefaultClasses = "block";
 
-const inputPrimaryClasses =
-	"w-full px-2 py-3 border-2 border-solid border-black text-x";
+const inputPrimaryClasses = "";
 
-const inputSecondaryClasses = "";
+const inputLoginClasses =
+	"flex flex-auto w-9/12 px-2 py-3 bg-white bg-opacity-0 border-b-2 border-solid border-black peer";
 
 function assignMainStyling(primary, secondary) {
 	let mainStyling = inputDefaultClasses;
@@ -14,14 +14,14 @@ function assignMainStyling(primary, secondary) {
 		mainStyling = [mainStyling, inputPrimaryClasses].join(" ");
 	}
 	if (secondary) {
-		mainStyling = [mainStyling, inputSecondaryClasses].join(" ");
+		mainStyling = [mainStyling, inputLoginClasses].join(" ");
 	}
 
 	return mainStyling;
 }
 
-export default function Input({ type, primary, secondary }) {
-	let inputStyles = assignMainStyling(primary, secondary);
+export default function Input({ type, primary, login }) {
+	let inputStyles = assignMainStyling(primary, login);
 
 	if (type === "textarea") {
 		return <textarea></textarea>;

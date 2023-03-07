@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import { FooterContainer, Text } from "./styles";
 
 export default function Footer() {
-  return (
-    <div className="flex justify-center items-center h-full w-full">
-      <span className="text-[21px]">Nie no, mocarny ten footerek</span>
-    </div>
-  );
+	return (
+		<FooterContainer>
+			<Text>Nie no, mocarny ten footerek</Text>
+		</FooterContainer>
+	);
 }

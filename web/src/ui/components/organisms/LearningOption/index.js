@@ -1,5 +1,7 @@
 import React from "react";
 
+import { LearningOptionContainer } from "./styles";
+
 export default function LearningOption() {
-	return <div>GÓÓÓÓÓWNO</div>;
+	return <LearningOptionContainer>Opcja</LearningOptionContainer>;
 }
