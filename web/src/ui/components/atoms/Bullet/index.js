@@ -5,7 +5,9 @@ export default function Bullet(props) {
 
     return (
         <div>
-            
+            <span className="material-symbols-outlined">
+                chevron_right
+            </span>
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 import Heading from "../../atoms/Heading";
 import Paragraph from "../../atoms/Paragraph";
-import BulletPoint from "../../atoms/BulletPoint";
+import BulletList from "../BulletList";
 
 export default function InfoPanel({ data }) {
 
@@ -17,9 +17,7 @@ export default function InfoPanel({ data }) {
             return <Paragraph style="text-base" key={data.id + index} innerHTML={innerHTML} />;
         })}
 
-        {data.points.map((text, index) => {
-            return <BulletPoint style="text-base" key={data.id + index} text={text} />;
-        })}
+        <BulletList points={data.points} />
 
     </div>
 
