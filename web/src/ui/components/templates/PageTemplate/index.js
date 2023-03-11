@@ -12,7 +12,7 @@ export default function PageTemplate({
 			className="flex flex-col relative min-h-screen bg-orange-100"
 			{...props}
 		>
-			<div className="p-10">{header}</div>
+			<div className="p-8">{header}</div>
 			{hero && (
 				<section className="flex align-middle justify-center">{hero}</section>
 			)}

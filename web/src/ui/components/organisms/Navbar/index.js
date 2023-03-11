@@ -1,30 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 import userLogo from "../../../../../../src/assets/images/user-logo.png";
+import hamburger from "../../../../../../src/assets/images/menu.png";
 import Button from "../../atoms/Button";
 
-import { NavbarContainer, LogoArea, NavigationArea } from "./styles";
+import {
+	NavbarContainer,
+	NavbarItem,
+	HamburgerOptionArea,
+	NavbarLinks,
+	NavigationArea,
+} from "./styles";
 
 export default function Navbar() {
+	const navigate = useNavigate();
+
+	const [hamburgerView, setHamburgerView] = useState(false);
+	const handleClick = () => {
+		console.log(hamburgerView);
+		setHamburgerView((state) => !state);
+	};
+
 	return (
 		<NavbarContainer>
-			<LogoArea>
-				<Button navbar navigationTarget="/">
-					Superlogo
-				</Button>
-			</LogoArea>
-			<NavigationArea>
-				<Button navbar navigationTarget="/exam">
-					Egzamin
-				</Button>
-				<Button navbar navigationTarget="/learning">
-					Nauka
-				</Button>
-				<Button navbar navigationTarget="/contact">
-					Kontakt
-				</Button>
-				<Button navbar image={userLogo} navigationTarget="/login"></Button>
+			<Button navbar hover size="xl" onClick={() => navigate("/")}>
+				Superlogo
+			</Button>
+			<NavigationArea active={hamburgerView}>
+				<NavbarLinks>
+					<NavbarItem>
+						<Button navbar hover size="xl" onClick={() => navigate("/exam")}>
+							Egzamin
+						</Button>
+					</NavbarItem>
+					<NavbarItem>
+						<Button
+							navbar
+							hover
+							size="xl"
+							onClick={() => navigate("/learning")}
+						>
+							Nauka
+						</Button>
+					</NavbarItem>
+					<NavbarItem>
+						<Button navbar hover size="xl" onClick={() => navigate("/contact")}>
+							Kontakt
+						</Button>
+					</NavbarItem>
+					<NavbarItem>
+						<Button navbar hover size="xl">
+							Moje konto
+						</Button>
+					</NavbarItem>
+				</NavbarLinks>
 			</NavigationArea>
+			<HamburgerOptionArea>
+				<Button navbar hover image={hamburger} onClick={handleClick} />
+			</HamburgerOptionArea>
 		</NavbarContainer>
 	);
 }
