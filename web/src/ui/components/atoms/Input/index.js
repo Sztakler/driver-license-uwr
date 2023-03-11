@@ -1,33 +1,34 @@
-import React from "react";
+import React from 'react';
 
-const inputDefaultClasses = "block";
+const inputDefaultClasses = 'block';
 
 const inputPrimaryClasses =
-	"w-full px-2 py-3 border-2 border-solid border-black text-x";
+  'w-full px-2 py-3 border-2 border-solid border-black text-x';
 
-const inputSecondaryClasses = "";
+const inputLoginClasses =
+  'flex flex-auto w-9/12 px-2 py-3 bg-white bg-opacity-0 border-b-2 border-solid border-black peer outline-none ';
 
-function assignMainStyling(primary, secondary) {
-	let mainStyling = inputDefaultClasses;
+function assignMainStyling(primary, login) {
+  let mainStyling = inputDefaultClasses;
 
-	if (primary) {
-		mainStyling = [mainStyling, inputPrimaryClasses].join(" ");
-	}
-	if (secondary) {
-		mainStyling = [mainStyling, inputSecondaryClasses].join(" ");
-	}
+  if (primary) {
+    mainStyling = [mainStyling, inputPrimaryClasses].join(' ');
+  }
+  if (login) {
+    mainStyling = [mainStyling, inputLoginClasses].join(' ');
+  }
 
-	return mainStyling;
+  return mainStyling;
 }
 
-export default function Input({ type, primary, secondary }) {
-	let inputStyles = assignMainStyling(primary, secondary);
+export default function Input({type, primary, login}) {
+  let inputStyles = assignMainStyling(primary, login);
 
-	if (type === "textarea") {
-		return <textarea></textarea>;
-	}
-	if (type === "select") {
-		return <select></select>;
-	}
-	return <input className={inputStyles}></input>;
+  if (type === 'textarea') {
+    return <textarea />;
+  }
+  if (type === 'select') {
+    return <select />;
+  }
+  return <input className={inputStyles} />;
 }
