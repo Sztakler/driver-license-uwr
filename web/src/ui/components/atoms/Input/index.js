@@ -5,7 +5,7 @@ const inputDefaultClasses = "block";
 const inputPrimaryClasses = "";
 
 const inputLoginClasses =
-	"flex flex-auto w-9/12 px-2 py-3 bg-white bg-opacity-0 border-b-2 border-solid border-black peer";
+	"flex flex-auto w-9/12 px-2 py-3 bg-white bg-opacity-0 border-b-2 border-solid border-black peer outline-none";
 
 function assignMainStyling(primary, login) {
 	let mainStyling = inputDefaultClasses;
