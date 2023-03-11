@@ -7,13 +7,13 @@ const inputPrimaryClasses = "";
 const inputLoginClasses =
 	"flex flex-auto w-9/12 px-2 py-3 bg-white bg-opacity-0 border-b-2 border-solid border-black peer";
 
-function assignMainStyling(primary, secondary) {
+function assignMainStyling(primary, login) {
 	let mainStyling = inputDefaultClasses;
 
 	if (primary) {
 		mainStyling = [mainStyling, inputPrimaryClasses].join(" ");
 	}
-	if (secondary) {
+	if (login) {
 		mainStyling = [mainStyling, inputLoginClasses].join(" ");
 	}
 
@@ -24,10 +24,10 @@ export default function Input({ type, primary, login }) {
 	let inputStyles = assignMainStyling(primary, login);
 
 	if (type === "textarea") {
-		return <textarea></textarea>;
+		return <textarea />;
 	}
 	if (type === "select") {
-		return <select></select>;
+		return <select />;
 	}
-	return <input className={inputStyles}></input>;
+	return <input className={inputStyles} />;
 }
