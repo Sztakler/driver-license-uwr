@@ -7,6 +7,7 @@ import Button from "../../atoms/Button";
 
 import {
 	NavbarContainer,
+	BrandTitle,
 	NavbarItem,
 	HamburgerOptionArea,
 	NavbarLinks,
@@ -24,9 +25,9 @@ export default function Navbar() {
 
 	return (
 		<NavbarContainer>
-			<Button navbar hover size="xl" onClick={() => navigate("/")}>
+			<BrandTitle hover size="2xl" onClick={() => navigate("/")}>
 				Superlogo
-			</Button>
+			</BrandTitle>
 			<NavigationArea active={hamburgerView}>
 				<NavbarLinks>
 					<NavbarItem>
@@ -50,7 +51,7 @@ export default function Navbar() {
 						</Button>
 					</NavbarItem>
 					<NavbarItem>
-						<Button navbar hover size="xl">
+						<Button navbar hover size="xl" onClick={() => navigate("/login")}>
 							Moje konto
 						</Button>
 					</NavbarItem>

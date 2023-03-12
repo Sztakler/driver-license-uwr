@@ -1,18 +1,18 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-const buttonDefaultClasses = "py-2 px-6";
-
 const buttonPrimaryClasses =
 	"border-2 border-solid border-gray-500 bg-black text-white rounded-full";
 
-const buttonNavbarClasses = "p-3";
+const buttonNavbarClasses = "block";
 
 const buttonHoverClasses = "hover:cursor-pointer";
 
 const buttonHighlightedClasses = "bg-pink-500 rounded-half";
 
 const ButtonStyled = tw.button`
+	py-3
+	px-5
   ${(props) => props.primary && buttonPrimaryClasses}
   ${(props) => props.navbar && buttonNavbarClasses}
   ${(props) => props.hover && buttonHoverClasses}
