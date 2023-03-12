@@ -61,6 +61,7 @@ export default function Hero() {
 			{infoContent.map((data) => {
 				return <InfoPanel key={data.id} data={data} />;
 			})}
+			
 		</div>
 	);
 }

@@ -18,22 +18,11 @@ export default function InfoPanel({ data }) {
         })}
 
         <BulletList points={data.points} />
-
     </div>
 
-    let normalLayout = <div className="flex flex-row flex-wrap justify-between slate-500 w-full h-full">
-        {image}
-        {info}
-    </div>
-
-    let reverseLayout = <div className="flex flex-row flex-wrap justify-between slate-500 w-full h-full">
-        {info}
-        {image}
-    </div>
 
     return <div className="flex flex-row flex-wrap justify-between slate-500 w-full h-full">
-        {data.layout === "reverse" ?
-            reverseLayout :
-            normalLayout}
+        {data.layout === "reverse" ? info : image}
+        {data.layout === "reverse" ? image : info}
     </div>
 }
