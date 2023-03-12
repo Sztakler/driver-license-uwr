@@ -1,5 +1,7 @@
 import React from "react";
 
+import { PageWrapper, MainContent, HeroSection } from "./styles";
+
 export default function PageTemplate({
 	header,
 	hero,
@@ -8,20 +10,11 @@ export default function PageTemplate({
 	...props
 }) {
 	return (
-		<div
-			className="flex flex-col relative min-h-screen bg-orange-100"
-			{...props}
-		>
+		<PageWrapper {...props}>
 			{header}
-			{hero && (
-				<section className="flex align-middle justify-center">{hero}</section>
-			)}
-			<main className="flex flex-auto w-full h-full items-center justify-center pb-16 mb-16 mt-6">
-				{children}
-			</main>
-			<footer className="bg-white absolute bottom-0 w-full h-16">
-				{footer}
-			</footer>
-		</div>
+			{hero && <HeroSection>{hero}</HeroSection>}
+			<MainContent>{children}</MainContent>
+			{footer}
+		</PageWrapper>
 	);
 }

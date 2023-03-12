@@ -1,5 +1,7 @@
 import React from "react";
 
+import { PageWrapper, MainContent } from "./styles";
+
 export default function ContentFillTemplate({
 	header,
 	children,
@@ -7,17 +9,10 @@ export default function ContentFillTemplate({
 	...props
 }) {
 	return (
-		<div
-			className="flex flex-col relative min-h-screen bg-orange-100"
-			{...props}
-		>
+		<PageWrapper {...props}>
 			{header}
-			<main className="flex bg-road-texture bg-cover flex-auto items-center justify-center mb-16">
-				{children}
-			</main>
-			<footer className="bg-white absolute bottom-0 w-full h-16">
-				{footer}
-			</footer>
-		</div>
+			<MainContent>{children}</MainContent>
+			{footer}
+		</PageWrapper>
 	);
 }

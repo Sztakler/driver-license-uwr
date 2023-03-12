@@ -5,7 +5,6 @@ import Input from "../../atoms/Input";
 import {
 	LoginFormContainer,
 	InnerWrapper,
-	LabelSection,
 	InputSection,
 	Heading,
 } from "./styles";

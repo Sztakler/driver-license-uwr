@@ -15,7 +15,7 @@ export default function Tile({ data, navigationTarget }) {
 
 	return (
 		<TileContainer onClick={navigateToPage}>
-			<Image tileLogo src={data.icon} secondary />
+			<Image tileLogo secondary src={data.icon} />
 			<Heading>Title</Heading>
 			<Text>{data.description}</Text>
 		</TileContainer>

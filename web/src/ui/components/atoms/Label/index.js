@@ -1,12 +1,11 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-const labelDefaultClasses = "";
-
-const labelPrimaryClasses = "";
-
-const labelLoginClasses =
-	"absolute bottom-6 pointer-events-none peer-focus:-top-6";
+import {
+	labelDefaultClasses,
+	labelPrimaryClasses,
+	labelLoginClasses,
+} from "./styles";
 
 function assignFontSize(size) {
 	let fontSize = "text-base";
@@ -30,16 +29,18 @@ function assignFontSize(size) {
 	return fontSize;
 }
 
-const LabelStyled = tw.label`
+const StyledLabel = tw.label`
+	${() => labelDefaultClasses}
+	${(props) => props.primary && labelPrimaryClasses}
   ${(props) => props.login && labelLoginClasses}
 	${(props) => assignFontSize(props.size)}
 `;
 
 function Label(props) {
 	return (
-		<LabelStyled htmlFor={props.htmlFor} {...props}>
+		<StyledLabel htmlFor={props.htmlFor} {...props}>
 			{props.children}
-		</LabelStyled>
+		</StyledLabel>
 	);
 }
 

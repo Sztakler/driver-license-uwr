@@ -1,15 +1,18 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-const unorderedListPrimaryClasses = "m-0 px-5 list-disc text-lg";
+import {
+	unorderedListDefaultClasses,
+	unorderedListPrimaryClasses,
+	unorderedListNavbarClasses,
+} from "./styles";
 
-const unorderedListNavbarClasses = "lg:flex flex-row justify-around sm:hidden";
-
-const UnorderedListStyled = tw.ul`
+const StyledUnorderedList = tw.ul`
+	${() => unorderedListDefaultClasses}
   ${(props) => props.primary && unorderedListPrimaryClasses}
   ${(props) => props.navbar && unorderedListNavbarClasses}
 `;
 
 export default function UnorderedList(props) {
-	return <UnorderedListStyled {...props}>{props.children}</UnorderedListStyled>;
+	return <StyledUnorderedList {...props}>{props.children}</StyledUnorderedList>;
 }

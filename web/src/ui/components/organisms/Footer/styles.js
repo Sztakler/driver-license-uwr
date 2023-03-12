@@ -4,12 +4,15 @@ const FooterContainer = tw.div`
 	flex
 	justify-center
 	items-center
-	h-full
-	w-full                                                                                                                                                                                                                         
+	absolute
+	bottom-0
+	h-16                                                                                                                                                                                                               
+	w-full
+	bg-white
 `;
 
 const Text = tw.span`
- text-[21px]
+ 	text-[21px]
 `;
 
 export { FooterContainer, Text };
