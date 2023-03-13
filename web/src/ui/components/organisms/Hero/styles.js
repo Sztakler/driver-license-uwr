@@ -7,8 +7,8 @@ const HeroContainer = tw.div`
 	gap-32
 	items-center
 	justify-center
-	p-10
 	h-full
+	p-10
 `;
 
 const UpperSection = tw.section`

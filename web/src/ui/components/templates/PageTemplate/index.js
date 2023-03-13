@@ -13,7 +13,7 @@ export default function PageTemplate({
 		<PageWrapper {...props}>
 			{header}
 			{hero && <HeroSection>{hero}</HeroSection>}
-			<MainContent>{children}</MainContent>
+			{children}
 			{footer}
 		</PageWrapper>
 	);
