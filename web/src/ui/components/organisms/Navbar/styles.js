@@ -29,7 +29,8 @@ const NavbarItem = tw.li`
 	flex
 	items-center
 	justify-center
-	hover:bg-gray-300
+	hover:cursor-pointer
+hover:text-orange-400
 
 	lg:h-full
 	max-lg:w-full
