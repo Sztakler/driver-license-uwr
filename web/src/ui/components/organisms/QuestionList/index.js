@@ -66,6 +66,7 @@ export default function QuestionList(props) {
 			expand: false,
 		},
 	];
+
 	const [itemsList, setItemsList] = useState(defaultItemsList);
 
 	useEffect(() => {
