@@ -39,7 +39,10 @@ const StyledButton = tw.button`
   ${(props) => props.underscored && buttonUnderscoredClasses}
   ${(props) => props.bold && buttonBoldClasses}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 15486e4 (Further updates in FAQ)
   ${(props) => props.active && buttonActiveClasses}
 >>>>>>> 93eed15 (Further updates in FAQ)
   ${(props) => props.highlighted && buttonHighlightedClasses}
