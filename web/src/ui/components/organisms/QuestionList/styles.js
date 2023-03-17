@@ -11,7 +11,7 @@ const QuickActions = tw.div``;
 const ListContainer = tw.div`
 	bg-[#f1f1f1]
 	border-t-[3px]
-	border-[#e1e1e1]
+	border-[#e1e1e2]
 `;	
 
 const ListItem = tw.div`
@@ -19,7 +19,7 @@ const ListItem = tw.div`
 	w-[55rem]
 	p-5
 	border-b-[3px]
-	border-[#e1e1e1]
+	border-[#e1e1e2]
 	cursor-pointer
 
 	group

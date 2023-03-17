@@ -111,11 +111,9 @@ export default function QuestionList(props) {
 				{itemsList.map((item, index) => {
 					return (
 						<ListItem key={index} onClick={() => toggleExpandSpecific(item.id)}>
-							<ActiveItem/>
+							<ActiveItem />
 							<QuestionSection>
-								<Arrow>
-									{item.expand ? "expand_less" : "expand_more"}
-								</Arrow>
+								<Arrow>{item.expand ? "expand_less" : "expand_more"}</Arrow>
 								<h4>{item.question}</h4>
 							</QuestionSection>
 							<AnswerSection>
