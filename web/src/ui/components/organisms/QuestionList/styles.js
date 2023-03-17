@@ -4,24 +4,57 @@ const QuestionListWrapper = tw.div`
 	flex 	
 	self-center
 	flex-col 
-	gap-10
+`;
+
+const QuickActions = tw.div``;
+
+const ListContainer = tw.div`
+	border-4
+	rounded-xl
+	border-gray-300
+	bg-gray-100
+
+	[&>:not(:last-child)]:border-b-[0.2rem]
+	[&>:not(:last-child)]:border-gray-400
 `;
 
 const ListItem = tw.div`
-	w-[45rem]
-	border-4
-	rounded-xl
-	border-black
-	bg-gray-100
-	px-10
-	py-5
+	w-[55rem]
+	p-5
 `;
 
 const Question = tw.h4`
-
 `;
 
 const Answer = tw.p`
+	
 `;
 
-export { QuestionListWrapper, ListItem, Question, Answer };
+const QuestionSection = tw.div`
+	flex
+	flex-row
+	items-center
+	gap-2
+`;
+
+const AnswerSection = tw.div`
+	pl-8
+	pr-5
+`;
+
+const Arrow = tw.span`
+	material-symbols-outlined
+	cursor-pointer
+`;
+
+export {
+	QuestionListWrapper,
+	QuickActions,
+	ListContainer,
+	ListItem,
+	Question,
+	Answer,
+	QuestionSection,
+	AnswerSection,
+	Arrow,
+};
