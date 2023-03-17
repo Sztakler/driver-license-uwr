@@ -7,10 +7,6 @@ import {
 	buttonNavbarClasses,
 	buttonUnderscoredClasses,
 	buttonBoldClasses,
-<<<<<<< HEAD
-=======
-	buttonActiveClasses,
->>>>>>> 15486e4 (Further updates in FAQ)
 	buttonHighlightedClasses,
 } from "./styles";
 
