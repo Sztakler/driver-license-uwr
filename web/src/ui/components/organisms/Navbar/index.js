@@ -71,10 +71,11 @@ export default function Navbar() {
 				<NavbarLinks>
 					{navigationLinks.map((link) => {
 						return (
-							<NavbarItem>
+							<NavbarItem
+								active={link.navigationTarget === activePage ? true : false}
+							>
 								<Button
 									navbar
-									active={link.navigationTarget === activePage ? true : false}
 									size={link.fontSize}
 									onClick={() => {
 										setActivePage(link.navigationTarget);

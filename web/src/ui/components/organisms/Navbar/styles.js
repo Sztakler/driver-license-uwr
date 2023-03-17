@@ -4,7 +4,7 @@ const NavbarContainer = tw.div`
 	flex 
 	max-lg:flex-col
 	items-center 
-	bg-white
+	bg-[#FF5500]
 
 	lg:justify-between
 	max-lg:justify-center
@@ -30,11 +30,14 @@ const NavbarItem = tw.li`
 	items-center
 	justify-center
 	hover:cursor-pointer
-hover:text-orange-400
+	hover:font-extrabold
+	text-white
+	font-medium
+	${(props) => (props.active ? "font-extrabold" : null)}
 
 	lg:h-full
 	max-lg:w-full
-	`;
+`;
 
 const HamburgerOptionArea = tw.div`
 	absolute
