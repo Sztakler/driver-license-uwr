@@ -14,4 +14,4 @@ const HeroSection = tw.div`
 	justify-center
 `;
 
-export { PageWrapper, MainContent, HeroSection };
+export { PageWrapper, HeroSection };
