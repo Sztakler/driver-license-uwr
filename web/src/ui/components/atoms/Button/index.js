@@ -38,6 +38,10 @@ const StyledButton = tw.button`
   ${(props) => props.navbar && buttonNavbarClasses}
   ${(props) => props.underscored && buttonUnderscoredClasses}
   ${(props) => props.bold && buttonBoldClasses}
+<<<<<<< HEAD
+=======
+  ${(props) => props.active && buttonActiveClasses}
+>>>>>>> 127b4ce16344e9afd89937069f2d74f8a6d0fd56
   ${(props) => props.highlighted && buttonHighlightedClasses}
 	${(props) => assignFontSize(props.size)}
 `;
