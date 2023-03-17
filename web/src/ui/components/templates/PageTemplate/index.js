@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PageWrapper, MainContent, HeroSection } from "./styles";
+import { PageWrapper, HeroSection } from "./styles";
 
 export default function PageTemplate({
 	header,

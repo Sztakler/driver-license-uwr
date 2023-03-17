@@ -5,15 +5,7 @@ const PageWrapper = tw.div`
 	flex-col 
 	relative 
 	min-h-screen 
-	bg-orange-100
-`;
-
-const MainContent = tw.div`
-	flex 
-	flex-auto 
-	items-center 
-	justify-center 
-	mb-16
+	bg-white
 `;
 
 const HeroSection = tw.div`
