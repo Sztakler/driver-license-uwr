@@ -9,25 +9,30 @@ const QuestionListWrapper = tw.div`
 const QuickActions = tw.div``;
 
 const ListContainer = tw.div`
-	border-4
-	rounded-xl
-	border-gray-300
-	bg-gray-100
-	[&>:not(:last-child)]:border-b-[0.2rem]
-	[&>:not(:last-child)]:border-gray-400
-`;
+	bg-[#f1f1f1]
+	border-t-[3px]
+	border-[#e1e1e1]
+`;	
 
 const ListItem = tw.div`
+	relative
 	w-[55rem]
 	p-5
-`;
+	border-b-[3px]
+	border-[#e1e1e1]
+	cursor-pointer
 
-const Question = tw.h4`
+	group
 `;
-
-const Answer = tw.p`
 	
-`;
+const ActiveItem = tw.div`
+	absolute
+	left-0
+	top-0
+	w-2
+	h-full
+	group-hover:bg-[#FF5500]
+`
 
 const QuestionSection = tw.div`
 	flex
@@ -43,7 +48,6 @@ const AnswerSection = tw.div`
 
 const Arrow = tw.span`
 	material-symbols-outlined
-	cursor-pointer
 `;
 
 export {
@@ -51,9 +55,8 @@ export {
 	QuickActions,
 	ListContainer,
 	ListItem,
-	Question,
-	Answer,
 	QuestionSection,
+	ActiveItem,
 	AnswerSection,
-	Arrow,
+	Arrow
 };

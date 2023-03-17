@@ -7,9 +7,8 @@ import {
 	QuickActions,
 	ListContainer,
 	ListItem,
-	Question,
-	Answer,
 	QuestionSection,
+	ActiveItem,
 	AnswerSection,
 	Arrow,
 } from "./styles";
@@ -111,15 +110,16 @@ export default function QuestionList(props) {
 			<ListContainer>
 				{itemsList.map((item, index) => {
 					return (
-						<ListItem key={index}>
+						<ListItem key={index} onClick={() => toggleExpandSpecific(item.id)}>
+							<ActiveItem/>
 							<QuestionSection>
-								<Arrow onClick={() => toggleExpandSpecific(item.id)}>
+								<Arrow>
 									{item.expand ? "expand_less" : "expand_more"}
 								</Arrow>
-								<Question>{item.question}</Question>
+								<h4>{item.question}</h4>
 							</QuestionSection>
 							<AnswerSection>
-								{item.expand && <Answer>{item.answer}</Answer>}
+								{item.expand && <p>{item.answer}</p>}
 							</AnswerSection>
 						</ListItem>
 					);
