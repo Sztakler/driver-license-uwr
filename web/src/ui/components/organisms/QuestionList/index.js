@@ -66,14 +66,9 @@ export default function QuestionList(props) {
 			expand: false,
 		},
 	];
-<<<<<<< HEAD
 
 	const [itemsList, setItemsList] = useState(defaultItemsList);
 
-=======
-	const [itemsList, setItemsList] = useState(defaultItemsList);
-
->>>>>>> 15486e4 (Further updates in FAQ)
 	useEffect(() => {
 		const newItemsList =
 			JSON.parse(window.localStorage.getItem("itemsList")) || defaultItemsList;

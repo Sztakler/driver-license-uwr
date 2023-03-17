@@ -40,11 +40,17 @@ const StyledButton = tw.button`
   ${(props) => props.bold && buttonBoldClasses}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 15486e4 (Further updates in FAQ)
   ${(props) => props.active && buttonActiveClasses}
 >>>>>>> 93eed15 (Further updates in FAQ)
+=======
+=======
+  ${(props) => props.active && buttonActiveClasses}
+>>>>>>> 127b4ce16344e9afd89937069f2d74f8a6d0fd56
+>>>>>>> 9d18498f437c16fe60787f811f66ac6673e322db
   ${(props) => props.highlighted && buttonHighlightedClasses}
 	${(props) => assignFontSize(props.size)}
 `;
