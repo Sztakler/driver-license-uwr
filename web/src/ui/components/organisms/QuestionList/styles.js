@@ -1,9 +1,10 @@
 import tw from "tailwind-styled-components";
 
-const QuestionListWrapper = tw.div`
+const QuestionListContainer = tw.div`
 	flex 	
 	self-center
-	flex-col 
+	flex-col
+	mt-8
 `;
 
 const QuickActions = tw.div``;
@@ -51,7 +52,7 @@ const Arrow = tw.span`
 `;
 
 export {
-	QuestionListWrapper,
+	QuestionListContainer,
 	QuickActions,
 	ListContainer,
 	ListItem,

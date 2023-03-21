@@ -6,7 +6,7 @@ import HomePage from "../src/ui/pages/HomePage";
 import ExamPage from "../src/ui/pages/ExamPage";
 import LoginPage from "../src/ui/pages/LoginPage";
 import ContactPage from "../src/ui/pages/ContactPage";
-import FaqPage from "../src/ui/pages/FaqPage/FaqPage";
+import FaqPage from "../src/ui/pages/FaqPage";
 
 const Routing = () => (
 	<BrowserRouter>

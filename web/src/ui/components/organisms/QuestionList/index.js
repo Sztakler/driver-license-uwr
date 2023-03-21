@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../../atoms/Button";
 
 import {
-	QuestionListWrapper,
+	QuestionListContainer,
 	QuickActions,
 	ListContainer,
 	ListItem,
@@ -98,7 +98,7 @@ export default function QuestionList(props) {
 	};
 
 	return (
-		<QuestionListWrapper>
+		<QuestionListContainer>
 			<QuickActions>
 				<Button bold underscored onClick={() => toggleExpandAll(true)}>
 					Rozwiń wszystkie
@@ -123,6 +123,6 @@ export default function QuestionList(props) {
 					);
 				})}
 			</ListContainer>
-		</QuestionListWrapper>
+		</QuestionListContainer>
 	);
 }
