@@ -4,7 +4,7 @@ const PageWrapper = tw.div`
 	flex 
 	flex-col 
 	relative 
-	min-h-screen 
+	min-h-full
 	bg-white
 `;
 

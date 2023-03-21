@@ -8,7 +8,6 @@ const InnerWrapper = tw.div`
 	gap-16
 	flex-auto
 	py-20
-	mb-16
 `;
 
 const Heading = tw.h1`
