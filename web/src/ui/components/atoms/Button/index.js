@@ -5,7 +5,8 @@ import {
 	buttonDefaultClasses,
 	buttonPrimaryClasses,
 	buttonNavbarClasses,
-	buttonHoverClasses,
+	buttonUnderscoredClasses,
+	buttonBoldClasses,
 	buttonHighlightedClasses,
 } from "./styles";
 
@@ -35,7 +36,8 @@ const StyledButton = tw.button`
 	${() => buttonDefaultClasses}
   ${(props) => props.primary && buttonPrimaryClasses}
   ${(props) => props.navbar && buttonNavbarClasses}
-  ${(props) => props.hover && buttonHoverClasses}
+  ${(props) => props.underscored && buttonUnderscoredClasses}
+  ${(props) => props.bold && buttonBoldClasses}
   ${(props) => props.highlighted && buttonHighlightedClasses}
 	${(props) => assignFontSize(props.size)}
 `;

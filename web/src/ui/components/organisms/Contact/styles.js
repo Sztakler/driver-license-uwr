@@ -3,12 +3,14 @@ import tw from "tailwind-styled-components";
 const ContactContainer = tw.div`
 	container
 	flex
+	flex-auto 
 	flex-col
 	gap-32
+	self-center
 	items-center
 	justify-center
 	p-10
-	h-full
+	mb-16
 `;
 
 const UpperSection = tw.section`

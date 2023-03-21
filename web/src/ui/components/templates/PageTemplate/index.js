@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PageWrapper, MainContent, HeroSection } from "./styles";
+import { PageWrapper, HeroSection } from "./styles";
 
 export default function PageTemplate({
 	header,
@@ -13,7 +13,7 @@ export default function PageTemplate({
 		<PageWrapper {...props}>
 			{header}
 			{hero && <HeroSection>{hero}</HeroSection>}
-			<MainContent>{children}</MainContent>
+			{children}
 			{footer}
 		</PageWrapper>
 	);

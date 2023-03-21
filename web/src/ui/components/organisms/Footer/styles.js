@@ -6,9 +6,10 @@ const FooterContainer = tw.div`
 	items-center
 	absolute
 	bottom-0
-	h-16                                                                                                                                                                                                               
+	h-16                                                                                                                                                                                                         
 	w-full
-	bg-white
+	bg-[#414141]
+	text-white
 `;
 
 const Text = tw.span`

@@ -5,7 +5,10 @@ const buttonPrimaryClasses =
 
 const buttonNavbarClasses = "block";
 
-const buttonHoverClasses = "hover:cursor-pointer";
+const buttonUnderscoredClasses =
+	"text-blue-600 underline underline-offset-4 hover:text-blue-400";
+
+const buttonBoldClasses = "font-bold";
 
 const buttonHighlightedClasses = "bg-pink-500 rounded-half";
 
@@ -13,6 +16,7 @@ export {
 	buttonDefaultClasses,
 	buttonPrimaryClasses,
 	buttonNavbarClasses,
-	buttonHoverClasses,
+	buttonUnderscoredClasses,
+	buttonBoldClasses,
 	buttonHighlightedClasses,
 };
