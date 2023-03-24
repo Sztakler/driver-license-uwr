@@ -10,7 +10,6 @@ const ExamContainer = tw.div`
 	items-center
 	justify-center
 	p-10
-	min-h-screen
 `;
 
 const UpperSection = tw.section`

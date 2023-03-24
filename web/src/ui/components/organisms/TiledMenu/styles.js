@@ -9,7 +9,6 @@ const TiledMenuWrapper = tw.div`
 	items-center
 	justify-center
 	p-10
-	min-h-screen
 `;
 
 const Grid = tw.div`

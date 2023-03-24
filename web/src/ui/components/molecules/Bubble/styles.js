@@ -23,6 +23,7 @@ function assignBubbleSize(size) {
 }
 const BubbleContainer = tw.div`
 	flex
+	relative
 	items-center
 	justify-center
 	rounded-full

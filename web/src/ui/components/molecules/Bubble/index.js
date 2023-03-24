@@ -6,7 +6,7 @@ import {
 } from "./styles";
 
 export default function Bubble(props) {
-	return <BubbleContainer size={props.size}>
+	return <BubbleContainer size={props.size} {...props}>
 		{props.src && <Image src={props.src}/>}
 		{props.children}
 	</BubbleContainer>;

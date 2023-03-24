@@ -4,13 +4,14 @@ const PageWrapper = tw.div`
 	flex 
 	flex-col
 	relative 
-	min-h-screen
 	w-full
 	bg-white
+	min-h-screen
 `;
 
 const HeroSection = tw.div`
 	flex 
+	flex-[1_0_auto]
 	align-middle 
 	justify-center
 `;
@@ -19,8 +20,9 @@ const MainContent = tw.div`
 	container
 	flex
 	flex-col
+	flex-[1_0_auto]
 	self-center
-	min-h-screen
+	h-full
 	p-16
 `
 
