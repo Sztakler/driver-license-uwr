@@ -6,6 +6,7 @@ import {
 	imagePrimaryClasses,
 	imageTileLogoClasses,
 	imageIconClasses,
+	imageExamClasses,
 } from "./styles";
 
 const StyledImage = tw.img`
@@ -13,6 +14,7 @@ const StyledImage = tw.img`
 	${(props) => props.primary && imagePrimaryClasses}
 	${(props) => props.tileLogo && imageTileLogoClasses}
 	${(props) => props.icon && imageIconClasses}
+	${(props) => props.exam && imageExamClasses}
 `;
 
 export default function Image(props) {

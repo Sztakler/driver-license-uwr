@@ -38,7 +38,7 @@ export default function Navbar() {
 		},
 		{
 			id: 0,
-			name: "Nauka",
+			name: "Trening",
 			navigationTarget: "/learning",
 			fontSize: "xl",
 		},
