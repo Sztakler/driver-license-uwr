@@ -4,7 +4,6 @@ const PageWrapper = tw.div`
 	flex 
 	flex-col 
 	relative 
-	min-h-screen 
 	bg-orange-100
 `;
 
@@ -15,7 +14,8 @@ const MainContent = tw.div`
 	flex-auto 
 	items-center 
 	justify-center 
-	mb-16
+	p-10
+	min-h-screen
 `;
 
 export { PageWrapper, MainContent };
