@@ -14,15 +14,22 @@ const ExamContainer = tw.div`
 
 const UpperSection = tw.section`
 	flex 
-	flex-col 
+	flex-row 
 	items-center 
 	justify-center 
-	w-full 
+	w-full
 	gap-12
+	h-2/3
 `;
 
 const LowerSection = tw.section`
-
+flex 
+flex-row 
+items-center 
+justify-center 
+w-full
+gap-48
+h-1/3
 `;
 
 const Title = tw.span`
