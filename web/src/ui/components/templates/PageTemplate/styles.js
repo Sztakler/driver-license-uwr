@@ -17,13 +17,14 @@ const HeroSection = tw.div`
 `;
 
 const MainContent = tw.div`
-	container
 	flex
 	flex-col
 	flex-[1_0_auto]
 	self-center
 	h-full
-	p-16
+	w-full
+	px-16
+	py-12
 `
 
 export { PageWrapper, HeroSection, MainContent };
