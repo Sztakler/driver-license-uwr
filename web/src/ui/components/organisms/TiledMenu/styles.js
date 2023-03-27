@@ -4,8 +4,10 @@ const TiledMenuWrapper = tw.div`
 	flex
 	flex-col
 	flex-wrap
-	justify-between
 	gap-12
+	justify-center
+	w-full
+	h-full
 `;
 
 const InfoSection = tw.div`
@@ -19,16 +21,19 @@ const Options = tw.div`
 	flex-wrap
 	max-2xl:justify-evenly
 	gap-8
+	transition-opacity
+	duration-[2000ms]
+	${(props)=>props.show ? "opacity-1": "opacity-0"}
 `
 
 const OptionsContainer = tw.div`
-	w-full
 	flex
 	flex-col
-	max-2xl:items-center
+	self-center
+	items-center
 	bg-[#fff0e0]
 	rounded-2xl
-	p-4
+	p-12
 `
 
 export { TiledMenuWrapper,InfoSection, Options, OptionsContainer};

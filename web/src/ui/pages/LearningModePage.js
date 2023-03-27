@@ -7,58 +7,58 @@ import TiledMenu from "../components/organisms/TiledMenu";
 
 import rocket from "../../../../src/assets/images/rocket.png";
 
-const tiles = [
+const options = [
 	{
-		icon: rocket,
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet lacus augue. Sed interdum volutpat urna sed lobortis. Suspendisse fermentum eu metus vel consectetur.",
-		title: "Opcja nr1",
-		navigationTarget: "option1",
+		title: "Teoria",
+		description: "Teoria itd. opis",
+		children: []
 	},
 	{
-		icon: rocket,
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet lacus augue. Sed interdum volutpat urna sed lobortis. Suspendisse fermentum eu metus vel consectetur.",
-		title: "Opcja nr2",
-		navigationTarget: "option2",
-	},
-	{
-		icon: rocket,
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet lacus augue. Sed interdum volutpat urna sed lobortis. Suspendisse fermentum eu metus vel consectetur.",
-		title: "Opcja nr3",
-		navigationTarget: "option3",
-	},
-	{
-		icon: rocket,
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet lacus augue. Sed interdum volutpat urna sed lobortis. Suspendisse fermentum eu metus vel consectetur.",
-		title: "Opcja nr4",
-		navigationTarget: "option4",
-	},
-];
-
-const tiles2 = [
-	{
-		icon: rocket,
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet lacus augue. Sed interdum volutpat urna sed lobortis. Suspendisse fermentum eu metus vel consectetur.",
-		title: "Opcja nr1",
-		navigationTarget: "option1",
-	},
-	{
-		icon: rocket,
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet lacus augue. Sed interdum volutpat urna sed lobortis. Suspendisse fermentum eu metus vel consectetur.",
-		title: "Opcja nr2",
-		navigationTarget: "option2",
-	},
+		title: "Praktyka",
+		description: "Praktyka itd. opis",
+		children: [
+			{
+				title: "Tryb serii",
+				description: "Nieskończone pytania, trenuj tak długo jak chcesz i zmierz się z losowymi pytaniami z dowolnej kategorii (pytania podstawowe i specjalistyczne). Pula pytań jest niezmienna, pójdź na całość!",
+				children: [
+					{
+						title: "Pełna pula pytań",
+						description:"Wszystkie możliwe pytania.,",
+					},
+					{
+						title: "Wybór kategorii",
+						description:"Chcesz skupić się na zapoznaniu się ze znakami drogowymi, czy może interesują cię ograniczenia prędkości w wybranch sytuacjach? Tryb ten pozwala ci wybrać kategorię pytań z którymi się zmierzysz.",
+					},
+					{
+						title: "Wybór znajomości",
+						description:"Chcesz zapoznać się z pytaniami, które wcześniej oznaczyłeś jako kłopotliwe, czy może chcesz odpowiadać tylko na pytania, których jeszcze nie znasz? W tym trybie odpowiadasz na pytania, o wybranej przez ciebie znajomości.",
+					},
+				]
+			},
+			{
+				title: "Tryb fiszek",
+				description: "Podobnie jak w trybie serii, sprostasz tu dowolnym pytaniom z dowolnej kategorii, lecz pytania z którymi masz problem będą wyświetlane z większą częstotliwością, aby ułatwić ci oswojenie się z nimi.",
+				children: [
+					{
+						title: "Pełna pula pytań",
+						description:"Wszystkie możliwe pytania.,",
+					},
+					{
+						title: "Wybór kategorii",
+						description:"Chcesz skupić się na zapoznaniu się ze znakami drogowymi, czy może interesują cię ograniczenia prędkości w wybranch sytuacjach? Tryb ten pozwala ci wybrać kategorię pytań z którymi się zmierzysz.",
+					}
+				]
+			},
+		]
+	}
 ];
 
 export default function HomePage() {
 	return (
 		<PageTemplate header={<Navbar />} footer={<Footer />}>
-			<TiledMenu tiles={tiles} tiles2={tiles2} />
+			<TiledMenu
+				data={options}
+			/>
 		</PageTemplate>
 	);
 }

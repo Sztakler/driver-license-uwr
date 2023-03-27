@@ -6,8 +6,8 @@ const PageWrapper = tw.div`
 	relative 
 	w-full
 	bg-white
-	min-h-screen
-`;
+	h-full
+`
 
 const HeroSection = tw.div`
 	flex 
@@ -19,9 +19,9 @@ const HeroSection = tw.div`
 const MainContent = tw.div`
 	flex
 	flex-col
-	flex-[1_0_auto]
+	flex-[1_1_auto]
 	self-center
-	h-full
+	min-h-full
 	w-full
 	px-16
 	py-12

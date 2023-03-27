@@ -6,7 +6,8 @@ import Heading from "../../atoms/Heading";
 
 import { TileContainer, Text } from "./styles";
 
-export default function Tile({ data, navigationTarget }) {
+export default function Tile(props) {
+	const { title, description } = props
 	const navigate = useNavigate();
 	const route = useLocation();
 
@@ -15,10 +16,10 @@ export default function Tile({ data, navigationTarget }) {
 	};
 
 	return (
-		<TileContainer onClick={navigateToPage}>
-			<Image tileLogo secondary src={data.icon} />
-			<Heading level={3}>Title</Heading>
-			<Text>{data.description}</Text>
+		<TileContainer {...props}>
+			{/* <Image tileLogo secondary src={data.icon} /> */}
+			<Heading level={3} styles="text-center">{title}</Heading>
+			<Text>{description}</Text>
 		</TileContainer>
 	);
 }
