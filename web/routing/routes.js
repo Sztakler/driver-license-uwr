@@ -13,13 +13,9 @@ const Routing = () => (
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/exam" element={<ExamPage />} />
-			<Route path="/learning" element={<LearningModePage />} />
-			<Route path="/learning/practice" element={<LearningModePage />} />
-			<Route path="/learning/theory" element={<LearningModePage />} />
-			<Route path="/learning/option1" element={<LearningModeOption />} />
-			<Route path="/learning/option2" element={<LearningModeOption />} />
-			<Route path="/learning/option3" element={<LearningModeOption />} />
-			<Route path="/learning/option4" element={<LearningModeOption />} />
+			<Route path="/training" element={<LearningModePage />} />
+			<Route path="/training/practice" element={<LearningModeOption />} />
+			<Route path="/training/theory" element={<LearningModeOption />} />
 			<Route path="/contact" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />

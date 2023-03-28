@@ -39,7 +39,7 @@ export default function Navbar() {
 		{
 			id: 0,
 			name: "Trening",
-			navigationTarget: "/learning",
+			navigationTarget: "/training",
 			fontSize: "xl",
 		},
 		{

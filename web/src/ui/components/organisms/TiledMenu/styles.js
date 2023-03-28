@@ -31,8 +31,8 @@ const OptionsContainer = tw.div`
 	flex-col
 	self-center
 	items-center
-	bg-[#fff0e0]
 	rounded-2xl
+	h-96
 	p-12
 `
 
