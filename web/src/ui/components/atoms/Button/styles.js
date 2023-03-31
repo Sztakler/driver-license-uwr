@@ -1,7 +1,10 @@
 const buttonDefaultClasses = "py-3 px-5";
 
 const buttonPrimaryClasses =
-	"border-2 border-solid border-gray-500 bg-black text-white rounded-full";
+	"flex items-center justify-center h-12 w-24 bg-[#FF5500] text-white";
+
+const buttonSecondaryClasses =
+	"flex items-center justify-center h-10 text-white";
 
 const buttonNavbarClasses = "block";
 
@@ -12,11 +15,15 @@ const buttonBoldClasses = "font-bold";
 
 const buttonHighlightedClasses = "bg-pink-500 rounded-half";
 
+const buttonInactiveClasses = `bg-[#ff945e]`
+
 export {
 	buttonDefaultClasses,
 	buttonPrimaryClasses,
+	buttonSecondaryClasses,
 	buttonNavbarClasses,
 	buttonUnderscoredClasses,
 	buttonBoldClasses,
 	buttonHighlightedClasses,
+	buttonInactiveClasses
 };

@@ -6,15 +6,8 @@ const PageWrapper = tw.div`
 	relative 
 	w-full
 	bg-white
-	h-full
+	min-h-screen
 `
-
-const HeroSection = tw.div`
-	flex 
-	flex-[1_0_auto]
-	align-middle 
-	justify-center
-`;
 
 const MainContent = tw.div`
 	flex
@@ -22,8 +15,12 @@ const MainContent = tw.div`
 	flex-[1_1_auto]
 	self-center
 	w-full
+	justify-center
+	items-center
+	h-auto
+	min-h-screen
 	px-12
 	py-8
 `
 
-export { PageWrapper, HeroSection, MainContent };
+export { PageWrapper, MainContent };

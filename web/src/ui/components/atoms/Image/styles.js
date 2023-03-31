@@ -9,10 +9,13 @@ const imageIconClasses = "absolute w-9 h-auto mr-4 right-0";
 
 const imageExamClasses = "w-1/2";
 
+const test = "object-contain max-w-[80%] h-auto m-auto"
+
 export {
 	imageDefaultClasses,
 	imagePrimaryClasses,
 	imageTileLogoClasses,
 	imageIconClasses,
 	imageExamClasses,
+	test
 };

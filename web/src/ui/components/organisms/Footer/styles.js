@@ -2,6 +2,7 @@ import tw from "tailwind-styled-components";
 
 const FooterContainer = tw.div`
 	flex
+	flex-[0_1_50px]
 	w-full
 	bg-[#414141]
 	text-white

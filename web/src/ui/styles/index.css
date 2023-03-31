@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-	body,html{
+	html,
+	body {
 		height: 100%;
-		width: 100%;
+		margin: 0;
 	}
 	html {
 		font-family: "Raleway", sans-serif;

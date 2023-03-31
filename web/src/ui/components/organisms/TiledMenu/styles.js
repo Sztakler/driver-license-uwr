@@ -32,7 +32,6 @@ const OptionsContainer = tw.div`
 	self-center
 	items-center
 	rounded-2xl
-	h-96
 	p-12
 `
 
