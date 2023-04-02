@@ -8,6 +8,7 @@ const PracticeContainer = tw.div`
 	border-4
 	border-[#FF5500]
 	rounded-2xl
+	max-w-[80%]
 `;
 
 const PracticeWrapper = tw.div`
