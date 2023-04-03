@@ -10,7 +10,7 @@ import Input from "../../atoms/Input";
 
 import {
 	PracticeContainer,
-	PracticeWrapper,
+	Wrapper,
 	TopSection,
 	CenterSection,
 	Task,
@@ -19,7 +19,6 @@ import {
 	Menu,
 	QuitOptions,
 	Row,
-	BottomSection,
 } from "./styles";
 
 export default function Practice(props) {
@@ -47,18 +46,33 @@ export default function Practice(props) {
 	return (
 		<PracticeContainer>
 			<TopSection>
-				<span className="text-2xl">{location.state.type.displayable}</span>
-				<ArrowForwardIosIcon fontSize="small" sx={{ color: "black" }} />
-				<span className="text-2xl">{location.state.mode.displayable}</span>
-				<ArrowForwardIosIcon fontSize="small" sx={{ color: "black" }} />
-				<span className="text-2xl">
-					{location.state.question_set.displayable}
-				</span>
+				{location.state.type.displayable && (
+					<>
+						<ArrowForwardIosIcon fontSize="small" sx={{ color: "black" }} />
+						<span className="text-2xl">{location.state.type.displayable}</span>
+					</>
+				)}
+				{location.state.mode.displayable && (
+					<>
+						<ArrowForwardIosIcon fontSize="small" sx={{ color: "black" }} />
+						<span className="text-2xl">
+							{location.state.mode.displayable}
+						</span>{" "}
+					</>
+				)}
+				{location.state.question_set.displayable && (
+					<>
+						<ArrowForwardIosIcon fontSize="small" sx={{ color: "black" }} />
+						<span className="text-2xl">
+							{location.state.question_set.displayable}
+						</span>
+					</>
+				)}
 			</TopSection>
-			<PracticeWrapper>
+			<Wrapper>
 				<CenterSection>
 					<Task>
-						<Image test src={task.image} />
+						<Image src={task.image} />
 						<Paragraph innerHTML={task.question} />
 						<Answers>
 							{task.answers.map((answer) => {
@@ -88,12 +102,14 @@ export default function Practice(props) {
 							>
 								Powrót do menu
 							</Button>
-							<Button secondary className="bg-[#0080ff]"
-															onClick={() => navigate("/training")}>
+							<Button
+								secondary
+								className="bg-[#0080ff]"
+								onClick={() => navigate("/training")}
+							>
 								Wybór treningu
 							</Button>
 						</QuitOptions>
-						
 						<Heading level={2}>Pytanie 1</Heading>
 						<Heading level={3}>Pytanie specjalistyczne</Heading>
 						<Row>
@@ -104,8 +120,7 @@ export default function Practice(props) {
 						</Row>
 					</Menu>
 				</CenterSection>
-				<BottomSection></BottomSection>
-			</PracticeWrapper>
+			</Wrapper>
 		</PracticeContainer>
 	);
 }

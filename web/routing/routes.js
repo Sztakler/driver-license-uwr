@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TrainingPage from "../src/ui/pages/TrainingPage";
-import PracticePage from "../src/ui/pages/PracticeTrainingPage";
+import PracticePage from "../src/ui/pages/PracticePage";
+import TheoryPage from "../src/ui/pages/TheoryPage";
 import HomePage from "../src/ui/pages/HomePage";
 import ExamPage from "../src/ui/pages/ExamPage";
 import LoginPage from "../src/ui/pages/LoginPage";
@@ -15,7 +16,7 @@ const Routing = () => (
 			<Route path="/exam" element={<ExamPage />} />
 			<Route path="/training" element={<TrainingPage />} />
 			<Route path="/training/practice" element={<PracticePage />} />
-			<Route path="/training/theory" element={<PracticePage />} />
+			<Route path="/training/theory" element={<TheoryPage />} />
 			<Route path="/contact" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />

@@ -11,7 +11,7 @@ const PracticeContainer = tw.div`
 	max-w-[80%]
 `;
 
-const PracticeWrapper = tw.div`
+const Wrapper = tw.div`
 	flex
 	flex-col
 	flex-wrap
@@ -88,11 +88,9 @@ const Row = tw.div`
 	mb-auto
 `
 
-const BottomSection = tw.div``;
-
 export {
 	PracticeContainer,
-	PracticeWrapper,
+	Wrapper,
 	TopSection,
 	CenterSection,
 	Task,
@@ -101,5 +99,4 @@ export {
 	Menu,
 	QuitOptions,
 	Row,
-	BottomSection,
 };

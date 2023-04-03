@@ -34,7 +34,7 @@ const options = [
 						children: null,
 					},
 					{
-						type: "training_type",
+						type: "question_set",
 						alt: "categories",
 						title: "Wybór kategorii",
 						description:
@@ -42,7 +42,7 @@ const options = [
 							children: null,
 					},
 					{
-						type: "training_type",
+						type: "question_set",
 						alt: "familiary-based",
 						title: "Wybór znajomości",
 						description:
@@ -59,14 +59,14 @@ const options = [
 					"Podobnie jak w trybie serii, sprostasz tu dowolnym pytaniom z dowolnej kategorii, lecz pytania z którymi masz problem będą wyświetlane z większą częstotliwością, aby ułatwić ci oswojenie się z nimi.",
 				children: [
 					{
-						type: "training_type",
+						type: "question_set",
 						alt: "all_questions",
 						title: "Pełna pula pytań",
 						description: "Wszystkie możliwe pytania.,",
 						children: null,
 					},
 					{
-						type: "training_type",
+						type: "question_set",
 						alt: "categories",
 						title: "Wybór kategorii",
 						description:
@@ -79,10 +79,12 @@ const options = [
 	},
 ];
 
+const headings = ["Czego się dzisiaj uczymy?", "W jakim trybie chcesz się uczyć?", "Jaką pulę pytań dajemy?"]
+
 export default function HomePage() {
 	return (
 		<PageTemplate header={<Navbar />} footer={<Footer />}>
-			<TiledMenu data={options} />
+			<TiledMenu data={options} headings={headings}  />
 		</PageTemplate>
 	);
 }

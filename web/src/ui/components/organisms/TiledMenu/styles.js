@@ -1,6 +1,6 @@
 import tw from "tailwind-styled-components";
 
-const TiledMenuWrapper = tw.div`
+const Wrapper = tw.div`
 	flex
 	flex-col
 	flex-wrap
@@ -10,14 +10,9 @@ const TiledMenuWrapper = tw.div`
 	h-full
 `;
 
-const InfoSection = tw.div`
-	flex
-	flex-col
-`
-
 const Options = tw.div`
 	flex
-	flex-row
+	flex-col
 	flex-wrap
 	max-2xl:justify-evenly
 	gap-8
@@ -26,13 +21,23 @@ const Options = tw.div`
 	${(props)=>props.show ? "opacity-1": "opacity-0"}
 `
 
+const Tiles = tw.div`
+	flex
+	flex-row
+	flex-wrap
+	justify-center
+	gap-8
+`
+
 const OptionsContainer = tw.div`
 	flex
 	flex-col
-	self-center
 	items-center
-	rounded-2xl
-	p-12
+	max-2xl:justify-evenly
+	transition-opacity
+	duration-[2000ms]
+	${(props)=>props.show ? "opacity-1": "opacity-0"
+}
 `
 
-export { TiledMenuWrapper,InfoSection, Options, OptionsContainer};
+export { Wrapper, Tiles, Options, OptionsContainer};

@@ -1,4 +1,4 @@
-const imageDefaultClasses = "";
+const imageDefaultClasses = "object-contain";
 
 const imagePrimaryClasses = "h-56 w-auto";
 
@@ -9,13 +9,10 @@ const imageIconClasses = "absolute w-9 h-auto mr-4 right-0";
 
 const imageExamClasses = "w-1/2";
 
-const test = "object-contain"
-
 export {
 	imageDefaultClasses,
 	imagePrimaryClasses,
 	imageTileLogoClasses,
 	imageIconClasses,
 	imageExamClasses,
-	test
 };
