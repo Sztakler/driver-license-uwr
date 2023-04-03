@@ -1,22 +1,31 @@
 import tw from "tailwind-styled-components";
 
-const TiledMenuWrapper = tw.div`
-	container
+const Wrapper = tw.div`
 	flex
-	flex-auto
 	flex-col
-	self-center
-	items-center
+	flex-wrap
+	gap-12
 	justify-center
-	p-10
+	w-full
+	h-full
 `;
+const Tiles = tw.div`
+	flex
+	flex-row
+	flex-wrap
+	justify-center
+	gap-8
+`
 
-const Grid = tw.div`
-	grid 
-	grid-cols-2 
-	auto-rows-fr 
-	gap-6 
-	max-w-screen-lg
-`;
+const OptionsContainer = tw.div`
+	flex
+	flex-col
+	items-center
+	max-2xl:justify-evenly
+	transition-opacity
+	duration-[2000ms]
+	${(props)=>props.show ? "opacity-1": "opacity-0"
+}
+`
 
-export { TiledMenuWrapper, Grid };
+export { Wrapper, Tiles, OptionsContainer};

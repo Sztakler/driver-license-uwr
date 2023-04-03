@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LearningModePage from "../src/ui/pages/LearningModePage";
-import LearningModeOption from "../src/ui/pages/LearningModeOption";
+import TrainingPage from "../src/ui/pages/TrainingPage";
+import PracticePage from "../src/ui/pages/PracticePage";
+import TheoryPage from "../src/ui/pages/TheoryPage";
 import HomePage from "../src/ui/pages/HomePage";
 import ExamPage from "../src/ui/pages/ExamPage";
 import LoginPage from "../src/ui/pages/LoginPage";
@@ -13,13 +14,9 @@ const Routing = () => (
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/exam" element={<ExamPage />} />
-			<Route path="/learning" element={<LearningModePage />} />
-			<Route path="/learning/practice" element={<LearningModePage />} />
-			<Route path="/learning/theory" element={<LearningModePage />} />
-			<Route path="/learning/option1" element={<LearningModeOption />} />
-			<Route path="/learning/option2" element={<LearningModeOption />} />
-			<Route path="/learning/option3" element={<LearningModeOption />} />
-			<Route path="/learning/option4" element={<LearningModeOption />} />
+			<Route path="/training" element={<TrainingPage />} />
+			<Route path="/training/practice" element={<PracticePage />} />
+			<Route path="/training/theory" element={<TheoryPage />} />
 			<Route path="/contact" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />

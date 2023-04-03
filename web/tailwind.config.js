@@ -30,9 +30,19 @@ module.exports = {
 					"0%": { transform: "rotate(0deg)" },
 					"100%": { transform: "rotate(360deg)" },
 				},
+				appear:{
+					"0%": { opacity: "0" },
+					"100%": { opacity: "1" }
+				},
+				disappear:{
+					"0%": { opacity: "1" },
+					"100%": { opacity: "0" }
+				}
 			},
 			animation: {
 				"rotate-slow": "rotation 5s linear infinite",
+				"appear-slow": "appear 1.5s cubic-bezier(0.4, 0, 0.2, 1) 1",
+				"disappear-slow": "disappear 1.5s linear 1"
 			},
 			backgroundImage: {
 				"gradient-0": "linear-gradient(0deg, var(--tw-gradient-stops))",

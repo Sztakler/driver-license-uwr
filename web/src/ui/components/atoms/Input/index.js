@@ -5,12 +5,14 @@ import {
 	inputDefaultClasses,
 	inputPrimaryClasses,
 	inputLoginClasses,
+	inputRadioClasses
 } from "./styles";
 
 const StyledInput = tw.input`
 	${() => inputDefaultClasses}
 	${(props) => props.primary && inputPrimaryClasses}
 	${(props) => props.login && inputLoginClasses}
+	${(props) => props.type == "radio" && inputRadioClasses}
 `;
 
 const StyledTextarea = tw.textarea``;
