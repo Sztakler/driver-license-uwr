@@ -9,18 +9,6 @@ const Wrapper = tw.div`
 	w-full
 	h-full
 `;
-
-const Options = tw.div`
-	flex
-	flex-col
-	flex-wrap
-	max-2xl:justify-evenly
-	gap-8
-	transition-opacity
-	duration-[2000ms]
-	${(props)=>props.show ? "opacity-1": "opacity-0"}
-`
-
 const Tiles = tw.div`
 	flex
 	flex-row
@@ -40,4 +28,4 @@ const OptionsContainer = tw.div`
 }
 `
 
-export { Wrapper, Tiles, Options, OptionsContainer};
+export { Wrapper, Tiles, OptionsContainer};

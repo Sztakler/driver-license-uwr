@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+
 import Heading from "../../atoms/Heading";
 import Tile from "../../molecules/Tile";
 
-import { Wrapper, Tiles, Options, OptionsContainer } from "./styles";
+import { Wrapper, Tiles, OptionsContainer } from "./styles";
 
 export default function TiledMenu({ data, headings, ...props }) {
 	const navigate = useNavigate();
