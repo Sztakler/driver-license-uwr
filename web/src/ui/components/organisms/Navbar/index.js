@@ -33,19 +33,19 @@ export default function Navbar() {
 		{
 			id: 0,
 			name: "Egzamin",
-			navigationTarget: "/exam",
+			navigationTarget: "/egzamin",
 			fontSize: "xl",
 		},
 		{
 			id: 0,
 			name: "Trening",
-			navigationTarget: "/training",
+			navigationTarget: "/trening",
 			fontSize: "xl",
 		},
 		{
 			id: 0,
 			name: "Kontakt",
-			navigationTarget: "/contact",
+			navigationTarget: "/kontakt",
 			fontSize: "xl",
 		},
 		{

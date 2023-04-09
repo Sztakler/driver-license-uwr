@@ -57,7 +57,7 @@ export default function Practice(props) {
 						<ArrowForwardIosIcon fontSize="small" sx={{ color: "black" }} />
 						<span className="text-2xl">
 							{location.state.mode.displayable}
-						</span>{" "}
+						</span>
 					</>
 				)}
 				{location.state.question_set.displayable && (

@@ -13,11 +13,18 @@ const Routing = () => (
 	<BrowserRouter>
 		<Routes>
 			<Route path="/" element={<HomePage />} />
-			<Route path="/exam" element={<ExamPage />} />
-			<Route path="/training" element={<TrainingPage />} />
-			<Route path="/training/practice" element={<PracticePage />} />
-			<Route path="/training/theory" element={<TheoryPage />} />
-			<Route path="/contact" element={<ContactPage />} />
+			<Route path="/egzamin" element={<ExamPage />} />
+			<Route path="/trening" element={<TrainingPage />} />
+			<Route path="/trening/praktyka" element={<PracticePage />} />
+			<Route path="/trening/teoria" element={<TheoryPage />} />
+			<Route path="/trening/teoria/" element={<TheoryPage />} />
+			<Route path="/trening/teoria/znaki-ostrzegawcze" element={<TheoryPage />} />
+			<Route path="/trening/teoria/znaki-nakazu" element={<TheoryPage />} />
+			<Route path="/trening/teoria/znaki-zakazu" element={<TheoryPage />} />
+			<Route path="/trening/teoria/znaki-kierunku-i-miejscowosci" element={<TheoryPage />} />
+			<Route path="/trening/teoria/znaki-informacyjne" element={<TheoryPage />} />
+			<Route path="/trening/teoria/znaki-uzupelniajace" element={<TheoryPage />} />
+			<Route path="/kontakt" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />
 		</Routes>

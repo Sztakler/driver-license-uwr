@@ -51,7 +51,7 @@ export default function TiledMenu({ data, headings, ...props }) {
 		readUserPick(pick);
 		setTimeout(() => {
 			if (!pick.children) {
-				navigate("/training/" + pickedOption.type.name, {
+				navigate("/trening/" + pickedOption.type.name, {
 					state: pickedOption,
 				});
 			}

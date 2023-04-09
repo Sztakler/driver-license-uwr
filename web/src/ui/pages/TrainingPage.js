@@ -9,14 +9,14 @@ const options = [
 	{
 		type: "training_type",
 		title: "Teoria",
-		alt: "theory",
+		alt: "teoria",
 		description: "Teoria itd. opis",
 		children: null,
 	},
 	{
 		type: "training_type",
 		title: "Praktyka",
-		alt: "practice",
+		alt: "praktyka",
 		description: "Praktyka itd. opis",
 		children: [
 			{
