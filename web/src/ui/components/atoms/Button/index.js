@@ -36,13 +36,13 @@ function assignFontSize(size) {
 
 const StyledButton = tw.button`
 	${() => buttonDefaultClasses}
-  ${(props) => props.primary && buttonPrimaryClasses}
+  	${(props) => props.primary && buttonPrimaryClasses}
 	${(props) => props.secondary && buttonSecondaryClasses}
-  ${(props) => props.navbar && buttonNavbarClasses}
-  ${(props) => props.underscored && buttonUnderscoredClasses}
-  ${(props) => props.bold && buttonBoldClasses}
-  ${(props) => props.highlighted && buttonHighlightedClasses}
-  ${(props) => props.inactive && buttonInactiveClasses}
+	${(props) => props.navbar && buttonNavbarClasses}
+  	${(props) => props.underscored && buttonUnderscoredClasses}
+ 	${(props) => props.bold && buttonBoldClasses}
+  	${(props) => props.highlighted && buttonHighlightedClasses}
+  	${(props) => props.inactive && buttonInactiveClasses}
 	${(props) => assignFontSize(props.size)}
 `;
 
