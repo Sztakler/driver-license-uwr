@@ -73,7 +73,7 @@ export default function Practice(props) {
 				<CenterSection>
 					<Task>
 						<Image src={task.image} />
-						<Paragraph innerHTML={task.question} />
+						<Paragraph content={task.question} />
 						<Answers>
 							{task.answers.map((answer) => {
 								return (

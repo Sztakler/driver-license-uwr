@@ -114,7 +114,7 @@ export default function Footer() {
 						<Button bold size="2xl">
 							Superlogo
 						</Button>
-						<Paragraph innerHTML="Jakieś hasło promocyjne czy coś XD"/>
+						<Paragraph content="Jakieś hasło promocyjne czy coś XD"/>
 					</Column>
 				</Left>
 				<Center>

@@ -13,8 +13,8 @@ export default function InfoPanel({ data }) {
     let info = <div className="blue-300 w-1/2 min-h-full flex flex-col items-start p-5 pt-20">
         <Heading level={2}>{data.header}</Heading>
 
-        {data.description.map((innerHTML, index) => {
-            return <Paragraph style="text-base" key={data.id + index} innerHTML={innerHTML} />;
+        {data.description.map((content, index) => {
+            return <Paragraph style="text-base" key={data.id + index} content={content} />;
         })}
 
         <BulletList points={data.points} />
