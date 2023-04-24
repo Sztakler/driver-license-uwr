@@ -17,15 +17,15 @@ function assignButtonSize(size) {
 	let containerPaddings = "";
 
 	if (size === "s"){
-		containerPaddings = "py-3 px-3"
+		containerPaddings = "px-3 py-2"
 	}
 	if (size === "m") {
-		fontSize = "text-2xl";
-		containerPaddings = "p-5";
+		fontSize = "text-xl";
+		containerPaddings = "px-4 py-3";
 	}
 	if (size === "l") {
-		fontSize = "text-3xl";
-		containerPaddings = "py-3 px-10"
+		fontSize = "text-2xl";
+		containerPaddings = "px-5 py-4"
 	}
 
 	return [fontSize, containerPaddings];

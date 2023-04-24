@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowRight from "../../../../../../src/assets/icons/ArrowRight";
+import ArrowLeft from "../../../../../../src/assets/icons/ArrowLeft";
 import StarOutlineIcon from "@mui/icons-material/Star";
-import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
+import Explanation from "../../../../../../src/assets/icons/Explanation";
+import Cancel from "../../../../../../src/assets/icons/Cancel";
 
 import Button from "../../atoms/Button";
 import Paragraph from "../../atoms/Paragraph";
 import Image from "../../atoms/Image";
-import Timer from "../../molecules/Timer";
 import Label from "../../atoms/Label";
+import Bubble from "../../molecules/Bubble";
 
+import Timer from "../../molecules/Timer";
 import {
 	PracticeContainer,
 	Wrapper,
-	FavoriteTask,
 	TaskTopSection,
-	InnerWrapper,
 	TaskInfo,
 	ImageBox,
 	Answers,
@@ -26,12 +26,11 @@ import {
 	Menu,
 	QuitOptions,
 	TimerContainer,
+	CustomTimer,
 	Row,
 	NextPrevious,
 } from "./styles";
-
-import Bubble from "../../molecules/Bubble";
-import Heading from "../../atoms/Heading";
+import Clock from "../../../../../../src/assets/icons/Clock";
 
 export default function Practice(props) {
 	const location = useLocation();
@@ -87,12 +86,12 @@ export default function Practice(props) {
 						<span>Liczba rozwiązanych zadań: 100</span>
 					</TaskInfo>
 					<Bubble secondary size="l" className="absolute top-4 -right-16 ">
-							<StarOutlineIcon
-								className="text-[#9d9d9d] group-hover:text-[#ffd700]"
-								sx={{ fontSize: 32 }}
-								si
-							/>
-						</Bubble>
+						<StarOutlineIcon
+							className="text-[#9d9d9d] group-hover:text-[#ffd700]"
+							sx={{ fontSize: 32 }}
+							si
+						/>
+					</Bubble>
 					<ImageBox>
 						{taskStarted ? (
 							<Image exam src={task.image} />
@@ -106,11 +105,11 @@ export default function Practice(props) {
 					<QuitOptions>
 						<span>Zakończ trening</span>
 						<Bubble secondary size="m">
-							X
+							<Cancel />
 						</Bubble>
 					</QuitOptions>
-					<Button primary full size="m" onClick={() => navigate("/")}>
-						<CommentRoundedIcon></CommentRoundedIcon>
+					<Button primary full size="l" onClick={() => navigate("/")}>
+						<Explanation />
 						<span>Pokaż wyjaśnienie</span>
 					</Button>
 					<TimerContainer>
@@ -119,25 +118,26 @@ export default function Practice(props) {
 							<Button primary size="m" onClick={() => navigate("/")}>
 								<span>START</span>
 							</Button>
-							{/* <Timer
-								className="max-w-[350px]"
-								currentTime={currentTime}
-								maxTime={maxTime}
-							/> */}
+							<CustomTimer>
+								<Clock />
+								30 sekund
+							</CustomTimer>
 						</Row>
 					</TimerContainer>
 					<NextPrevious>
-						<Button full primary>
-							<span>Następne pytanie</span>
-							<ArrowForwardIcon />
-						</Button>
-						<Button blank>
-							<ArrowBackIcon />
+						<Button blank className="max-2xl:mt-auto max-2xl:justify-start">
+							<ArrowLeft />
 							<span>Poprzednie pytanie</span>
+						</Button>
+						<Button full size="m" primary>
+							<span>Następne pytanie</span>
+							<ArrowRight />
 						</Button>
 					</NextPrevious>
 				</Menu>
+
 				<div className="flex basis-[100%]"></div>
+
 				<TaskBottomSection>
 					<Paragraph className="inline-block" innerHTML={task.question} />
 					<Answers>

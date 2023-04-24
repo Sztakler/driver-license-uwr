@@ -5,7 +5,8 @@ const PracticeContainer = tw.div`
 	border-double
 	rounded-2xl
 	w-full
-	p-16
+
+	max-2xl:p-16
 `;
 
 const Wrapper = tw.div`
@@ -27,6 +28,7 @@ const TaskTopSection = tw.div`
 	flex-col
 	relative
 	m-auto
+	max-2xl:w-full
 `;
 
 const InnerWrapper = tw.div`
@@ -67,7 +69,7 @@ const ImageBox = tw.div`
 const TaskBottomSection = tw.div`
 	flex
 	flex-col
-	w-[1024px]
+	w-[928px]
 	max-2xl:w-full
 `;
 
@@ -90,14 +92,16 @@ const Menu = tw.div`
 	flex
 	flex-col
 	flex-[1_1_auto]
-	min-w-[300px]
 	ml-[72px]
 	max-2xl:ml-0
+	max-2xl:flex-none
+	max-2xl:w-full
 	shadow-xl
 	items-start
 	text-center
 	p-4
 	gap-16
+	max-2xl:gap-4
 	bg-[#FFF6E4]
 	rounded-xl
 `;
@@ -116,22 +120,41 @@ const TimerContainer = tw.div`
 	w-full
 	items-start
 	justify-start
+	gap-2
 `;
+
+const CustomTimer = tw.div`
+	flex
+	items-center
+	justify-center
+	gap-2
+	w-full
+	rounded-[3rem]
+	px-4
+	py-3
+	bg-[#FFE49E]
+	border-[#8D8D8D]
+	border-2
+	text-xl
+`
 
 const Row = tw.div`
 	flex
-	gap-4
 	flex-row
 	items-center
 	w-full
+	gap-4
+	[&>*]:w-half
 `;
 
 const NextPrevious = tw.div`
 	flex
-	flex-col
+	flex-col-reverse
 	items-start
 	w-full
-	gap-2
+	gap-4
+	max-2xl:flex-row
+	max-2xl:[&>*]:w-[50%]
 `;
 
 export {
@@ -148,6 +171,7 @@ export {
 	Menu,
 	QuitOptions,
 	TimerContainer,
+	CustomTimer,
 	Row,
 	NextPrevious,
 };

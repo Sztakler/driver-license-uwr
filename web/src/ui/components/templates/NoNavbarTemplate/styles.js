@@ -4,7 +4,7 @@ const PageWrapper = tw.div`
 	flex 
 	flex-col
 	relative 
-	w-full
+	min-w-screen
 	bg-[#FFEFD0]
 	min-h-screen
 `

@@ -1,10 +1,10 @@
 const buttonPrimaryClasses =
-	"flex items-center justify-center bg-[#F5F5F5] hover:bg-[#FFD363] rounded-[3rem] border-2 border-black gap-2 py-3 px-5";
+	"flex items-center justify-center bg-[#F5F5F5] hover:bg-[#FFD363] rounded-[3rem] border-2 border-black gap-2 py-3 px-4";
 
 const buttonSecondaryClasses =
 	"flex items-center justify-center h-10 text-white w-max py-3 px-5";
 
-const buttonBlankClasses = "flex gap-2"
+const buttonBlankClasses = "flex gap-2 items-center justify-center"
 
 const buttonNavbarClasses = "block px-3 py-3";
 

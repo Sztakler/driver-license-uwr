@@ -7,7 +7,7 @@ const imageTileLogoClasses =
 
 const imageIconClasses = "absolute w-9 h-auto mr-4 right-0";
 
-const imageExamClasses = "";
+const imageExamClasses = "w-full";
 
 export {
 	imageDefaultClasses,
