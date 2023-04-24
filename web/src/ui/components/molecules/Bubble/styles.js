@@ -1,36 +1,44 @@
 import tw from "tailwind-styled-components";
 
 function assignBubbleSize(size) {
-	let bubbleSize = "h-6 w-6"
+	let bubbleSize = "min-h-[24px] min-w-[24px]"
 
 	if (size === "s") {
-		bubbleSize = "h-8 w-8";
+		bubbleSize = "min-w-[32px] max-w-[32px] min-h-[32px] max-h-[32px]";
 	}
 	if (size === "m") {
-		bubbleSize = "h-10 w-10";
+		bubbleSize = "min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px]";
 	}
 	if (size === "l") {
-		bubbleSize = "h-12 w-12";
-	}
-	if (size === "xl") {
-		bubbleSize = "h-14 w-14";
-	}
-	if (size === "2xl") {
-		bubbleSize = "h-16 w-16";
+		bubbleSize = "min-w-[48px] max-w-[48px] min-h-[48px] max-h-[48px]";
 	}
 
 	return bubbleSize;
 }
-const BubbleContainer = tw.div`
-	flex
+
+const bubblePrimaryClasses = `
 	relative
-	items-center
-	justify-center
-	rounded-full
 	border-2
 	border-white
 	hover:bg-gray-800
+`
+
+const bubbleSecondaryClasses = `
+	group
+	border-2
+	border-black
+	hover:bg-[#FFD363]
+`
+
+const BubbleContainer = tw.div`
+	flex
+	items-center
+	justify-center
+	rounded-full
 	cursor-pointer
+	${(props) => props.primary && bubblePrimaryClasses}
+  ${(props) => props.secondary && bubbleSecondaryClasses}
+	${(props) => props.picked ? "bg-[#FFD363]" : "bg-white"}
 	${(props) => assignBubbleSize(props.size)}
 `;
 

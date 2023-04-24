@@ -148,7 +148,7 @@ export default function Footer() {
 					<ContactOptions>
 						{contactOptions.map((option) => {
 							return (
-								<Bubble size="xl" onClick={() => activateBubble(option.id)}>
+								<Bubble primary size="xl" onClick={() => activateBubble(option.id)}>
 									{option.popup && option.isActive && (
 										<Popup>{option.popup}</Popup>
 									)}

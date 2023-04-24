@@ -5,7 +5,7 @@ const PageWrapper = tw.div`
 	flex-col
 	relative 
 	w-full
-	bg-white
+	bg-[#FFEFD0]
 	min-h-screen
 `
 
@@ -19,7 +19,6 @@ const MainContent = tw.div`
 	items-center
 	h-auto
 	min-h-screen
-	px-12
 	py-8
 `
 

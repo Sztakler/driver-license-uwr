@@ -5,45 +5,41 @@ import {
 	buttonDefaultClasses,
 	buttonPrimaryClasses,
 	buttonSecondaryClasses,
+	buttonBlankClasses,
 	buttonNavbarClasses,
 	buttonUnderscoredClasses,
 	buttonBoldClasses,
 	buttonHighlightedClasses,
-	buttonInactiveClasses,
 } from "./styles";
 
-function assignFontSize(size) {
+function assignButtonSize(size) {
 	let fontSize = "text-base";
+	let containerPaddings = "";
 
-	if (size === "s") {
-		fontSize = "text-sm";
+	if (size === "s"){
+		containerPaddings = "py-3 px-3"
 	}
 	if (size === "m") {
-		fontSize = "text-base";
+		fontSize = "text-2xl";
+		containerPaddings = "p-5";
 	}
 	if (size === "l") {
-		fontSize = "text-lg";
-	}
-	if (size === "xl") {
-		fontSize = "text-xl";
-	}
-	if (size === "2xl") {
-		fontSize = "text-2xl";
+		fontSize = "text-3xl";
+		containerPaddings = "py-3 px-10"
 	}
 
-	return fontSize;
+	return [fontSize, containerPaddings];
 }
 
 const StyledButton = tw.button`
-	${() => buttonDefaultClasses}
   ${(props) => props.primary && buttonPrimaryClasses}
 	${(props) => props.secondary && buttonSecondaryClasses}
+	${(props) => props.blank && buttonBlankClasses}
   ${(props) => props.navbar && buttonNavbarClasses}
   ${(props) => props.underscored && buttonUnderscoredClasses}
   ${(props) => props.bold && buttonBoldClasses}
-  ${(props) => props.highlighted && buttonHighlightedClasses}
-  ${(props) => props.inactive && buttonInactiveClasses}
-	${(props) => assignFontSize(props.size)}
+	${(props) => props.full && 'w-full'}
+	${(props) => assignButtonSize(props.size).join(" ")}
 `;
 
 export default function Button(props) {
@@ -51,7 +47,7 @@ export default function Button(props) {
 	if (props.image) {
 		displayedComponent = <img className="w-8 h-auto" src={props.image} />;
 	} else {
-		displayedComponent = <span>{props.children}</span>;
+		displayedComponent = props.children;
 	}
 
 	return <StyledButton {...props}>{displayedComponent}</StyledButton>;

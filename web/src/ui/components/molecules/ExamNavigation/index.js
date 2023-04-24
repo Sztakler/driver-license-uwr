@@ -15,7 +15,7 @@ import {
 function ExamNavigation(props) {
     return (
         <NavigationContainer>
-            <Button className="bg-orange-500 text-white text-xl w-fit" onClick={props.endTest}>Zakończ test</Button>
+            <Button className="py-3 px-5 bg-orange-500 text-white text-xl w-fit" onClick={props.endTest}>Zakończ test</Button>
 
             <QuestionCountersContainer className="flex flex-row gap-12 mb-5">
                 <QuestionCounter>
@@ -34,7 +34,7 @@ function ExamNavigation(props) {
                 <Timer currentTime={props.currentTime} maxTime={props.maxTime} />
             </TimerContainer>
 
-            <Button className="bg-orange-500 text-white text-base w-fit" onClick={props.nextQuestion} >Następne pytanie</Button>
+            <Button className="py-3 px-5 bg-orange-500 text-white text-base w-fit" onClick={props.nextQuestion} >Następne pytanie</Button>
         </NavigationContainer>
     )
 }

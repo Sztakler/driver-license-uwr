@@ -44,8 +44,8 @@ export default function Exam() {
 			</UpperSection>
 
 			<LowerSection>
-				<Button className={"bg-slate-500 text-white text-base " + (answer === 1 ? "bg-blue-500" : "")} hover value={1} onClick={(e) => selectAnswer(1)}>Tak</Button>
-				<Button className={"bg-slate-500 text-white text-base " + (answer === 0 ? "bg-blue-500" : "")} hover value={0} onClick={(e) => selectAnswer(0)}>Nie</Button>
+				<Button className={"py-3 px-5 bg-slate-500 text-white text-base " + (answer === 1 ? "bg-blue-500" : "")} hover value={1} onClick={(e) => selectAnswer(1)}>Tak</Button>
+				<Button className={"py-3 px-5 bg-slate-500 text-white text-base " + (answer === 0 ? "bg-blue-500" : "")} hover value={0} onClick={(e) => selectAnswer(0)}>Nie</Button>
 			</LowerSection>
 		</ExamContainer >
 	);

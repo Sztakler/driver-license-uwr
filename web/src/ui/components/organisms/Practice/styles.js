@@ -1,102 +1,153 @@
 import tw from "tailwind-styled-components";
 
 const PracticeContainer = tw.div`
-	self-center
-	overflow-hidden
-	bg-white
+	container
 	border-double
-	border-4
-	border-[#FF5500]
 	rounded-2xl
-	max-w-[80%]
+	w-full
+	p-16
 `;
 
 const Wrapper = tw.div`
 	flex
-	flex-col
-	flex-wrap
-	h-full
-`;
-
-const TopSection = tw.div`
-	flex
 	flex-row
 	flex-wrap
-	items-center
-	gap-2
-	border-b-2
-	bg-[#FF5500]
-	text-white
-	p-4
-`;
-
-const CenterSection = tw.div`
-	flex
-	flex-row
-	flex-wrap
-`;
-
-const Task = tw.div`
-	flex
-	flex-[1_1_65%]
-	flex-col
-	p-4
+	max-2xl:justify-center
 	gap-4
-	justify-between
+`;
+
+const FavoriteTask = tw.div`
+	flex
+	flex-row
+	w-full
+`;
+
+const TaskTopSection = tw.div`
+	flex
+	flex-col
+	relative
+	m-auto
+`;
+
+const InnerWrapper = tw.div`
+	flex
+	flex-col
+	w-full
+`;
+
+const TaskInfo = tw.div`
+	flex
+	flex-row
+	flex-wrap
+	items-end
+	self-center
+ 	justify-around
+	w-full
+	pb-1
+	mt-2
+`;
+
+const ImageBox = tw.div`
+	flex
+	relative
+	self-center
+	items-center
+	justify-center
+	rounded-lg
+	w-[928px]
+	h-[522px]
+	max-2xl:w-full
+	max-2xl:h-auto
+	overflow-hidden
+	border-2
+	border-[#424242]
+	bg-[#FFE5A3]
+`;
+
+const TaskBottomSection = tw.div`
+	flex
+	flex-col
+	w-[1024px]
+	max-2xl:w-full
 `;
 
 const Answers = tw.div`
 	flex
 	flex-col
 	justify-around
-	bg-[#e2e2e2]
-	border-y-2
-	border-[#acacac]
-	[&>div+div]:border-t-2
-	[&>div+div]:border-[#acacac]
+	gap-4
+	mt-4
 `;
 
 const Answer = tw.div`
-	p-4
+	flex
+	flex-row
+	items-center
+	gap-2
 `;
 
 const Menu = tw.div`
 	flex
 	flex-col
-	flex-auto
-	items-center
+	flex-[1_1_auto]
+	min-w-[300px]
+	ml-[72px]
+	max-2xl:ml-0
+	shadow-xl
+	items-start
 	text-center
-	bg-[#d9d9d9]
-	px-6
-	py-6
-	gap-4
+	p-4
+	gap-16
+	bg-[#FFF6E4]
+	rounded-xl
 `;
 
 const QuitOptions = tw.div`
 	flex
 	flex-row
-	justify-between
-	mb-auto
+	items-center
+	justify-end
 	w-full
-`
+	gap-2
+`;
+const TimerContainer = tw.div`
+	flex
+	flex-col
+	w-full
+	items-start
+	justify-start
+`;
 
 const Row = tw.div`
 	flex
+	gap-4
 	flex-row
+	items-center
 	w-full
-	justify-evenly
-	mb-auto
-`
+`;
+
+const NextPrevious = tw.div`
+	flex
+	flex-col
+	items-start
+	w-full
+	gap-2
+`;
 
 export {
 	PracticeContainer,
 	Wrapper,
-	TopSection,
-	CenterSection,
-	Task,
+	FavoriteTask,
+	TaskTopSection,
+	InnerWrapper,
+	TaskInfo,
+	ImageBox,
+	TaskBottomSection,
 	Answers,
 	Answer,
 	Menu,
 	QuitOptions,
+	TimerContainer,
 	Row,
+	NextPrevious,
 };
