@@ -10,8 +10,8 @@ const Container = tw.div`
 	select-none
 
 	border-solid
-	border-2
-	border-[#606060]
+	border
+	border-[#8d8d8d]
 	rounded-3xl
 	`
 
@@ -21,10 +21,10 @@ const Navigation = tw.nav`
 
 const ChapterTitle = tw.div`
 	flex
-	${(props)=>props.active ? "text-[#666660]" : "text-[#6b6b6b]"}
+	${(props)=>props.active ? "text-[#8d8d8d]" : "text-[#0d0d0d]"}
 	text-base
 	cursor-pointer
-	hover:text-black
+	hover:text-[#8d8d8d]
 	items-center
 `
 
@@ -46,7 +46,7 @@ const TopicList = tw.ul`
 `
 
 const Item = tw.li`
-	hover:text-[#555555]
+	hover:text-[#8d8d8d]
 	cursor-pointer
 `
 

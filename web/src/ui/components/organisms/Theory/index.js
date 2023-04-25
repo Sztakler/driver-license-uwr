@@ -21,40 +21,68 @@ export default function Theory({ navigation, content }) {
 	const panelsContents = [
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
-			description: "C-6) nakaz jazdy prosto lub w prawo Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo."
+			description: <div>
+				<p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
+				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p>
+			</div>
 		},
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
-			description: "(C-12) ruch okrężny Wskazuje kierującemu pojazdem skrzyżowanie, na którym ruch odbywa się dookoła wysepki w kierunku wskazanym przez znak. Kierujący jest zobowiązany do poruszania się dookoła tej wysepki, w odpowiednim kierunku. Znak ten występujący łącznie ze znakiem (A-7) oznacza pierwszeństwo kierującego znajdującego się na skrzyżowaniu, przed kierującym wjeżdżającym (wchodzącym) na to skrzyżowanie."
+			description: <div>
+				<p><b>(C-12) ruch okrężny</b></p>
+				<p>Wskazuje kierującemu pojazdem skrzyżowanie, na którym ruch odbywa się dookoła wysepki w kierunku wskazanym przez znak. Kierujący jest zobowiązany do poruszania się dookoła tej wysepki, w odpowiednim kierunku. Znak ten występujący łącznie ze znakiem (A-7) oznacza pierwszeństwo kierującego znajdującego się na skrzyżowaniu, przed kierującym wjeżdżającym (wchodzącym) na to skrzyżowanie.</p>
+			</div>
 		},
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
-			description: <div><p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
-				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p></div>
+			description: <div>
+				<p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
+				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p>
+			</div>
 		},
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
-			description: <div><p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
-				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p></div>
+			description: <div>
+				<p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
+				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p>
+			</div>
 		},
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
-			description: "C-6) nakaz jazdy prosto lub w prawo Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo."
+			description: <div>
+				<p><b>(C-12) ruch okrężny</b></p>
+				<p>Wskazuje kierującemu pojazdem skrzyżowanie, na którym ruch odbywa się dookoła wysepki w kierunku wskazanym przez znak. Kierujący jest zobowiązany do poruszania się dookoła tej wysepki, w odpowiednim kierunku. Znak ten występujący łącznie ze znakiem (A-7) oznacza pierwszeństwo kierującego znajdującego się na skrzyżowaniu, przed kierującym wjeżdżającym (wchodzącym) na to skrzyżowanie.</p>
+			</div>
 		},
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
-			description: "(C-12) ruch okrężny Wskazuje kierującemu pojazdem skrzyżowanie, na którym ruch odbywa się dookoła wysepki w kierunku wskazanym przez znak. Kierujący jest zobowiązany do poruszania się dookoła tej wysepki, w odpowiednim kierunku. Znak ten występujący łącznie ze znakiem (A-7) oznacza pierwszeństwo kierującego znajdującego się na skrzyżowaniu, przed kierującym wjeżdżającym (wchodzącym) na to skrzyżowanie."
+			description: <div>
+				<p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
+				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p>
+			</div>
 		},
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
-			description: <div><p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
-				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p></div>
+			description: <div>
+				<p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
+				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p>
+			</div>
 		},
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
-			description: <div><p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
-				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p></div>
+			description: <div>
+				<p><b>(C-12) ruch okrężny</b></p>
+				<p>Wskazuje kierującemu pojazdem skrzyżowanie, na którym ruch odbywa się dookoła wysepki w kierunku wskazanym przez znak. Kierujący jest zobowiązany do poruszania się dookoła tej wysepki, w odpowiednim kierunku. Znak ten występujący łącznie ze znakiem (A-7) oznacza pierwszeństwo kierującego znajdującego się na skrzyżowaniu, przed kierującym wjeżdżającym (wchodzącym) na to skrzyżowanie.</p>
+			</div>
 		},
+		{
+			image: znakiOstrzegawcze.ExampleSVG,
+			description: <div>
+				<p><b>C-6) nakaz jazdy prosto lub w prawo</b></p>
+				<p>Wskazuje, że kierujący pojazdem jest zobowiązany jechać prosto przez skrzyżowanie lub skręcić w prawo.</p>
+			</div>
+		},
+
 	]
 
 	return (
@@ -68,7 +96,7 @@ export default function Theory({ navigation, content }) {
 					{panelsContents.map(panel =>
 						<Panel>
 							<Image src={panel.image} className="px-20e h-[10rem] text-elipsis/panels"></Image>
-							<Paragraph style="" content={panel.description}></Paragraph>
+							<Paragraph style="text-[#0d0d0d]" content={panel.description}></Paragraph>
 						</Panel>
 					)}
 				</PanelsScroller>

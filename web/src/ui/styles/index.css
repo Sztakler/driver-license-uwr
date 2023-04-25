@@ -38,3 +38,26 @@
 		@apply text-base;
 	}
 }
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 20px;
+    height: 20px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+	border: 1px solid #8d8d8d;
+    background: #fffaed;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #fffaed;
+    border-radius: 100vh;
+    border: 1px solid #8d8d8d;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #ffedbe;
+  }
+}

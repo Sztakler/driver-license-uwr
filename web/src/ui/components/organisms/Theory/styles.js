@@ -17,12 +17,14 @@ const Content = tw.div`
 
 const Title = tw.div`
 	text-5xl
+	text-[#0d0d0d]
 `
 
 const Subtitle = tw.div`
 	text-sm
 	mb-6
 	text-overflow
+	text-[#0d0d0d]
 `
 
 const PanelsScroller = tw.div`
@@ -30,7 +32,6 @@ const PanelsScroller = tw.div`
 	grid-flow-col
 	auto-cols-[27%]
 	gap-6
-	bg-[#fffcf5]
 	my-11
 	p-10
 	overflow-x-auto
@@ -41,6 +42,7 @@ const PanelsScroller = tw.div`
 	snap-mandatory
 	snap-x
 	scroll-pl-10 // add padding to scroll
+	scrollbar
 `
 
 const Panel = tw.div`
@@ -53,6 +55,7 @@ const Panel = tw.div`
 	border-[#dcdcdc]
 	rounded-[46px]
 	p-6
+	bg-[#fffcf5]
 
 	snap-normal
 	snap-start
