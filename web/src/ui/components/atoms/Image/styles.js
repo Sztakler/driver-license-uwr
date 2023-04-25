@@ -9,10 +9,13 @@ const imageIconClasses = "absolute w-9 h-auto mr-4 right-0";
 
 const imageExamClasses = "";
 
+const imageTheoryClasses= "min-h-[20rem] w-auto";
+
 export {
 	imageDefaultClasses,
 	imagePrimaryClasses,
 	imageTileLogoClasses,
 	imageIconClasses,
 	imageExamClasses,
+	imageTheoryClasses,
 };

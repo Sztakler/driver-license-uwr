@@ -22,20 +22,28 @@ const Title = tw.div`
 const Subtitle = tw.div`
 	text-sm
 	mb-6
+	text-overflow
 `
 
-const PanelsContainer = tw.div`
+const PanelsScroller = tw.div`
 	grid
-	grid-cols-3	
+	grid-flow-col
+	auto-cols-[27%]
 	gap-6
 	bg-[#fffcf5]
 	my-11
+	overflow-x-auto
+	overscroll-contain
+	min-w-[65vw]
+	max-w-[30rem]
+
+	snap-mandatory
+	snap-x
 `
 
 const Panel = tw.div`
-	flex
-	flex-col
-	justify-start
+	grid
+	auto-rows-min	
 	gap-6
 	text-sm
 	mb-6
@@ -43,6 +51,9 @@ const Panel = tw.div`
 	border-[#dcdcdc]
 	rounded-[46px]
 	p-6
+
+	snap-normal
+	snap-start
 `
 
-export {Container, Content, Title, Subtitle, PanelsContainer, Panel}
+export {Container, Content, Title, Subtitle, PanelsScroller, Panel}
