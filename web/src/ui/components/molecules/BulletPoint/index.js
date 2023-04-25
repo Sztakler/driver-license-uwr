@@ -9,7 +9,7 @@ export default function BulletPoint(props) {
     return (
         <div className="flex flex-row gap-x-2">
             <Bullet />
-            <Paragraph innerHTML={text}/>
+            <Paragraph content={text}/>
         </div>
     );
 }
