@@ -27,7 +27,7 @@ export default function Hero() {
 			header: 'Testy na prawko',
 			description: [
 				'Testy na prawko',
-				'to strona edukacyjna z darmowym dostępem do bazy <span className="font-bold">wszystkich pytań egzaminacyjnych na kategorię B</span>.',
+				<div>to strona edukacyjna z darmowym dostępem do bazy <span className="font-bold">wszystkich pytań egzaminacyjnych na kategorię B</span>.</div>,
 				'Z nami z łatwością przygotujesz się do egzaminu!',
 			],
 			points: [

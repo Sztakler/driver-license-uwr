@@ -15,10 +15,19 @@ export default function FaqPage() {
 	eu dolor officia. Tempor Lorem nulla veniam ad labore excepteur amet
 	ad.`;
 
+	const p = <Text>
+		`Sint pariatur qui exercitation irure sint. Incididunt consequat
+	consectetur ex culpa eu dolor. Deserunt culpa Lorem adipisicing et
+	cillum aliqua commodo commodo. Sunt mollit labore officia ut nisi enim
+	est sunt. Enim consectetur nostrud amet proident commodo est ad tempor
+	eu dolor officia. Tempor Lorem nulla veniam ad labore excepteur amet
+	ad.`;
+	</Text>
+
 	return (
 		<PageTemplate header={<Navbar />} footer={<Footer />}>
 			<Heading level={3}>Często zadawane pytania</Heading>
-			<Paragraph style="text-xl" innerHTML={paragraphText}></Paragraph>
+			<Paragraph style="text-xl" content={paragraphText}></Paragraph>
 			<QuestionList />
 		</PageTemplate>
 	);

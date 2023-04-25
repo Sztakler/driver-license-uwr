@@ -5,14 +5,21 @@ import Separator from "../../atoms/Separator";
 import UnorderedList from "../../atoms/UnorderedList";
 
 import { NewUserContainer, Row, Column, Heading4, Heading5 } from "./styles";
+import { useNavigate } from "react-router";
 
 export default function NewUser(props) {
+	const navigate = useNavigate();
+
+	function handleRegistration() {
+		navigate("/register/");
+	}
+
 	return (
 		<NewUserContainer>
 			<Column>
 				<Row>
 					<Heading4>Jesteś nowym użytkownikiem?</Heading4>
-					<Button primary size="xl">
+					<Button primary size="xl" className="w-full" onClick={handleRegistration}>
 						Załóż konto
 					</Button>
 				</Row>

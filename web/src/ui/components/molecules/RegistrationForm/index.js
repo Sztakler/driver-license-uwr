@@ -11,10 +11,11 @@ import {
 import Image from "../../atoms/Image";
 import Button from "../../atoms/Button";
 
-export default function LoginForm(props) {
+export default function RegistrationForm(props) {
 
 	const [usernameInput, setUsernameInput] = useState('');
 	const [passwordInput, setPasswordInput] = useState('');
+	const [emailInput, setEmailInput] = useState('');
 
 	function handleUsername(event) {
 		setUsernameInput(event.target.value);
@@ -24,15 +25,31 @@ export default function LoginForm(props) {
 		setPasswordInput(event.target.value);
 	}
 
+	function handleEmail(event) {
+		setEmailInput(event.target.value);
+	}
+
 	function handleSubmit(event) {
 		event.preventDefault();
-
-		alert(usernameInput + ' ' + passwordInput);
+		alert("[Registration] not implemented");
 	}
 
 	return (
 		<LoginFormContainer onSubmit={handleSubmit}>
-			<Heading>Zaloguj się</Heading>
+			<Heading>Zarejestruj się</Heading>
+			<InnerWrapper>
+				<Label size="2xl">
+					E-mail
+				</Label>
+				<InputSection>
+					<Image
+						icon
+						src={require("../../../../../../src/assets/images/mail.png")}
+					/>
+					<Input login id="emailInput" type="email" value={emailInput} onChange={handleEmail} placeholder="example@mail.com" />
+
+				</InputSection>
+			</InnerWrapper>
 			<InnerWrapper>
 				<Label size="2xl">
 					Login
@@ -60,7 +77,7 @@ export default function LoginForm(props) {
 			</InnerWrapper>
 
 			<InnerWrapper>
-				<Button type="submit" className="bg-orange-600 text-white text-xl">Zaloguj</Button>
+				<Button type="submit" className="bg-orange-600 text-white text-xl">Zarejestruj</Button>
 			</InnerWrapper>
 		</LoginFormContainer>
 	);

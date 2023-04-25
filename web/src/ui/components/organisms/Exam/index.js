@@ -5,11 +5,16 @@ import {
 	ExamContainer,
 	UpperSection,
 	LowerSection,
+	ExamStartPanel,
 } from "./styles";
 import Button from "../../atoms/Button";
 
 import TestImage from "../../../../../../src/assets/images/test.jpg"
 import ExamNavigation from "../../molecules/ExamNavigation";
+
+// function ExamStartPanel(props) {
+// 	return ()
+// }
 
 export default function Exam() {
 	const [baseQuestionNumber, setBaseQuestionNumber] = useState(1);
@@ -18,7 +23,8 @@ export default function Exam() {
 	const [maxSpecialistQuestions, setMaxSpecialistQuestions] = useState(10);
 	const [currentTime, setCurrentTime] = useState(0);
 	const [maxTime, setMaxTime] = useState(20);
-	const [answer, setAnswer] = useState(undefined)
+	const [answer, setAnswer] = useState(undefined);
+	const [examStarted, setExamStarted] = useState(false);
 
 	useEffect(() => {
 		const interval = setInterval(incrementTimer, 1000);
@@ -27,6 +33,30 @@ export default function Exam() {
 	}, [currentTime]);
 
 
+	if (examStarted) {
+		return (
+			<ExamContainer>
+				<UpperSection>
+					<Image src={TestImage} exam />
+					<ExamNavigation
+						baseQuestionNumber={baseQuestionNumber}
+						maxBaseQuestions={maxBaseQuestions}
+						specialistQuestionNumber={specialistQuestionNumber}
+						maxSpecialistQuestions={maxSpecialistQuestions}
+						currentTime={currentTime}
+						maxTime={maxTime}
+						endTest={endTest}
+						nextQuestion={nextQuestion}
+					/>
+				</UpperSection>
+
+				<LowerSection>
+					<Button className={"bg-slate-500 text-white text-base " + (answer === 1 ? "bg-blue-500" : "")} hover value={1} onClick={(e) => selectAnswer(1)}>Tak</Button>
+					<Button className={"bg-slate-500 text-white text-base " + (answer === 0 ? "bg-blue-500" : "")} hover value={0} onClick={(e) => selectAnswer(0)}>Nie</Button>
+				</LowerSection>
+			</ExamContainer >
+		);
+	}
 	return (
 		<ExamContainer>
 			<UpperSection>
@@ -49,6 +79,9 @@ export default function Exam() {
 			</LowerSection>
 		</ExamContainer >
 	);
+
+
+
 
 	function nextQuestion() {
 		if (currentTime < maxTime && answer === undefined) {
@@ -102,6 +135,6 @@ export default function Exam() {
 	}
 
 	function endTest() {
-		// TODO
+		setExamStarted(false);
 	}
 }

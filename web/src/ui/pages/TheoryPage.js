@@ -63,7 +63,7 @@ const navigation = [
 ];
 
 let contents = {
-	default: `<h4>XDDD kurwa</h4>`,
+	default: `<h4>Default content</h4>`,
 	"znaki-ostrzegawcze": "ostrzegawcze",
 	"znaki-nakazu": "nakaz",
 	"znaki-zakazu": "zakaz",
@@ -71,8 +71,6 @@ let contents = {
 	"znaki-kierunku-i-miejscowosci": "kierunku-i-miejscowosci",
 	"znaki-uzupelniajace": "uzupelniajace"
 }
-
-let defaultContent = "domyślny content";
 
 export default function TheoryPage() {
 	const location = useLocation();

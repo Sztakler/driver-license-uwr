@@ -1,9 +1,9 @@
 import React from "react";
 
 export default function Paragraph(props) {
-	const { style, innerHTML } = props;
+	const { style, content } = props;
 
 	return (
-		<p className={style} dangerouslySetInnerHTML={{ __html: innerHTML }}></p>
+		<p className={style}>{content}</p>
 	);
 }

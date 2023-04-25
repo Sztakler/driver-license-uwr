@@ -8,6 +8,7 @@ import ExamPage from "../src/ui/pages/ExamPage";
 import LoginPage from "../src/ui/pages/LoginPage";
 import ContactPage from "../src/ui/pages/ContactPage";
 import FaqPage from "../src/ui/pages/FaqPage";
+import RegisterPage from "../src/ui/pages/RegisterPage";
 
 const Routing = () => (
 	<BrowserRouter>
@@ -27,6 +28,7 @@ const Routing = () => (
 			<Route path="/kontakt" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />
+			<Route path="/register" element={<RegisterPage />} />
 		</Routes>
 	</BrowserRouter>
 );
