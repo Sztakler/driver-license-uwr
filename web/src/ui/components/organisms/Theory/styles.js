@@ -32,6 +32,7 @@ const PanelsScroller = tw.div`
 	gap-6
 	bg-[#fffcf5]
 	my-11
+	p-10
 	overflow-x-auto
 	overscroll-contain
 	min-w-[65vw]
@@ -39,6 +40,7 @@ const PanelsScroller = tw.div`
 
 	snap-mandatory
 	snap-x
+	scroll-pl-10 // add padding to scroll
 `
 
 const Panel = tw.div`
