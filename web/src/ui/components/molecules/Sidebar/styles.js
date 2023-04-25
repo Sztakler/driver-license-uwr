@@ -2,13 +2,18 @@ import tw from "tailwind-styled-components"
 
 const Container = tw.div`
 	flex
-	min-w-[25rem]
-	max-w-[25rem]
-	bg-[#ececec]
+	min-w-[20rem]
+	max-w-[20rem]
+	bg-[#FFFAED]
 	max-md:min-w-full
 	p-8
 	select-none
-`
+
+	border-solid
+	border-2
+	border-[#606060]
+	rounded-3xl
+	`
 
 const Navigation = tw.nav`
 	w-full
@@ -16,8 +21,8 @@ const Navigation = tw.nav`
 
 const ChapterTitle = tw.div`
 	flex
-	${(props)=>props.active ? "text-black" : "text-[#6b6b6b]"}
-	text-xl
+	${(props)=>props.active ? "text-[#666660]" : "text-[#6b6b6b]"}
+	text-base
 	cursor-pointer
 	hover:text-black
 	items-center
@@ -37,7 +42,7 @@ const Chapter = tw.li`
 `
 
 const TopicList = tw.ul`
-	text-lg
+	text-base
 `
 
 const Item = tw.li`

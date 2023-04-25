@@ -5,6 +5,7 @@ const Container = tw.div`
 	flex-row
 	max-md:flex-col
 	h-full
+	bg-[#FFFAED]
 `
 
 const Content = tw.div`
