@@ -95,7 +95,7 @@ export default function Theory({ navigation, content }) {
 				<PanelsScroller>
 					{panelsContents.map(panel =>
 						<Panel>
-							<Image src={panel.image} className="px-20e h-[10rem] text-elipsis/panels"></Image>
+							<Image src={panel.image} className="px-20e h-[10rem] text-elipsis"></Image>
 							<Paragraph style="text-[#0d0d0d]" content={panel.description}></Paragraph>
 						</Panel>
 					)}

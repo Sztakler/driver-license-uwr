@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 
+import PageLogo from "../../../../../../src/assets/images/svg/icons/PageLogo";
 import userLogo from "../../../../../../src/assets/images/user-logo.png";
 import hamburger from "../../../../../../src/assets/images/menu.png";
 import Button from "../../atoms/Button";
+import Image from "../../atoms/Image";
 
 import {
 	NavbarContainer,
@@ -65,7 +67,7 @@ export default function Navbar() {
 	return (
 		<NavbarContainer>
 			<BrandTitle hover size="2xl" onClick={() => navigate("/")}>
-				Superlogo
+			<Image src={PageLogo.PageLogo}></Image>
 			</BrandTitle>
 			<NavigationArea active={hamburgerView}>
 				<NavbarLinks>
