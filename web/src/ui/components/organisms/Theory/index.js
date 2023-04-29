@@ -5,6 +5,7 @@ import Sidebar from "../../molecules/Sidebar";
 
 import {
 	Container,
+	SidebarContainer,
 	Content,
 	Title,
 	Subtitle,
@@ -94,7 +95,7 @@ export default function Theory({ navigation, content }) {
 	return (
 		<Container className="relative">
 			{isSidebarVisible ?
-				<Container>
+				<SidebarContainer>
 					<button className="absolute top-[16px] left-[330px] flex flex-col cursor-pointer" onClick={handleSidebarClick}>
 						<svg width="29" height="22" viewBox="0 0 29 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M10.5141 1L1 10.5141L10.5141 20.0282" stroke="#292D32" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -105,14 +106,14 @@ export default function Theory({ navigation, content }) {
 						</input>
 					</button>
 					<Sidebar navigation={navigation}></Sidebar>
-				</Container>
+				</SidebarContainer>
 				:
 				<button className="absolute top-[16px] left-[8px] flex flex-col cursor-pointer" onClick={handleSidebarClick}>
 					<svg className="rotate-180" width="29" height="22" viewBox="0 0 29 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M10.5141 1L1 10.5141L10.5141 20.0282" stroke="#292D32" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
 						<path d="M27.6454 10.5144H1.26611" stroke="#292D32" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
 					</svg>
-					<p className="rotate-90 translate-y-16 -translate-x-12">Rozwiń spis treści</p>
+					<p className="rotate-90 translate-y-16 -translate-x-14">Rozwiń spis treści</p>
 					<input type="checkbox" className="appearance-none w-[60px] checked:bg-blue-500">
 					</input>
 				</button>}
@@ -123,7 +124,7 @@ export default function Theory({ navigation, content }) {
 				<PanelsScroller>
 					{panelsContents.map(panel =>
 						<Panel>
-							<Image src={panel.image} className="px-20e h-[10rem] text-elipsis"></Image>
+							<Image src={panel.image} className="h-[14rem] text-elipsis"></Image>
 							<Paragraph style="text-[#0d0d0d]" content={panel.description}></Paragraph>
 						</Panel>
 					)}

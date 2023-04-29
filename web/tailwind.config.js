@@ -3,6 +3,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			display: ["Barriecito", "cursive"],
+			sans: ['Inter', 'sans-serif'],
 		},
 		extend: {
 			borderRadius: {

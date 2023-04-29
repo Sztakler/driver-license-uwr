@@ -6,8 +6,15 @@ const Container = tw.div`
 	max-md:flex-col
 	h-full
 	bg-[#FFFAED]
-	pt-2
-	w-[100vw]
+	pt-6
+`
+
+const SidebarContainer = tw.div`
+	flex
+	flex-row
+	max-md:flex-col
+	h-full
+	bg-[#FFFAED]
 `
 
 const Content = tw.div`
@@ -33,14 +40,12 @@ const Subtitle = tw.div`
 const PanelsScroller = tw.div`
 	grid
 	grid-flow-col
-	auto-cols-[31%]
+	auto-cols-[32%]
 	gap-6
-	my-11
-	p-10
+	pt-10
 	overflow-x-auto
 	overscroll-contain
 	min-w-[65vw]
-	max-w-[30rem]
 
 	snap-mandatory
 	snap-x
@@ -49,9 +54,9 @@ const PanelsScroller = tw.div`
 `
 
 const Panel = tw.div`
-	grid
-	auto-rows-min	
-	gap-6
+	flex
+	flex-col
+	gap-8
 	text-sm
 	mb-6
 	border
@@ -59,9 +64,12 @@ const Panel = tw.div`
 	rounded-[46px]
 	p-6
 	bg-[#fffcf5]
+	max-w-[440px]
+	max-h-[590px]
+	aspect-[440/590]
 
 	snap-normal
 	snap-start
 `
 
-export {Container, Content, Title, Subtitle, PanelsScroller, Panel}
+export {Container, SidebarContainer, Content, Title, Subtitle, PanelsScroller, Panel}
