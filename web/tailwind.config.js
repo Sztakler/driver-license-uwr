@@ -1,6 +1,9 @@
 module.exports = {
 	content: ["./src/**/*.{html,js}"],
 	theme: {
+		fontFamily: {
+			display: ["Barriecito", "cursive"],
+		},
 		extend: {
 			borderRadius: {
 				half: "50%",

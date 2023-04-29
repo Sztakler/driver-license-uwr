@@ -1,5 +1,3 @@
-import React from "react"
-
 export default function Explanation() {
 	return(<svg width="37" height="33" viewBox="0 0 37 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<path d="M1 15.3343V18.2704C1 22.9805 4.50004 26.1206 9.75009 26.1206H16.7502L24.5377 30.7678C25.6928 31.4586 27.2503 30.7207 27.2503 29.4647V26.1206C32.5003 26.1206 36.0004 22.9805 36.0004 18.2704V8.85014C36.0004 4.14006 32.5003 1 27.2503 1H9.75009C4.50004 1 1 4.14006 1 8.85014" stroke="#171717" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

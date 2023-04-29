@@ -12,10 +12,13 @@ const Container = tw.div`
 	border-solid
 	border
 	border-[#8d8d8d]
-	rounded-3xl
+	rounded-t-[50px]
+	border-l-0
+
+	m-0
 	`
 
-const Navigation = tw.nav`
+const Navigation = tw.aside`
 	w-full
 `
 

@@ -6,18 +6,20 @@ const Container = tw.div`
 	max-md:flex-col
 	h-full
 	bg-[#FFFAED]
+	pt-2
 `
 
 const Content = tw.div`
-	flex
-	flex-col
-	py-16
+	grid
+	grid-rows-auto
+	py-4
 	px-24
 `
 
 const Title = tw.div`
 	text-5xl
 	text-[#0d0d0d]
+	font-display
 `
 
 const Subtitle = tw.div`
@@ -30,7 +32,7 @@ const Subtitle = tw.div`
 const PanelsScroller = tw.div`
 	grid
 	grid-flow-col
-	auto-cols-[27%]
+	auto-cols-[31%]
 	gap-6
 	my-11
 	p-10
