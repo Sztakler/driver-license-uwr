@@ -12,10 +12,13 @@ const Container = tw.div`
 	border-solid
 	border
 	border-[#8d8d8d]
-	rounded-3xl
+	rounded-tr-[50px]
+	border-l-0
+
+	m-0
 	`
 
-const Navigation = tw.nav`
+const Navigation = tw.aside`
 	w-full
 `
 
@@ -37,8 +40,7 @@ const ChapterList = tw.ul`
 const Chapter = tw.li`
 	flex
 	flex-col
-	items-center
-	text-center
+	text-left
 `
 
 const TopicList = tw.ul`
@@ -47,6 +49,7 @@ const TopicList = tw.ul`
 
 const Item = tw.li`
 	hover:text-[#8d8d8d]
+	font-sans
 	cursor-pointer
 `
 

@@ -32,7 +32,7 @@ export default function Sidebar({ navigation }) {
 	}
 
 	return (
-		<Container>
+		<Container className="relative">
 			<Navigation>
 				<ChapterList>
 					{chapters &&
@@ -51,7 +51,7 @@ export default function Sidebar({ navigation }) {
 									{chapter.id === expanded && chapter.topics && (
 										<TopicList>
 											{chapter.topics.map((topic) => {
-												return <Item onClick={()=>handleTopicClick(topic.alt)}>{topic.name}</Item>;
+												return <Item onClick={() => handleTopicClick(topic.alt)}>{topic.name}</Item>;
 											})}
 										</TopicList>
 									)}
