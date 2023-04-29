@@ -7,6 +7,7 @@ const Container = tw.div`
 	h-full
 	bg-[#FFFAED]
 	pt-2
+	w-[100vw]
 `
 
 const Content = tw.div`

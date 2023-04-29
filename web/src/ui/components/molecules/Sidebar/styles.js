@@ -12,8 +12,12 @@ const Container = tw.div`
 	border-solid
 	border
 	border-[#8d8d8d]
+<<<<<<< HEAD
 	rounded-t-[50px]
 	border-l-0
+=======
+	rounded-3xl
+>>>>>>> aa4ae08d94ae005b4ca05f204655816e985f4f61
 
 	m-0
 	`
