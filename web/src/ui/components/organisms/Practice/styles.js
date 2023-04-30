@@ -136,7 +136,7 @@ const CustomTimer = tw.div`
 	border-[#8D8D8D]
 	border-2
 	text-xl
-`
+`;
 
 const Row = tw.div`
 	flex
