@@ -6,7 +6,7 @@ export default function Star(props) {
 			width="20"
 			height="20"
 			viewBox="0 0 20 20"
-			fill={props.fill ? props.fill : "white"}
+			fill={props.picked ? "#0096FF" : "white"}
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path

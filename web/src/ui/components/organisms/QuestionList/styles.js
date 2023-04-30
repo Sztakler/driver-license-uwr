@@ -5,7 +5,7 @@ const QuestionListContainer = tw.div`
 	self-center
 	flex-col
 	mt-8
-	p-12
+	pb-12
 `;
 
 const QuickActions = tw.div``;

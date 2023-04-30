@@ -2,6 +2,35 @@ import tw from "tailwind-styled-components"
 
 const Container = tw.div`
 	flex
+	flex-col
+	max-md:flex-col
+	h-full
+	bg-[#FFFAED]
+	pt-12
+`
+
+const HeaderContainer = tw.div`
+	flex
+	flex-col
+	h-full
+	bg-[#FFFAED]
+	mb-48
+`
+
+const TitleContainer = tw.div`
+	flex 
+	flex-col
+	pl-44
+`
+
+const IllustrationContainer = tw.div`
+	flex
+	flex-col
+	relative
+`
+
+const MainContainer = tw.div`
+	flex
 	flex-row
 	max-md:flex-col
 	h-full
@@ -45,7 +74,6 @@ const PanelsScroller = tw.div`
 	pt-10
 	overflow-x-auto
 	overscroll-contain
-	min-w-[65vw]
 
 	snap-mandatory
 	snap-x
@@ -72,4 +100,4 @@ const Panel = tw.div`
 	snap-start
 `
 
-export {Container, SidebarContainer, Content, Title, Subtitle, PanelsScroller, Panel}
+export {Container, HeaderContainer, MainContainer, IllustrationContainer, TitleContainer, SidebarContainer, Content, Title, Subtitle, PanelsScroller, Panel}

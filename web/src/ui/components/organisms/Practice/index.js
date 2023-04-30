@@ -117,7 +117,7 @@ export default function Practice(props) {
 
 	return (
 		<PracticeContainer>
-			<BrandTitle>
+			<BrandTitle onClick={() => navigate("/")}>
 				<Image src={PageLogo.PageLogo} />
 			</BrandTitle>
 			<Wrapper>

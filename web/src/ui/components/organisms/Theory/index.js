@@ -5,6 +5,10 @@ import Sidebar from "../../molecules/Sidebar";
 
 import {
 	Container,
+	MainContainer,
+	HeaderContainer,
+	TitleContainer,
+	IllustrationContainer,
 	SidebarContainer,
 	Content,
 	Title,
@@ -14,8 +18,12 @@ import {
 } from "./styles";
 
 import znakiOstrzegawcze from "../../../../../../src/assets/images/svg/textbook/znaki-ostrzegawcze/znaki-ostrzegawcze";
+import textbookImage from "../../../../../../src/assets/images/svg/icons/TextbookImages";
+import Arrows from "../../../../../../src/assets/images/svg/icons/Arrows";
+
 import Paragraph from "../../atoms/Paragraph";
 import Image from "../../atoms/Image";
+import TextbookImages from "../../../../../../src/assets/images/svg/icons/TextbookImages";
 
 export default function Theory({ navigation, content }) {
 	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -162,8 +170,13 @@ export default function Theory({ navigation, content }) {
 	];
 
 	let handleSidebarClick = () => {
-		console.log(isSidebarVisible);
 		setIsSidebarVisible(!isSidebarVisible);
+	};
+
+	let scrollDown = () => {
+		document
+			.getElementById("MainContainer")
+			.scrollIntoView({ behavior: "smooth" });
 	};
 
 	return (
