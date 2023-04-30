@@ -54,7 +54,7 @@ export default function Footer() {
 			name: "Tryb nauki4",
 			navigationTarget: "/learning/option4",
 		},
-	]
+	];
 	const aboutUsList = [
 		{
 			id: 0,
@@ -66,7 +66,7 @@ export default function Footer() {
 			name: "FAQ",
 			navigationTarget: "/faq",
 		},
-	]
+	];
 	const [contactOptions, setContactOptions] = useState([
 		{
 			id: 0,
@@ -114,7 +114,7 @@ export default function Footer() {
 						<Button bold size="2xl">
 							Superlogo
 						</Button>
-						<Paragraph content="Jakieś hasło promocyjne czy coś XD"/>
+						<Paragraph>Jakieś hasło promocyjne czy coś XD</Paragraph>
 					</Column>
 				</Left>
 				<Center>
@@ -124,8 +124,12 @@ export default function Footer() {
 						</Top>
 						<Bottom>
 							<FeatureList>
-								{aboutUsList.map((item)=>{
-									return(<Feature onClick={()=>navigate(item.navigationTarget)}>{item.name}</Feature>)
+								{aboutUsList.map((item) => {
+									return (
+										<Feature onClick={() => navigate(item.navigationTarget)}>
+											{item.name}
+										</Feature>
+									);
 								})}
 							</FeatureList>
 						</Bottom>
@@ -136,8 +140,12 @@ export default function Footer() {
 						</Top>
 						<Bottom>
 							<FeatureList>
-								{featureList.map((item)=>{
-									return(<Feature onClick={()=>navigate(item.navigationTarget)}>{item.name}</Feature>)
+								{featureList.map((item) => {
+									return (
+										<Feature onClick={() => navigate(item.navigationTarget)}>
+											{item.name}
+										</Feature>
+									);
 								})}
 							</FeatureList>
 						</Bottom>
@@ -148,7 +156,11 @@ export default function Footer() {
 					<ContactOptions>
 						{contactOptions.map((option) => {
 							return (
-								<Bubble primary size="xl" onClick={() => activateBubble(option.id)}>
+								<Bubble
+									primary
+									size="xl"
+									onClick={() => activateBubble(option.id)}
+								>
 									{option.popup && option.isActive && (
 										<Popup>{option.popup}</Popup>
 									)}

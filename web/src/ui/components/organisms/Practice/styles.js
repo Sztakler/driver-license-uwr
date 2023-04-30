@@ -9,12 +9,21 @@ const PracticeContainer = tw.div`
 	max-2xl:p-16
 `;
 
+const BrandTitle = tw.div`
+	absolute
+	top-[38px]
+	left-[52px]
+	max-lg:left-[50%]
+	max-lg:translate-x-[-50%]
+`;
+
 const Wrapper = tw.div`
 	flex
 	flex-row
 	flex-wrap
-	max-2xl:justify-center
 	gap-4
+
+	max-2xl:justify-center
 `;
 
 const FavoriteTask = tw.div`
@@ -28,6 +37,7 @@ const TaskTopSection = tw.div`
 	flex-col
 	relative
 	m-auto
+
 	max-2xl:w-full
 `;
 
@@ -50,35 +60,36 @@ const TaskInfo = tw.div`
 `;
 
 const ImageBox = tw.div`
-	flex
 	relative
+	flex
 	self-center
 	items-center
 	justify-center
-	rounded-lg
 	w-[928px]
 	h-[522px]
-	max-2xl:w-full
-	max-2xl:h-auto
 	overflow-hidden
 	border-2
 	border-[#424242]
+	rounded-lg
 	bg-[#FFE5A3]
+
+	max-2xl:w-full
+	max-2xl:h-auto
 `;
 
 const TaskBottomSection = tw.div`
 	flex
 	flex-col
 	w-[928px]
+
 	max-2xl:w-full
 `;
 
 const Answers = tw.div`
 	flex
-	flex-col
-	justify-around
-	gap-4
-	mt-4
+	${(props) =>
+		props.row ? "flex-row justify-around" : "flex-col justify-around gap-4"}
+	mt-8
 `;
 
 const Answer = tw.div`
@@ -92,18 +103,19 @@ const Menu = tw.div`
 	flex
 	flex-col
 	flex-[1_1_auto]
+	items-start
+	gap-16
+	text-center
+	p-4
+	bg-[#FFF6E4]
+	rounded-xl
+	shadow-xl
+
 	ml-[72px]
 	max-2xl:ml-0
 	max-2xl:flex-none
 	max-2xl:w-full
-	shadow-xl
-	items-start
-	text-center
-	p-4
-	gap-16
 	max-2xl:gap-4
-	bg-[#FFF6E4]
-	rounded-xl
 `;
 
 const QuitOptions = tw.div`
@@ -111,16 +123,16 @@ const QuitOptions = tw.div`
 	flex-row
 	items-center
 	justify-end
-	w-full
 	gap-2
+	w-full
 `;
 const TimerContainer = tw.div`
 	flex
 	flex-col
-	w-full
 	items-start
 	justify-start
 	gap-2
+	w-full
 `;
 
 const CustomTimer = tw.div`
@@ -129,12 +141,14 @@ const CustomTimer = tw.div`
 	justify-center
 	gap-2
 	w-full
-	rounded-[3rem]
 	px-4
 	py-3
-	bg-[#FFE49E]
+	w-26
+	h-14
+	${(props) => (props.expired ? "bg-red-600" : "bg-[#FFE49E]")}
 	border-[#8D8D8D]
 	border-2
+	rounded-[3rem]
 	text-xl
 `;
 
@@ -142,8 +156,8 @@ const Row = tw.div`
 	flex
 	flex-row
 	items-center
-	w-full
 	gap-4
+	w-full
 	[&>*]:w-half
 `;
 
@@ -151,14 +165,16 @@ const NextPrevious = tw.div`
 	flex
 	flex-col-reverse
 	items-start
-	w-full
 	gap-4
+	w-full
+
 	max-2xl:flex-row
 	max-2xl:[&>*]:w-[50%]
 `;
 
 export {
 	PracticeContainer,
+	BrandTitle,
 	Wrapper,
 	FavoriteTask,
 	TaskTopSection,

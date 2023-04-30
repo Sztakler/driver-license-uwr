@@ -1,9 +1,7 @@
 import React from "react";
 
 export default function Paragraph(props) {
-	const { style, content } = props;
+	const { style, children } = props;
 
-	return (
-		<p className={style}>{content}</p>
-	);
+	return <p className={style}>{children}</p>;
 }

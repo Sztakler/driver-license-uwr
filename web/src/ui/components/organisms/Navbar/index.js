@@ -67,7 +67,7 @@ export default function Navbar() {
 	return (
 		<NavbarContainer>
 			<BrandTitle hover size="2xl" onClick={() => navigate("/")}>
-			<Image src={PageLogo.PageLogo}></Image>
+				<Image src={PageLogo.PageLogo}></Image>
 			</BrandTitle>
 			<NavigationArea active={hamburgerView}>
 				<NavbarLinks>

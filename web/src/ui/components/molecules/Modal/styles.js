@@ -24,7 +24,7 @@ const ModalDialog = tw.div`
 	relative
 	w-auto
 	my-auto
-	max-w-[600px]
+	max-w-[550px]
 `;
 
 const ModalContent = tw.div`
@@ -41,6 +41,8 @@ const ModalContent = tw.div`
 	pb-14
 	text-lg
 	text-start
+
+
 `;
 
 const ModalBody = tw.div`
@@ -50,6 +52,13 @@ const ModalBody = tw.div`
 	items-center
 	px-8
 	gap-4
+
+	[&>*]:flex
+	[&>*]:flex-col
+	[&>*]:w-full
+	[&>h4]:text-center
+	[&>div]:justify-around
+	[&>div]:flex-row
 `;
 
 const ModalOptions = tw.div`

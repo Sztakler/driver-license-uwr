@@ -5,6 +5,7 @@ const QuestionListContainer = tw.div`
 	self-center
 	flex-col
 	mt-8
+	p-12
 `;
 
 const QuickActions = tw.div``;
@@ -13,7 +14,7 @@ const ListContainer = tw.div`
 	bg-[#f1f1f1]
 	border-t-[3px]
 	border-[#e1e1e2]
-`;	
+`;
 
 const ListItem = tw.div`
 	relative
@@ -25,15 +26,16 @@ const ListItem = tw.div`
 
 	group
 `;
-	
+
 const ActiveItem = tw.div`
 	absolute
 	left-0
 	top-0
 	w-2
 	h-full
-	group-hover:bg-[#FF5500]
-`
+
+	group-hover:bg-[#FFD363]
+`;
 
 const QuestionSection = tw.div`
 	flex
@@ -59,5 +61,5 @@ export {
 	QuestionSection,
 	ActiveItem,
 	AnswerSection,
-	Arrow
+	Arrow,
 };

@@ -8,16 +8,16 @@ import {
 	buttonBlankClasses,
 	buttonNavbarClasses,
 	buttonUnderscoredClasses,
+	buttonActiveClasses,
 	buttonBoldClasses,
-	buttonHighlightedClasses,
 } from "./styles";
 
 function assignButtonSize(size) {
 	let fontSize = "text-base";
-	let containerPaddings = "";
+	let containerPaddings = "px-4 py-3";
 
-	if (size === "s"){
-		containerPaddings = "px-3 py-2"
+	if (size === "s") {
+		containerPaddings = "px-3 py-2";
 	}
 	if (size === "m") {
 		fontSize = "text-xl";
@@ -25,7 +25,7 @@ function assignButtonSize(size) {
 	}
 	if (size === "l") {
 		fontSize = "text-2xl";
-		containerPaddings = "px-5 py-4"
+		containerPaddings = "px-5 py-4";
 	}
 
 	return [fontSize, containerPaddings];
@@ -37,8 +37,9 @@ const StyledButton = tw.button`
 	${(props) => props.blank && buttonBlankClasses}
   ${(props) => props.navbar && buttonNavbarClasses}
   ${(props) => props.underscored && buttonUnderscoredClasses}
+  ${(props) => props.active && buttonActiveClasses}
   ${(props) => props.bold && buttonBoldClasses}
-	${(props) => props.full && 'w-full'}
+	${(props) => props.full && "w-full"}
 	${(props) => assignButtonSize(props.size).join(" ")}
 `;
 

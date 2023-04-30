@@ -6,7 +6,7 @@ const PageWrapper = tw.div`
 	w-full
 	bg-white
 	h-full
-`
+`;
 
 const HeroSection = tw.div`
 	flex 
@@ -22,7 +22,6 @@ const MainContent = tw.div`
 	relative
 	self-center
 	w-full
-	p-0
-`
+`;
 
 export { PageWrapper, HeroSection, MainContent };

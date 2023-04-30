@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 import ArrowRight from "../../../../../../src/assets/icons/ArrowRight";
 import ArrowLeft from "../../../../../../src/assets/icons/ArrowLeft";
-import StarOutlineIcon from "@mui/icons-material/Star";
+import Star from "../../../../../../src/assets/icons/Star";
 import Explanation from "../../../../../../src/assets/icons/Explanation";
 import Cancel from "../../../../../../src/assets/icons/Cancel";
 import Clock from "../../../../../../src/assets/icons/Clock";
+import PageLogo from "../../../../../../src/assets/images/svg/icons/PageLogo";
 
 import Button from "../../atoms/Button";
 import Paragraph from "../../atoms/Paragraph";
@@ -17,6 +18,7 @@ import Modal from "../../molecules/Modal";
 
 import {
 	PracticeContainer,
+	BrandTitle,
 	Wrapper,
 	TaskTopSection,
 	TaskInfo,
@@ -31,10 +33,8 @@ import {
 	Row,
 	NextPrevious,
 } from "./styles";
-import Star from "../../../../../../src/assets/icons/Star";
 
 export default function Practice(props) {
-	const location = useLocation();
 	const navigate = useNavigate();
 
 	const [currentTime, setCurrentTime] = useState(30);
@@ -45,41 +45,81 @@ export default function Practice(props) {
 		image: require("../../../../../../src/assets/images/test.jpg"),
 		points: 3,
 		type: "specjalistyczne",
-		answers: [
-			"TAK",
-			"NIE",
-			"Quis ad proident exercitation nostrud velit culpa anim elit proident ipsum velit nisi sit minim.",
-		],
+		answers: ["TAK", "NIE"],
 		pickedAnswer: null,
 	});
 	const [explanationModalShow, setExplanationModalShow] = useState(false);
 	const [exitModalShow, setExitModalShow] = useState(false);
-	const [taskStarted, setTaskStarted] = useState(true);
+	const [taskStarted, setTaskStarted] = useState(false);
+	const [favoriteTask, setFavoriteTask] = useState(false);
 
-	let handleSelect = (answer) => {
-		setTask((prevState) => {
-			return { ...prevState, pickedAnswer: answer };
-		});
-	};
+	function renderAnswers(task) {
+		if (task.answers.length === 2) {
+			return (
+				<Answers row={true}>
+					{task.answers.map((answer) => {
+						return (
+							<Answer>
+								<Button
+									primary
+									onClick={() =>
+										setTask((prevState) => {
+											return { ...prevState, pickedAnswer: answer };
+										})
+									}
+									size="l"
+									active={answer === task.pickedAnswer}
+								>
+									<span>{answer}</span>
+								</Button>
+							</Answer>
+						);
+					})}
+				</Answers>
+			);
+		} else if (task.answers.length === 3) {
+			return (
+				<Answers row={false}>
+					{task.answers.map((answer, idx) => {
+						return (
+							<Answer>
+								<Bubble
+									secondary
+									onClick={() =>
+										setTask((prevState) => {
+											return { ...prevState, pickedAnswer: answer };
+										})
+									}
+									size="m"
+									picked={answer === task.pickedAnswer}
+								>
+									{String.fromCharCode(65 + idx)}
+								</Bubble>
+								<span>{answer}</span>
+							</Answer>
+						);
+					})}
+				</Answers>
+			);
+		} else throw Error;
+	}
 
-	function incrementTimer() {
-		if (currentTime > minTime) {
+	function decrementTimer() {
+		if (taskStarted && currentTime > minTime) {
 			setCurrentTime(currentTime - 1);
 		}
 	}
 
-	function resetTimer() {
-		setCurrentTime(30);
-	}
-
 	useEffect(() => {
-		const interval = setInterval(incrementTimer, 1000);
-
+		const interval = setInterval(decrementTimer, 1000);
 		return () => clearInterval(interval);
-	}, [currentTime]);
+	}, [taskStarted, currentTime]);
 
 	return (
 		<PracticeContainer>
+			<BrandTitle>
+				<Image src={PageLogo.PageLogo} />
+			</BrandTitle>
 			<Wrapper>
 				<TaskTopSection>
 					<TaskInfo>
@@ -87,19 +127,27 @@ export default function Practice(props) {
 						<span>Wartość punktowa: {task.points}</span>
 						<span>Liczba rozwiązanych zadań: 100</span>
 					</TaskInfo>
-					<Bubble secondary size="l" className="absolute top-4 -right-16 ">
-						{/* <StarOutlineIcon
-							className="text-[#9d9d9d] group-hover:text-[#ffd700]"
-							sx={{ fontSize: 32 }}
-							si
-						/> */}
-						<Star />
+					<Bubble
+						secondary
+						onClick={() => {
+							setFavoriteTask((prevState) => {
+								return !prevState;
+							});
+						}}
+						picked={favoriteTask}
+						size="l"
+						className="absolute top-4 -right-16"
+					>
+						<Star picked={favoriteTask} />
 					</Bubble>
 					<ImageBox>
 						{taskStarted ? (
 							<Image exam src={task.image} />
 						) : (
-							<span>Naciśnij start aby wyświetlić multimedia</span>
+							<Image
+								exam
+								src={require("../../../../../../src/assets/images/multi.png")}
+							/>
 						)}
 					</ImageBox>
 				</TaskTopSection>
@@ -123,13 +171,23 @@ export default function Practice(props) {
 							show={exitModalShow}
 						>
 							<h4>Czy napewno chcesz zakończyć trening?</h4>
+							<div>
+								<Button primary onClick={() => navigate("/")}>
+									TAK
+								</Button>
+								<Button primary onClick={() => setExitModalShow(false)}>
+									NIE
+								</Button>
+							</div>
 						</Modal>
 					</QuitOptions>
 					<Button
 						primary
 						full
 						size="l"
-						onClick={() => setExplanationModalShow(true)}
+						onClick={() => {
+							taskStarted && setExplanationModalShow(true);
+						}}
 					>
 						<Explanation />
 						<span>Pokaż wyjaśnienie</span>
@@ -143,7 +201,6 @@ export default function Practice(props) {
 						<h4>Wyjaśnienie odpowiedzi</h4>
 						<span>
 							<b>Art. 26. ust. 1.</b>
-							<br />
 							Kierujący pojazdem, zbliżając się do przejścia dla pieszych, jest
 							obowiązany zachować szczególną ostrożność i ustąpić pierwszeństwa
 							pieszemu znajdującemu się na przejściu.
@@ -152,10 +209,10 @@ export default function Practice(props) {
 					<TimerContainer>
 						<Label size="m">Czas na zapoznanie się z pytaniem</Label>
 						<Row>
-							<Button primary size="m" onClick={() => navigate("/")}>
+							<Button primary size="m" onClick={() => setTaskStarted(true)}>
 								<span>START</span>
 							</Button>
-							<CustomTimer>
+							<CustomTimer expired={currentTime === 0}>
 								<Clock />
 								{currentTime} sekund
 							</CustomTimer>
@@ -189,24 +246,8 @@ export default function Practice(props) {
 				<div className="flex basis-[100%]"></div>
 
 				<TaskBottomSection>
-					<Paragraph className="inline-block" innerHTML={task.question} />
-					<Answers>
-						{task.answers.map((answer, idx) => {
-							return (
-								<Answer>
-									<Bubble
-										onClick={() => handleSelect(answer)}
-										secondary
-										size="m"
-										picked={answer === task.pickedAnswer}
-									>
-										{String.fromCharCode(65 + idx)}
-									</Bubble>
-									<span>{answer}</span>
-								</Answer>
-							);
-						})}
-					</Answers>
+					<Paragraph className="inline-block">{task.question}</Paragraph>
+					{renderAnswers(task)}
 				</TaskBottomSection>
 			</Wrapper>
 		</PracticeContainer>
