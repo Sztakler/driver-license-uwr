@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-import ArrowRight from "../../../../../../src/assets/icons/ArrowRight";
-import ArrowLeft from "../../../../../../src/assets/icons/ArrowLeft";
-import Star from "../../../../../../src/assets/icons/Star";
-import Explanation from "../../../../../../src/assets/icons/Explanation";
-import Cancel from "../../../../../../src/assets/icons/Cancel";
-import Clock from "../../../../../../src/assets/icons/Clock";
+import ArrowRight from "../../../../icons/ArrowRight";
+import ArrowLeft from "../../../../icons/ArrowLeft";
+import Star from "../../../../icons/Star";
+import Explanation from "../../../../icons/Explanation";
+import Cancel from "../../../../icons/Cancel";
+import Clock from "../../../../icons/Clock";
 import PageLogo from "../../../../../../src/assets/images/svg/icons/PageLogo";
 
 import Button from "../../atoms/Button";

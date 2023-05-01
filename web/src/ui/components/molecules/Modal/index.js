@@ -9,7 +9,7 @@ import {
 	ModalOptions,
 	ModalBody,
 } from "./styles";
-import Cancel from "../../../../../../src/assets/icons/Cancel";
+import Cancel from "../../../../icons/Cancel";
 
 export default function Modal(props) {
 	const bodyScrollLock = require("body-scroll-lock");
