@@ -18,12 +18,12 @@ import {
 } from "./styles";
 
 import znakiOstrzegawcze from "../../../../../../src/assets/images/svg/textbook/znaki-ostrzegawcze/znaki-ostrzegawcze";
-import textbookImage from "../../../../../../src/assets/images/svg/icons/TextbookImages";
+import textbookImage from "../../../../../../src/assets/images/svg/icons/Illustrations";
 import Arrows from "../../../../../../src/assets/images/svg/icons/Arrows";
 
 import Paragraph from "../../atoms/Paragraph";
 import Image from "../../atoms/Image";
-import TextbookImages from "../../../../../../src/assets/images/svg/icons/TextbookImages";
+import Illustrations from "../../../../../../src/assets/images/svg/icons/Illustrations";
 
 export default function Theory({ navigation, content }) {
 	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -187,7 +187,7 @@ export default function Theory({ navigation, content }) {
 					<Subtitle className="text-2xl pt-5 max-w-prose">Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii zasad ruchu drogowego.</Subtitle>
 				</TitleContainer>
 				<IllustrationContainer>
-					<Image src={TextbookImages.MainIllustration}></Image>
+					<Image src={Illustrations.TextbookIllustration}></Image>
 					<button className="self-center mt-10" onClick={scrollDown}>
 						<Image src={Arrows.Down}></Image>
 					</button>
@@ -225,7 +225,7 @@ export default function Theory({ navigation, content }) {
 						{panelsContents.map(panel =>
 							<Panel>
 								<Image src={panel.image} className="h-[14rem] text-elipsis"></Image>
-								<Paragraph style="text-[#0d0d0d]" content={panel.description}></Paragraph>
+								<Paragraph style="text-[#0d0d0d]">{panel.description}</Paragraph>
 							</Panel>
 						)}
 					</PanelsScroller>

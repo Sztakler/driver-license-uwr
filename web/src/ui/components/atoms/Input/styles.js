@@ -7,4 +7,6 @@ const inputLoginClasses =
 
 const inputRadioClasses = "mr-4"
 
-export { inputDefaultClasses, inputPrimaryClasses, inputLoginClasses, inputRadioClasses };
+const inputCheckboxClasses = "appearance-none mr-4 bg-[#fffaed] hover:bg-[#ffd363aa] w-8 h-8 border border-[#0d0d0d] rounded-full checked:bg-[#ffd363] checked:after:content-['✓'] text-2xl text-center"
+
+export { inputDefaultClasses, inputPrimaryClasses, inputLoginClasses, inputRadioClasses, inputCheckboxClasses };
