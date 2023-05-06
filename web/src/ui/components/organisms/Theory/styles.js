@@ -77,7 +77,7 @@ const PanelsScroller = tw.div`
 
 	snap-mandatory
 	snap-x
-	scroll-pl-10 // add padding to scroll
+	scroll-pl-10
 	scrollbar
 `
 
