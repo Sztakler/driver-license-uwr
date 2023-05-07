@@ -20,6 +20,7 @@ import {
 export default function Navbar() {
 	const location = useLocation();
 	const navigate = useNavigate();
+	const uuidv4 = require("uuid/v4");
 
 	const [hamburgerView, setHamburgerView] = useState(false);
 	const [activePage, setActivePage] = useState(
@@ -33,31 +34,31 @@ export default function Navbar() {
 
 	let navigationLinks = [
 		{
-			id: 0,
+			id: uuidv4,
 			name: "Egzamin",
 			navigationTarget: "/egzamin",
 			fontSize: "xl",
 		},
 		{
-			id: 0,
+			id: uuidv4,
 			name: "Trening",
 			navigationTarget: "/trening",
 			fontSize: "xl",
 		},
 		{
-			id: 0,
+			id: uuidv4,
 			name: "Kontakt",
 			navigationTarget: "/kontakt",
 			fontSize: "xl",
 		},
 		{
-			id: 0,
+			id: uuidv4,
 			name: "FAQ",
 			navigationTarget: "/faq",
 			fontSize: "xl",
 		},
 		{
-			id: 0,
+			id: uuidv4,
 			name: "Moje konto",
 			navigationTarget: "/login",
 			fontSize: "xl",
@@ -71,10 +72,11 @@ export default function Navbar() {
 			</BrandTitle>
 			<NavigationArea active={hamburgerView}>
 				<NavbarLinks>
-					{navigationLinks.map((link) => {
+					{navigationLinks.map((link, index) => {
 						return (
 							<NavbarItem
 								active={link.navigationTarget === activePage ? true : false}
+								key={uuidv4 + index}
 							>
 								<Button
 									navbar
