@@ -23,7 +23,7 @@ export default function Registration() {
 
 	return (
 		<RegistrationContainer>
-			<div className="py-11 flex flex-col gap-y-20">
+			<div className="hidden lg:flex flex-col gap-y-20 py-11">
 				<div className="flex flex-col gap-y-4">
 					<h1 className="font-display">Załóż darmowe konto</h1>
 					<div>
@@ -38,7 +38,7 @@ export default function Registration() {
 			</div>
 
 			<div className="flex flex-col bg-[#fffaed] border border-[#0d0d0d] rounded-[46px] p-32 pt-8">
-				<p className="self-end mb-16"><span className="text-[#808080]">Masz już konto?</span> <button className="font-bold underline">Zaloguj się</button></p>
+				<p className="self-end mb-16"><span className="text-[#808080]">Masz już konto?</span> <button className="font-semibold underline">Zaloguj się</button></p>
 				<div>
 					<h1 className="font-display mb-12">Zarejestruj się</h1>
 					<form className="flex flex-col gap-y-10">
