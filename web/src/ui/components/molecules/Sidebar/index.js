@@ -28,7 +28,7 @@ export default function Sidebar({ navigation }) {
 
 	let handleTopicClick = (path) => {
 		console.log(path)
-		navigate("/trening/teoria/" + path);
+		navigate("/podrecznik/" + path);
 	}
 
 	return (

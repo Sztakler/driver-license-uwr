@@ -65,7 +65,7 @@ export default function Hero() {
 	];
 
 	return (
-		<div className="container flex flex-col p-10 h-full items-center justify-center gap-32">
+		<div className="container flex flex-col p-10 pt-0 h-full items-center justify-center gap-32">
 
 			{infoContent.map((data) => {
 				return <InfoPanel key={data.id} data={data} />;

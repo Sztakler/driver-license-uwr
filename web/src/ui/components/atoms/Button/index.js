@@ -7,6 +7,7 @@ import {
 	buttonSecondaryClasses,
 	buttonBlankClasses,
 	buttonNavbarClasses,
+	buttonNavbarIconClasses,
 	buttonUnderscoredClasses,
 	buttonActiveClasses,
 	buttonBoldClasses,
@@ -33,16 +34,17 @@ function assignButtonSize(size) {
 }
 
 const StyledButton = tw.button`
+	${(props) => assignButtonSize(props.size).join(" ")}
   ${(props) => props.primary && buttonPrimaryClasses}
 	${(props) => props.secondary && buttonSecondaryClasses}
 	${(props) => props.blank && buttonBlankClasses}
   ${(props) => props.navbar && buttonNavbarClasses}
+  ${(props) => props.navbarIcon && buttonNavbarIconClasses}
   ${(props) => props.underscored && buttonUnderscoredClasses}
   ${(props) => props.active && buttonActiveClasses}
   ${(props) => props.bold && buttonBoldClasses}
 	${(props) => props.full && "w-full"}
 	${(props) => props.none && buttonNoneClasses}
-	${(props) => assignButtonSize(props.size).join(" ")}
 `;
 
 export default function Button(props) {

@@ -34,10 +34,8 @@ const NavbarItem = tw.li`
 	items-center
 	justify-center
 	hover:cursor-pointer
-	hover:font-extrabold
 	text-[#0D0D0D]
 	font-medium
-	${(props) => (props.active ? "font-extrabold" : null)}
 
 	lg:h-full
 	max-lg:w-full
@@ -53,7 +51,9 @@ const HamburgerOptionArea = tw.div`
 
 const NavbarLinks = tw.ul`
 	flex
+	gap-x-[8px]
 	max-lg:w-full
+	max-h-min
 
 	max-lg:items-center
 	max-lg:flex-col

@@ -8,6 +8,8 @@ import hamburger from "../../../../../../src/assets/images/menu.png";
 import Button from "../../atoms/Button";
 import Image from "../../atoms/Image";
 
+import NavbarIcons from "../../../../../../src/assets/images/svg/icons/NavbarIcons";
+
 import {
 	NavbarContainer,
 	BrandTitle,
@@ -16,6 +18,7 @@ import {
 	NavbarLinks,
 	NavigationArea,
 } from "./styles";
+import User from "../../../../icons/User";
 
 export default function Navbar() {
 	const location = useLocation();
@@ -47,19 +50,13 @@ export default function Navbar() {
 		},
 		{
 			id: uuidv4,
-			name: "Kontakt",
-			navigationTarget: "/kontakt",
+			name: "Podręcznik",
+			navigationTarget: "/podrecznik",
 			fontSize: "xl",
 		},
 		{
 			id: uuidv4,
-			name: "FAQ",
-			navigationTarget: "/faq",
-			fontSize: "xl",
-		},
-		{
-			id: uuidv4,
-			name: "Moje konto",
+			child: <User className="h-10"></User>,
 			navigationTarget: "/login",
 			fontSize: "xl",
 		},
@@ -72,22 +69,41 @@ export default function Navbar() {
 			</BrandTitle>
 			<NavigationArea active={hamburgerView}>
 				<NavbarLinks>
-					{navigationLinks.map((link, index) => {
+					{navigationLinks.slice().map((link, index) => {
 						return (
 							<NavbarItem
 								active={link.navigationTarget === activePage ? true : false}
 								key={uuidv4 + index}
 							>
-								<Button
-									navbar
-									size={link.fontSize}
-									onClick={() => {
-										setActivePage(link.navigationTarget);
-										navigate(link.navigationTarget);
-									}}
-								>
-									{link.name}
-								</Button>
+								{
+									link.name !== undefined ?
+										<Button
+											active={link.navigationTarget === activePage ? true : false}
+											navbar
+											size={link.fontSize}
+											onClick={() => {
+												setActivePage(link.navigationTarget);
+												navigate(link.navigationTarget);
+											}}
+										>
+											{link.name}
+										</Button>
+										: link.child !== undefined ?
+											<Button
+												active={link.navigationTarget === activePage ? true : false}
+												navbar
+												navbarIcon
+												size={link.fontSize}
+												onClick={() => {
+													setActivePage(link.navigationTarget);
+													navigate(link.navigationTarget);
+												}}
+											>
+												{link.child}
+											</Button>
+											:
+											<div></div>
+								}
 							</NavbarItem>
 						);
 					})}

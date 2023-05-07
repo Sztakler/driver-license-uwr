@@ -6,7 +6,9 @@ const buttonSecondaryClasses =
 
 const buttonBlankClasses = "flex gap-2 items-center justify-center";
 
-const buttonNavbarClasses = "block px-3 py-3";
+const buttonNavbarClasses = "bg-[#fffaed] border border-[#0d0d0d] rounded-[18px] 	px-[23px] py-[13px] hover:bg-[#FFD363]";
+
+const buttonNavbarIconClasses	= "px-[8px] py-[5px]";
 
 const buttonActiveClasses = "bg-[#FFD363]";
 
@@ -26,4 +28,5 @@ export {
 	buttonUnderscoredClasses,
 	buttonBoldClasses,
 	buttonNoneClasses,
+	buttonNavbarIconClasses
 };

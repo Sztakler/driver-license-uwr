@@ -18,13 +18,13 @@ const Routing = () => (
 			<Route path="/trening" element={<TrainingPage />} />
 			<Route path="/trening/praktyka" element={<PracticePage />} />
 			<Route path="/trening/teoria" element={<TheoryPage />} />
-			<Route path="/trening/teoria/" element={<TheoryPage />} />
-			<Route path="/trening/teoria/znaki-ostrzegawcze" element={<TheoryPage />} />
-			<Route path="/trening/teoria/znaki-nakazu" element={<TheoryPage />} />
-			<Route path="/trening/teoria/znaki-zakazu" element={<TheoryPage />} />
-			<Route path="/trening/teoria/znaki-kierunku-i-miejscowosci" element={<TheoryPage />} />
-			<Route path="/trening/teoria/znaki-informacyjne" element={<TheoryPage />} />
-			<Route path="/trening/teoria/znaki-uzupelniajace" element={<TheoryPage />} />
+			<Route path="/podrecznik/" element={<TheoryPage />} />
+			<Route path="/podrecznik/znaki-ostrzegawcze" element={<TheoryPage />} />
+			<Route path="/podrecznik/znaki-nakazu" element={<TheoryPage />} />
+			<Route path="/podrecznik/znaki-zakazu" element={<TheoryPage />} />
+			<Route path="/podrecznik/znaki-kierunku-i-miejscowosci" element={<TheoryPage />} />
+			<Route path="/podrecznik/znaki-informacyjne" element={<TheoryPage />} />
+			<Route path="/podrecznik/znaki-uzupelniajace" element={<TheoryPage />} />
 			<Route path="/kontakt" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />

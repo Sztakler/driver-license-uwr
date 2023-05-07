@@ -9,6 +9,7 @@ const RegistrationContainer = tw.div`
 	w-full
 	rounded-3xl 
 	h-max
+	pt-12
 `;
 
 
