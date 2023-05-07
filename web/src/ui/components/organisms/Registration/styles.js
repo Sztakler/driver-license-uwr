@@ -5,11 +5,10 @@ const RegistrationContainer = tw.div`
 	flex-row
 	justify-center
 	align-center
-	w-[60rem] 
-	h-[42rem] 
+	gap-56
+	w-full
 	rounded-3xl 
-	bg-[#ffffff] 
-	bg-opacity-80
+	h-max
 `;
 
 

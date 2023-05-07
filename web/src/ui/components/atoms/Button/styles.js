@@ -15,6 +15,8 @@ const buttonUnderscoredClasses =
 
 const buttonBoldClasses = "font-bold";
 
+const buttonNoneClasses = "";
+
 export {
 	buttonPrimaryClasses,
 	buttonBlankClasses,
@@ -23,4 +25,5 @@ export {
 	buttonActiveClasses,
 	buttonUnderscoredClasses,
 	buttonBoldClasses,
+	buttonNoneClasses,
 };

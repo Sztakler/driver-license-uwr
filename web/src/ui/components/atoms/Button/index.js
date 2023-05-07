@@ -10,6 +10,7 @@ import {
 	buttonUnderscoredClasses,
 	buttonActiveClasses,
 	buttonBoldClasses,
+	buttonNoneClasses,
 } from "./styles";
 
 function assignButtonSize(size) {
@@ -40,6 +41,7 @@ const StyledButton = tw.button`
   ${(props) => props.active && buttonActiveClasses}
   ${(props) => props.bold && buttonBoldClasses}
 	${(props) => props.full && "w-full"}
+	${(props) => props.none && buttonNoneClasses}
 	${(props) => assignButtonSize(props.size).join(" ")}
 `;
 

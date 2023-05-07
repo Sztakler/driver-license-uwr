@@ -5,7 +5,7 @@ const NavbarContainer = tw.div`
 	flex-[0_1_auto]
 	max-lg:flex-col
 	items-center 
-	bg-[#FFFAED]
+	bg-[#ffefd0]
 
 	lg:justify-between
 	max-lg:justify-center

@@ -9,12 +9,11 @@ const PageWrapper = tw.div`
 
 const MainContent = tw.div`
 	flex 
-	bg-road-texture 
-	bg-cover 
+	bg-[#ffefd0] 
 	flex-auto 
-	items-center 
 	justify-center 
 	p-10
+	pt-0
 	min-h-screen
 `;
 

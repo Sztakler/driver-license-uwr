@@ -1,12 +1,12 @@
 import React from "react";
 
 export default function Bullet(props) {
-    const { style, text } = props;
+    const { style, text, bullet } = props;
 
     return (
         <div>
             <span className="material-symbols-outlined">
-                chevron_right
+                {bullet}
             </span>
         </div>
     );
