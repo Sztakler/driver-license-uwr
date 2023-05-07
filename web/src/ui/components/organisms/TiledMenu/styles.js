@@ -6,15 +6,13 @@ const Container = tw.div`
 	flex-col
 	max-md:flex-col
 	h-full
-	bg-[#FFFAED]
+	bg-[#FFEFD0]
 	pt-12
 `
 
 const HeaderContainer = tw.div`
 	flex
 	flex-col
-	bg-[#FFFAED]
-	mb-48
 `
 
 const TitleContainer = tw.div`
@@ -34,8 +32,7 @@ const MainContainer = tw.div`
 	flex-row
 	max-md:flex-col
 	h-full
-	bg-[#FFFAED]
-	pt-6
+	mt-[116px]
 `
 
 const SidebarContainer = tw.div`
@@ -61,7 +58,6 @@ const Title = tw.div`
 
 const Subtitle = tw.div`
 	text-sm
-	mb-6
 	text-overflow
 	text-[#0d0d0d]
 `
