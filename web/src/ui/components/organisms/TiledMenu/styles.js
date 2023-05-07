@@ -13,6 +13,7 @@ const Container = tw.div`
 const HeaderContainer = tw.div`
 	flex
 	flex-col
+	mb-[116px]
 `
 
 const TitleContainer = tw.div`
@@ -24,7 +25,6 @@ const TitleContainer = tw.div`
 const IllustrationContainer = tw.div`
 	flex
 	flex-col
-	relative
 `
 
 const MainContainer = tw.div`
@@ -32,7 +32,6 @@ const MainContainer = tw.div`
 	flex-row
 	max-md:flex-col
 	h-full
-	mt-[116px]
 `
 
 const SidebarContainer = tw.div`

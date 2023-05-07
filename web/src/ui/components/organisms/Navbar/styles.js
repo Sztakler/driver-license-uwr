@@ -13,7 +13,7 @@ const NavbarContainer = tw.div`
 	pt-[30px]
 	pr-[30px]
 	pl-[30px]
-`;
+	`;
 
 const BrandTitle = tw.div`
 	block

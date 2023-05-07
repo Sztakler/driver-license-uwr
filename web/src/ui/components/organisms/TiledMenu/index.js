@@ -51,30 +51,32 @@ export default function TiledMenu({ data, headings, ...props }) {
 			<HeaderContainer className="m-0">
 				<TitleContainer>
 					<Title className="text-8xl">Trening</Title>
-
-					{isTrainingSelected ?
-						<Subtitle className="text-2xl pt-5 max-w-prose">Wybierz pytania, które chcesz przećwiczyć:</Subtitle>
-						:
-						<Subtitle className="text-2xl pt-5 max-w-prose">Zapraszamy Cię na sesję treningową! TRENING to pytania egzaminacyjne bez końca. Możesz użyć filtrów, aby wybrać pytania, których chcesz się dziś uczyć.</Subtitle>
-					}
+					<Subtitle className="text-2xl pt-5 max-w-prose mb-8">
+						{isTrainingSelected ?
+							"Wybierz pytania, które chcesz przećwiczyć:"
+							:
+							"Zapraszamy Cię na sesję treningową! TRENING to pytania egzaminacyjne bez końca. Możesz użyć filtrów, aby wybrać pytania, których chcesz się dziś uczyć."
+						}
+					</Subtitle>
 				</TitleContainer>
 
-				{isTrainingSelected ?
-					<div></div>
-					:
-					<IllustrationContainer>
-						<img src={Illustrations.TrainingIllustration} className="self-center w-[70%]"></img>
-						<button className="self-center bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[70%] border rounded-[100px] border-[#0d0d0d]" onClick={scrollDown}>
-							<Subtitle className="text-4xl font-semibold text-center m-0 py-6">PRZEJDŹ DALEJ</Subtitle>
-						</button>
-					</IllustrationContainer>
-				}
-
+				<IllustrationContainer>
+					{isTrainingSelected ?
+						<div></div>
+						:
+						<div className="flex flex-col">
+							<img src={Illustrations.TrainingIllustration} className="self-center w-[70%]"></img>
+							<button className="self-center bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[70%] border rounded-[100px] border-[#0d0d0d] self-end" onClick={scrollDown}>
+								<Subtitle className="text-4xl font-semibold text-center m-0 py-6">PRZEJDŹ DALEJ</Subtitle>
+							</button>
+						</div>
+					}
+				</IllustrationContainer>
 			</HeaderContainer>
-			<MainContainer id="MainContainer" className="relative w-full h-full">
 
+			<MainContainer id="MainContainer" className="relative">
 				{isTrainingSelected ?
-					<div className="flex flex-col w-full mb-8 gap-[200px]">
+					<div className="flex flex-col w-full gap-[200px]">
 						<form className="flex flex-row align-center justify-center w-full h-full gap-48">
 							<div className="flex flex-col justify-start">
 								<label for="all" className="flex flex-row pb-2">
