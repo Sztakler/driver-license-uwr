@@ -10,7 +10,7 @@ const buttonNavbarClasses = "bg-[#fffaed] border border-[#0d0d0d] rounded-[18px]
 
 const buttonNavbarIconClasses	= "px-[8px] py-[5px]";
 
-const buttonActiveClasses = "bg-[#FFD363]";
+const buttonActiveClasses = "border-2";
 
 const buttonUnderscoredClasses =
 	"text-blue-600 underline underline-offset-4 hover:text-blue-400";
