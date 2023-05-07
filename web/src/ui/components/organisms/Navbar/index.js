@@ -20,7 +20,7 @@ import {
 } from "./styles";
 import User from "../../../../icons/User";
 
-export default function Navbar() {
+export default function Navbar(props) {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const uuidv4 = require("uuid/v4");
@@ -62,8 +62,11 @@ export default function Navbar() {
 		},
 	];
 
+	console.log(props.lighter)
+
 	return (
-		<NavbarContainer>
+		<NavbarContainer 
+			lighter={props.lighter}>
 			<BrandTitle hover size="2xl" onClick={() => navigate("/")}>
 				<Image src={PageLogo.PageLogo}></Image>
 			</BrandTitle>

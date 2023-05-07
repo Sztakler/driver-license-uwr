@@ -77,7 +77,7 @@ export default function TheoryPage() {
 	let output = location.pathname.split("/").pop();
 	let content = contents[output] ?? contents.default;
 	return (
-		<PageTemplate header={<Navbar />} footer={<Footer />}>
+		<PageTemplate header={<Navbar lighter/>} footer={<Footer />}>
 			<Theory
 				navigation={navigation}
 				content={content}

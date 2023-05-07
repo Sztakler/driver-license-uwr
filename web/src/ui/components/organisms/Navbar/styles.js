@@ -13,6 +13,8 @@ const NavbarContainer = tw.div`
 	pt-[30px]
 	pr-[30px]
 	pl-[30px]
+
+	${(props) => (props.lighter ? "bg-[#FFFCF5]" : "")}
 	`;
 
 const BrandTitle = tw.div`
