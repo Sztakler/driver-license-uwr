@@ -75,8 +75,8 @@ export default function Hero() {
 
 			<div className="relative w-full">
 				<img src={Illustrations.HeroCar} className=""></img>
-				<div className="text-2xl">
-					<button className="translate-x-[1100px] -translate-y-[215px] font-bold text-3xl flex justify-center items-center gap-2">
+				<div className="">
+					<button className="absolute right-[12%] top-[62%] font-bold text-[1.4vw] xl:text-3xl flex justify-center items-center gap-2">
 						Trenuj z nami
 						<ArrowRight className=""></ArrowRight>
 					</button>
