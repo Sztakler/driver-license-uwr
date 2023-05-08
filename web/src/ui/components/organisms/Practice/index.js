@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 import ArrowRight from "../../../../icons/ArrowRight";
 import ArrowLeft from "../../../../icons/ArrowLeft";
@@ -32,43 +32,64 @@ import {
 	CustomTimer,
 	Row,
 	NextPrevious,
+	ReviewQuestions,
 } from "./styles";
 
 export default function Practice(props) {
+	const { data } = props;
 	const navigate = useNavigate();
+	const location = useLocation();
 
+	let inReviewMode = true;
+	if (
+		location.state &&
+		location.state.hasOwnProperty("isReview") &&
+		location.state.isReview
+	) {
+		inReviewMode = true;
+	}
+
+	// REVIEW MODE //
+	const [reviewingTaskIdx, setReviewingTaskIdx] = useState(0);
+	const cachedAnswers = [
+		{ ...data[0], answered: 0 },
+		{ ...data[1], answered: 0 },
+	];
+
+	// REGULAR MODE //
 	const [currentTime, setCurrentTime] = useState(30);
 	const [minTime, setMinTime] = useState(0);
-	const [task, setTask] = useState({
-		question:
-			"Qui laboris laborum ut consectetur Lorem deserunt qui excepteur voluptate amet. Mollit culpa laborum do dolor. Velit do aliquip aliqua pariatur reprehenderit non qui consectetur ut amet. Incididunt ad nisi est dolore dolore nulla proident id officia exercitation est officia deserunt mollit.",
-		image: require("../../../../../../src/assets/images/test.jpg"),
-		points: 3,
-		type: "specjalistyczne",
-		answers: ["TAK", "NIE"],
-		pickedAnswer: null,
-	});
 	const [explanationModalShow, setExplanationModalShow] = useState(false);
 	const [exitModalShow, setExitModalShow] = useState(false);
-	const [taskStarted, setTaskStarted] = useState(false);
+	const [taskStarted, setTaskStarted] = useState(inReviewMode ? true : false);
 	const [favoriteTask, setFavoriteTask] = useState(false);
+	const [result, setResult] = useState({
+		questionCounter: 0,
+		skipped: 0,
+		correct: 0,
+		incorrect: 0,
+		points: 0,
+	});
+
+	// BOTH MODES //
+	const [pickedAnswer, setPickedAnswer] = useState(cachedAnswers[0].answered);
+	const [task, setTask] = useState(inReviewMode ? cachedAnswers[0] : data[0]);
 
 	function renderAnswers(task) {
-		if (task.answers.length === 2) {
+		if (task.zakres_struktury === "PODSTAWOWY") {
 			return (
 				<Answers row={true}>
-					{task.answers.map((answer) => {
+					{task.odpowiedzi.map((answer, index) => {
 						return (
 							<Answer>
 								<Button
 									primary
-									onClick={() =>
-										setTask((prevState) => {
-											return { ...prevState, pickedAnswer: answer };
-										})
-									}
+									onClick={() => {
+										setPickedAnswer(index);
+										console.log(index, pickedAnswer);
+									}}
 									size="l"
-									active={answer === task.pickedAnswer}
+									picked={index === pickedAnswer}
 								>
 									<span>{answer}</span>
 								</Button>
@@ -77,23 +98,19 @@ export default function Practice(props) {
 					})}
 				</Answers>
 			);
-		} else if (task.answers.length === 3) {
+		} else if (task.zakres_struktury === "SPECJALISTYCZNY") {
 			return (
 				<Answers row={false}>
-					{task.answers.map((answer, idx) => {
+					{task.odpowiedzi.map((answer, index) => {
 						return (
 							<Answer>
 								<Bubble
 									secondary
-									onClick={() =>
-										setTask((prevState) => {
-											return { ...prevState, pickedAnswer: answer };
-										})
-									}
+									onClick={() => setPickedAnswer(index)}
 									size="m"
-									picked={answer === task.pickedAnswer}
+									picked={index === pickedAnswer}
 								>
-									{String.fromCharCode(65 + idx)}
+									{String.fromCharCode(65 + index)}
 								</Bubble>
 								<span>{answer}</span>
 							</Answer>
@@ -102,6 +119,33 @@ export default function Practice(props) {
 				</Answers>
 			);
 		} else throw Error;
+	}
+
+	function verifyAnswer(pickedAnswer) {
+		let answerIdx = task.odpowiedzi.findIndex(
+			(answer) => answer === pickedAnswer
+		);
+		let isSkipped = pickedAnswer === answerIdx ? true : false;
+		let isCorrect =
+			!isSkipped && pickedAnswer === task.poprawna_odpowiedz ? true : false;
+		let isIncorrect = !isSkipped && !isCorrect;
+		setResult((prevState) => {
+			return {
+				questionCounter: prevState.questionCounter + 1,
+				skipped: prevState.skipped + isSkipped,
+				correct: prevState.correct + isCorrect,
+				incorrect: prevState.incorrect + isIncorrect,
+				points: prevState.points + task.liczba_punktow * isCorrect,
+			};
+		});
+	}
+
+	function nextQuestion() {
+		setTask(data[Math.floor(Math.random() * data.length)]);
+		if (!inReviewMode) {
+			setTaskStarted(false);
+		}
+		setPickedAnswer(null);
 	}
 
 	function decrementTimer() {
@@ -123,8 +167,8 @@ export default function Practice(props) {
 			<Wrapper>
 				<TaskTopSection>
 					<TaskInfo>
-						<span>Typ pytania: {task.type}</span>
-						<span>Wartość punktowa: {task.points}</span>
+						<span>Typ pytania: {task.zakres_struktury}</span>
+						<span>Wartość punktowa: {task.liczba_punktow}</span>
 						<span>Liczba rozwiązanych zadań: 100</span>
 					</TaskInfo>
 					<Bubble
@@ -142,7 +186,7 @@ export default function Practice(props) {
 					</Bubble>
 					<ImageBox>
 						{taskStarted ? (
-							<Image exam src={task.image} />
+							<Image exam src={task.media} />
 						) : (
 							<Image
 								exam
@@ -152,9 +196,11 @@ export default function Practice(props) {
 					</ImageBox>
 				</TaskTopSection>
 
-				<Menu>
+				<Menu inReviewMode={inReviewMode}>
 					<QuitOptions>
-						<span>Zakończ trening</span>
+						<span>
+							{inReviewMode ? "Wróć do podsumowania" : "Zakończ trening"}
+						</span>
 						<Bubble
 							secondary
 							size="m"
@@ -172,7 +218,18 @@ export default function Practice(props) {
 						>
 							<h4>Czy napewno chcesz zakończyć trening?</h4>
 							<div>
-								<Button primary onClick={() => navigate("/")}>
+								<Button
+									primary
+									onClick={() =>
+										navigate("/trening/podsumowanie", {
+											state: {
+												positive: null,
+												isTraining: true,
+												result: result,
+											},
+										})
+									}
+								>
 									TAK
 								</Button>
 								<Button primary onClick={() => setExitModalShow(false)}>
@@ -206,18 +263,22 @@ export default function Practice(props) {
 							pieszemu znajdującemu się na przejściu.
 						</span>
 					</Modal>
-					<TimerContainer>
-						<Label size="m">Czas na zapoznanie się z pytaniem</Label>
-						<Row>
-							<Button primary size="m" onClick={() => setTaskStarted(true)}>
-								<span>START</span>
-							</Button>
-							<CustomTimer expired={currentTime === 0}>
-								<Clock />
-								{currentTime} sekund
-							</CustomTimer>
-						</Row>
-					</TimerContainer>
+					{!inReviewMode ? (
+						<TimerContainer>
+							<Label size="m">Czas na zapoznanie się z pytaniem</Label>
+							<Row>
+								<Button primary size="m" onClick={() => setTaskStarted(true)}>
+									<span>START</span>
+								</Button>
+								<CustomTimer expired={currentTime === 0}>
+									<Clock />
+									{currentTime} sekund
+								</CustomTimer>
+							</Row>
+						</TimerContainer>
+					) : (
+						<></>
+					)}
 					<NextPrevious>
 						<Button
 							blank
@@ -234,19 +295,44 @@ export default function Practice(props) {
 							size="m"
 							primary
 							onClick={() => {
-								navigate(0);
+								verifyAnswer(pickedAnswer);
+								console.log(result);
+								nextQuestion();
 							}}
 						>
 							<span>Następne pytanie</span>
 							<ArrowRight />
 						</Button>
 					</NextPrevious>
+					{inReviewMode ? (
+						<ReviewQuestions>
+							<span>Pytania</span>
+							<div className="w-full flex flex-wrap gap-2">
+								{cachedAnswers.map((answer, index) => {
+									console.log(answer);
+									return (
+										<Bubble
+											secondary
+											active={index === reviewingTaskIdx}
+											correct={answer.poprawna_odpowiedz === answer.answered}
+											incorrect={answer.poprawna_odpowiedz !== answer.answered}
+											size="m"
+										>
+											{index + 1}
+										</Bubble>
+									);
+								})}
+							</div>
+						</ReviewQuestions>
+					) : (
+						<></>
+					)}
 				</Menu>
 
 				<div className="flex basis-[100%]"></div>
 
 				<TaskBottomSection>
-					<Paragraph className="inline-block">{task.question}</Paragraph>
+					<Paragraph className="inline-block">{task.pytanie}</Paragraph>
 					{renderAnswers(task)}
 				</TaskBottomSection>
 			</Wrapper>

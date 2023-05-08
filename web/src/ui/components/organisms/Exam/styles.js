@@ -2,6 +2,7 @@ import tw from "tailwind-styled-components";
 
 const ExamContainer = tw.div`
 	container
+	h-[calc(100vh-91px)]
 	flex
 	flex-auto 
 	flex-col
@@ -9,7 +10,7 @@ const ExamContainer = tw.div`
 	self-center
 	items-center
 	justify-center
-	p-10
+	p-20
 `;
 
 const UpperSection = tw.section`
@@ -52,4 +53,11 @@ justify-center
 p-10
 `;
 
-export { ExamContainer, UpperSection, LowerSection, Title, SubTitle, ExamStartPanel };
+export {
+	ExamContainer,
+	UpperSection,
+	LowerSection,
+	Title,
+	SubTitle,
+	ExamStartPanel,
+};

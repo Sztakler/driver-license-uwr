@@ -1,4 +1,4 @@
-import tw from "tailwind-styled-components"
+import tw from "tailwind-styled-components";
 
 const Container = tw.div`
 	flex
@@ -7,7 +7,7 @@ const Container = tw.div`
 	h-full
 	bg-[#FFFAED]
 	pt-12
-`
+`;
 
 const HeaderContainer = tw.div`
 	flex
@@ -15,19 +15,19 @@ const HeaderContainer = tw.div`
 	h-full
 	bg-[#FFFAED]
 	mb-48
-`
+`;
 
 const TitleContainer = tw.div`
 	flex 
 	flex-col
 	pl-44
-`
+`;
 
 const IllustrationContainer = tw.div`
 	flex
 	flex-col
 	relative
-`
+`;
 
 const MainContainer = tw.div`
 	flex
@@ -36,7 +36,7 @@ const MainContainer = tw.div`
 	h-full
 	bg-[#FFFAED]
 	pt-6
-`
+`;
 
 const SidebarContainer = tw.div`
 	flex
@@ -44,27 +44,27 @@ const SidebarContainer = tw.div`
 	max-md:flex-col
 	h-full
 	bg-[#FFFAED]
-`
+`;
 
 const Content = tw.div`
 	grid
 	grid-rows-auto
 	py-4
 	px-24
-`
+`;
 
 const Title = tw.div`
 	text-5xl
 	text-[#0d0d0d]
 	font-display
-`
+`;
 
 const Subtitle = tw.div`
 	text-sm
 	mb-6
 	text-overflow
 	text-[#0d0d0d]
-`
+`;
 
 const PanelsScroller = tw.div`
 	grid
@@ -79,7 +79,7 @@ const PanelsScroller = tw.div`
 	snap-x
 	scroll-pl-10
 	scrollbar
-`
+`;
 
 const Panel = tw.div`
 	flex
@@ -98,6 +98,18 @@ const Panel = tw.div`
 
 	snap-normal
 	snap-start
-`
+`;
 
-export {Container, HeaderContainer, MainContainer, IllustrationContainer, TitleContainer, SidebarContainer, Content, Title, Subtitle, PanelsScroller, Panel}
+export {
+	Container,
+	HeaderContainer,
+	MainContainer,
+	IllustrationContainer,
+	TitleContainer,
+	SidebarContainer,
+	Content,
+	Title,
+	Subtitle,
+	PanelsScroller,
+	Panel,
+};

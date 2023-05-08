@@ -9,7 +9,7 @@ import {
 } from "./styles";
 import Button from "../../atoms/Button";
 
-import TestImage from "../../../../../../src/assets/images/test.jpg"
+import TestImage from "../../../../../../src/assets/images/test.jpg";
 import ExamNavigation from "../../molecules/ExamNavigation";
 
 // function ExamStartPanel(props) {
@@ -32,7 +32,6 @@ export default function Exam() {
 		return () => clearInterval(interval);
 	}, [currentTime]);
 
-
 	if (examStarted) {
 		return (
 			<ExamContainer>
@@ -51,10 +50,30 @@ export default function Exam() {
 				</UpperSection>
 
 				<LowerSection>
-					<Button className={"bg-slate-500 text-white text-base " + (answer === 1 ? "bg-blue-500" : "")} hover value={1} onClick={(e) => selectAnswer(1)}>Tak</Button>
-					<Button className={"bg-slate-500 text-white text-base " + (answer === 0 ? "bg-blue-500" : "")} hover value={0} onClick={(e) => selectAnswer(0)}>Nie</Button>
+					<Button
+						className={
+							"bg-slate-500 text-white text-base " +
+							(answer === 1 ? "bg-blue-500" : "")
+						}
+						hover
+						value={1}
+						onClick={(e) => selectAnswer(1)}
+					>
+						Tak
+					</Button>
+					<Button
+						className={
+							"bg-slate-500 text-white text-base " +
+							(answer === 0 ? "bg-blue-500" : "")
+						}
+						hover
+						value={0}
+						onClick={(e) => selectAnswer(0)}
+					>
+						Nie
+					</Button>
 				</LowerSection>
-			</ExamContainer >
+			</ExamContainer>
 		);
 	}
 	return (
@@ -74,14 +93,31 @@ export default function Exam() {
 			</UpperSection>
 
 			<LowerSection>
-				<Button className={"py-3 px-5 bg-slate-500 text-white text-base " + (answer === 1 ? "bg-blue-500" : "")} hover value={1} onClick={(e) => selectAnswer(1)}>Tak</Button>
-				<Button className={"py-3 px-5 bg-slate-500 text-white text-base " + (answer === 0 ? "bg-blue-500" : "")} hover value={0} onClick={(e) => selectAnswer(0)}>Nie</Button>
+				<Button
+					className={
+						"py-3 px-5 bg-slate-500 text-white text-base " +
+						(answer === 1 ? "bg-blue-500" : "")
+					}
+					hover
+					value={1}
+					onClick={(e) => selectAnswer(1)}
+				>
+					Tak
+				</Button>
+				<Button
+					className={
+						"py-3 px-5 bg-slate-500 text-white text-base " +
+						(answer === 0 ? "bg-blue-500" : "")
+					}
+					hover
+					value={0}
+					onClick={(e) => selectAnswer(0)}
+				>
+					Nie
+				</Button>
 			</LowerSection>
-		</ExamContainer >
+		</ExamContainer>
 	);
-
-
-
 
 	function nextQuestion() {
 		if (currentTime < maxTime && answer === undefined) {
@@ -92,13 +128,11 @@ export default function Exam() {
 			incrementBaseQuestionNumber();
 			resetAnswer();
 			resetTimer();
-		}
-		else if (specialistQuestionNumber < maxSpecialistQuestions) {
+		} else if (specialistQuestionNumber < maxSpecialistQuestions) {
 			incrementSpecialistQuestionNumber();
 			resetTimer();
 			resetAnswer();
-		}
-		else {
+		} else {
 			endTest();
 		}
 	}

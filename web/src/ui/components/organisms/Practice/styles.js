@@ -1,12 +1,13 @@
 import tw from "tailwind-styled-components";
 
 const PracticeContainer = tw.div`
-	container
+	max-w-[1600px]
 	border-double
 	rounded-2xl
 	w-full
+	pt-16
+	max-2xl:p-20
 
-	max-2xl:p-16
 `;
 
 const BrandTitle = tw.div`
@@ -104,14 +105,16 @@ const Answer = tw.div`
 const Menu = tw.div`
 	flex
 	flex-col
-	flex-[1_1_auto]
+	flex-grow
 	items-start
 	gap-16
+	${(props) => (props.inReviewMode ? "gap-4" : "gap-16")}
 	text-center
 	p-4
 	bg-[#FFF6E4]
 	rounded-xl
 	shadow-xl
+	w-[558px]
 
 	ml-[72px]
 	max-2xl:ml-0
@@ -174,6 +177,15 @@ const NextPrevious = tw.div`
 	max-2xl:[&>*]:w-[50%]
 `;
 
+const ReviewQuestions = tw.div`
+	flex
+	flex-col
+	items-start
+	gap-2
+	h-full
+	w-full
+`;
+
 export {
 	PracticeContainer,
 	BrandTitle,
@@ -192,4 +204,5 @@ export {
 	CustomTimer,
 	Row,
 	NextPrevious,
+	ReviewQuestions,
 };

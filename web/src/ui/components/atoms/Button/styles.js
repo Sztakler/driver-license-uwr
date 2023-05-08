@@ -6,11 +6,14 @@ const buttonSecondaryClasses =
 
 const buttonBlankClasses = "flex gap-2 items-center justify-center";
 
-const buttonNavbarClasses = "bg-[#fffaed] border border-[#0d0d0d] rounded-[18px] 	px-[23px] py-[13px] hover:bg-[#FFD363]";
+const buttonNavbarClasses =
+	"bg-[#fffaed] border border-[#0d0d0d] rounded-[18px] 	px-[23px] py-[13px] hover:bg-[#FFD363]";
 
-const buttonNavbarIconClasses	= "px-[8px] py-[5px]";
+const buttonNavbarIconClasses = "px-[8px] py-[5px]";
 
-const buttonActiveClasses = "border-2";
+const buttonActiveClasses = "bg-[#FFD363]";
+
+const buttonPickedClasses = "bg-[#91CE6B]";
 
 const buttonUnderscoredClasses =
 	"text-blue-600 underline underline-offset-4 hover:text-blue-400";
@@ -25,8 +28,9 @@ export {
 	buttonSecondaryClasses,
 	buttonNavbarClasses,
 	buttonActiveClasses,
+	buttonPickedClasses,
 	buttonUnderscoredClasses,
 	buttonBoldClasses,
 	buttonNoneClasses,
-	buttonNavbarIconClasses
+	buttonNavbarIconClasses,
 };

@@ -42,6 +42,7 @@ const StyledButton = tw.button`
   ${(props) => props.navbarIcon && buttonNavbarIconClasses}
   ${(props) => props.underscored && buttonUnderscoredClasses}
   ${(props) => props.active && buttonActiveClasses}
+  ${(props) => props.picked && buttonPickedClasses}
   ${(props) => props.bold && buttonBoldClasses}
 	${(props) => props.full && "w-full"}
 	${(props) => props.none && buttonNoneClasses}
