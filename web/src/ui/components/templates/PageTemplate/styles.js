@@ -13,6 +13,8 @@ const HeroSection = tw.div`
 	flex-[1_0_auto]
 	align-middle 
 	justify-center
+	bg-[#ffefd0]
+
 `;
 
 const MainContent = tw.div`

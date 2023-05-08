@@ -15,6 +15,9 @@ import coolDriver from "../../../../../../src/assets/images/info-panels/cool-dri
 import examScreenshots from "../../../../../../src/assets/images/info-panels/exam-screenshots.png"
 import usersFaces from "../../../../../../src/assets/images/info-panels/users-faces.png"
 
+import Illustrations from "../../../../../../src/assets/images/svg/icons/Illustrations";
+import ArrowRight from "../../../../icons/ArrowRight";
+
 export default function Hero() {
 
 	const uuidv4 = require("uuid/v4");
@@ -65,12 +68,24 @@ export default function Hero() {
 	];
 
 	return (
-		<div className="container flex flex-col p-10 pt-0 h-full items-center justify-center gap-32">
+		<HeroContainer>
+			<div>
+				<img src={Illustrations.HeroIllustration}></img>
+			</div>
+
+			<div className="relative w-full">
+				<img src={Illustrations.HeroCar} className=""></img>
+				<div className="text-2xl">
+					<button className="translate-x-[1100px] -translate-y-[215px] font-bold text-3xl flex justify-center items-center gap-2">
+						Trenuj z nami
+						<ArrowRight className=""></ArrowRight>
+					</button>
+				</div>
+			</div>
 
 			{infoContent.map((data) => {
 				return <InfoPanel key={data.id} data={data} />;
 			})}
-			
-		</div>
+		</HeroContainer>
 	);
 }
