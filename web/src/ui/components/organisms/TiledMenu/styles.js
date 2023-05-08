@@ -25,6 +25,7 @@ const TitleContainer = tw.div`
 const IllustrationContainer = tw.div`
 	flex
 	flex-col
+	mb-20
 `
 
 const MainContainer = tw.div`

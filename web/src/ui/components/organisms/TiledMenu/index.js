@@ -76,7 +76,7 @@ export default function TiledMenu({ data, headings, ...props }) {
 
 			<MainContainer id="MainContainer" className="relative">
 				{isTrainingSelected ?
-					<div className="flex flex-col w-full gap-[200px]">
+					<div className="flex flex-col w-full gap-[200px] mb-20">
 						<form className="flex flex-row align-center justify-center w-full h-full gap-48">
 							<div className="flex flex-col justify-start">
 								<label for="all" className="flex flex-row pb-2">
