@@ -7,7 +7,8 @@ const PageWrapper = tw.div`
 	bg-white
 	h-full
 
-	overflow-scroll
+	overflow-y-auto
+	scrollbar
 	snap-mandatory
 	snap-y
 	scroll-p-[200px]

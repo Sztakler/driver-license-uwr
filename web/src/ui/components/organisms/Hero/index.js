@@ -65,7 +65,7 @@ export default function Hero() {
 				<img src={Illustrations.HeroIllustration}></img>
 			</div>
 
-			<div className="relative w-full snap-start">
+			<div className="relative w-full snap-center">
 				<img src={Illustrations.HeroCar} className=""></img>
 				<div className="">
 					<button className="absolute right-[12%] top-[56%] font-bold text-[1.4vw] xl:text-[26px] flex justify-center items-center gap-2" onClick={handleRegister}>
@@ -81,7 +81,7 @@ export default function Hero() {
 
 
 			<div>
-				<div className="grid grid-cols-2 snap-start">
+				<div className="grid grid-cols-2 snap-center">
 					<div className="flex flex-col gap-[30px]">
 						<h1 className="text-[#141414] font-display text-[70px]">
 							Trenuj z nami
@@ -103,7 +103,7 @@ export default function Hero() {
 			</div>
 
 			<div>
-				<div className="grid grid-cols-2 snap-start pb-20">
+				<div className="grid grid-cols-2 snap-center pb-20">
 					<div>
 						<img src={Illustrations.RegistrationIllustration}></img>
 					</div>
