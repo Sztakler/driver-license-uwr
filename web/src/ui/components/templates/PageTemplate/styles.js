@@ -6,6 +6,11 @@ const PageWrapper = tw.div`
 	w-full
 	bg-white
 	h-full
+
+	overflow-scroll
+	snap-mandatory
+	snap-y
+	scroll-p-[200px]
 `;
 
 const HeroSection = tw.div`

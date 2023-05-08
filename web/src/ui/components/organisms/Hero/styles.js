@@ -4,10 +4,9 @@ const HeroContainer = tw.div`
 	container
 	flex
 	flex-col
-	gap-32
+	gap-64
 	items-center
 	justify-center
-	h-full
 	p-10
 `;
 
