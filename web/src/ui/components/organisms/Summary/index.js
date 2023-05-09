@@ -1,7 +1,10 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router";
+import { useRecoilState } from "recoil";
 
 import Button from "../../atoms/Button";
 import ArrowLeft from "../../../../icons/ArrowLeft";
+import { resultsState } from "../../../../recoil/atoms";
 
 import {
 	SummaryContainer,
@@ -12,70 +15,77 @@ import {
 	Statistic,
 	Points,
 } from "./styles";
-import { useLocation, useNavigate } from "react-router";
 
-export default function Summary(props) {
-	const location = useLocation();
-	let result = "default";
+// typeorm + postgres
+// ts-node
+// args [ -r ""]
+// portable web application
+// media query print
 
-	console.log(location.state);
-	if (location.state) {
-		if (
-			location.state.hasOwnProperty("isTraining") &&
-			location.state.hasOwnProperty("positive")
-		) {
-			result = location.state.isTraining
-				? "podsumowanie TRENINGU"
-				: location.state.positive
-				? "wynik POZYTYWNY"
-				: "wynik NEGATYWNY";
+function feedbackGenerator(isTraining, results) {
+	if (isTraining) {
+		let percentage =
+			(100 * results.correctAnswers) /
+			(results.correctAnswers +
+				results.incorrectAnswers +
+				results.skippedQuestions);
+		console.log(percentage);
+		if (isNaN(percentage)) {
+			return "ERROR";
+		}
+		if (percentage < 50) {
+			return "SPRÓBUJ PONOWNIE";
+		}
+		if (percentage >= 50 && percentage <= 70) {
+			return "DOBRA ROBOTA";
+		}
+		return "WYŚMIENICIE";
+	} else {
+		if (results.scoredPoints > 75) {
+			return "EGZAMIN ZALICZONY";
+		} else {
+			return "EGZAMIN NIEZALICZONY";
 		}
 	}
+}
 
-	if (result == "default") {
-		return;
+export default function Summary({ isTraining }) {
+	if (isTraining === undefined) {
+		isTraining = true;
 	}
 
-	if (
-		!(
-			location.state.hasOwnProperty("result") &&
-			location.state.result.hasOwnProperty("questionCounter") &&
-			location.state.result.hasOwnProperty("skipped") &&
-			location.state.result.hasOwnProperty("correct") &&
-			location.state.result.hasOwnProperty("incorrect") &&
-			location.state.result.hasOwnProperty("points")
-		)
-	) {
-		return;
-	}
+	const [results, setResults] = useRecoilState(resultsState);
 
 	const navigate = useNavigate();
 	return (
 		<SummaryContainer>
 			<InnerTextBox positive={true}>
 				<InsideBackground>
-					<span className="font-[Barriecito]">{result}</span>
+					<span className="font-[Barriecito]">
+						{console.log("HERE", isTraining)}
+						{feedbackGenerator(isTraining, results)}
+					</span>
 					<Table>
 						<Column>
 							<Statistic>zdobyte punkty:</Statistic>
-							<Points>{location.state.result.points}</Points>
+							<Points>{results.scoredPoints}</Points>
 						</Column>
 						<Column>
 							<Statistic>dobre odpowiedzi:</Statistic>
 							<Points className="text-[#518402]">
-								{location.state.result.correct}
+								{results.correctAnswers}
 							</Points>
 						</Column>
 						<Column>
 							<Statistic>błędne odpowiedzi:</Statistic>
 							<Points className="text-[#FF4412]">
-								{location.state.result.incorrect}
+								{results.incorrectAnswers}
 							</Points>
 						</Column>
 						<Column>
 							<Statistic>pominięte odpowiedzi:</Statistic>
 							<Points className="text-[#FBBD1F]">
-								{location.state.result.skipped}
+								{results.skippedQuestions}
 							</Points>
 						</Column>
 					</Table>
@@ -83,16 +93,25 @@ export default function Summary(props) {
 						primary
 						size="l"
 						onClick={() => {
-							if (location.state.isTraining) {
+							if (isTraining) {
 								navigate("/trening");
 							} else {
 								navigate("/egzamin");
 							}
 						}}
 					>
-						{location.state.isTraining ? "NOWY TRENING" : "NOWY EGZAMIN"}
+						{isTraining ? "NOWY TRENING" : "NOWY EGZAMIN"}
 					</Button>
-					<Button blank>
+					<Button
+						blank
+						onClick={() => {
+							if (isTraining) {
+								navigate("/trening/praktyka");
+							} else {
+								navigate("/egzamin");
+							}
+						}}
+					>
 						<ArrowLeft /> Przejrzyj odpowiedzi
 					</Button>
 				</InsideBackground>

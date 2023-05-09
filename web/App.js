@@ -1,12 +1,13 @@
-import React from 'react';
-import Routing from './routing/routes';
+import React from "react";
+import Routing from "./routing/routes";
+import { RecoilRoot } from "recoil";
 
 const App = () => {
-  return (
-    <>
-      <Routing />
-    </>
-  );
+	return (
+		<RecoilRoot>
+			<Routing />
+		</RecoilRoot>
+	);
 };
 
 export default App;

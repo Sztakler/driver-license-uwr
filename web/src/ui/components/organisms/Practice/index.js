@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
+import { useRecoilState } from "recoil";
+import { inReviewModeState, resultsState } from "../../../../recoil/atoms";
 
 import ArrowRight from "../../../../icons/ArrowRight";
 import ArrowLeft from "../../../../icons/ArrowLeft";
@@ -38,16 +40,8 @@ import {
 export default function Practice(props) {
 	const { data } = props;
 	const navigate = useNavigate();
-	const location = useLocation();
 
-	let inReviewMode = true;
-	if (
-		location.state &&
-		location.state.hasOwnProperty("isReview") &&
-		location.state.isReview
-	) {
-		inReviewMode = true;
-	}
+	const [inReviewMode, setInReviewMode] = useRecoilState(inReviewModeState);
 
 	// REVIEW MODE //
 	const [reviewingTaskIdx, setReviewingTaskIdx] = useState(0);
@@ -63,16 +57,12 @@ export default function Practice(props) {
 	const [exitModalShow, setExitModalShow] = useState(false);
 	const [taskStarted, setTaskStarted] = useState(inReviewMode ? true : false);
 	const [favoriteTask, setFavoriteTask] = useState(false);
-	const [result, setResult] = useState({
-		questionCounter: 0,
-		skipped: 0,
-		correct: 0,
-		incorrect: 0,
-		points: 0,
-	});
+	const [result, setResult] = useRecoilState(resultsState);
 
 	// BOTH MODES //
-	const [pickedAnswer, setPickedAnswer] = useState(cachedAnswers[0].answered);
+	const [pickedAnswer, setPickedAnswer] = useState(
+		inReviewMode ? cachedAnswers[0].answered : null
+	);
 	const [task, setTask] = useState(inReviewMode ? cachedAnswers[0] : data[0]);
 
 	function renderAnswers(task) {
@@ -132,10 +122,10 @@ export default function Practice(props) {
 		setResult((prevState) => {
 			return {
 				questionCounter: prevState.questionCounter + 1,
-				skipped: prevState.skipped + isSkipped,
-				correct: prevState.correct + isCorrect,
-				incorrect: prevState.incorrect + isIncorrect,
-				points: prevState.points + task.liczba_punktow * isCorrect,
+				scoredPoints: prevState.scoredPoints + task.liczba_punktow * isCorrect,
+				correctAnswers: prevState.correctAnswers + isCorrect,
+				incorrectAnswers: prevState.incorrectAnswers + isIncorrect,
+				skippedQuestions: prevState.skippedQuestions + isSkipped,
 			};
 		});
 	}
@@ -220,15 +210,9 @@ export default function Practice(props) {
 							<div>
 								<Button
 									primary
-									onClick={() =>
-										navigate("/trening/podsumowanie", {
-											state: {
-												positive: null,
-												isTraining: true,
-												result: result,
-											},
-										})
-									}
+									onClick={() => {
+										navigate("/trening/podsumowanie");
+									}}
 								>
 									TAK
 								</Button>

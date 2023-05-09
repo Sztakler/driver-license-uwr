@@ -29,7 +29,14 @@ const Routing = () => (
 			/>
 			<Route path="/podrecznik/znaki-informacyjne" element={<TheoryPage />} />
 			<Route path="/podrecznik/znaki-uzupelniajace" element={<TheoryPage />} />
-			<Route path="/trening/podsumowanie" element={<SummaryPage />} />
+			<Route
+				path="/trening/podsumowanie"
+				element={<SummaryPage isTraining={true} />}
+			/>
+			<Route
+				path="/egzamin/podsumowanie"
+				element={<SummaryPage isTraining={false} />}
+			/>
 			<Route path="/kontakt" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />

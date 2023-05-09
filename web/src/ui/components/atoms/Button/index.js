@@ -10,6 +10,7 @@ import {
 	buttonNavbarIconClasses,
 	buttonUnderscoredClasses,
 	buttonActiveClasses,
+	buttonPickedClasses,
 	buttonBoldClasses,
 	buttonNoneClasses,
 } from "./styles";

@@ -7,7 +7,6 @@ const PracticeContainer = tw.div`
 	w-full
 	pt-16
 	max-2xl:p-20
-
 `;
 
 const BrandTitle = tw.div`
