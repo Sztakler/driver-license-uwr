@@ -4,15 +4,14 @@ const Container = tw.div`
 	flex
 	flex-col
 	max-md:flex-col
-	h-[calc(100vh-91px)]
+	min-h-[calc(100vh-90px)]
 	bg-[#FFEFD0]
-	pt-12
 `;
 
 const HeaderContainer = tw.div`
 	flex
 	flex-col
-	mb-[116px]
+	h-full
 `;
 
 const TitleContainer = tw.div`

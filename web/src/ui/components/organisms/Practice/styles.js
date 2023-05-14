@@ -5,6 +5,7 @@ const PracticeContainer = tw.div`
 	border-double
 	rounded-2xl
 	w-full
+	h-full
 	pt-16
 	max-2xl:p-20
 `;

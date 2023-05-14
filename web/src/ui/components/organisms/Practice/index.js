@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
-import { inReviewModeState, resultsState } from "../../../../recoil/atoms";
+import {
+	cachedAnswersState,
+	inReviewModeState,
+	resultsState,
+} from "../../../../recoil/atoms";
 
 import ArrowRight from "../../../../icons/ArrowRight";
 import ArrowLeft from "../../../../icons/ArrowLeft";
@@ -41,14 +45,9 @@ export default function Practice(props) {
 	const { data } = props;
 	const navigate = useNavigate();
 
-	const [inReviewMode, setInReviewMode] = useRecoilState(inReviewModeState);
-
 	// REVIEW MODE //
-	const [reviewingTaskIdx, setReviewingTaskIdx] = useState(0);
-	const cachedAnswers = [
-		{ ...data[0], answered: 0 },
-		{ ...data[1], answered: 0 },
-	];
+	const [inReviewMode, setInReviewMode] = useRecoilState(inReviewModeState);
+	const [cachedAnswers, setCachedAnswers] = useRecoilState(cachedAnswersState);
 
 	// REGULAR MODE //
 	const [currentTime, setCurrentTime] = useState(30);
@@ -61,9 +60,10 @@ export default function Practice(props) {
 
 	// BOTH MODES //
 	const [pickedAnswer, setPickedAnswer] = useState(
-		inReviewMode ? cachedAnswers[0].answered : null
+		inReviewMode ? cachedAnswers[0].wybrana_odpowiedz : null
 	);
 	const [task, setTask] = useState(inReviewMode ? cachedAnswers[0] : data[0]);
+	const [taskIdx, setTaskIdx] = useState(inReviewMode ? 0 : -1);
 
 	function renderAnswers(task) {
 		if (task.zakres_struktury === "PODSTAWOWY") {
@@ -76,7 +76,6 @@ export default function Practice(props) {
 									primary
 									onClick={() => {
 										setPickedAnswer(index);
-										console.log(index, pickedAnswer);
 									}}
 									size="l"
 									picked={index === pickedAnswer}
@@ -98,7 +97,16 @@ export default function Practice(props) {
 									secondary
 									onClick={() => setPickedAnswer(index)}
 									size="m"
-									picked={index === pickedAnswer}
+									picked={inReviewMode ? false : index === pickedAnswer}
+									correct={
+										inReviewMode ? task.poprawna_odpowiedz === index : false
+									}
+									incorrect={
+										inReviewMode
+											? index === pickedAnswer &&
+											  task.poprawna_odpowiedz !== pickedAnswer
+											: false
+									}
 								>
 									{String.fromCharCode(65 + index)}
 								</Bubble>
@@ -108,7 +116,7 @@ export default function Practice(props) {
 					})}
 				</Answers>
 			);
-		} else throw Error;
+		}
 	}
 
 	function verifyAnswer(pickedAnswer) {
@@ -131,11 +139,29 @@ export default function Practice(props) {
 	}
 
 	function nextQuestion() {
-		setTask(data[Math.floor(Math.random() * data.length)]);
-		if (!inReviewMode) {
-			setTaskStarted(false);
+		if (inReviewMode) {
+			const newTaskIdx =
+				taskIdx + 1 <= cachedAnswers.length - 1 ? taskIdx + 1 : 0;
+			setTask(cachedAnswers[newTaskIdx]);
+			setTaskIdx(newTaskIdx);
+			setPickedAnswer(cachedAnswers[newTaskIdx].wybrana_odpowiedz);
+			return;
 		}
+		setCachedAnswers((prevState) => {
+			return [...prevState, { ...task, wybrana_odpowiedz: pickedAnswer }];
+		});
+		setTask(data[Math.floor(Math.random() * data.length)]);
+		setTaskStarted(false);
 		setPickedAnswer(null);
+		setCurrentTime(30);
+	}
+
+	function previousQuestion() {
+		let newTaskIdx = taskIdx ? taskIdx - 1 : 0;
+
+		setTask(cachedAnswers[newTaskIdx]);
+		setPickedAnswer(cachedAnswers[newTaskIdx].wybrana_odpowiedz);
+		setTaskIdx(taskIdx);
 	}
 
 	function decrementTimer() {
@@ -211,6 +237,7 @@ export default function Practice(props) {
 								<Button
 									primary
 									onClick={() => {
+										setInReviewMode(true);
 										navigate("/trening/podsumowanie");
 									}}
 								>
@@ -268,6 +295,18 @@ export default function Practice(props) {
 							blank
 							className="max-2xl:mt-auto max-2xl:justify-start"
 							onClick={() => {
+								if (!inReviewMode) {
+									verifyAnswer(pickedAnswer);
+								}
+								previousQuestion();
+								if (inReviewMode) {
+									setTaskIdx((prevState) => {
+										return prevState - 1 >= 0
+											? prevState - 1
+											: cachedAnswers.length - 1;
+									});
+									return;
+								}
 								navigate(0);
 							}}
 						>
@@ -279,8 +318,9 @@ export default function Practice(props) {
 							size="m"
 							primary
 							onClick={() => {
-								verifyAnswer(pickedAnswer);
-								console.log(result);
+								if (!inReviewMode) {
+									verifyAnswer(pickedAnswer);
+								}
 								nextQuestion();
 							}}
 						>
@@ -293,14 +333,22 @@ export default function Practice(props) {
 							<span>Pytania</span>
 							<div className="w-full flex flex-wrap gap-2">
 								{cachedAnswers.map((answer, index) => {
-									console.log(answer);
 									return (
 										<Bubble
 											secondary
-											active={index === reviewingTaskIdx}
-											correct={answer.poprawna_odpowiedz === answer.answered}
-											incorrect={answer.poprawna_odpowiedz !== answer.answered}
+											active={index === taskIdx}
+											correct={
+												answer.poprawna_odpowiedz === answer.wybrana_odpowiedz
+											}
+											incorrect={
+												answer.poprawna_odpowiedz !== answer.wybrana_odpowiedz
+											}
 											size="m"
+											onClick={() => {
+												setTaskIdx(index);
+												setTask(cachedAnswers[index]);
+												setPickedAnswer(cachedAnswers[index].wybrana_odpowiedz);
+											}}
 										>
 											{index + 1}
 										</Bubble>

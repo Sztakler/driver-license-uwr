@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 
 import Button from "../../atoms/Button";
 import ArrowLeft from "../../../../icons/ArrowLeft";
-import { resultsState } from "../../../../recoil/atoms";
+import { inReviewModeState, resultsState } from "../../../../recoil/atoms";
 
 import {
 	SummaryContainer,
@@ -29,7 +29,7 @@ function feedbackGenerator(isTraining, results) {
 			(results.correctAnswers +
 				results.incorrectAnswers +
 				results.skippedQuestions);
-		console.log(percentage);
+
 		if (isNaN(percentage)) {
 			return "ERROR";
 		}
@@ -55,6 +55,7 @@ export default function Summary({ isTraining }) {
 	}
 
 	const [results, setResults] = useRecoilState(resultsState);
+	const [inReview, setInReview] = useRecoilState(inReviewModeState);
 
 	const navigate = useNavigate();
 	return (

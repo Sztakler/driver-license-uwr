@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { inReviewModeState, resultsState } from "../../../../recoil/atoms";
+import {
+	cachedAnswersState,
+	inReviewModeState,
+	resultsState,
+} from "../../../../recoil/atoms";
 
 import {
 	Container,
@@ -23,22 +27,22 @@ export default function TiledMenu({ data, headings, ...props }) {
 	const [isTrainingSelected, setIsTraningSelected] = useState(false);
 	const resetResult = useResetRecoilState(resultsState);
 	const resetReviewMode = useResetRecoilState(inReviewModeState);
+	const resetCachedAnswers = useResetRecoilState(cachedAnswersState);
 
 	let scrollDown = () => {
 		setIsTraningSelected(true);
 	};
 
 	let startPractice = () => {
+		resetReviewMode();
+		resetResult();
+		resetCachedAnswers();
 		navigate("/trening/praktyka");
 	};
 
-	useEffect(() => {
-		resetResult();
-		resetReviewMode();
-	}, []);
 	return (
 		<Container>
-			<HeaderContainer className="m-0">
+			<HeaderContainer>
 				<TitleContainer>
 					<Title className="text-8xl">Trening</Title>
 					<Subtitle className="text-2xl pt-5 max-w-prose mb-8">
@@ -57,14 +61,24 @@ export default function TiledMenu({ data, headings, ...props }) {
 								src={Illustrations.TrainingIllustration}
 								className="self-center w-[70%]"
 							></img>
-							<button
-								className="self-center bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[70%] border rounded-[100px] border-[#0d0d0d] self-end"
-								onClick={scrollDown}
-							>
-								<Subtitle className="text-4xl font-semibold text-center m-0 py-6">
-									PRZEJDŹ DALEJ
-								</Subtitle>
-							</button>
+							<div className="flex flex-row w-full gap-4 justify-center">
+								<button
+									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[100px] border-[#0d0d0d]"
+									onClick={() => navigate("/trening/praktyka")}
+								>
+									<Subtitle className="text-4xl font-semibold text-center m-0 py-6">
+										PODSUMOWANIE TRENINGU
+									</Subtitle>
+								</button>
+								<button
+									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[100px] border-[#0d0d0d]"
+									onClick={scrollDown}
+								>
+									<Subtitle className="text-4xl font-semibold text-center m-0 py-6">
+										PRZEJDŹ DALEJ
+									</Subtitle>
+								</button>
+							</div>
 						</div>
 					)}
 				</IllustrationContainer>
@@ -72,7 +86,7 @@ export default function TiledMenu({ data, headings, ...props }) {
 
 			<MainContainer id="MainContainer" className="relative">
 				{isTrainingSelected ? (
-					<div className="flex flex-col w-full gap-[200px] mb-20">
+					<div className="flex flex-col w-full gap-[200px]">
 						<form className="flex flex-row align-center justify-center w-full h-full gap-48">
 							<div className="flex flex-col justify-start">
 								<label for="all" className="flex flex-row pb-2">

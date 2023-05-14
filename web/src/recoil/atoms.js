@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-const { persistAtom } = recoilPersist();
+const { persistAtom } = recoilPersist({ storage: localStorage });
 
 export const resultsState = atom({
 	key: "resultsState",
@@ -18,5 +18,11 @@ export const resultsState = atom({
 export const inReviewModeState = atom({
 	key: "inReviewMode",
 	default: false,
+	effects_UNSTABLE: [persistAtom],
+});
+
+export const cachedAnswersState = atom({
+	key: "cachedAnswers",
+	default: [],
 	effects_UNSTABLE: [persistAtom],
 });

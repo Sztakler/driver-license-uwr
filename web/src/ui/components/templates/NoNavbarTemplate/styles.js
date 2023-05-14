@@ -7,7 +7,7 @@ const PageWrapper = tw.div`
 	min-w-screen
 	bg-[#FFEFD0]
 	min-h-screen
-`
+`;
 
 const MainContent = tw.div`
 	flex
@@ -19,7 +19,7 @@ const MainContent = tw.div`
 	items-center
 	h-auto
 	min-h-screen
-	py-8
-`
+	pt-8
+`;
 
 export { PageWrapper, MainContent };

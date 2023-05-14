@@ -24,7 +24,7 @@ const Left = tw.div`
 	flex-grow-[1]
 	flex-col
 	p-8
-`
+`;
 
 const Center = tw.div`
 	flex
@@ -36,14 +36,14 @@ const Center = tw.div`
 
 const FeatureList = tw.ul`
 
-`
+`;
 
 const Feature = tw.li`
 	cursor-pointer
 	m-1
 	hover:underline
 	underline-offset-4
-`
+`;
 
 const Column = tw.div`
 	flex
@@ -51,18 +51,18 @@ const Column = tw.div`
 	flex-col
 	items-center
 	justify-start
-`
+`;
 
 const Top = tw.div`
 	flex
 	self-center
-`
+`;
 
 const Bottom = tw.div`
 	flex
 	self-center
 	text-center
-`
+`;
 
 const ContactOptions = tw.div`
 	flex
@@ -71,7 +71,7 @@ const ContactOptions = tw.div`
 	justify-center
 	w-full
 	gap-4
-`
+`;
 
 const Right = tw.div`
 	flex
@@ -101,6 +101,19 @@ const Popup = tw.div`
 	after:border-t-transparent
 	after:border-x-transparent
 	after:border-b-white
-`
+`;
 
-export { FooterContainer, FooterWrapper, Left, Center, FeatureList, Feature, Column, Top, Bottom, ContactOptions, Right, Popup };
+export {
+	FooterContainer,
+	FooterWrapper,
+	Left,
+	Center,
+	FeatureList,
+	Feature,
+	Column,
+	Top,
+	Bottom,
+	ContactOptions,
+	Right,
+	Popup,
+};

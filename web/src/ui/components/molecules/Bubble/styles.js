@@ -37,7 +37,7 @@ const BubbleContainer = tw.div`
 	cursor-pointer
 	${(props) => props.primary && bubblePrimaryClasses}
   ${(props) => props.secondary && bubbleSecondaryClasses}
-	${(props) => (props.picked ? "bg-[#91CE6B]" : "bg-white")}
+	${(props) => (props.picked ? "bg-[#FFD363]" : "bg-white")}
 	${(props) => (props.active ? "border-[3px] font-semibold" : "")}
 	${(props) => (props.hover ? "hover:bg-[#FFD363]" : "")}
 	${(props) => assignBubbleSize(props.size)}

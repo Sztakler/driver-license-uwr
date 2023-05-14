@@ -20,7 +20,6 @@ const HeroSection = tw.div`
 	align-middle 
 	justify-center
 	bg-[#ffefd0]
-
 `;
 
 const MainContent = tw.div`

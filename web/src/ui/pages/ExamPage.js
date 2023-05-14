@@ -7,7 +7,7 @@ import Footer from "../components/organisms/Footer";
 
 export default function HomePage() {
 	return (
-		<PageTemplate header={<Navbar />} footer={<Footer />}>
+		<PageTemplate header={<Navbar />}>
 			<Exam />
 		</PageTemplate>
 	);

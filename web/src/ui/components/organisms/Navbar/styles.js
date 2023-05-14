@@ -10,10 +10,8 @@ const NavbarContainer = tw.div`
 	lg:justify-between
 	max-lg:justify-center
 	lg:px-8
-	pt-[30px]
-	pr-[30px]
-	pl-[30px]
-
+	lg:min-h-[91px]
+	lg:max-h-[91px]
 	${(props) => (props.lighter ? "bg-[#FFFCF5]" : "")}
 	`;
 
@@ -26,6 +24,7 @@ const BrandTitle = tw.div`
 `;
 
 const NavigationArea = tw.div`
+	flex
 	text-center
 	h-full
 	${(props) => (props.active ? "max-lg:w-full max-lg:flex" : " max-lg:hidden")}
