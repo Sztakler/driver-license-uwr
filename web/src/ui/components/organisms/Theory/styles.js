@@ -30,9 +30,11 @@ const IllustrationContainer = tw.div`
 `;
 
 const MainContainer = tw.div`
+	relative
 	flex
 	flex-row
 	max-md:flex-col
+	w-full
 	h-full
 	bg-[#FFFAED]
 	pt-6
@@ -46,6 +48,10 @@ const SidebarContainer = tw.div`
 	bg-[#FFFAED]
 `;
 
+const SidebarArrowButton = tw.div`
+absolute top-[16px] left-[330px] flex flex-col cursor-pointer
+`;
+
 const Content = tw.div`
 	grid
 	grid-rows-auto
@@ -54,16 +60,18 @@ const Content = tw.div`
 `;
 
 const Title = tw.div`
-	text-5xl
+	text-8xl
 	text-[#0d0d0d]
 	font-display
 `;
 
 const Subtitle = tw.div`
-	text-sm
+	text-2xl
 	mb-6
+	pt-5
 	text-overflow
 	text-[#0d0d0d]
+	max-w-prose
 `;
 
 const PanelsScroller = tw.div`
@@ -100,6 +108,18 @@ const Panel = tw.div`
 	snap-start
 `;
 
+const SidebarArrowButtonParagraph = tw.div`
+rotate-90 translate-y-16 -translate-x-10
+`;
+
+const SidebarButtonInvisibleCheckbox = tw.input`
+appearance-none w-[60px] checked:bg-blue-500
+`;
+
+const ScrolldownButton = tw.button`
+self-center mt-10
+`;
+
 export {
 	Container,
 	HeaderContainer,
@@ -112,4 +132,8 @@ export {
 	Subtitle,
 	PanelsScroller,
 	Panel,
+	SidebarArrowButton,
+	SidebarArrowButtonParagraph,
+	SidebarButtonInvisibleCheckbox,
+	ScrolldownButton,
 };
