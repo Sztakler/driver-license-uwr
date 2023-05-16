@@ -1,10 +1,28 @@
 import React from "react";
 
-import RegistrationForm from "../../molecules/RegistrationForm";
-
 import {
 	RegistrationContainer,
+	LeftContainer,
+	InfoContainer,
+	Title,
+	Subtitle,
+	ImageContainer,
+	ListContainer,
+	RightContainer,
+	RegisterForm,
+	RegisterFormContainer,
+	TopInputsContainer,
+	BottomInputsContainer,
+	SubmitButtonContainer,
+	LoginButtonContainer,
+	TextGrayedSpan,
+	LoginButton,
+	InputWrapper,
+	TextUnderlineSpan,
+	Disclaimer,
+	InputLabelText,
 } from "./styles";
+
 import Input from "../../atoms/Input";
 import Paragraph from "../../atoms/Paragraph";
 import Button from "../../atoms/Button";
@@ -23,54 +41,56 @@ export default function Registration() {
 
 	return (
 		<RegistrationContainer>
-			<div className="hidden lg:flex flex-col gap-y-20 py-11">
-				<div className="flex flex-col gap-y-4">
-					<h1 className="font-display">Załóż darmowe konto</h1>
-					<div>
-						<p className="text-xl">Zyskasz możliwości:</p>
+			<LeftContainer>
+				<InfoContainer>
+					<Title>Załóż darmowe konto</Title>
+					<ListContainer>
+						<Subtitle>Zyskasz możliwości:</Subtitle>
 						<BulletList points={points} bullet="•" />
-					</div>
-				</div>
-				<div>
-
+					</ListContainer>
+				</InfoContainer>
+				<ImageContainer>
 					<Image src={Illustrations.RegistrationIllustration}></Image>
-				</div>
-			</div>
+				</ImageContainer>
+			</LeftContainer>
 
-			<div className="flex flex-col bg-[#fffaed] border border-[#0d0d0d] rounded-[46px] p-32 pt-8">
-				<p className="self-end mb-16"><span className="text-[#808080]">Masz już konto?</span> <button className="font-semibold underline">Zaloguj się</button></p>
-				<div>
-					<h1 className="font-display mb-12">Zarejestruj się</h1>
-					<form className="flex flex-col gap-y-10">
-						<div className="flex flex-row justify-between gap-x-6">
-							<label for="name" className="flex flex-col pb-2">
-								<Paragraph style="text-base font-bold">Imię</Paragraph>
+			<RightContainer>
+				<LoginButtonContainer>
+					<TextGrayedSpan>Masz już konto?</TextGrayedSpan>
+					<LoginButton>Zaloguj się</LoginButton>
+				</LoginButtonContainer>
+				<RegisterFormContainer>
+					<Title>Zarejestruj się</Title>
+					<RegisterForm>
+						<TopInputsContainer>
+							<InputWrapper for="name">
+								<InputLabelText>Imię</InputLabelText>
 								<Input register id="name" type="text" placeholder="Jan"></Input>
-							</label>
-							<label for="login" className="flex flex-col pb-2">
-								<Paragraph style="text-base font-bold">Login</Paragraph>
+							</InputWrapper>
+							<InputWrapper for="login">
+								<InputLabelText>Login</InputLabelText>
 								<Input register id="login" type="text" placeholder="djjanek227"></Input>
-							</label>
-						</div>
+							</InputWrapper>
+						</TopInputsContainer>
 
-						<div className="flex flex-col gap-y-10">
-							<label for="email" className="flex flex-col pb-2">
-								<Paragraph style="text-base font-bold">E-mail</Paragraph>
+						<BottomInputsContainer>
+							<InputWrapper for="email">
+								<InputLabelText>E-mail</InputLabelText>
 								<Input register id="email" type="text" placeholder="jan@example.com"></Input>
-							</label>
-							<label for="password" className="flex flex-col pb-2">
-								<Paragraph style="text-base font-bold">Hasło</Paragraph>
+							</InputWrapper>
+							<InputWrapper for="password">
+								<InputLabelText>Hasło</InputLabelText>
 								<Input register id="password" type="password" placeholder="••••••••••••••••"></Input>
-							</label>
-						</div>
+							</InputWrapper>
+						</BottomInputsContainer>
 
-						<div>
-							<p className="text-xs text-[#808080] max-w-prose py-4">Klikając przycisk Załóż konto, akceptujesz nasz <span className="underline">Regulamin</span>, <span className="underline">Zasady ochrony prywatności</span> i <span className="underline">Zasady dotyczące plików cookie</span>.</p>
+						<SubmitButtonContainer>
+							<Disclaimer>Klikając przycisk Załóż konto, akceptujesz nasz <TextUnderlineSpan>Regulamin</TextUnderlineSpan>, <TextUnderlineSpan>Zasady ochrony prywatności</TextUnderlineSpan> i <TextUnderlineSpan>Zasady dotyczące plików cookie</TextUnderlineSpan>.</Disclaimer>
 							<Button submit className="bg-[#ffd363] text-base font-semibold text-[#0d0d0d] border border-[#0d0d0d] rounded-[18px]">Załóż konto</Button>
-						</div>
-					</form>
-				</div>
-			</div>
+						</SubmitButtonContainer>
+					</RegisterForm>
+				</RegisterFormContainer>
+			</RightContainer>
 		</RegistrationContainer>
 	);
 }
