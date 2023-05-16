@@ -11,10 +11,6 @@ const buttonNavbarClasses =
 
 const buttonNavbarIconClasses = "px-[8px] py-[5px]";
 
-const buttonActiveClasses = "bg-[#FFD363]";
-
-const buttonPickedClasses = "bg-[#91CE6B]";
-
 const buttonUnderscoredClasses =
 	"text-blue-600 underline underline-offset-4 hover:text-blue-400";
 
@@ -25,10 +21,7 @@ const buttonNoneClasses = "";
 export {
 	buttonPrimaryClasses,
 	buttonBlankClasses,
-	buttonSecondaryClasses,
 	buttonNavbarClasses,
-	buttonActiveClasses,
-	buttonPickedClasses,
 	buttonUnderscoredClasses,
 	buttonBoldClasses,
 	buttonNoneClasses,

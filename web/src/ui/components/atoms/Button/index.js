@@ -2,15 +2,11 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 import {
-	buttonDefaultClasses,
 	buttonPrimaryClasses,
-	buttonSecondaryClasses,
 	buttonBlankClasses,
 	buttonNavbarClasses,
 	buttonNavbarIconClasses,
 	buttonUnderscoredClasses,
-	buttonActiveClasses,
-	buttonPickedClasses,
 	buttonBoldClasses,
 	buttonNoneClasses,
 } from "./styles";
@@ -37,13 +33,15 @@ function assignButtonSize(size) {
 const StyledButton = tw.button`
 	${(props) => assignButtonSize(props.size).join(" ")}
   ${(props) => props.primary && buttonPrimaryClasses}
-	${(props) => props.secondary && buttonSecondaryClasses}
 	${(props) => props.blank && buttonBlankClasses}
   ${(props) => props.navbar && buttonNavbarClasses}
   ${(props) => props.navbarIcon && buttonNavbarIconClasses}
   ${(props) => props.underscored && buttonUnderscoredClasses}
-  ${(props) => props.active && buttonActiveClasses}
-  ${(props) => props.picked && buttonPickedClasses}
+  ${(props) => props.active && "bg-[#FFD363]"}
+  ${(props) => props.picked && "bg-[#91CE6B]"}
+  ${(props) => props.skipped && "bg-[#FBBD1F]"}
+	${(props) => props.correct && "bg-[#91CE6B]"}
+	${(props) => props.incorrect && "bg-[#FF6130]"}
   ${(props) => props.bold && buttonBoldClasses}
 	${(props) => props.full && "w-full"}
 	${(props) => props.none && buttonNoneClasses}

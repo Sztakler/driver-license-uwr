@@ -21,6 +21,7 @@ import Image from "../../atoms/Image";
 import Label from "../../atoms/Label";
 import Bubble from "../../molecules/Bubble";
 import Modal from "../../molecules/Modal";
+import Heading from "../../atoms/Heading";
 
 import {
 	PracticeContainer,
@@ -79,6 +80,15 @@ export default function Practice(props) {
 									}}
 									size="l"
 									picked={index === pickedAnswer}
+									correct={
+										inReviewMode ? task.poprawna_odpowiedz === index : false
+									}
+									incorrect={
+										inReviewMode
+											? index === pickedAnswer &&
+											  task.poprawna_odpowiedz !== pickedAnswer
+											: false
+									}
 								>
 									<span>{answer}</span>
 								</Button>
@@ -120,10 +130,7 @@ export default function Practice(props) {
 	}
 
 	function verifyAnswer(pickedAnswer) {
-		let answerIdx = task.odpowiedzi.findIndex(
-			(answer) => answer === pickedAnswer
-		);
-		let isSkipped = pickedAnswer === answerIdx ? true : false;
+		let isSkipped = pickedAnswer === null ? true : false;
 		let isCorrect =
 			!isSkipped && pickedAnswer === task.poprawna_odpowiedz ? true : false;
 		let isIncorrect = !isSkipped && !isCorrect;
@@ -141,7 +148,7 @@ export default function Practice(props) {
 	function nextQuestion() {
 		if (inReviewMode) {
 			const newTaskIdx =
-				taskIdx + 1 <= cachedAnswers.length - 1 ? taskIdx + 1 : 0;
+				taskIdx + 1 <= cachedAnswers.length - 1 ? taskIdx + 1 : taskIdx;
 			setTask(cachedAnswers[newTaskIdx]);
 			setTaskIdx(newTaskIdx);
 			setPickedAnswer(cachedAnswers[newTaskIdx].wybrana_odpowiedz);
@@ -157,11 +164,11 @@ export default function Practice(props) {
 	}
 
 	function previousQuestion() {
-		let newTaskIdx = taskIdx ? taskIdx - 1 : 0;
-
+		let newTaskIdx = taskIdx > 0 ? taskIdx - 1 : taskIdx;
+		console.log(taskIdx);
 		setTask(cachedAnswers[newTaskIdx]);
 		setPickedAnswer(cachedAnswers[newTaskIdx].wybrana_odpowiedz);
-		setTaskIdx(taskIdx);
+		setTaskIdx(newTaskIdx);
 	}
 
 	function decrementTimer() {
@@ -232,13 +239,20 @@ export default function Practice(props) {
 							}}
 							show={exitModalShow}
 						>
-							<h4>Czy napewno chcesz zakończyć trening?</h4>
+							<Heading level={4}>
+								{inReviewMode
+									? "Czy napewno chcesz wrócić do podsumowania?"
+									: "Czy napewno chcesz zakończyć trening?"}
+							</Heading>
 							<div>
 								<Button
 									primary
 									onClick={() => {
-										setInReviewMode(true);
-										navigate("/trening/podsumowanie");
+										if (cachedAnswers.length) {
+											setInReviewMode(true);
+											navigate("/trening/podsumowanie");
+										}
+										navigate("/");
 									}}
 								>
 									TAK
@@ -299,15 +313,6 @@ export default function Practice(props) {
 									verifyAnswer(pickedAnswer);
 								}
 								previousQuestion();
-								if (inReviewMode) {
-									setTaskIdx((prevState) => {
-										return prevState - 1 >= 0
-											? prevState - 1
-											: cachedAnswers.length - 1;
-									});
-									return;
-								}
-								navigate(0);
 							}}
 						>
 							<ArrowLeft />
@@ -341,8 +346,10 @@ export default function Practice(props) {
 												answer.poprawna_odpowiedz === answer.wybrana_odpowiedz
 											}
 											incorrect={
+												answer.wybrana_odpowiedz !== null &&
 												answer.poprawna_odpowiedz !== answer.wybrana_odpowiedz
 											}
+											skipped={answer.wybrana_odpowiedz === null}
 											size="m"
 											onClick={() => {
 												setTaskIdx(index);

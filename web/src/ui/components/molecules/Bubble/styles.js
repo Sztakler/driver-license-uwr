@@ -41,8 +41,9 @@ const BubbleContainer = tw.div`
 	${(props) => (props.active ? "border-[3px] font-semibold" : "")}
 	${(props) => (props.hover ? "hover:bg-[#FFD363]" : "")}
 	${(props) => assignBubbleSize(props.size)}
-	${(props) => (props.correct ? "bg-[#91CE6B]" : "")}
-	${(props) => (props.incorrect ? "bg-[#FF6130]" : "")}
+  ${(props) => props.skipped && "bg-[#FBBD1F]"}
+	${(props) => props.correct && "bg-[#91CE6B]"}
+	${(props) => props.incorrect && "bg-[#FF6130]"}
 `;
 
 export { BubbleContainer };
