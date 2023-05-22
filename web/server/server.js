@@ -55,6 +55,15 @@ app.get("/api/practice", async (req, res) => {
 	}
 });
 
+app.get("/api/test", async (req, res) => {
+  try {
+    const content = await pool.query("select * from users;"); 
+    res.json(content.rows);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
 app.listen(5000, () => {
 	console.log("Server started on port 5000");
 });
