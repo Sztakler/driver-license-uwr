@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/practice", async (req, res) => {
 	try {
-		const allTasks = await pool.query("SELECT * FROM zadania;");
+		const allTasks = await pool.query("SELECT * FROM questions;");
 		res.json(allTasks.rows);
 	} catch (err) {
 		console.error(err.message);
