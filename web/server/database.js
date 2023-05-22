@@ -7,7 +7,7 @@ const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?options=
 const pool = new Pool({
 	user: PGUSER,
 	password: PGPASSWORD,
-  host: PGHOST, 
+  host: PGHOST,
 	port: 5432,
 	database: PGDATABASE,
   ssl: {
