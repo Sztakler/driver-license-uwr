@@ -46,22 +46,24 @@ app.get("/", (req, res) => {
 	res.json({ test: "test" });
 });
 
-app.get("/api/practice", async (req, res) => {
+app.get("/api/practice/random", async (req, res) => {
 	try {
-		const allTasks = await pool.query("SELECT * FROM questions;");
-		res.json(allTasks.rows);
+		const allTasks = await pool.query(
+			"SELECT * FROM questions ORDER BY RANDOM() LIMIT 1;"
+		);
+		res.json(allTasks.rows[0]);
 	} catch (err) {
 		console.error(err.message);
 	}
 });
 
 app.get("/api/test", async (req, res) => {
-  try {
-    const content = await pool.query("select * from users;"); 
-    res.json(content.rows);
-  } catch (error) {
-    console.error(error.message);
-  }
+	try {
+		const content = await pool.query("select * from users;");
+		res.json(content.rows);
+	} catch (error) {
+		console.error(error.message);
+	}
 });
 
 app.listen(5000, () => {

@@ -45,13 +45,20 @@ import {
 export default function Practice(props) {
 	const navigate = useNavigate();
 
+	function getRandomTask() {
+		return fetch("http://localhost:5000/api/practice/random")
+			.then((response) => response.json())
+			.then((data) => {
+				return data;
+			});
+	}
+
 	// REVIEW MODE //
 	const [inReviewMode, setInReviewMode] = useRecoilState(inReviewModeState);
 	const [cachedAnswers, setCachedAnswers] = useRecoilState(cachedAnswersState);
 
 	// REGULAR MODE //
 	const [currentTime, setCurrentTime] = useState(30);
-	const [minTime, setMinTime] = useState(0);
 	const [explanationModalShow, setExplanationModalShow] = useState(false);
 	const [exitModalShow, setExitModalShow] = useState(false);
 	const [taskStarted, setTaskStarted] = useState(inReviewMode ? true : false);
@@ -62,17 +69,21 @@ export default function Practice(props) {
 	const [pickedAnswer, setPickedAnswer] = useState(
 		inReviewMode ? cachedAnswers[0].wybrana_odpowiedz : null
 	);
-	const [task, setTask] = useState(
-		inReviewMode ? cachedAnswers[0] : "Loading (!?)"
-	);
+	const [task, setTask] = useState(inReviewMode ? cachedAnswers[0] : null);
 	const [taskIdx, setTaskIdx] = useState(inReviewMode ? 0 : -1);
 
 	useEffect(() => {
-		fetch("http://localhost:5000/api/practice")
-			.then((response) => response.json())
-			.then((data) => {
-				setTask(data[0]);
-			});
+		if (!inReviewMode) {
+			const fetchRandomTask = async () => {
+				const newTask = await getRandomTask();
+				setTask(newTask);
+			};
+
+			fetchRandomTask();
+			return;
+		}
+
+		setTask(cachedAnswers[0]);
 	}, []);
 
 	function renderAnswers(task) {
@@ -154,7 +165,7 @@ export default function Practice(props) {
 		});
 	}
 
-	function nextQuestion() {
+	async function nextQuestion() {
 		if (inReviewMode) {
 			const newTaskIdx =
 				taskIdx + 1 <= cachedAnswers.length - 1 ? taskIdx + 1 : taskIdx;
@@ -163,10 +174,14 @@ export default function Practice(props) {
 			setPickedAnswer(cachedAnswers[newTaskIdx].wybrana_odpowiedz);
 			return;
 		}
+
+		console.log(cachedAnswers);
 		setCachedAnswers((prevState) => {
 			return [...prevState, { ...task, wybrana_odpowiedz: pickedAnswer }];
 		});
-		setTask(data[Math.floor(Math.random() * data.length)]);
+
+		const newTask = await getRandomTask();
+		setTask(newTask);
 		setTaskStarted(false);
 		setPickedAnswer(null);
 		setCurrentTime(30);
@@ -181,7 +196,7 @@ export default function Practice(props) {
 	}
 
 	function decrementTimer() {
-		if (taskStarted && currentTime > minTime) {
+		if (taskStarted && currentTime > 0) {
 			setCurrentTime(currentTime - 1);
 		}
 	}
@@ -191,201 +206,199 @@ export default function Practice(props) {
 		return () => clearInterval(interval);
 	}, [taskStarted, currentTime]);
 
-	if (task) {
-		return (
-			<PracticeContainer>
-				<BrandTitle onClick={() => navigate("/")}>
-					<Image src={PageLogo.PageLogo} />
-				</BrandTitle>
-				<Wrapper>
-					<TaskTopSection>
-						<TaskInfo>
-							<span>Typ pytania: {task.zakres_struktury}</span>
-							<span>Wartość punktowa: {task.liczba_punktow}</span>
-							<span>Liczba rozwiązanych zadań: 100</span>
-						</TaskInfo>
+	return task ? (
+		<PracticeContainer>
+			<BrandTitle onClick={() => navigate("/")}>
+				<Image src={PageLogo.PageLogo} />
+			</BrandTitle>
+			<Wrapper>
+				<TaskTopSection>
+					<TaskInfo>
+						<span>Typ pytania: {task.zakres_struktury}</span>
+						<span>Wartość punktowa: {task.liczba_punktow}</span>
+						<span>Liczba rozwiązanych zadań: 100</span>
+					</TaskInfo>
+					<Bubble
+						secondary
+						onClick={() => {
+							setFavoriteTask((prevState) => {
+								return !prevState;
+							});
+						}}
+						picked={favoriteTask}
+						size="l"
+						className="absolute top-4 -right-16"
+					>
+						<Star picked={favoriteTask} />
+					</Bubble>
+					<ImageBox>
+						{taskStarted ? (
+							<Image exam src={task.media} />
+						) : (
+							<Image exam src={require("/src/assets/images/multi.png")} />
+						)}
+					</ImageBox>
+				</TaskTopSection>
+
+				<Menu inReviewMode={inReviewMode}>
+					<QuitOptions>
+						<span>
+							{inReviewMode ? "Wróć do podsumowania" : "Zakończ trening"}
+						</span>
 						<Bubble
 							secondary
+							size="m"
 							onClick={() => {
-								setFavoriteTask((prevState) => {
-									return !prevState;
-								});
+								setExitModalShow(true);
 							}}
-							picked={favoriteTask}
-							size="l"
-							className="absolute top-4 -right-16"
 						>
-							<Star picked={favoriteTask} />
+							<Cancel />
 						</Bubble>
-						<ImageBox>
-							{taskStarted ? (
-								<Image exam src={task.media} />
-							) : (
-								<Image exam src={require("/src/assets/images/multi.png")} />
-							)}
-						</ImageBox>
-					</TaskTopSection>
-
-					<Menu inReviewMode={inReviewMode}>
-						<QuitOptions>
-							<span>
-								{inReviewMode ? "Wróć do podsumowania" : "Zakończ trening"}
-							</span>
-							<Bubble
-								secondary
-								size="m"
-								onClick={() => {
-									setExitModalShow(true);
-								}}
-							>
-								<Cancel />
-							</Bubble>
-							<Modal
-								onClose={() => {
-									setExitModalShow(false);
-								}}
-								show={exitModalShow}
-							>
-								<Heading level={4}>
-									{inReviewMode
-										? "Czy napewno chcesz wrócić do podsumowania?"
-										: "Czy napewno chcesz zakończyć trening?"}
-								</Heading>
-								<div>
-									<Button
-										primary
-										onClick={() => {
-											if (cachedAnswers.length) {
-												setInReviewMode(true);
-												navigate("/trening/podsumowanie");
-											}
-											navigate("/");
-										}}
-									>
-										TAK
-									</Button>
-									<Button primary onClick={() => setExitModalShow(false)}>
-										NIE
-									</Button>
-								</div>
-							</Modal>
-						</QuitOptions>
-						<Button
-							primary
-							full
-							size="l"
-							onClick={() => {
-								taskStarted && setExplanationModalShow(true);
-							}}
-						>
-							<Explanation />
-							<span>Pokaż wyjaśnienie</span>
-						</Button>
 						<Modal
 							onClose={() => {
-								setExplanationModalShow(false);
+								setExitModalShow(false);
 							}}
-							show={explanationModalShow}
+							show={exitModalShow}
 						>
-							<h4>Wyjaśnienie odpowiedzi</h4>
-							<span>
-								<b>Art. 26. ust. 1.</b>
-								Kierujący pojazdem, zbliżając się do przejścia dla pieszych,
-								jest obowiązany zachować szczególną ostrożność i ustąpić
-								pierwszeństwa pieszemu znajdującemu się na przejściu.
-							</span>
+							<Heading level={4}>
+								{inReviewMode
+									? "Czy napewno chcesz wrócić do podsumowania?"
+									: "Czy napewno chcesz zakończyć trening?"}
+							</Heading>
+							<div>
+								<Button
+									primary
+									onClick={() => {
+										if (cachedAnswers.length) {
+											setInReviewMode(true);
+											navigate("/trening/podsumowanie");
+										} else {
+											navigate("/");
+										}
+									}}
+								>
+									TAK
+								</Button>
+								<Button primary onClick={() => setExitModalShow(false)}>
+									NIE
+								</Button>
+							</div>
 						</Modal>
-						{!inReviewMode ? (
-							<TimerContainer>
-								<Label size="m">Czas na zapoznanie się z pytaniem</Label>
-								<Row>
-									<Button primary size="m" onClick={() => setTaskStarted(true)}>
-										<span>START</span>
-									</Button>
-									<CustomTimer expired={currentTime === 0}>
-										<Clock />
-										{currentTime} sekund
-									</CustomTimer>
-								</Row>
-							</TimerContainer>
-						) : (
-							<></>
-						)}
-						<NextPrevious>
-							<Button
-								blank
-								className="max-2xl:mt-auto max-2xl:justify-start"
-								onClick={() => {
-									if (!inReviewMode) {
-										verifyAnswer(pickedAnswer);
-									}
-									previousQuestion();
-								}}
-							>
-								<ArrowLeft />
-								<span>Poprzednie pytanie</span>
-							</Button>
-							<Button
-								full
-								size="m"
-								primary
-								onClick={() => {
-									if (!inReviewMode) {
-										verifyAnswer(pickedAnswer);
-									}
-									nextQuestion();
-								}}
-							>
-								<span>Następne pytanie</span>
-								<ArrowRight />
-							</Button>
-						</NextPrevious>
-						{inReviewMode ? (
-							<ReviewQuestions>
-								<span>Pytania</span>
-								<div className="w-full flex flex-wrap gap-2">
-									{cachedAnswers.map((answer, index) => {
-										return (
-											<Bubble
-												secondary
-												active={index === taskIdx}
-												correct={
-													answer.poprawna_odpowiedz === answer.wybrana_odpowiedz
-												}
-												incorrect={
-													answer.wybrana_odpowiedz !== null &&
-													answer.poprawna_odpowiedz !== answer.wybrana_odpowiedz
-												}
-												skipped={answer.wybrana_odpowiedz === null}
-												size="m"
-												onClick={() => {
-													setTaskIdx(index);
-													setTask(cachedAnswers[index]);
-													setPickedAnswer(
-														cachedAnswers[index].wybrana_odpowiedz
-													);
-												}}
-											>
-												{index + 1}
-											</Bubble>
-										);
-									})}
-								</div>
-							</ReviewQuestions>
-						) : (
-							<></>
-						)}
-					</Menu>
+					</QuitOptions>
+					<Button
+						primary
+						full
+						size="l"
+						onClick={() => {
+							taskStarted && setExplanationModalShow(true);
+						}}
+					>
+						<Explanation />
+						<span>Pokaż wyjaśnienie</span>
+					</Button>
+					<Modal
+						onClose={() => {
+							setExplanationModalShow(false);
+						}}
+						show={explanationModalShow}
+					>
+						<h4>Wyjaśnienie odpowiedzi</h4>
+						<span>
+							<b>Art. 26. ust. 1.</b>
+							Kierujący pojazdem, zbliżając się do przejścia dla pieszych, jest
+							obowiązany zachować szczególną ostrożność i ustąpić pierwszeństwa
+							pieszemu znajdującemu się na przejściu.
+						</span>
+					</Modal>
+					{!inReviewMode ? (
+						<TimerContainer>
+							<Label size="m">Czas na zapoznanie się z pytaniem</Label>
+							<Row>
+								<Button primary size="m" onClick={() => setTaskStarted(true)}>
+									<span>START</span>
+								</Button>
+								<CustomTimer expired={currentTime === 0}>
+									<Clock />
+									{currentTime} sekund
+								</CustomTimer>
+							</Row>
+						</TimerContainer>
+					) : (
+						<></>
+					)}
+					<NextPrevious>
+						<Button
+							blank
+							className="max-2xl:mt-auto max-2xl:justify-start"
+							onClick={() => {
+								if (!inReviewMode) {
+									verifyAnswer(pickedAnswer);
+								}
+								previousQuestion();
+							}}
+						>
+							<ArrowLeft />
+							<span>Poprzednie pytanie</span>
+						</Button>
+						<Button
+							full
+							size="m"
+							primary
+							onClick={() => {
+								if (!inReviewMode) {
+									verifyAnswer(pickedAnswer);
+								}
+								nextQuestion();
+							}}
+						>
+							<span>Następne pytanie</span>
+							<ArrowRight />
+						</Button>
+					</NextPrevious>
+					{inReviewMode ? (
+						<ReviewQuestions>
+							<span>Pytania</span>
+							<div className="w-full flex flex-wrap gap-2">
+								{cachedAnswers.map((answer, index) => {
+									return (
+										<Bubble
+											secondary
+											active={index === taskIdx}
+											correct={
+												answer.poprawna_odpowiedz === answer.wybrana_odpowiedz
+											}
+											incorrect={
+												answer.wybrana_odpowiedz !== null &&
+												answer.poprawna_odpowiedz !== answer.wybrana_odpowiedz
+											}
+											skipped={answer.wybrana_odpowiedz === null}
+											size="m"
+											onClick={() => {
+												setTaskIdx(index);
+												setTask(cachedAnswers[index]);
+												setPickedAnswer(cachedAnswers[index].wybrana_odpowiedz);
+											}}
+										>
+											{index + 1}
+										</Bubble>
+									);
+								})}
+							</div>
+						</ReviewQuestions>
+					) : (
+						<></>
+					)}
+				</Menu>
 
-					<div className="flex basis-[100%]"></div>
+				<div className="flex basis-[100%]"></div>
 
-					<TaskBottomSection>
-						<Paragraph className="inline-block">{task.pytanie}</Paragraph>
-						{renderAnswers(task)}
-					</TaskBottomSection>
-				</Wrapper>
-			</PracticeContainer>
-		);
-	}
-	return <div>TEST</div>;
+				<TaskBottomSection>
+					<Paragraph className="inline-block">{task.pytanie}</Paragraph>
+					{renderAnswers(task)}
+				</TaskBottomSection>
+			</Wrapper>
+		</PracticeContainer>
+	) : (
+		<div>Wczytywanie...</div>
+	);
 }
