@@ -10,6 +10,7 @@ import ContactPage from "../src/ui/pages/ContactPage";
 import FaqPage from "../src/ui/pages/FaqPage";
 import RegisterPage from "../src/ui/pages/RegisterPage";
 import SummaryPage from "../src/ui/pages/SummaryPage";
+import NotFound from "../src/ui/pages/NotFound";
 
 const Routing = () => (
 	<BrowserRouter>
@@ -40,7 +41,9 @@ const Routing = () => (
 			<Route path="/kontakt" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />
-			<Route path="/register" element={<RegisterPage />} />
+			<Route path="/register" element={<RegisterPage />}/>
+
+			<Route path="*" element={<NotFound/>}/>
 		</Routes>
 	</BrowserRouter>
 );
