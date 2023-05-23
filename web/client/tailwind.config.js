@@ -3,21 +3,8 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			display: ["Barriecito", "cursive"],
-			sans: ["Inter", "sans-serif"],
-		},
-		extend: {
-			borderRadius: {
-				half: "50%",
-			},
-			width: {
-				double: "200%",
-				half: "50%",
-				108: "27rem",
-				116: "29rem",
-				124: "31rem",
-				132: "33rem",
-				140: "35rem",
-				148: "37rem",
+			sans: ["Inter", "sans-serif"], 
+      mono: ["Roboto Mono", "monospaced"],
 			},
 			height: {
 				double: "200%",
@@ -55,6 +42,5 @@ module.exports = {
 				"negative-result": "url(/src/assets/images/resultNegative.svg)",
 			},
 		},
-	},
 	plugins: [],
 };
