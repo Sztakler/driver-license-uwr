@@ -42,8 +42,7 @@ import Button from "../../atoms/Button";
 import Paragraph from "../../atoms/Paragraph";
 import TestImage from "/src/assets/images/test.jpg";
 import {func} from "prop-types";
-//import ExamNavigation from "../../molecules/ExamNavigation";
-
+import { useNavigate } from "react-router";
 import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 
 export default function Exam() {
@@ -65,9 +64,8 @@ export default function Exam() {
     return () => clearInterval(interval);
   }, [currentTime, examCountdown]);
 
-  //if (examStarted) {
-  //return ()
-  //));
+  const navigate = useNavigate();
+
   return (
     <ExamContainer>
       <MainContent>
@@ -110,7 +108,7 @@ export default function Exam() {
       <Menu>
         <MenuTop>
           <ExamNavigation>
-            <NavigationButton>Zakończ egzamin</NavigationButton>
+            <NavigationButton onClick={() => navigate("/egzamin")}>Zakończ egzamin</NavigationButton>
           </ExamNavigation>
         </MenuTop>
 

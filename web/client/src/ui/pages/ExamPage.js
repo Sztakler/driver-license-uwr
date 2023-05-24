@@ -1,6 +1,5 @@
 import React from "react";
 
-import PageTemplate from "../components/templates/PageTemplate";
 import NoNavbarTemplate from "../components/templates/NoNavbarTemplate";
 import Exam from "../components/organisms/Exam";
 import Navbar from "../components/organisms/Navbar";

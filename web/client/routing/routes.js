@@ -5,6 +5,7 @@ import PracticePage from "../src/ui/pages/PracticePage";
 import TheoryPage from "../src/ui/pages/TheoryPage";
 import HomePage from "../src/ui/pages/HomePage";
 import ExamPage from "../src/ui/pages/ExamPage";
+import ExamMenuPage from "../src/ui/pages/ExamMenuPage";
 import LoginPage from "../src/ui/pages/LoginPage";
 import ContactPage from "../src/ui/pages/ContactPage";
 import FaqPage from "../src/ui/pages/FaqPage";
@@ -15,7 +16,8 @@ const Routing = () => (
 	<BrowserRouter>
 		<Routes>
 			<Route path="/" element={<HomePage />} />
-			<Route path="/egzamin" element={<ExamPage />} />
+			<Route path="/egzamin" element={<ExamMenuPage />} />
+			<Route path="/egzamin/test" element={<ExamPage />} />
 			<Route path="/trening" element={<TrainingPage />} />
 			<Route path="/trening/praktyka" element={<PracticePage />} />
 			<Route path="/trening/teoria" element={<TheoryPage />} />
