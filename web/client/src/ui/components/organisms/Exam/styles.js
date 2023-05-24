@@ -64,13 +64,35 @@ h-1/3
 `;
 
 
-
-const Title = tw.span`
-	text-8xl
+const HeaderContainer = tw.div`
+	flex
+	flex-col
+	h-full
 `;
 
-const SubTitle = tw.span`
-	text-4xl
+const TitleContainer = tw.div`
+	flex 
+	flex-col
+	pl-44
+`;
+
+const IllustrationContainer = tw.div`
+	flex
+	flex-col
+	mb-20
+`;
+
+
+const Title = tw.div`
+	text-5xl
+	text-[#0d0d0d]
+	font-display
+`;
+
+const Subtitle = tw.div`
+	text-sm
+	text-overflow
+	text-[#0d0d0d]
 `;
 
 const ExamStartPanel = tw.div`
@@ -121,10 +143,11 @@ const SelectButton = tw.button`
   border-black
   py-1
   px-2
+  hover:opacity-70
 `;
 
 const NavigationButton = tw.button`
-  bg-orange-400
+  bg-yellow-500
   text-white
   text-2xl
   border
@@ -132,10 +155,11 @@ const NavigationButton = tw.button`
   w-full
   py-1
   px-2
+  hover:opacity-70
 `;
 
 const NextQuestionButton = tw.button`
-  bg-orange-400
+  bg-yellow-500
   text-white
   text-2xl
   border
@@ -143,6 +167,7 @@ const NextQuestionButton = tw.button`
   w-full
   py-4
   px-4
+  hover:opacity-70
 `;
 
 const AnswerListElement = tw.button`
@@ -151,6 +176,7 @@ const AnswerListElement = tw.button`
   gap-4
   align-center
   leading-loose
+  hover:opacity-70
 `;
 
 const ExamNavigation = tw.div`
@@ -186,6 +212,7 @@ const InfoValue = tw.div`
   border
   border-black
   text-white
+  font-mono
   py-1
   px-2
 `;
@@ -236,8 +263,6 @@ export {
 	ExamContainer,
 	UpperSection,
 	LowerSection,
-	Title,
-	SubTitle,
 	ExamStartPanel,
   MainContent,
   Menu,
@@ -265,4 +290,9 @@ export {
   ExamTimerContainer,
   SelectButton,
   AnswerMarker,
+  Title,
+  Subtitle,
+  HeaderContainer,
+  TitleContainer,
+  IllustrationContainer,
 };

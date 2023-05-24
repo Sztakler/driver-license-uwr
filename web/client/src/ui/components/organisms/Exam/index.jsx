@@ -32,11 +32,19 @@ import {
   ExamTimerContainer,
   SelectButton,
   AnswerMarker,
+  HeaderContainer,
+  IllustrationContainer,
+  TitleContainer,
+  Title,
+  Subtitle,
 } from "./styles";
 import Button from "../../atoms/Button";
 import Paragraph from "../../atoms/Paragraph";
 import TestImage from "/src/assets/images/test.jpg";
+import {func} from "prop-types";
 //import ExamNavigation from "../../molecules/ExamNavigation";
+
+import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 
 export default function Exam() {
   const [baseQuestionNumber, setBaseQuestionNumber] = useState(1);
@@ -44,20 +52,22 @@ export default function Exam() {
   const [specialistQuestionNumber, setSpecialistQuestionNumber] = useState(1);
   const [maxSpecialistQuestions, setMaxSpecialistQuestions] = useState(10);
   const [currentTime, setCurrentTime] = useState(0);
+  const [examCountdown, setExamCountdown] = useState(25 * 60);
+  const [totalExamTime, setTotalExamTime] = useState(25 * 60);
   const [maxTime, setMaxTime] = useState(20);
   const [answer, setAnswer] = useState(undefined);
   const [examStarted, setExamStarted] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(incrementTimer, 1000);
+    console.log(currentTime, examCountdown);
 
     return () => clearInterval(interval);
-  }, [currentTime]);
+  }, [currentTime, examCountdown]);
 
   //if (examStarted) {
   //return ()
   //));
-
   return (
     <ExamContainer>
       <MainContent>
@@ -72,7 +82,7 @@ export default function Exam() {
           </InfoElementRow>
           <InfoElementRow>
             <InfoText>Czas do końca egzaminu</InfoText>
-            <InfoValue>02:40</InfoValue>
+            <InfoValue>{toClockTime(examCountdown)}</InfoValue>
           </InfoElementRow>
         </QuestionInfo>
         <MediaContainer>
@@ -87,7 +97,7 @@ export default function Exam() {
             </AnswerListElement>
             <AnswerListElement>
               <AnswerMarker>B</AnswerMarker>
-              <AnswerText>Powinien być prygotowany do zmiany przyczepności kół do jezdni.</AnswerText>
+              <AnswerText>Powinien być przygotowany do zmiany przyczepności kół do jezdni.</AnswerText>
             </AnswerListElement>
             <AnswerListElement>
               <AnswerMarker>C</AnswerMarker>
@@ -108,11 +118,11 @@ export default function Exam() {
           <ExamInfo>
             <InfoElementColumn>
               <InfoText>Pytania podstawowe</InfoText>
-              <InfoValueFullWidth>3 z 7</InfoValueFullWidth>
+              <InfoValueFullWidth>3 z 20</InfoValueFullWidth>
             </InfoElementColumn>
             <InfoElementColumn>
               <InfoText>Pytania specjalistyczne</InfoText>
-              <InfoValueFullWidth>0 z 3</InfoValueFullWidth>
+              <InfoValueFullWidth>0 z 12</InfoValueFullWidth>
             </InfoElementColumn>
           </ExamInfo>
         </MenuTopMid>
@@ -135,6 +145,26 @@ export default function Exam() {
       </Menu>
     </ExamContainer>
   );
+
+
+  function toClockTime(time) {
+    let minutes = Math.floor(time / 60).toFixed(0);
+    let seconds = Math.floor(time % 60).toFixed(0);
+
+    let MM = minutes.toString();
+    let SS = seconds.toString();
+
+    if (minutes < 10) {
+      MM = "0" + minutes;
+    }
+    if (seconds < 10) {
+      SS = "0" + seconds;
+    }
+
+    return minutes === totalExamTime ? 
+      MM :
+      MM + ":" + SS;
+  }
 
   function nextQuestion() {
     if (currentTime < maxTime && answer === undefined) {
@@ -169,6 +199,7 @@ export default function Exam() {
   }
 
   function incrementTimer() {
+    setExamCountdown(examCountdown - 1);
     setCurrentTime(currentTime + 1);
 
     if (currentTime >= maxTime) {
