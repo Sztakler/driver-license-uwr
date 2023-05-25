@@ -66,7 +66,7 @@ export default function ExamMenu() {
 			</HeaderContainer>
 
       {/* TODO: This is only placeholder. Consult with Karolina how to navigate to section below (scrolldown, new path, replace current path content). */}
-      <div className="px-32 grid grid-cols-2">
+      <div className="p-32 grid grid-cols-2">
         <div>
           <Paragraph>Egzamin teoretyczny składa się z 32 pytań:</Paragraph>
           <BulletList points={points[0]} bullet="•"></BulletList>

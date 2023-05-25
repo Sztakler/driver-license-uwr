@@ -23,11 +23,12 @@ import {
   InfoValueFullWidth,
   InfoElementRow,
   InfoElementColumn,
-  AnswersList,
-  AnswerListElement,
+  AnswersForm,
+  AnswerInput,
+  AnswerInputWrapper,
   QuestionHeader,
   InfoText,
-  AnswerText,
+  AnswerLabel,
   ExamTimer,
   ExamTimerContainer,
   SelectButton,
@@ -40,6 +41,7 @@ import {
 } from "./styles";
 import Button from "../../atoms/Button";
 import Paragraph from "../../atoms/Paragraph";
+import Modal from "../../molecules/Modal";
 import TestImage from "/src/assets/images/test.jpg";
 import {func} from "prop-types";
 import { useNavigate } from "react-router";
@@ -56,6 +58,7 @@ export default function Exam() {
   const [maxTime, setMaxTime] = useState(20);
   const [answer, setAnswer] = useState(undefined);
   const [examStarted, setExamStarted] = useState(false);
+  const [exitModalShow, setExitModalShow] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(incrementTimer, 1000);
@@ -88,27 +91,56 @@ export default function Exam() {
         </MediaContainer>
         <QuestionContent>
           <QuestionHeader>Czy w tej sytacji sygnały świetlne decydują o pierwszeństwie wjazdu dla Ciebie na skrzyżowanie?</QuestionHeader>
-          <AnswersList>
-            <AnswerListElement>
+          <AnswersForm>
+            <AnswerInput type="radio" id="answer0" name="answer0" value="0"/>
+            <AnswerLabel>
               <AnswerMarker>A</AnswerMarker>
-              <AnswerText>Może spodziewać się oszronienia jezdni</AnswerText>
-            </AnswerListElement>
-            <AnswerListElement>
+              Może spodziewać się oszronienia jezdni
+            </AnswerLabel>
+            <AnswerInput type="radio" id="answer1" name="answer1" value="1"/>
+            <AnswerLabel>
               <AnswerMarker>B</AnswerMarker>
-              <AnswerText>Powinien być przygotowany do zmiany przyczepności kół do jezdni.</AnswerText>
-            </AnswerListElement>
-            <AnswerListElement>
+              Powinien być przygotowany do zmiany przyczepności kół do jezdni.
+            </AnswerLabel>
+            <AnswerInput type="radio" id="answer2" name="answer2" value="2"/>
+            <AnswerLabel>
               <AnswerMarker>C</AnswerMarker>
-              <AnswerText>Powinien spodziewać się lokalnie występujących opadów śniegu</AnswerText>
-            </AnswerListElement>
-          </AnswersList>
+              Powinien spodziewać się lokalnie występujących opadów śniegu
+            </AnswerLabel>
+          </AnswersForm>
         </QuestionContent>
       </MainContent>
 
       <Menu>
         <MenuTop>
           <ExamNavigation>
-            <NavigationButton onClick={() => navigate("/egzamin")}>Zakończ egzamin</NavigationButton>
+            <NavigationButton 
+              onClick={() => {
+                setExitModalShow(true);
+              }}>Zakończ egzamin</NavigationButton>
+            <Modal
+              onClose={() => {
+                setExitModalShow(false);
+              }}
+              show={exitModalShow}
+            >
+              <h4>Czy napewno chcesz zakończyć trening?</h4>
+              <div>
+                <Button
+                  primary
+                  onClick={() =>
+                      navigate("/trening/podsumowanie", {
+                        state: { positive: true, isTraining: false },
+                      })
+                  }
+                >
+                  TAK
+                </Button>
+                <Button primary onClick={() => setExitModalShow(false)}>
+                  NIE
+                </Button>
+              </div>
+            </Modal>
           </ExamNavigation>
         </MenuTop>
 
@@ -141,6 +173,7 @@ export default function Exam() {
           </ExamNavigation>
         </MenuBottom>
       </Menu>
+
     </ExamContainer>
   );
 

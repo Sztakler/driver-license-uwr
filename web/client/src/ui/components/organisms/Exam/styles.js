@@ -118,7 +118,11 @@ const QuestionContent = tw.div`
 `;
 
 
-const AnswersList = tw.ul`
+const AnswerInput = tw.input`
+
+`;
+
+const AnswersForm = tw.form`
   flex
   flex-col
   gap-4
@@ -170,7 +174,7 @@ const NextQuestionButton = tw.button`
   hover:opacity-70
 `;
 
-const AnswerListElement = tw.button`
+const AnswerInputWrapper = tw.div`
   flex
   flex-row
   gap-4
@@ -234,7 +238,7 @@ const InfoText = tw.p`
   text-xl
 `;
 
-const AnswerText = tw.p`
+const AnswerLabel = tw.p`
   flex
   items-center
   text-base
@@ -279,17 +283,18 @@ export {
   InfoValueFullWidth,
   InfoElementRow,
   InfoElementColumn,
-  AnswersList,
-  AnswerListElement,
+  AnswersForm,
+  AnswerInputWrapper,
   QuestionHeader,
   InfoText,
-  AnswerText,
+  AnswerLabel,
   NavigationButton,
   NextQuestionButton,
   ExamTimer,
   ExamTimerContainer,
   SelectButton,
   AnswerMarker,
+  AnswerInput,
   Title,
   Subtitle,
   HeaderContainer,
