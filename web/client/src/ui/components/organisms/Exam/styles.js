@@ -3,6 +3,8 @@ import tw from "tailwind-styled-components";
 const ExamContainer = tw.div`
   h-[calc(100vh-91px)]
   h-full
+  pt-0
+  mt-0
   py-4
   px-10
   grid
@@ -21,7 +23,7 @@ const MainContent = tw.div`
 `;
 
 const Menu = tw.div`
-  col-span-2 
+  col-span-2
   justify-self-end
   h-full
   flex
@@ -40,63 +42,6 @@ const MenuBotMid = tw.div`
   pb-60
 `;
 const MenuBottom = tw.div`
-`;
-
-const UpperSection = tw.section`
-  flex 
-  flex-row 
-  items-center 
-  justify-center 
-  w-full
-  gap-12
-h-2/3
-`;
-
-const LowerSection = tw.section`
-flex 
-flex-row 
-container
-items-center 
-justify-center 
-w-full
-gap-48
-h-1/3
-`;
-
-
-const HeaderContainer = tw.div`
-flex
-flex-col
-h-full
-`;
-
-const TitleContainer = tw.div`
-flex 
-flex-col
-pl-44
-`;
-
-const IllustrationContainer = tw.div`
-flex
-flex-col
-mb-20
-`;
-
-
-const Title = tw.div`
-text-5xl
-text-[#0d0d0d]
-font-display
-`;
-
-const Subtitle = tw.div`
-text-sm
-text-overflow
-  text-[#0d0d0d]
-`;
-
-const ExamStartPanel = tw.div`
-
 `;
 
 const QuestionInfo = tw.div`
@@ -180,15 +125,6 @@ px-4
 hover:opacity-70
 `;
 
-const AnswerInputWrapper = tw.div`
-flex
-flex-row
-gap-4
-align-center
-leading-loose
-hover:opacity-70
-`;
-
 const ExamNavigation = tw.div`
 w-full
 flex
@@ -220,11 +156,19 @@ const ExamTimer = tw.div`
 `;
 
 const TimerOuterBar = tw.div`
-flex-start flex h-4 w-full overflow-hidden rounded bg-gray-300 font-sans text-xl font-medium
+relative flex-start flex h-full  w-full overflow-hidden bg-gray-400 text-2xl font-medium
 `;
 
 const TimerInnerBar = tw.div`
-flex h-full items-center justify-center overflow-hidden break-all bg-yellow-500
+fleix h-full items-center justify-center overflow-hidden break-all bg-yellow-500
+`;
+
+const TimerText = tw.div`
+  absolute
+  left-1/2
+  top-1/2
+  -translate-x-1/2
+  -translate-y-1/2
 `;
 
 const InfoValue = tw.div`
@@ -286,9 +230,6 @@ gap-2
 
 export {
   ExamContainer,
-  UpperSection,
-  LowerSection,
-  ExamStartPanel,
   MainContent,
   Menu,
   MenuTop,
@@ -305,7 +246,6 @@ export {
   InfoElementRow,
   InfoElementColumn,
   AnswersForm,
-  AnswerInputWrapper,
   QuestionHeader,
   InfoText,
   AnswerLabel,
@@ -317,11 +257,7 @@ export {
   SelectButton,
   AnswerMarker,
   AnswerInput,
-  Title,
-  Subtitle,
-  HeaderContainer,
-  TitleContainer,
-  IllustrationContainer,
   TimerOuterBar,
   TimerInnerBar,
+  TimerText,
 };
