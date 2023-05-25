@@ -1,7 +1,7 @@
 import tw from "tailwind-styled-components";
 
 const ExamContainer = tw.div`
-	h-[calc(100vh-91px)]
+  h-[calc(100vh-91px)]
   h-full
   py-4
   px-10
@@ -9,8 +9,8 @@ const ExamContainer = tw.div`
   grid-cols-8
   grid-rows-1
   gap-8
-	self-center
-	justify-center
+  self-center
+  justify-center
   text-base
 `;
 
@@ -43,13 +43,13 @@ const MenuBottom = tw.div`
 `;
 
 const UpperSection = tw.section`
-	flex 
-	flex-row 
-	items-center 
-	justify-center 
-	w-full
-	gap-12
-	h-2/3
+  flex 
+  flex-row 
+  items-center 
+  justify-center 
+  w-full
+  gap-12
+h-2/3
 `;
 
 const LowerSection = tw.section`
@@ -65,34 +65,34 @@ h-1/3
 
 
 const HeaderContainer = tw.div`
-	flex
-	flex-col
-	h-full
+flex
+flex-col
+h-full
 `;
 
 const TitleContainer = tw.div`
-	flex 
-	flex-col
-	pl-44
+flex 
+flex-col
+pl-44
 `;
 
 const IllustrationContainer = tw.div`
-	flex
-	flex-col
-	mb-20
+flex
+flex-col
+mb-20
 `;
 
 
 const Title = tw.div`
-	text-5xl
-	text-[#0d0d0d]
-	font-display
+text-5xl
+text-[#0d0d0d]
+font-display
 `;
 
 const Subtitle = tw.div`
-	text-sm
-	text-overflow
-	text-[#0d0d0d]
+text-sm
+text-overflow
+  text-[#0d0d0d]
 `;
 
 const ExamStartPanel = tw.div`
@@ -107,167 +107,188 @@ const QuestionInfo = tw.div`
 
 
 const MediaContainer = tw.div`
-  flex
-  justify-center
-  p-4
+flex
+justify-center
+p-4
 `;
 
 const QuestionContent = tw.div`
-  flex
-  flex-col
+flex
+flex-col
 `;
 
 
 const AnswerInput = tw.input`
+hidden
+peer 
+`;
 
+const AnswerText = tw.p`
+peer-checked:opacity-50
 `;
 
 const AnswersForm = tw.form`
-  flex
-  flex-col
-  gap-4
+flex
+flex-col
+gap-4
 `;
 
 const AnswerMarker = tw.div`
-  font-mono
-  bg-blue-500
-  text-white
-  text-2xl
-  border
-  border-black
-  py-1
-  px-2
+font-mono
+bg-blue-500
+text-white
+text-2xl
+border
+border-black
+py-1
+px-2
+peer-checked:opacity-50
 `;
 
 const SelectButton = tw.button`
-  bg-blue-500
-  text-white
-  text-2xl
-  border
-  border-black
-  py-1
-  px-2
-  hover:opacity-70
+bg-blue-500
+text-white
+text-2xl
+border
+border-black
+py-1
+px-2
+hover:opacity-70
 `;
 
 const NavigationButton = tw.button`
-  bg-yellow-500
-  text-white
-  text-2xl
-  border
-  border-black
-  w-full
-  py-1
-  px-2
-  hover:opacity-70
+bg-yellow-500
+text-white
+text-2xl
+border
+border-black
+w-full
+py-1
+px-2
+hover:opacity-70
 `;
 
 const NextQuestionButton = tw.button`
-  bg-yellow-500
-  text-white
-  text-2xl
-  border
-  border-black
-  w-full
-  py-4
-  px-4
-  hover:opacity-70
+bg-yellow-500
+text-white
+text-2xl
+border
+border-black
+w-full
+py-4
+px-4
+hover:opacity-70
 `;
 
 const AnswerInputWrapper = tw.div`
-  flex
-  flex-row
-  gap-4
-  align-center
-  leading-loose
-  hover:opacity-70
+flex
+flex-row
+gap-4
+align-center
+leading-loose
+hover:opacity-70
 `;
 
 const ExamNavigation = tw.div`
-  w-full
-  flex
-  justify-between
-  items-center
+w-full
+flex
+justify-between
+items-center
 `;
 
 const ExamInfo = tw.div`
-  grid
-  grid-cols-2
-  justify-around
-  gap-24
+grid
+grid-cols-2
+justify-around
+gap-24
 `;
 
 const ExamTimerContainer = tw.div`
+flex
+flex-col
+items-center
+gap-4
+`;
+
+const ExamTimer = tw.div`
+  text-white
+  w-full
+  h-full
   flex
-  flex-col
-  items-center
+  flex-row
   gap-4
 `;
 
-const ExamTimer = tw.progress`
+const TimerOuterBar = tw.div`
+flex-start flex h-4 w-full overflow-hidden rounded bg-gray-300 font-sans text-xl font-medium
+`;
 
+const TimerInnerBar = tw.div`
+flex h-full items-center justify-center overflow-hidden break-all bg-yellow-500
 `;
 
 const InfoValue = tw.div`
-  flex
-  justify-center
-  items-center
-  bg-sky-600
-  border
-  border-black
-  text-white
-  font-mono
-  py-1
-  px-2
+flex
+justify-center
+items-center
+bg-sky-600
+border
+border-black
+text-white
+font-mono
+py-1
+px-2
 `;
 
 const InfoValueFullWidth = tw.div`
-  flex
-  justify-center
-  items-center
-  bg-sky-600
-  border
-  border-black
-  text-white
-  py-1
-  px-2
-  w-full
+flex
+justify-center
+items-center
+bg-sky-600
+border
+border-black
+text-white
+py-1
+px-2
+w-full
 `;
 
 const InfoText = tw.p`
-  text-xl
+text-xl
 `;
 
-const AnswerLabel = tw.p`
-  flex
-  items-center
-  text-base
+const AnswerLabel = tw.label`
+flex
+items-center
+gap-4
+text-base
+hover:opacity-70
 `;
 
 const QuestionHeader = tw.h1`
-  text-2xl
-  text-blue-600
+text-2xl
+text-blue-600
 `;
 
 const InfoElementRow = tw.div`
-  flex
-  flex-row
-  items-center
-  gap-2
+flex
+flex-row
+items-center
+gap-2
 `;
 
 const InfoElementColumn = tw.div`
-  flex
-  flex-col
-  items-start
-  gap-2
+flex
+flex-col
+items-start
+gap-2
 `;
 
 export {
-	ExamContainer,
-	UpperSection,
-	LowerSection,
-	ExamStartPanel,
+  ExamContainer,
+  UpperSection,
+  LowerSection,
+  ExamStartPanel,
   MainContent,
   Menu,
   MenuTop,
@@ -288,6 +309,7 @@ export {
   QuestionHeader,
   InfoText,
   AnswerLabel,
+  AnswerText,
   NavigationButton,
   NextQuestionButton,
   ExamTimer,
@@ -300,4 +322,6 @@ export {
   HeaderContainer,
   TitleContainer,
   IllustrationContainer,
+  TimerOuterBar,
+  TimerInnerBar,
 };
