@@ -4,11 +4,12 @@ import tw from "tailwind-styled-components";
 import {
 	buttonPrimaryClasses,
 	buttonBlankClasses,
+	buttonHoverClasses,
 	buttonNavbarClasses,
 	buttonNavbarIconClasses,
 	buttonUnderscoredClasses,
 	buttonBoldClasses,
-	buttonNoneClasses,
+	buttonBubbleClasses,
 } from "./styles";
 
 function assignButtonSize(size) {
@@ -30,21 +31,47 @@ function assignButtonSize(size) {
 	return [fontSize, containerPaddings];
 }
 
+function assignBubbleSize(size) {
+	let bubbleSize = "min-h-[24px] min-w-[24px]";
+
+	if (size === "s") {
+		bubbleSize = "min-w-[32px] max-w-[32px] min-h-[32px] max-h-[32px]";
+	}
+	if (size === "m") {
+		bubbleSize = "min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px]";
+	}
+	if (size === "l") {
+		bubbleSize = "min-w-[48px] max-w-[48px] min-h-[48px] max-h-[48px]";
+	}
+
+	return [bubbleSize];
+}
+
 const StyledButton = tw.button`
-	${(props) => assignButtonSize(props.size).join(" ")}
+	${(props) =>
+		props.bubble
+			? assignBubbleSize(props.size).join(" ")
+			: assignButtonSize(props.size).join(" ")}
   ${(props) => props.primary && buttonPrimaryClasses}
 	${(props) => props.blank && buttonBlankClasses}
+	${(props) => props.hover && buttonHoverClasses}
   ${(props) => props.navbar && buttonNavbarClasses}
   ${(props) => props.navbarIcon && buttonNavbarIconClasses}
   ${(props) => props.underscored && buttonUnderscoredClasses}
-  ${(props) => props.active && "bg-[#FFD363]"}
-  ${(props) => props.picked && "bg-[#91CE6B]"}
-  ${(props) => props.skipped && "bg-[#FBBD1F]"}
-	${(props) => props.correct && "bg-[#91CE6B]"}
-	${(props) => props.incorrect && "bg-[#FF6130]"}
+	${(props) => props.bubble && buttonBubbleClasses}
   ${(props) => props.bold && buttonBoldClasses}
 	${(props) => props.full && "w-full"}
-	${(props) => props.none && buttonNoneClasses}
+  ${(props) => props.active && "bg-[#FFD363]"}
+  ${(props) => props.picked && "bg-[#91CE6B]"}
+  ${(props) =>
+		props.result === "skipped"
+			? "bg-[#FBBD1F]"
+			: props.result === "correct"
+			? "bg-[#91CE6B]"
+			: props.result === "incorrect"
+			? "bg-[#FF6130]"
+			: ""}
+
 `;
 
 export default function Button(props) {

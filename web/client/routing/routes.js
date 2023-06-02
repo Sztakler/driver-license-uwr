@@ -11,6 +11,7 @@ import FaqPage from "../src/ui/pages/FaqPage";
 import RegisterPage from "../src/ui/pages/RegisterPage";
 import SummaryPage from "../src/ui/pages/SummaryPage";
 import NotFound from "../src/ui/pages/NotFound";
+import { TaskProvider } from "../src/context/TaskContext";
 
 const Routing = () => (
 	<BrowserRouter>
@@ -18,7 +19,15 @@ const Routing = () => (
 			<Route path="/" element={<HomePage />} />
 			<Route path="/egzamin" element={<ExamPage />} />
 			<Route path="/trening" element={<TrainingPage />} />
-			<Route path="/trening/praktyka" element={<PracticePage />} />
+			<Route
+				path="/trening/praktyka"
+				element={
+					<TaskProvider>
+						<PracticePage />
+					</TaskProvider>
+				}
+			/>
+
 			<Route path="/trening/teoria" element={<TheoryPage />} />
 			<Route path="/podrecznik/" element={<TheoryPage />} />
 			<Route path="/podrecznik/znaki-ostrzegawcze" element={<TheoryPage />} />
@@ -41,9 +50,9 @@ const Routing = () => (
 			<Route path="/kontakt" element={<ContactPage />} />
 			<Route path="/faq" element={<FaqPage />} />
 			<Route path="/login" element={<LoginPage />} />
-			<Route path="/register" element={<RegisterPage />}/>
+			<Route path="/register" element={<RegisterPage />} />
 
-			<Route path="*" element={<NotFound/>}/>
+			<Route path="*" element={<NotFound />} />
 		</Routes>
 	</BrowserRouter>
 );

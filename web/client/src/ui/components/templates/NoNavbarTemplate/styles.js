@@ -15,11 +15,18 @@ const MainContent = tw.div`
 	flex-[1_1_auto]
 	self-center
 	w-full
-	justify-center
 	items-center
-	h-auto
-	min-h-screen
-	pt-8
+	h-screen
+	p-8
 `;
 
-export { PageWrapper, MainContent };
+const Wrapper = tw.div`
+	flex
+	flex-row
+	flex-wrap
+	gap-4
+
+	max-2xl:justify-center
+`;
+
+export { PageWrapper, MainContent, Wrapper };

@@ -11,13 +11,17 @@ const Container = tw.div`
 const HeaderContainer = tw.div`
 	flex
 	flex-col
+	max-lg:items-center
+	max-lg:justify-center
+	max-lg:text-center
+	
 	h-full
 `;
 
 const TitleContainer = tw.div`
 	flex 
 	flex-col
-	pl-44
+	px-44
 `;
 
 const IllustrationContainer = tw.div`

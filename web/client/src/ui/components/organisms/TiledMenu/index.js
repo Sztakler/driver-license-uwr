@@ -54,14 +54,14 @@ export default function TiledMenu({ data, headings, ...props }) {
 
 				<IllustrationContainer>
 					{isTrainingSelected ? (
-						<div></div>
+						<></>
 					) : (
 						<div className="flex flex-col">
 							<img
 								src={Illustrations.TrainingIllustration}
 								className="self-center w-[70%]"
 							></img>
-							<div className="flex flex-row w-full gap-4 justify-center">
+							<div className="flex flex-row flex-wrap w-full gap-4 justify-center">
 								<button
 									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[100px] border-[#0d0d0d]"
 									onClick={() => navigate("/trening/praktyka")}
@@ -141,7 +141,7 @@ export default function TiledMenu({ data, headings, ...props }) {
 							</div>
 						</form>
 						<button
-							className="self-center bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[70%] border rounded-[100px] border-[#0d0d0d]"
+							className="self-center bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[70%] border rounded-[100px] border-[#0d0d0d] mb-[102px]"
 							onClick={startPractice}
 						>
 							<Subtitle className="text-4xl font-semibold text-center m-0 py-6">
