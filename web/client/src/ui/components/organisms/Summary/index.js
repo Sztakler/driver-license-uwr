@@ -92,6 +92,7 @@ export default function Summary({ isTraining }) {
 					</Table>
 					<Button
 						primary
+						hover
 						size="l"
 						onClick={() => {
 							if (isTraining) {

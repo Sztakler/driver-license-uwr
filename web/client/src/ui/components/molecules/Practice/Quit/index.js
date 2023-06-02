@@ -39,9 +39,10 @@ export default function Quit() {
 	return (
 		<QuitOptions>
 			<span>{inReviewMode ? "Wróć do podsumowania" : "Zakończ trening"}</span>
-			<Bubble secondary size="m" onClick={() => setExitModalShow(true)}>
+			<Button bubble hover size="m" onClick={() => setExitModalShow(true)}>
 				<Cancel />
-			</Bubble>
+			</Button>
+
 			<Modal onClose={() => setExitModalShow(false)} show={exitModalShow}>
 				<Heading level={4}>
 					{inReviewMode
@@ -49,10 +50,10 @@ export default function Quit() {
 						: "Czy napewno chcesz zakończyć trening?"}
 				</Heading>
 				<div>
-					<Button primary onClick={() => handleFinishTraining(true)}>
+					<Button primary hover onClick={() => handleFinishTraining(true)}>
 						TAK
 					</Button>
-					<Button primary onClick={() => handleFinishTraining(false)}>
+					<Button primary hover onClick={() => handleFinishTraining(false)}>
 						NIE
 					</Button>
 				</div>

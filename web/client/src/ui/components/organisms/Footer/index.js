@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
-import Bubble from "../../molecules/Bubble";
 import Heading from "../../atoms/Heading";
 import Button from "../../atoms/Button";
+
 import Paragraph from "../../atoms/Paragraph";
 
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -156,16 +156,17 @@ export default function Footer() {
 					<ContactOptions>
 						{contactOptions.map((option) => {
 							return (
-								<Bubble
-									primary
+								<Button
+									bubble
 									size="xl"
+									className="bg-black"
 									onClick={() => activateBubble(option.id)}
 								>
 									{option.popup && option.isActive && (
 										<Popup>{option.popup}</Popup>
 									)}
 									{option.icon}
-								</Bubble>
+								</Button>
 							);
 						})}
 					</ContactOptions>

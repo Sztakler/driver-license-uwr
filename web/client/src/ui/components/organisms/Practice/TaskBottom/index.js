@@ -65,15 +65,6 @@ export default function TaskBottom() {
 								>
 									{String.fromCharCode(65 + index)}
 								</Button>
-								{/* <Bubble
-									secondary
-									onClick={() => !inReviewMode && setNewPickedAnswer(index)}
-									size="m"
-									picked={inReviewMode ? false : index === pickedAnswer}
-									result={inReviewMode ? getTaskResult(index) : ""}
-								>
-									{String.fromCharCode(65 + index)}
-								</Bubble> */}
 								<span>{answer}</span>
 							</Answer>
 						);
@@ -83,12 +74,10 @@ export default function TaskBottom() {
 		}
 	}
 
-	return task ? (
+	return (
 		<TaskBottomSection>
 			<Paragraph className="inline-block">{task.pytanie}</Paragraph>
 			{renderAnswers(task)}
 		</TaskBottomSection>
-	) : (
-		<div>Wczytywanie...</div>
 	);
 }
