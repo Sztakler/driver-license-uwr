@@ -9,7 +9,8 @@ const ExamContainer = tw.div`
   px-10
   grid
   grid-cols-8
-  grid-rows-1
+  grid-rows-2
+  md:grid-rows-1
   gap-8
   self-center
   justify-center
@@ -17,14 +18,17 @@ const ExamContainer = tw.div`
 `;
 
 const MainContent = tw.div`
-  col-span-6
+  col-span-8
+  md:col-span-6
   w-full
   h-full
 `;
 
 const Menu = tw.div`
-  col-span-2
-  justify-self-end
+  col-span-8
+  md:col-span-2
+  justify-self-center
+  md:justify-self-end
   h-full
   flex
   flex-col
@@ -36,10 +40,12 @@ const MenuTop = tw.div`
 `;
 
 const MenuTopMid = tw.div`
-  pb-20
+  pb-10
+  md:pb-20
 `;
 const MenuBotMid = tw.div`
-  pb-60
+  pb-10
+  md:pb-60
 `;
 const MenuBottom = tw.div`
 `;
@@ -136,7 +142,7 @@ const ExamInfo = tw.div`
 grid
 grid-cols-2
 justify-around
-gap-24
+gap-12
 `;
 
 const ExamTimerContainer = tw.div`
@@ -198,7 +204,13 @@ w-full
 `;
 
 const InfoText = tw.p`
-text-xl
+text-sm
+md:text-md
+lg:text-lg
+xl:text-xl
+whitespace-pre-wrap
+break-words
+hyphens-auto
 `;
 
 const AnswerLabel = tw.label`
