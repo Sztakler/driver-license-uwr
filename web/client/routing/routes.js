@@ -4,7 +4,7 @@ import TrainingPage from "../src/ui/pages/TrainingPage";
 import PracticePage from "../src/ui/pages/PracticePage";
 import TheoryPage from "../src/ui/pages/TheoryPage";
 import HomePage from "../src/ui/pages/HomePage";
-import ExamPage from "../src/ui/pages/ExamPage";
+import ExamPage from "../src/ui/pages/Exam/ExamPage";
 import ExamMenuPage from "../src/ui/pages/ExamMenuPage";
 import LoginPage from "../src/ui/pages/LoginPage";
 import ContactPage from "../src/ui/pages/ContactPage";
