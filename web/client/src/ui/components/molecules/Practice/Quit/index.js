@@ -6,7 +6,6 @@ import {
 	inReviewModeState,
 } from "../../../../../recoil/atoms";
 
-import Bubble from "../../Bubble";
 import Modal from "../../Modal";
 import Button from "../../../atoms/Button";
 import Heading from "../../../atoms/Heading";

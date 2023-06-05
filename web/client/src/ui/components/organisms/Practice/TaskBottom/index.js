@@ -4,7 +4,7 @@ import { inReviewModeState } from "../../../../../recoil/atoms";
 import TaskContext from "../../../../../context/TaskContext";
 import Button from "../../../atoms/Button";
 import Paragraph from "../../../atoms/Paragraph";
-import Bubble from "../../../molecules/Bubble";
+
 import { Answers, Answer, TaskBottomSection } from "./styles";
 
 export default function TaskBottom() {

@@ -12,7 +12,6 @@ const ReviewTasksContainer = tw.div`
 
 const BubblesWrapper = tw.div`
 	w-full
-	h-full
 	flex
 	flex-wrap
 	gap-2

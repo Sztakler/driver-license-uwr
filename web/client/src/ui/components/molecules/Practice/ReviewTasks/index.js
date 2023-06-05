@@ -4,7 +4,6 @@ import { useRecoilState } from "recoil";
 import { cachedAnswersState } from "../../../../../recoil/atoms";
 import TaskContext from "../../../../../context/TaskContext";
 
-import Bubble from "../../Bubble";
 import Text from "../../../atoms/Text";
 
 import { ReviewTasksContainer, BubblesWrapper } from "./styles";

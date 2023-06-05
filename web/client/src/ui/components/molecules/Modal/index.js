@@ -1,7 +1,5 @@
 import React from "react";
 
-import Bubble from "../Bubble";
-
 import {
 	ModalContainer,
 	ModalDialog,

@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { inReviewModeState } from "../../../../../recoil/atoms";
 import { useRecoilState } from "recoil";
 import TaskContext from "../../../../../context/TaskContext";
-import Bubble from "../../../molecules/Bubble";
 import Star from "../../../../../icons/Star";
 import Text from "../../../atoms/Text";
 import Image from "../../../atoms/Image";
