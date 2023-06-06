@@ -36,7 +36,7 @@ def create_entry_dict(entry, basic_counter, special_counter):
         "pytanie": entry[2],
         "odpowiedzi": get_answers(entry),
         "poprawna_odpowiedz": get_correct_answers_index(entry),
-        "media": entry[7],
+        "media": "https://exam-media.s3.eu-north-1.amazonaws.com/" + entry[7] if entry[7] != "" else "",
         "zakres_struktury": entry[8],
         "liczba_punktow": entry[9],
         "kategorie": entry[10],

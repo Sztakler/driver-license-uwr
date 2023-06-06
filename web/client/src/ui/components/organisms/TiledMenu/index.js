@@ -18,6 +18,7 @@ import {
 } from "./styles";
 
 import Paragraph from "../../atoms/Paragraph";
+import Text from "../../atoms/Text";
 import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 import Input from "../../atoms/Input";
 
@@ -92,7 +93,7 @@ export default function TiledMenu({ data, headings, ...props }) {
 								<label for="all" className="flex flex-row pb-2">
 									<Input checkbox id="all" type="checkbox" value="all"></Input>
 									<Paragraph style="text-2xl">
-										<span className="font-semibold">Wszystkie </span>(2125)
+										<Text className="font-semibold">Wszystkie </Text>(2125)
 									</Paragraph>
 								</label>
 
@@ -104,7 +105,7 @@ export default function TiledMenu({ data, headings, ...props }) {
 										value="saved"
 									></Input>
 									<Paragraph style="text-2xl">
-										<span className="font-semibold">Zapisane </span>(25)
+										<Text className="font-semibold">Zapisane </Text>(25)
 									</Paragraph>
 								</label>
 							</div>

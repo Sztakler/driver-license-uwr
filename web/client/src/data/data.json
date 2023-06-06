@@ -6,7 +6,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "AK_D05_06_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/AK_D05_06_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -18,7 +18,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "AK_D10_30_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/AK_D10_30_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -30,7 +30,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "AK_D11_43org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/AK_D11_43org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -42,7 +42,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "AK_D11_45org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/AK_D11_45org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -54,7 +54,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "IMG_4251orgbm.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/IMG_4251orgbm.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -66,7 +66,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "3106D15_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/3106D15_a_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -78,7 +78,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "0118D14MM_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/0118D14MM_a_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -90,7 +90,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "2064D14MM_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/2064D14MM_a_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -102,7 +102,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "066D16_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/066D16_a_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -114,7 +114,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "IMG_0325_9550d5_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/IMG_0325_9550d5_a_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -126,7 +126,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "0084D18_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/0084D18_a_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -138,7 +138,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "IMG_9324_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/IMG_9324_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -150,7 +150,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "4152D15Xorg.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/4152D15Xorg.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -162,7 +162,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "4170D15_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/4170D15_a_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -174,7 +174,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D16_01_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D16_01_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -186,7 +186,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "D16_05_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D16_05_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -198,7 +198,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D16_06_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D16_06_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -210,7 +210,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "MM_D14_15_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_15_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -222,7 +222,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "MM_D14_17_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_17_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -234,7 +234,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "MM_D14_24_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_24_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -246,7 +246,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "MM_D14_29_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_29_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -258,7 +258,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "MM_D14_34_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_34_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -270,7 +270,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "MM_D14_38_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_38_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -282,7 +282,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "MM_D14_42_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_42_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -294,7 +294,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "0445D14MM_aorgbm.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/0445D14MM_aorgbm.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -306,7 +306,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "D10MM_3org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D10MM_3org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -318,7 +318,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D10MM_10org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D10MM_10org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -330,7 +330,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D10MM_22org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D10MM_22org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -342,7 +342,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D10MM_7org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D10MM_7org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -354,7 +354,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "013org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/013org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -366,7 +366,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "048D15_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/048D15_a_org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -378,7 +378,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "KW_D22_407_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_407_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -390,7 +390,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "KW_D22_417_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_417_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -402,7 +402,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "KW_D22_418_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_418_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -414,7 +414,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "KW_D22_419_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_419_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -426,7 +426,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "KW_D22_419_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_419_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -438,7 +438,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "D26_026org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D26_026org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "3",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -450,7 +450,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D24_AK110org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D24_AK110org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -462,7 +462,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D24_AK120org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D24_AK120org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -474,7 +474,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D16_01_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D16_01_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -486,7 +486,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D16_01_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D16_01_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -498,7 +498,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D16_01_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D16_01_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -510,7 +510,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "MM_D14_09_org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_09_org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "1",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -522,7 +522,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "IMG_0345d8org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/IMG_0345d8org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -534,7 +534,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "1814D15org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/1814D15org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -546,7 +546,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "A-3 zT-4org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/A-3 zT-4org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -558,7 +558,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "A-4 (5)org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/A-4 (5)org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -570,7 +570,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "A-5 (3)org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/A-5 (3)org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -582,7 +582,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "D24_20org.mp4",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/D24_20org.mp4",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "A,B,C,D,T,AM,A1,A2,B1,C1,D1"
@@ -594,7 +594,7 @@
       "Nie"
     ],
     "poprawna_odpowiedz": 1,
-    "media": "IMG_9599org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/IMG_9599org.jpg",
     "zakres_struktury": "PODSTAWOWY",
     "liczba_punktow": "2",
     "kategorie": "B"
@@ -815,7 +815,7 @@
       "Dop\u00f3ki cia\u0142o poszkodowanego zachowuje w\u0142a\u015bciw\u0105 ciep\u0142ot\u0119."
     ],
     "poprawna_odpowiedz": 0,
-    "media": "R_144org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/R_144org.jpg",
     "zakres_struktury": "SPECJALISTYCZNY",
     "liczba_punktow": "3",
     "kategorie": "B,B1"
@@ -828,7 +828,7 @@
       "Do czasu stwierdzenia ruchomo\u015bci jego n\u00f3g."
     ],
     "poprawna_odpowiedz": 1,
-    "media": "R_030org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/R_030org.jpg",
     "zakres_struktury": "SPECJALISTYCZNY",
     "liczba_punktow": "3",
     "kategorie": "B,B1"
@@ -958,7 +958,7 @@
       "140 km/h."
     ],
     "poprawna_odpowiedz": 1,
-    "media": "IMG_7802d8_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/IMG_7802d8_a_org.jpg",
     "zakres_struktury": "SPECJALISTYCZNY",
     "liczba_punktow": "3",
     "kategorie": "B"
@@ -971,7 +971,7 @@
       "140 km/h."
     ],
     "poprawna_odpowiedz": 2,
-    "media": "IMG_7802d8_a_org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/IMG_7802d8_a_org.jpg",
     "zakres_struktury": "SPECJALISTYCZNY",
     "liczba_punktow": "3",
     "kategorie": "B"
@@ -984,7 +984,7 @@
       "90 km/h."
     ],
     "poprawna_odpowiedz": 2,
-    "media": "0978D14MM koniec obszaruorgbm.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/0978D14MM koniec obszaruorgbm.jpg",
     "zakres_struktury": "SPECJALISTYCZNY",
     "liczba_punktow": "3",
     "kategorie": "B"
@@ -997,7 +997,7 @@
       "50 km/h."
     ],
     "poprawna_odpowiedz": 0,
-    "media": "3475D15orgbm.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/3475D15orgbm.jpg",
     "zakres_struktury": "SPECJALISTYCZNY",
     "liczba_punktow": "3",
     "kategorie": "B"
@@ -1010,7 +1010,7 @@
       "140 km/h."
     ],
     "poprawna_odpowiedz": 1,
-    "media": "0229D14MM_a - dr.eksp.dwujezd._org.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/0229D14MM_a - dr.eksp.dwujezd._org.jpg",
     "zakres_struktury": "SPECJALISTYCZNY",
     "liczba_punktow": "3",
     "kategorie": "B"
@@ -1153,7 +1153,7 @@
       "C"
     ],
     "poprawna_odpowiedz": 0,
-    "media": "zag\u0142\u00f3wekorg.jpg",
+    "media": "https://exam-media.s3.eu-north-1.amazonaws.com/zag\u0142\u00f3wekorg.jpg",
     "zakres_struktury": "SPECJALISTYCZNY",
     "liczba_punktow": "3",
     "kategorie": "B"

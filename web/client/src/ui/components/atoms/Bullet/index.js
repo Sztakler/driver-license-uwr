@@ -1,13 +1,13 @@
 import React from "react";
 
-export default function Bullet(props) {
-    const { style, text, bullet } = props;
+import Text from "/src/ui/components/atoms/Text";
 
-    return (
-        <div>
-            <span className="material-symbols-outlined">
-                {bullet}
-            </span>
-        </div>
-    );
+export default function Bullet(props) {
+	const { style, text, bullet } = props;
+
+	return (
+		<div>
+			<Text className="material-symbols-outlined">{bullet}</Text>
+		</div>
+	);
 }

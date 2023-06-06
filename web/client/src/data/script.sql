@@ -11,7 +11,7 @@ VALUES(
 		'Czy w tej sytuacji masz obowiązek zatrzymać pojazd?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'AK_D05_06_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/AK_D05_06_org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -20,7 +20,7 @@ VALUES(
 		'Czy w tej sytuacji masz obowiązek zatrzymać pojazd?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'AK_D10_30_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/AK_D10_30_org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -29,7 +29,7 @@ VALUES(
 		'Czy w przedstawionej sytuacji masz prawo kontynuować jazdę?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'AK_D11_43org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/AK_D11_43org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -38,7 +38,7 @@ VALUES(
 		'Czy w przedstawionej sytuacji masz prawo - mimo podawanego sygnału - skręcić w prawo?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'AK_D11_45org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/AK_D11_45org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -47,7 +47,7 @@ VALUES(
 		'Czy na jezdni oznaczonej tym znakiem wolno Ci zawrócić?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'IMG_4251orgbm.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/IMG_4251orgbm.jpg',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -56,7 +56,7 @@ VALUES(
 		'Czy w tej sytuacji powinieneś oczekiwać, że następnym sygnałem będzie światło zielone?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'3106D15_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/3106D15_a_org.jpg',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -65,7 +65,7 @@ VALUES(
 		'Czy w tej sytuacji wolno Ci skręcić w prawo bez zatrzymania się przed sygnalizatorem?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'0118D14MM_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/0118D14MM_a_org.jpg',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -74,7 +74,7 @@ VALUES(
 		'Czy w tej sytuacji sygnał świetlny nadawany dla Twojego pasa ruchu zezwala Ci na zawracanie?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'2064D14MM_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/2064D14MM_a_org.jpg',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -83,7 +83,7 @@ VALUES(
 		'Czy w tej sytuacji nadawany sygnał świetlny oznacza, że podczas jazdy w prawo nie występuje kolizja z innymi uczestnikami ruchu?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'066D16_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/066D16_a_org.jpg',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -92,7 +92,7 @@ VALUES(
 		'Czy w tej sytuacji nadawany sygnał świetlny zezwala Ci na wjazd za sygnalizator?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'IMG_0325_9550d5_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/IMG_0325_9550d5_a_org.jpg',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -101,7 +101,7 @@ VALUES(
 		'Czy w tej sytuacji wolno Ci skręcić w prawo, jeśli nie spowodujesz tym utrudnienia ruchu?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'0084D18_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/0084D18_a_org.jpg',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -110,7 +110,7 @@ VALUES(
 		'Czy w tej sytuacji wolno Ci zmienić zajmowany pas ruchu, gdy zamierzasz jechać na wprost?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'IMG_9324_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/IMG_9324_org.jpg',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -119,7 +119,7 @@ VALUES(
 		'Czy na tej drodze możesz spodziewać się rowerzystów nadjeżdżających z przeciwka?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'4152D15Xorg.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/4152D15Xorg.jpg',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -128,7 +128,7 @@ VALUES(
 		'Czy w tej sytuacji wolno Ci wjechać na pas ruchu po lewej stronie?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'4170D15_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/4170D15_a_org.jpg',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -137,7 +137,7 @@ VALUES(
 		'Czy ten znak poziomy wyznacza miejsce bezwzględnego zatrzymania się, nawet w sytuacji, gdy z żadnej ze stron nie nadjeżdża pojazd?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D16_01_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D16_01_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -146,7 +146,7 @@ VALUES(
 		'Czy w tej sytuacji widoczna linia przerywana wyznacza Ci miejsce zatrzymania w związku ze znakiem "stop"?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'D16_05_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D16_05_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -155,7 +155,7 @@ VALUES(
 		'Czy ta linia ciągła wyznacza Ci miejsce zatrzymania pojazdu w związku ze znakiem "stop"?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D16_06_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D16_06_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -164,7 +164,7 @@ VALUES(
 		'Zamierzasz zawrócić na tym skrzyżowaniu. Czy zajmujesz właściwy pas ruchu?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'MM_D14_15_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_15_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -173,7 +173,7 @@ VALUES(
 		'Skręcasz w lewo na skrzyżowaniu. Czy po wjechaniu na jezdnię poprzeczną znaki poziome pozwalają Ci zająć pas ruchu przy prawej krawędzi jezdni?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'MM_D14_17_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_17_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -182,7 +182,7 @@ VALUES(
 		'Czy w tym miejscu wolno Ci skręcić w lewo i wjechać na stację paliw?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'MM_D14_24_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_24_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -191,7 +191,7 @@ VALUES(
 		'Czy widoczna linia złożona z trójkątów wskazuje Ci miejsce zatrzymania pojazdu w celu ustąpienia pierwszeństwa?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'MM_D14_29_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_29_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -200,7 +200,7 @@ VALUES(
 		'Czy w tym miejscu możesz skręcić w lewo, na parking?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'MM_D14_34_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_34_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -209,7 +209,7 @@ VALUES(
 		'Zamierzasz odpocząć. Czy w tym miejscu możesz skręcić w lewo, na parking?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'MM_D14_38_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_38_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -218,7 +218,7 @@ VALUES(
 		'Czy w tej sytuacji wolno Ci skręcić w lewo z zajmowanego przez Ciebie pasa ruchu?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'MM_D14_42_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_42_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -227,7 +227,7 @@ VALUES(
 		'Czy w tym miejscu wolno Ci wjechać na pas ruchu przeznaczony dla pojazdów jadących w przeciwnym kierunku?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'0445D14MM_aorgbm.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/0445D14MM_aorgbm.jpg',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -236,7 +236,7 @@ VALUES(
 		'Czy w tym miejscu, bezpośrednio przed przejściem dla pieszych, wolno Ci zmienić pas ruchu?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'D10MM_3org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D10MM_3org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -245,7 +245,7 @@ VALUES(
 		'Czy widoczny znak poziomy w kształcie trójkąta potwierdza ostrzeżenie o skrzyżowaniu z drogą z pierwszeństwem?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D10MM_10org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D10MM_10org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -254,7 +254,7 @@ VALUES(
 		'Czy w tej sytuacji wolno Ci wjechać na sąsiedni prawy pas ruchu?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D10MM_22org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D10MM_22org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -263,7 +263,7 @@ VALUES(
 		'Czy widoczna poprzeczna linia przerywana wyznacza miejsce warunkowego zatrzymania pojazdu?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D10MM_7org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D10MM_7org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -272,7 +272,7 @@ VALUES(
 		'Czy w przedstawionej sytuacji wolno Ci zawrócić, wykorzystując widoczną po lewej stronie zatokę?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'013org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/013org.jpg',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -281,7 +281,7 @@ VALUES(
 		'Czy w tej sytuacji masz prawo wyprzedzać samochód ciężarowy?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'048D15_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/048D15_a_org.jpg',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -290,7 +290,7 @@ VALUES(
 		'Planujesz jechać na wprost, a kierujący pojazdem nadjeżdżającym z przeciwka ma zamiar skręcić w lewo. Czy masz przed nim pierwszeństwo?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'KW_D22_407_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_407_org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -299,7 +299,7 @@ VALUES(
 		'Planujesz skręcić w lewo, a kierujący pojazdem z przeciwka ma zamiar jechać na wprost. Czy masz przed nim pierwszeństwo?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'KW_D22_417_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_417_org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -308,7 +308,7 @@ VALUES(
 		'Zamierzasz skręcić w lewo. Czy masz obowiązek ustąpić pierwszeństwa wszystkim pojazdom znajdującym się na skrzyżowaniu?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'KW_D22_418_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_418_org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -317,7 +317,7 @@ VALUES(
 		'Zamierzasz jechać na wprost, a motocyklista chce skręcić w lewo. Czy masz obowiązek ustąpić mu pierwszeństwa?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'KW_D22_419_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_419_org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -326,7 +326,7 @@ VALUES(
 		'Zamierzasz jechać na wprost, a kierujący pojazdem, jadącym z naprzeciwka, chce skręcić w lewo. Czy masz przed nim pierwszeństwo?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'KW_D22_419_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/KW_D22_419_org.mp4',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -335,7 +335,7 @@ VALUES(
 		'Zostałeś właśnie wyprzedzony przez pojazd widoczny przed Tobą. Czy bezpośrednio po wyprzedzeniu wolno Ci zwiększyć prędkość?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'D26_026org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D26_026org.jpg',
 		'PODSTAWOWY',
 		3,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -344,7 +344,7 @@ VALUES(
 		'Czy w tej sytuacji, wykonując manewr omijania, masz obowiązek zatrzymać się w razie potrzeby?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D24_AK110org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D24_AK110org.mp4',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -353,7 +353,7 @@ VALUES(
 		'Czy w tej sytuacji, podczas omijania, masz obowiązek zachować szczególną ostrożność?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D24_AK120org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D24_AK120org.mp4',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -362,7 +362,7 @@ VALUES(
 		'Czy widoczna linia wskazuje miejsce obowiązkowego zatrzymania się przed wjazdem na skrzyżowanie?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D16_01_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D16_01_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -371,7 +371,7 @@ VALUES(
 		'Czy widoczna linia wskazuje miejsce zatrzymania, które zapewnia Ci najlepszą widoczność na skrzyżowaniu?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D16_01_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D16_01_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -380,7 +380,7 @@ VALUES(
 		'Czy masz obowiązek zatrzymać się w wyznaczonym linią miejscu, nawet wtedy, gdy upewniłeś się, że drogą z pierwszeństwem przejazdu nie poruszają się inne pojazdy?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D16_01_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D16_01_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -389,7 +389,7 @@ VALUES(
 		'Czy w tej sytuacji wolno Ci wjechać na pas ruchu przy prawej krawędzi jezdni?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'MM_D14_09_org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/MM_D14_09_org.mp4',
 		'PODSTAWOWY',
 		1,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -398,7 +398,7 @@ VALUES(
 		'Czy w przedstawionej sytuacji jesteś ostrzegany o zbliżaniu się do jednego niebezpiecznego zakrętu w prawo?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'IMG_0345d8org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/IMG_0345d8org.jpg',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -407,7 +407,7 @@ VALUES(
 		'Czy w przedstawionej sytuacji jesteś ostrzegany o kilku niebezpiecznych zakrętach w lewo?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'1814D15org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/1814D15org.jpg',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -416,7 +416,7 @@ VALUES(
 		'Czy w przedstawionej sytuacji jesteś ostrzegany o dwóch niebezpiecznych zakrętach?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'A-3 zT-4org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/A-3 zT-4org.jpg',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -425,7 +425,7 @@ VALUES(
 		'Czy w przedstawionej sytuacji jesteś ostrzegany o dwóch niebezpiecznych zakrętach, z których pierwszy jest w lewo?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'A-4 (5)org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/A-4 (5)org.jpg',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -434,7 +434,7 @@ VALUES(
 		'Czy w tej sytuacji jesteś ostrzegany o zbliżaniu się do skrzyżowania, na którym pierwszeństwo przejazdu nie jest określone przy pomocy znaków drogowych?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'A-5 (3)org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/A-5 (3)org.jpg',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -443,7 +443,7 @@ VALUES(
 		' Czy w tej sytuacji należy rozpocząć hamowanie?',
 		ARRAY ['Tak', 'Nie'],
 		0,
-		'D24_20org.mp4',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/D24_20org.mp4',
 		'PODSTAWOWY',
 		2,
 		'A,B,C,D,T,AM,A1,A2,B1,C1,D1'
@@ -452,7 +452,7 @@ VALUES(
 		'Czy w trakcie prowadzenia pojazdu, wraz z upływem czasu, poprawia się Twoja zdolność dostrzegania znaków i sygnałów drogowych?',
 		ARRAY ['Tak', 'Nie'],
 		1,
-		'IMG_9599org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/IMG_9599org.jpg',
 		'PODSTAWOWY',
 		2,
 		'B'
@@ -605,7 +605,7 @@ VALUES(
 		'Jak długo należy prowadzić uciskanie klatki piersiowej i sztuczne oddychanie u osoby z nagłym zatrzymaniem krążenia?',
 		ARRAY ['Do momentu przyjazdu zespołu ratownictwa medycznego.', 'Przez 15 minut.', 'Dopóki ciało poszkodowanego zachowuje właściwą ciepłotę.'],
 		0,
-		'R_144org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/R_144org.jpg',
 		'SPECJALISTYCZNY',
 		3,
 		'B,B1'
@@ -614,7 +614,7 @@ VALUES(
 		'Jak długo należy ręcznie stabilizować głowę poszkodowanego z podejrzeniem urazu kręgosłupa szyjnego?',
 		ARRAY ['Aż zacznie nią poruszać.', 'Do przejęcia stabilizacji przez członka zespołu ratownictwa medycznego.', 'Do czasu stwierdzenia ruchomości jego nóg.'],
 		1,
-		'R_030org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/R_030org.jpg',
 		'SPECJALISTYCZNY',
 		3,
 		'B,B1'
@@ -704,7 +704,7 @@ VALUES(
 		'Z jaką dopuszczalną maksymalną prędkością wolno Ci kierować samochodem osobowym z przyczepą po drodze za tym znakiem?',
 		ARRAY ['70 km/h.', '80 km/h.', '140 km/h.'],
 		1,
-		'IMG_7802d8_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/IMG_7802d8_a_org.jpg',
 		'SPECJALISTYCZNY',
 		3,
 		'B'
@@ -713,7 +713,7 @@ VALUES(
 		'Z jaką maksymalną dopuszczalną prędkością wolno Ci kierować samochodem osobowym po drodze za tym znakiem?',
 		ARRAY ['120 km/h.', '130 km/h.', '140 km/h.'],
 		2,
-		'IMG_7802d8_a_org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/IMG_7802d8_a_org.jpg',
 		'SPECJALISTYCZNY',
 		3,
 		'B'
@@ -722,7 +722,7 @@ VALUES(
 		'Z jaką maksymalną dopuszczalną prędkością wolno Ci kierować samochodem osobowym po drodze za tym znakiem?',
 		ARRAY ['70 km/h.', '100 km/h.', '90 km/h.'],
 		2,
-		'0978D14MM koniec obszaruorgbm.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/0978D14MM koniec obszaruorgbm.jpg',
 		'SPECJALISTYCZNY',
 		3,
 		'B'
@@ -731,7 +731,7 @@ VALUES(
 		'Z jaką maksymalną dopuszczalną prędkością wolno Ci kierować samochodem osobowym po drodze za tym znakiem?',
 		ARRAY ['20 km/h.', '30 km/h.', '50 km/h.'],
 		0,
-		'3475D15orgbm.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/3475D15orgbm.jpg',
 		'SPECJALISTYCZNY',
 		3,
 		'B'
@@ -740,7 +740,7 @@ VALUES(
 		'Z jaką maksymalną dopuszczalną prędkością wolno Ci kierować samochodem osobowym po drodze za tym znakiem?',
 		ARRAY ['110 km/h.', '120 km/h.', '140 km/h.'],
 		1,
-		'0229D14MM_a - dr.eksp.dwujezd._org.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/0229D14MM_a - dr.eksp.dwujezd._org.jpg',
 		'SPECJALISTYCZNY',
 		3,
 		'B'
@@ -839,7 +839,7 @@ VALUES(
 		'Na którym zdjęciu zagłówek jest dobrze ustawiony?',
 		ARRAY ['A', 'B', 'C'],
 		0,
-		'zagłówekorg.jpg',
+		'https://exam-media.s3.eu-north-1.amazonaws.com/zagłówekorg.jpg',
 		'SPECJALISTYCZNY',
 		3,
 		'B'

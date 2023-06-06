@@ -39,6 +39,7 @@ export default function TaskTop() {
 				<Star picked={favoriteTask} />
 			</Button>
 			<ImageBox>
+				{console.log(task)}
 				{taskStarted || inReviewMode ? (
 					mediaExtension === "mp4" ? (
 						<Video src={task.media} autoPlay></Video>

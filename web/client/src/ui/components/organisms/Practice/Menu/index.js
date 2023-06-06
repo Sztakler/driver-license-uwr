@@ -15,6 +15,7 @@ import Explanation from "/src/icons/Explanation";
 import Clock from "/src/icons/Clock";
 
 import Button from "../../../atoms/Button";
+import Text from "../../../atoms/Text";
 import Label from "../../../atoms/Label";
 import Modal from "../../../molecules/Modal";
 import Quit from "../../../molecules/Practice/Quit";
@@ -159,7 +160,7 @@ export default function Menu() {
 			<Quit />
 			<Button primary hover full size="l" onClick={handleExplanationShowButton}>
 				<Explanation />
-				<span>Pokaż wyjaśnienie</span>
+				<Text>Pokaż wyjaśnienie</Text>
 			</Button>
 			<Modal
 				onClose={() => {
@@ -168,19 +169,19 @@ export default function Menu() {
 				show={explanationModalShow}
 			>
 				<h4>Wyjaśnienie odpowiedzi</h4>
-				<span>
+				<Text>
 					<b>Art. 26. ust. 1.</b>
 					Kierujący pojazdem, zbliżając się do przejścia dla pieszych, jest
 					obowiązany zachować szczególną ostrożność i ustąpić pierwszeństwa
 					pieszemu znajdującemu się na przejściu.
-				</span>
+				</Text>
 			</Modal>
 			{!inReviewMode ? (
 				<TimerContainer>
 					<Label size="m">Czas na zapoznanie się z pytaniem</Label>
 					<Row>
 						<Button primary hover size="m" onClick={handleStartButton}>
-							<span>START</span>
+							<Text>START</Text>
 						</Button>
 						<CustomTimer expired={currentTime === 0}>
 							<Clock />
@@ -198,10 +199,10 @@ export default function Menu() {
 					onClick={handlePreviousQuestionButton}
 				>
 					<ArrowLeft />
-					<span>Poprzednie pytanie</span>
+					<Text>Poprzednie pytanie</Text>
 				</Button>
 				<Button full hover size="m" primary onClick={handleNextQuestionButton}>
-					<span>Następne pytanie</span>
+					<Text>Następne pytanie</Text>
 					<ArrowRight />
 				</Button>
 			</NextPrevious>

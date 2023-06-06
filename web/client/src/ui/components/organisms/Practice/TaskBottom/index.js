@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { inReviewModeState } from "../../../../../recoil/atoms";
 import TaskContext from "../../../../../context/TaskContext";
 import Button from "../../../atoms/Button";
+import Text from "../../../atoms/Text";
 import Paragraph from "../../../atoms/Paragraph";
 
 import { Answers, Answer, TaskBottomSection } from "./styles";
@@ -41,7 +42,7 @@ export default function TaskBottom() {
 									picked={index === pickedAnswer}
 									result={inReviewMode ? getTaskResult(index) : ""}
 								>
-									<span>{answer}</span>
+									<Text>{answer}</Text>
 								</Button>
 							</Answer>
 						);
@@ -65,7 +66,7 @@ export default function TaskBottom() {
 								>
 									{String.fromCharCode(65 + index)}
 								</Button>
-								<span>{answer}</span>
+								<Text>{answer}</Text>
 							</Answer>
 						);
 					})}

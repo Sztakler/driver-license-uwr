@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
 
 import Button from "../../atoms/Button";
+import Text from "../../atoms/Text";
 import ArrowLeft from "../../../../icons/ArrowLeft";
 import { inReviewModeState, resultsState } from "../../../../recoil/atoms";
 
@@ -62,10 +63,10 @@ export default function Summary({ isTraining }) {
 		<SummaryContainer>
 			<InnerTextBox positive={true}>
 				<InsideBackground>
-					<span className="font-[Barriecito]">
+					<Text className="font-[Barriecito]">
 						{console.log("HERE", isTraining)}
 						{feedbackGenerator(isTraining, results)}
-					</span>
+					</Text>
 					<Table>
 						<Column>
 							<Statistic>zdobyte punkty:</Statistic>
