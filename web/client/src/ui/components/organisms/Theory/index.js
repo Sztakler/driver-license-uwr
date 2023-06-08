@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
 
 import Sidebar from "../../molecules/Sidebar";
+import Header from "../../molecules/Header";
 
 import {
 	Container,
@@ -236,22 +237,12 @@ export default function Theory({ navigation, content }) {
 
 	return (
 		<Container>
-			<HeaderContainer>
-				<TitleContainer>
-					<Title>Podręcznik</Title>
-					<Subtitle>
-						Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii
-						zasad ruchu drogowego.
-					</Subtitle>
-				</TitleContainer>
-				<IllustrationContainer>
-					<Image src={Illustrations.TextbookIllustration}></Image>
+      <Header title={"Podręcznik"} subtitle={"Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii zasad ruchu drogowego."} illustration={Illustrations.TextbookIllustration}>
 					<ScrolldownButton onClick={scrollDown}>
 						<Image src={Arrows.Down}></Image>
 					</ScrolldownButton>
-				</IllustrationContainer>
-			</HeaderContainer>
-			<MainContainer id="MainContainer">
+      </Header>
+      <MainContainer id="MainContainer">
 				{isSidebarVisible ? (
 					<SidebarContainer>
 						<ToggleSidebarButton />
