@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TrainingPage from "../src/ui/pages/TrainingPage";
+import TrainingPage from "../src/ui/pages/Training/TrainingPage";
 import PracticePage from "../src/ui/pages/PracticePage";
 import TheoryPage from "../src/ui/pages/TheoryPage";
 import HomePage from "../src/ui/pages/HomePage";
