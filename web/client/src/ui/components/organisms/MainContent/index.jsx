@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Sidebar from "../../molecules/Sidebar";
+import PanelsScroller from "../../molecules/PanelScroller";
 
 import {
   Container,
@@ -8,15 +9,12 @@ import {
   Content,
   Title,
   Subtitle,
-  PanelsScroller,
-  Panel,
   SidebarArrowButton,
   SidebarArrowButtonParagraph,
   SidebarButtonInvisibleCheckbox,
 } from "./styles";
 
 import Paragraph from "../../atoms/Paragraph";
-import Image from "../../atoms/Image";
 
 export default function MainContent({ navigation, panelsContents}) {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -96,19 +94,7 @@ export default function MainContent({ navigation, panelsContents}) {
           umieszczone na przedłużeniu osi jezdni (drogi) lub na samej jezdni
           (drodze).
         </Paragraph>
-        <PanelsScroller>
-          {panelsContents.map((panel) => (
-            <Panel>
-              <Image
-                src={panel.image}
-                className="h-[14rem] text-elipsis"
-              ></Image>
-              <Paragraph style="text-[#0d0d0d]">
-                {panel.description}
-              </Paragraph>
-            </Panel>
-          ))}
-        </PanelsScroller>
+        <PanelsScroller panelsContents={panelsContents} />
       </Content>
     </Container>
   );

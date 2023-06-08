@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import Sidebar from "../../molecules/Sidebar";
-import Header from "../../molecules/Header";
-import Paragraph from "../../atoms/Paragraph";
+import Header from "../../organisms/Header";
 import Image from "../../atoms/Image";
 import Illustrations from "/src/assets/images/svg/icons/Illustrations";
-import MainContent from "../../molecules/MainContent";
+import MainContent from "../../organisms/MainContent";
 
 import {
 	Container,
-	MainContainer,
-	SidebarContainer,
-	Content,
-	Title,
-	Subtitle,
-	PanelsScroller,
-	Panel,
-	SidebarArrowButton,
-	SidebarArrowButtonParagraph,
-	SidebarButtonInvisibleCheckbox,
 	ScrolldownButton,
 } from "./styles";
 
@@ -26,8 +14,6 @@ import znakiOstrzegawcze from "/src/assets/images/svg/textbook/znaki-ostrzegawcz
 import Arrows from "/src/assets/images/svg/icons/Arrows";
 
 export default function Theory({ navigation, content }) {
-	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
-
 	const panelsContents = [
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
@@ -168,10 +154,6 @@ export default function Theory({ navigation, content }) {
 			),
 		},
 	];
-
-	let handleSidebarClick = () => {
-		setIsSidebarVisible(!isSidebarVisible);
-	};
 
 	let scrollDown = () => {
 		document
