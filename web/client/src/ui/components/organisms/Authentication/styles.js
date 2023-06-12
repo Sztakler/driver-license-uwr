@@ -9,6 +9,8 @@ const AuthenticationContainer = tw.div`
 	bg-[#ffffff] 
 	bg-opacity-80
 	mt-[90px]
+	max-lg:mt-[61px]
+	
 `;
 
 export { AuthenticationContainer };

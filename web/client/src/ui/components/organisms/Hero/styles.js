@@ -9,6 +9,7 @@ const HeroContainer = tw.div`
 	justify-center
 	p-10
 	mt-[90px]
+	max-lg:mt-[61px]
 `;
 
 const UpperSection = tw.section`

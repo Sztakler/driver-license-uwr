@@ -6,6 +6,7 @@ const Container = tw.div`
 	max-md:flex-col
 	min-h-[calc(100vh-90px)]
 	mt-[90px]
+	max-lg:mt-[61px]
 	items-center
 	bg-[#FFF3DD]
 `;

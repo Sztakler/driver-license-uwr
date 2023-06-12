@@ -11,6 +11,8 @@ const RegistrationContainer = tw.div`
 	h-max
 	pt-6
 	mt-[90px]
+	max-lg:mt-[61px]
+
 `;
 
 const LeftContainer = tw.div`

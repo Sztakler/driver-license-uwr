@@ -6,6 +6,7 @@ const Container = tw.div`
 	max-md:flex-col
 	h-full
 	mt-[90px]
+	max-lg:mt-[61px]
 	bg-[#FFF3DD]
 	pt-12
 `;
@@ -21,6 +22,10 @@ const TitleContainer = tw.div`
 	flex 
 	flex-col
 	pl-44
+	max-lg:items-center
+	max-lg:justify-center
+	max-lg:text-center
+	max-lg:pl-0
 `;
 
 const IllustrationContainer = tw.div`
