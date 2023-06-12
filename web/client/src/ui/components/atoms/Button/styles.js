@@ -1,13 +1,12 @@
 const buttonPrimaryClasses =
-	"flex items-center justify-center bg-[#F5F5F5]  rounded-[3rem] border-2 border-black gap-2 w-26 h-14";
+	"flex items-center justify-center bg-[#FFDE8A]  rounded-[3rem] border-2 border-black gap-2 flex-wrap";
 
 const buttonBlankClasses =
 	"flex gap-2 items-center justify-center hover:font-semibold";
 
-const buttonHoverClasses = "hover:bg-[#FFD363]";
+const buttonHoverClasses = "hover:bg-[#FFBC0D]";
 
-const buttonNavbarClasses =
-	"bg-[#fffaed] border border-[#0d0d0d] rounded-[18px] 	px-[23px] py-[13px] hover:bg-[#FFD363]";
+const buttonNavbarClasses = "rounded-[18px] px-3 py-1 hover:bg-[#FFBC0D]";
 
 const buttonNavbarIconClasses = "px-[8px] py-[5px]";
 

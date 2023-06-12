@@ -21,6 +21,7 @@ import Paragraph from "../../atoms/Paragraph";
 import Text from "../../atoms/Text";
 import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 import Input from "../../atoms/Input";
+import Button from "../../atoms/Button";
 
 export default function TiledMenu({ data, headings, ...props }) {
 	const navigate = useNavigate();
@@ -45,8 +46,8 @@ export default function TiledMenu({ data, headings, ...props }) {
 		<Container>
 			<HeaderContainer>
 				<TitleContainer>
-					<Title className="text-8xl">Trening</Title>
-					<Subtitle className="text-2xl pt-5 max-w-prose mb-8">
+					<Title>Trening</Title>
+					<Subtitle className="text-base max-w-prose mb-8">
 						{isTrainingSelected
 							? "Wybierz pytania, które chcesz przećwiczyć:"
 							: "Zapraszamy Cię na sesję treningową! TRENING to pytania egzaminacyjne bez końca. Możesz użyć filtrów, aby wybrać pytania, których chcesz się dziś uczyć."}
@@ -57,28 +58,23 @@ export default function TiledMenu({ data, headings, ...props }) {
 					{isTrainingSelected ? (
 						<></>
 					) : (
-						<div className="flex flex-col">
+						<div className="flex flex-col max-w-[1830px] ">
 							<img
-								src={Illustrations.TrainingIllustration}
-								className="self-center w-[70%]"
+								src={Illustrations.TrainingIllustration2}
+								className="self-center w-[100%]"
 							></img>
-							<div className="flex flex-row flex-wrap w-full gap-4 justify-center">
-								<button
-									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[100px] border-[#0d0d0d]"
+							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px] mt-8">
+								<Button
+									primary
+									hover
+									size="l"
 									onClick={() => navigate("/trening/praktyka")}
 								>
-									<Subtitle className="text-4xl font-semibold text-center m-0 py-6">
-										PODSUMOWANIE TRENINGU
-									</Subtitle>
-								</button>
-								<button
-									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[100px] border-[#0d0d0d]"
-									onClick={scrollDown}
-								>
-									<Subtitle className="text-4xl font-semibold text-center m-0 py-6">
-										PRZEJDŹ DALEJ
-									</Subtitle>
-								</button>
+									Podsumowanie treningu
+								</Button>
+								<Button primary hover onClick={scrollDown} size="l">
+									Wybór pytań
+								</Button>
 							</div>
 						</div>
 					)}
@@ -87,13 +83,16 @@ export default function TiledMenu({ data, headings, ...props }) {
 
 			<MainContainer id="MainContainer" className="relative">
 				{isTrainingSelected ? (
-					<div className="flex flex-col w-full gap-[200px]">
-						<form className="flex flex-row align-center justify-center w-full h-full gap-48">
+					<div className="flex flex-col items-center justify-start w-full">
+						<form className="flex flex-row align-center justify-center gap-48 border-x-[40px] border-y-[20px] border-[#FFD363] p-16 rounded-xl mb-14">
 							<div className="flex flex-col justify-start">
 								<label for="all" className="flex flex-row pb-2">
 									<Input checkbox id="all" type="checkbox" value="all"></Input>
 									<Paragraph style="text-2xl">
-										<Text className="font-semibold">Wszystkie </Text>(2125)
+										<Text className="font-semibold text-[18.3px]">
+											Wszystkie
+										</Text>
+										<Text className="text-[18.3px]"> (2125)</Text>
 									</Paragraph>
 								</label>
 
@@ -105,7 +104,10 @@ export default function TiledMenu({ data, headings, ...props }) {
 										value="saved"
 									></Input>
 									<Paragraph style="text-2xl">
-										<Text className="font-semibold">Zapisane </Text>(25)
+										<Text className="font-semibold text-[18.3px]">
+											Zapisane{" "}
+										</Text>
+										<Text className="text-[18.3px]">(25)</Text>
 									</Paragraph>
 								</label>
 							</div>
@@ -115,40 +117,38 @@ export default function TiledMenu({ data, headings, ...props }) {
 									Poziom znajomości:
 								</Subtitle>
 
-								<label for="low" className="flex flex-row pb-2">
+								<label for="low" className="flex flex-row pb-2 items-center ">
 									<Input checkbox id="low" type="checkbox" value="low"></Input>
-									<Paragraph style="text-xl">niski (1000)</Paragraph>
+									<Paragraph style="text-[16.1px]">niski (1000)</Paragraph>
 								</label>
 
-								<label for="medium" className="flex flex-row pb-2">
+								<label
+									for="medium"
+									className="flex flex-row pb-2 items-center "
+								>
 									<Input
 										checkbox
 										id="medium"
 										type="checkbox"
 										value="medium"
 									></Input>
-									<Paragraph style="text-xl">średni (1000)</Paragraph>
+									<Paragraph style="text-[16.1px]">średni (1000)</Paragraph>
 								</label>
 
-								<label for="high" className="flex flex-row pb-2">
+								<label for="high" className="flex flex-row pb-2 items-center ">
 									<Input
 										checkbox
 										id="high"
 										type="checkbox"
 										value="high"
 									></Input>
-									<Paragraph style="text-xl">wysoki (1000)</Paragraph>
+									<Paragraph style="text-[16.1px]">wysoki (1000)</Paragraph>
 								</label>
 							</div>
 						</form>
-						<button
-							className="self-center bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[70%] border rounded-[100px] border-[#0d0d0d] mb-[102px]"
-							onClick={startPractice}
-						>
-							<Subtitle className="text-4xl font-semibold text-center m-0 py-6">
-								ROZPOCZNIJ TRENING
-							</Subtitle>
-						</button>
+						<Button primary hover onClick={startPractice} size="l">
+							Rozpocznij trening
+						</Button>
 					</div>
 				) : (
 					<div></div>

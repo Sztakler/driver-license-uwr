@@ -38,7 +38,7 @@ export default function TaskBottom() {
 									onClick={() => {
 										!inReviewMode && setNewPickedAnswer(index);
 									}}
-									size="l"
+									size="s"
 									picked={index === pickedAnswer}
 									result={inReviewMode ? getTaskResult(index) : ""}
 								>

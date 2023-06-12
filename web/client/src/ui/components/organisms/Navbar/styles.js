@@ -1,11 +1,15 @@
 import tw from "tailwind-styled-components";
 
 const NavbarContainer = tw.div`
+	fixed
+	top-0
+	w-full
+	z-10
 	flex 
 	flex-[0_1_auto]
 	max-lg:flex-col
 	items-center 
-	bg-[#ffefd0]
+	bg-[#FFEFCF]
 
 	lg:justify-between
 	max-lg:justify-center

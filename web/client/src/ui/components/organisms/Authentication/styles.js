@@ -8,6 +8,7 @@ const AuthenticationContainer = tw.div`
 	rounded-3xl 
 	bg-[#ffffff] 
 	bg-opacity-80
+	mt-[90px]
 `;
 
 export { AuthenticationContainer };

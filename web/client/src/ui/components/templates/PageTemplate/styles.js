@@ -4,7 +4,6 @@ const PageWrapper = tw.div`
 	flex 
 	flex-col
 	w-full
-	bg-white
 	h-full
 
 	overflow-y-auto

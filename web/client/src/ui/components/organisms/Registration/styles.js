@@ -5,15 +5,16 @@ const RegistrationContainer = tw.div`
 	flex-row
 	justify-center
 	align-center
-	gap-56
+	gap-36
 	w-full
 	rounded-3xl 
 	h-max
-	pt-12
+	pt-6
+	mt-[90px]
 `;
 
 const LeftContainer = tw.div`
-hidden lg:flex flex-col gap-y-20 py-11
+hidden lg:flex flex-col gap-y-20 py-11 min-w-[850px]
 `;
 
 const InfoContainer = tw.div`
@@ -33,11 +34,11 @@ const ListContainer = tw.div`
 `;
 
 const ImageContainer = tw.div`
-
+	h-full
 `;
 
 const RightContainer = tw.div`
-flex flex-col bg-[#fffaed] border border-[#0d0d0d] rounded-[46px] p-32 pt-8
+flex flex-col bg-[#fffaed] border border-[#0d0d0d] rounded-[46px] py-16 px-16 pt-8 mr-8
 `;
 
 const RegisterFormContainer = tw.div`
@@ -89,24 +90,24 @@ text-xs text-[#808080] max-w-prose py-4
 `;
 
 export {
-    RegistrationContainer,
-		LeftContainer,
-		InfoContainer,
-		Title,
-		ImageContainer,
-		ListContainer,
-		RightContainer,
-		RegisterForm,
-		RegisterFormContainer,
-		TopInputsContainer,
-		BottomInputsContainer,
-		SubmitButtonContainer,
-		LoginButtonContainer,
-		TextGrayedSpan,
-		LoginButton,
-		TextUnderlineSpan,
-		InputWrapper,
-		Disclaimer,
-		Subtitle,
-		InputLabelText
+	RegistrationContainer,
+	LeftContainer,
+	InfoContainer,
+	Title,
+	ImageContainer,
+	ListContainer,
+	RightContainer,
+	RegisterForm,
+	RegisterFormContainer,
+	TopInputsContainer,
+	BottomInputsContainer,
+	SubmitButtonContainer,
+	LoginButtonContainer,
+	TextGrayedSpan,
+	LoginButton,
+	TextUnderlineSpan,
+	InputWrapper,
+	Disclaimer,
+	Subtitle,
+	InputLabelText,
 };

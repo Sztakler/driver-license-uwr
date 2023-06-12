@@ -49,10 +49,20 @@ export default function Quit() {
 						: "Czy napewno chcesz zakończyć trening?"}
 				</Heading>
 				<div>
-					<Button primary hover onClick={() => handleFinishTraining(true)}>
+					<Button
+						primary
+						size="xs"
+						hover
+						onClick={() => handleFinishTraining(true)}
+					>
 						TAK
 					</Button>
-					<Button primary hover onClick={() => handleFinishTraining(false)}>
+					<Button
+						primary
+						hover
+						size="xs"
+						onClick={() => handleFinishTraining(false)}
+					>
 						NIE
 					</Button>
 				</div>

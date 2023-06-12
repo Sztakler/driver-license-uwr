@@ -15,6 +15,18 @@ export const resultsState = atom({
 	effects_UNSTABLE: [persistAtom],
 });
 
+export const resultsExamState = atom({
+	key: "resultsExamState",
+	default: {
+		questionCounter: 0,
+		scoredPoints: 0,
+		correctAnswers: 0,
+		incorrectAnswers: 0,
+		skippedQuestions: 0,
+	},
+	effects_UNSTABLE: [persistAtom],
+});
+
 export const inReviewModeState = atom({
 	key: "inReviewMode",
 	default: false,

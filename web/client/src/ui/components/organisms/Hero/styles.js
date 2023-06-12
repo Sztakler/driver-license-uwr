@@ -8,6 +8,7 @@ const HeroContainer = tw.div`
 	items-center
 	justify-center
 	p-10
+	mt-[90px]
 `;
 
 const UpperSection = tw.section`
@@ -90,4 +91,19 @@ const ButtonAbsoluteContainer = tw.div`
 const PanelAbsolute = tw.div`
 `;
 
-export { HeroContainer, UpperSection, LowerSection, Title, SubTitle, IllustrationContainer, PanelContainer, PanelButton, Panel, InfoContainer, ImageContainer, PanelAbsolute, ButtonAbsolute, ButtonAbsoluteContainer};
+export {
+	HeroContainer,
+	UpperSection,
+	LowerSection,
+	Title,
+	SubTitle,
+	IllustrationContainer,
+	PanelContainer,
+	PanelButton,
+	Panel,
+	InfoContainer,
+	ImageContainer,
+	PanelAbsolute,
+	ButtonAbsolute,
+	ButtonAbsoluteContainer,
+};

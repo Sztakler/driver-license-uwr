@@ -16,7 +16,7 @@ const MainContent = tw.div`
 	self-center
 	w-full
 	items-center
-	h-screen
+	min-h-screen
 	p-8
 `;
 

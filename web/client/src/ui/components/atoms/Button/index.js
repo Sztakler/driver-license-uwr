@@ -13,22 +13,27 @@ import {
 } from "./styles";
 
 function assignButtonSize(size) {
-	let fontSize = "text-base";
-	let containerPaddings = "px-4 py-3";
+	let fontSize = "";
+	let buttonSize = "";
 
+	if (size === "xs") {
+		fontSize = "text-[16px]";
+		buttonSize = "w-16 h-12";
+	}
 	if (size === "s") {
-		containerPaddings = "px-3 py-2";
+		fontSize = "text-[16px]";
+		buttonSize = "w-44 h-12";
 	}
 	if (size === "m") {
-		fontSize = "text-xl";
-		containerPaddings = "px-4 py-3";
+		fontSize = "text-[19px]";
+		buttonSize = "w-96 h-12";
 	}
 	if (size === "l") {
-		fontSize = "text-2xl";
-		containerPaddings = "px-5 py-4";
+		fontSize = "text-[23px]";
+		buttonSize = "w-108 h-16";
 	}
 
-	return [fontSize, containerPaddings];
+	return [fontSize, buttonSize];
 }
 
 function assignBubbleSize(size) {
@@ -61,7 +66,7 @@ const StyledButton = tw.button`
 	${(props) => props.bubble && buttonBubbleClasses}
   ${(props) => props.bold && buttonBoldClasses}
 	${(props) => props.full && "w-full"}
-  ${(props) => props.active && "bg-[#FFD363]"}
+  ${(props) => props.active && "bg-[#FFBC0D]"}
   ${(props) => props.picked && "bg-[#91CE6B]"}
   ${(props) =>
 		props.result === "skipped"
@@ -71,7 +76,6 @@ const StyledButton = tw.button`
 			: props.result === "incorrect"
 			? "bg-[#FF6130]"
 			: ""}
-
 `;
 
 export default function Button(props) {

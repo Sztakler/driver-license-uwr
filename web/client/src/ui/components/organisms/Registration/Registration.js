@@ -41,13 +41,6 @@ export default function Registration() {
 	return (
 		<RegistrationContainer>
 			<LeftContainer>
-				<InfoContainer>
-					<Title>Załóż darmowe konto</Title>
-					<ListContainer>
-						<Subtitle>Zyskasz możliwości:</Subtitle>
-						<BulletList points={points} bullet="•" />
-					</ListContainer>
-				</InfoContainer>
 				<ImageContainer>
 					<Image src={Illustrations.RegistrationIllustration}></Image>
 				</ImageContainer>
@@ -55,7 +48,7 @@ export default function Registration() {
 
 			<RightContainer>
 				<LoginButtonContainer>
-					<TextGrayedSpan>Masz już konto?</TextGrayedSpan>
+					<TextGrayedSpan>Masz już konto? </TextGrayedSpan>
 					<LoginButton>Zaloguj się</LoginButton>
 				</LoginButtonContainer>
 				<RegisterFormContainer>
@@ -100,21 +93,18 @@ export default function Registration() {
 
 						<SubmitButtonContainer>
 							<Disclaimer>
-								Klikając przycisk Załóż konto, akceptujesz nasz{" "}
-								<TextUnderlineSpan>Regulamin</TextUnderlineSpan>,{" "}
+								Klikając przycisk Załóż konto, akceptujesz nasz&nbsp;
+								<TextUnderlineSpan>Regulamin</TextUnderlineSpan>,&nbsp;
 								<TextUnderlineSpan>
-									Zasady ochrony prywatności
-								</TextUnderlineSpan>{" "}
-								i{" "}
+									zasady ochrony prywatności&nbsp;
+								</TextUnderlineSpan>
+								i&nbsp;
 								<TextUnderlineSpan>
-									Zasady dotyczące plików cookie
+									zasady dotyczące plików cookie
 								</TextUnderlineSpan>
 								.
 							</Disclaimer>
-							<Button
-								submit
-								className="bg-[#ffd363] text-base font-semibold text-[#0d0d0d] border border-[#0d0d0d] rounded-[18px]"
-							>
+							<Button primary size="s">
 								Załóż konto
 							</Button>
 						</SubmitButtonContainer>

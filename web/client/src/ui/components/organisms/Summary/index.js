@@ -115,7 +115,7 @@ export default function Summary({ isTraining }) {
 							}
 						}}
 					>
-						<ArrowLeft /> Przejrzyj odpowiedzi
+						<ArrowLeft /> <Text>Przejrzyj odpowiedzi</Text>
 					</Button>
 				</InsideBackground>
 			</InnerTextBox>

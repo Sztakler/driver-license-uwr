@@ -28,6 +28,7 @@ import {
 	Row,
 	NextPrevious,
 } from "./styles";
+import Heading from "../../../atoms/Heading";
 
 export default function Menu() {
 	const {
@@ -157,18 +158,22 @@ export default function Menu() {
 
 	return (
 		<MenuContainer inReviewMode={inReviewMode}>
-			<Quit />
-			<Button primary hover full size="l" onClick={handleExplanationShowButton}>
+			<Button
+				blank
+				className="justify-center items-center w-[200px]"
+				onClick={handleExplanationShowButton}
+			>
 				<Explanation />
-				<Text>Pokaż wyjaśnienie</Text>
+				<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
 			</Button>
+			<Quit />
 			<Modal
 				onClose={() => {
 					setExplanationModalShow(false);
 				}}
 				show={explanationModalShow}
 			>
-				<h4>Wyjaśnienie odpowiedzi</h4>
+				<Heading level={4}>Wyjaśnienie odpowiedzi</Heading>
 				<Text>
 					<b>Art. 26. ust. 1.</b>
 					Kierujący pojazdem, zbliżając się do przejścia dla pieszych, jest
@@ -178,14 +183,13 @@ export default function Menu() {
 			</Modal>
 			{!inReviewMode ? (
 				<TimerContainer>
-					<Label size="m">Czas na zapoznanie się z pytaniem</Label>
 					<Row>
-						<Button primary hover size="m" onClick={handleStartButton}>
+						<Button primary hover size="s" onClick={handleStartButton}>
 							<Text>START</Text>
 						</Button>
 						<CustomTimer expired={currentTime === 0}>
 							<Clock />
-							{currentTime} sekund
+							<Text>{currentTime} sekund</Text>
 						</CustomTimer>
 					</Row>
 				</TimerContainer>

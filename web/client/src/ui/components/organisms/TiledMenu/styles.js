@@ -5,7 +5,9 @@ const Container = tw.div`
 	flex-col
 	max-md:flex-col
 	min-h-[calc(100vh-90px)]
-	bg-[#FFEFD0]
+	mt-[90px]
+	items-center
+	bg-[#FFF3DD]
 `;
 
 const HeaderContainer = tw.div`
@@ -14,25 +16,25 @@ const HeaderContainer = tw.div`
 	max-lg:items-center
 	max-lg:justify-center
 	max-lg:text-center
-	
-	h-full
+	w-full
+	max-w-[1830px]	
 `;
 
 const TitleContainer = tw.div`
 	flex 
 	flex-col
 	px-44
+	mb-8
 `;
 
 const IllustrationContainer = tw.div`
 	flex
 	flex-col
-	mb-20
+	mb-10
 `;
 
 const MainContainer = tw.div`
 	flex
-	flex-row
 	max-md:flex-col
 	h-full
 `;
@@ -53,7 +55,8 @@ const Content = tw.div`
 `;
 
 const Title = tw.div`
-	text-5xl
+	text-[90px]
+	leading-[1.4]
 	text-[#0d0d0d]
 	font-display
 `;

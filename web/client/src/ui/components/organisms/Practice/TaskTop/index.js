@@ -22,9 +22,18 @@ export default function TaskTop() {
 	return (
 		<TaskTopSection>
 			<TaskInfo>
-				<Text>Typ pytania: {task.zakres_struktury}</Text>
-				<Text>Wartość punktowa: {task.liczba_punktow}</Text>
-				<Text>Liczba rozwiązanych zadań: 100</Text>
+				<div>
+					<Text className="font-light">Typ pytania: </Text>
+					<Text className="font-normal">{task.zakres_struktury}</Text>
+				</div>
+				<div>
+					<Text className="font-light">Wartość punktowa: </Text>
+					<Text className="font-normal">{task.liczba_punktow} pkt</Text>
+				</div>
+				<div>
+					<Text className="font-light">Liczba rozwiązanych zadań: </Text>
+					<Text className="font-normal">100</Text>
+				</div>
 			</TaskInfo>
 			<Button
 				bubble

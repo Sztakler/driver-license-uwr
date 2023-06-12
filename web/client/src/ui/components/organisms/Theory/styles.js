@@ -5,7 +5,8 @@ const Container = tw.div`
 	flex-col
 	max-md:flex-col
 	h-full
-	bg-[#FFFAED]
+	mt-[90px]
+	bg-[#FFF3DD]
 	pt-12
 `;
 
@@ -13,7 +14,6 @@ const HeaderContainer = tw.div`
 	flex
 	flex-col
 	h-full
-	bg-[#FFFAED]
 	mb-48
 `;
 

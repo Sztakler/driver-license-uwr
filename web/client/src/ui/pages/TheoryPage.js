@@ -69,19 +69,16 @@ let contents = {
 	"znaki-zakazu": "zakaz",
 	"znaki-informacyjne": "informacyjne",
 	"znaki-kierunku-i-miejscowosci": "kierunku-i-miejscowosci",
-	"znaki-uzupelniajace": "uzupelniajace"
-}
+	"znaki-uzupelniajace": "uzupelniajace",
+};
 
 export default function TheoryPage() {
 	const location = useLocation();
 	let output = location.pathname.split("/").pop();
 	let content = contents[output] ?? contents.default;
 	return (
-		<PageTemplate header={<Navbar lighter/>} footer={<Footer />}>
-			<Theory
-				navigation={navigation}
-				content={content}
-			/>
+		<PageTemplate header={<Navbar />} footer={<Footer />}>
+			<Theory navigation={navigation} content={content} />
 		</PageTemplate>
 	);
 }
