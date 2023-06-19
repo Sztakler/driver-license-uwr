@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Image from "../components/atoms/Image";
+import Image from "../../components/atoms/Image";
 
-import NoNavbarTemplate from "../components/templates/NoNavbarTemplate";
-import Exam from "../components/organisms/Exam";
-import Navbar from "../components/organisms/Navbar";
-import Footer from "../components/organisms/Footer";
+import NoNavbarTemplate from "../../components/templates/NoNavbarTemplate";
+import Exam from "../../components/organisms/Exam";
+import Navbar from "../../components/organisms/Navbar";
+import Footer from "../../components/organisms/Footer";
 
 
 const json = [
@@ -186,9 +186,9 @@ import {
   AnswerMarker,
   TimerText,
 } from "./styles";
-import Button from "../components/atoms/Button";
-import Paragraph from "../components/atoms/Paragraph";
-import Modal from "../components/molecules/Modal";
+import Button from "../../components/atoms/Button";
+import Paragraph from "../../components/atoms/Paragraph";
+import Modal from "../../components/molecules/Modal";
 import TestImage from "/src/assets/images/test.jpg";
 import {func} from "prop-types";
 import { useNavigate } from "react-router";

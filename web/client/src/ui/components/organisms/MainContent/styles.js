@@ -1,43 +1,15 @@
 import tw from "tailwind-styled-components";
 
+
 const Container = tw.div`
+	relative
 	flex
-	flex-col
+	flex-row
 	max-md:flex-col
-	min-h-[calc(100vh-90px)]
-	mt-[90px]
-	max-lg:mt-[61px]
-	items-center
-	bg-[#FFF3DD]
-`;
-
-const HeaderContainer = tw.div`
-	flex
-	flex-col
-	max-lg:items-center
-	max-lg:justify-center
-	max-lg:text-center
 	w-full
-	max-w-[1830px]	
-`;
-
-const TitleContainer = tw.div`
-	flex 
-	flex-col
-	px-44
-	mb-8
-`;
-
-const IllustrationContainer = tw.div`
-	flex
-	flex-col
-	mb-10
-`;
-
-const MainContainer = tw.div`
-	flex
-	max-md:flex-col
 	h-full
+	bg-[#FFFAED]
+	pt-6
 `;
 
 const SidebarContainer = tw.div`
@@ -48,6 +20,10 @@ const SidebarContainer = tw.div`
 	bg-[#FFFAED]
 `;
 
+const SidebarArrowButton = tw.div`
+absolute top-[16px] left-[330px] flex flex-col cursor-pointer
+`;
+
 const Content = tw.div`
 	grid
 	grid-rows-auto
@@ -56,16 +32,18 @@ const Content = tw.div`
 `;
 
 const Title = tw.div`
-	text-[90px]
-	leading-[1.4]
+	text-8xl
 	text-[#0d0d0d]
 	font-display
 `;
 
 const Subtitle = tw.div`
-	text-sm
+	text-2xl
+	mb-6
+	pt-5
 	text-overflow
 	text-[#0d0d0d]
+	max-w-prose
 `;
 
 const PanelsScroller = tw.div`
@@ -79,7 +57,7 @@ const PanelsScroller = tw.div`
 
 	snap-mandatory
 	snap-x
-	scroll-pl-10 // add padding to scroll
+	scroll-pl-10
 	scrollbar
 `;
 
@@ -102,16 +80,28 @@ const Panel = tw.div`
 	snap-start
 `;
 
+const SidebarArrowButtonParagraph = tw.div`
+rotate-90 translate-y-16 -translate-x-10
+`;
+
+const SidebarButtonInvisibleCheckbox = tw.input`
+appearance-none w-[60px] checked:bg-blue-500
+`;
+
+const ScrolldownButton = tw.button`
+self-center mt-10
+`;
+
 export {
-	Container,
-	HeaderContainer,
-	MainContainer,
-	IllustrationContainer,
-	TitleContainer,
+  Container,
 	SidebarContainer,
 	Content,
 	Title,
 	Subtitle,
 	PanelsScroller,
 	Panel,
+	SidebarArrowButton,
+	SidebarArrowButtonParagraph,
+	SidebarButtonInvisibleCheckbox,
+	ScrolldownButton,
 };

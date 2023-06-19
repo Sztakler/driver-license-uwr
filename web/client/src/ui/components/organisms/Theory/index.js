@@ -1,39 +1,19 @@
 import React, { useEffect, useState } from "react";
-import parse from "html-react-parser";
 
-import Sidebar from "../../molecules/Sidebar";
+import Header from "../../organisms/Header";
+import Image from "../../atoms/Image";
+import Illustrations from "/src/assets/images/svg/icons/Illustrations";
+import MainContent from "../../organisms/MainContent";
 
 import {
 	Container,
-	MainContainer,
-	HeaderContainer,
-	TitleContainer,
-	IllustrationContainer,
-	SidebarContainer,
-	Content,
-	Title,
-	Subtitle,
-	PanelsScroller,
-	Panel,
-	SidebarArrowButton,
-	SidebarArrowButtonParagraph,
-	SidebarButtonInvisibleCheckbox,
 	ScrolldownButton,
 } from "./styles";
 
 import znakiOstrzegawcze from "/src/assets/images/svg/textbook/znaki-ostrzegawcze/znaki-ostrzegawcze";
-import textbookImage from "/src/assets/images/svg/icons/Illustrations";
 import Arrows from "/src/assets/images/svg/icons/Arrows";
-import ArrowLeft from "/src/icons/ArrowLeft";
-import ArrowRight from "../../../../icons/ArrowLeft";
-
-import Paragraph from "../../atoms/Paragraph";
-import Image from "../../atoms/Image";
-import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 
 export default function Theory({ navigation, content }) {
-	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
-
 	const panelsContents = [
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
@@ -175,118 +155,21 @@ export default function Theory({ navigation, content }) {
 		},
 	];
 
-	let handleSidebarClick = () => {
-		setIsSidebarVisible(!isSidebarVisible);
-	};
-
 	let scrollDown = () => {
 		document
-			.getElementById("MainContainer")
+			.getElementById("MainContent")
 			.scrollIntoView({ behavior: "smooth" });
 	};
 
-	function Arrow(props) {
-		return (
-			<svg
-				className={props.sidebarHidden ? "rotate-180" : ""}
-				width="29"
-				height="22"
-				viewBox="0 0 29 22"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					d="M10.5141 1L1 10.5141L10.5141 20.0282"
-					stroke="#292D32"
-					stroke-width="2"
-					stroke-miterlimit="10"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/>
-				<path
-					d="M27.6454 10.5144H1.26611"
-					stroke="#292D32"
-					stroke-width="2"
-					stroke-miterlimit="10"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				/>
-			</svg>
-		);
-	}
-
-	function ToggleSidebarButton(props) {
-		return (
-			<SidebarArrowButton
-				onClick={handleSidebarClick}
-				className={props.sidebarHidden ? "top-[16px] left-[8px]" : ""}
-			>
-				{props.sidebarHidden ? <Arrow sidebarHidden /> : <Arrow />}
-				<SidebarArrowButtonParagraph
-					className={
-						props.sidebarHidden ? "translate-y-16 -translate-x-14" : ""
-					}
-				>
-					Zwiń spis treści
-				</SidebarArrowButtonParagraph>
-				<SidebarButtonInvisibleCheckbox type="checkbox"></SidebarButtonInvisibleCheckbox>
-			</SidebarArrowButton>
-		);
-	}
 
 	return (
 		<Container>
-			<HeaderContainer>
-				<TitleContainer>
-					<Title>Podręcznik</Title>
-					<Subtitle>
-						Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii
-						zasad ruchu drogowego.
-					</Subtitle>
-				</TitleContainer>
-				<IllustrationContainer>
-					<Image src={Illustrations.TextbookIllustration}></Image>
+      <Header title={"Podręcznik"} subtitle={"Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii zasad ruchu drogowego."} illustration={Illustrations.TextbookIllustration}>
 					<ScrolldownButton onClick={scrollDown}>
 						<Image src={Arrows.Down}></Image>
 					</ScrolldownButton>
-				</IllustrationContainer>
-			</HeaderContainer>
-			<MainContainer id="MainContainer">
-				{isSidebarVisible ? (
-					<SidebarContainer>
-						<ToggleSidebarButton />
-						<Sidebar navigation={navigation}></Sidebar>
-					</SidebarContainer>
-				) : (
-					<ToggleSidebarButton sidebarHidden />
-				)}
-				<Content>
-					<Title>Znaki ostrzegawcze</Title>
-					<Subtitle>rozdział: Znaki pionowe</Subtitle>
-					<Paragraph
-						style="text-[#0d0d0d] max-w-prose text-lg text-left"
-						content=""
-					>
-						Znaki te wskazują kierującemu jak powinien się zachować w miejscu,
-						do którego się zbliża. Znaki nakazujące kierunek jazdy mogą być
-						umieszczone na przedłużeniu osi jezdni (drogi) lub na samej jezdni
-						(drodze).
-					</Paragraph>
-					<PanelsScroller>
-						{panelsContents.map((panel) => (
-							<Panel>
-								<Image
-									src={panel.image}
-									className="h-[14rem] text-elipsis"
-								></Image>
-								<Paragraph style="text-[#0d0d0d]">
-									{panel.description}
-								</Paragraph>
-							</Panel>
-						))}
-					</PanelsScroller>
-				</Content>
-			</MainContainer>
+      </Header>
+      <MainContent navigation={navigation} panelsContents={panelsContents}/>
 		</Container>
 	);
 }

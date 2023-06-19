@@ -6,6 +6,7 @@ import {
 	labelPrimaryClasses,
 	labelLoginClasses,
 	labelTimerClasses,
+  labelTrainingFormClasses,
 } from "./styles";
 
 function assignFontSize(size) {
@@ -35,6 +36,7 @@ const StyledLabel = tw.label`
 	${(props) => props.primary && labelPrimaryClasses}
   	${(props) => props.login && labelLoginClasses}
   	${(props) => props.timer && labelTimerClasses}
+  ${(props) => props.training && labelTrainingFormClasses}
 	${(props) => assignFontSize(props.size)}
 `;
 

@@ -23,7 +23,7 @@ import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 
-export default function TiledMenu({ data, headings, ...props }) {
+export default function Training({ data, headings, ...props }) {
 	const navigate = useNavigate();
 
 	const [isTrainingSelected, setIsTraningSelected] = useState(false);
@@ -69,6 +69,7 @@ export default function TiledMenu({ data, headings, ...props }) {
 									hover
 									size="l"
 									onClick={() => navigate("/trening/praktyka")}
+									className="w-108 h-16"
 								>
 									Podsumowanie treningu
 								</Button>
