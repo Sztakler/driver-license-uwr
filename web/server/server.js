@@ -66,6 +66,34 @@ app.get("/api/test", async (req, res) => {
 	}
 });
 
+app.post("/api/exam/results", async (req, res) => {
+	try {
+		const { user_id, questions, summary} = req.body;
+		let result = await pool.query(`
+		insert into results (user_id, questions, summary)
+		values (
+			${user_id},
+			'${JSON.stringify(questions)}',
+			'${JSON.stringify(summary)}'
+		);
+		`);
+	} catch (error) {
+		console.error(error.message);
+	}
+})
+
+app.get("/api/exam/results", async (req, res) => {
+	try {
+		const randomResult = await pool.query(
+			"SELECT * FROM results ORDER BY RANDOM() LIMIT 1;"
+		);
+		console.log(randomResult.rows[0])
+		res.json(randomResult.rows[0]);
+	} catch (err) {
+		console.error(err.message);
+	}
+})
+
 app.listen(5000, () => {
 	console.log("Server started on port 5000");
 });
