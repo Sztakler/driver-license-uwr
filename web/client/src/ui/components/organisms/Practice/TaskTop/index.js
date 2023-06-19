@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { inReviewModeState } from "../../../../../recoil/atoms";
+// import { inReviewModeState } from "../../../../../recoil/atoms";
 import { useRecoilState } from "recoil";
 import TaskContext from "../../../../../context/TaskContext";
 import Star from "../../../../../icons/Star";
@@ -10,10 +10,10 @@ import Video from "../../../atoms/Video";
 import { TaskTopSection, InnerWrapper, TaskInfo, ImageBox } from "./styles";
 import Button from "../../../atoms/Button";
 
-export default function TaskTop() {
+export default function TaskTop({isReview}) {
 	const [favoriteTask, setFavoriteTask] = useState(false);
 	const { task, setTask, taskStarted } = useContext(TaskContext);
-	const [inReviewMode] = useRecoilState(inReviewModeState);
+	// const [inReviewMode] = useRecoilState(inReviewModeState);
 
 	const mediaExtension = task.media.includes(".")
 		? task.media.split(".").pop()
@@ -49,7 +49,7 @@ export default function TaskTop() {
 			</Button>
 			<ImageBox>
 				{console.log(task)}
-				{taskStarted || inReviewMode ? (
+				{taskStarted || isReview ? (
 					mediaExtension === "mp4" ? (
 						<Video src={task.media} autoPlay></Video>
 					) : mediaExtension === "jpg" ? (

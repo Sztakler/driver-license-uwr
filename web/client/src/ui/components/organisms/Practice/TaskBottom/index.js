@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useRecoilState } from "recoil";
-import { inReviewModeState } from "../../../../../recoil/atoms";
+// import { isReviewState } from "../../../../../recoil/atoms";
 import TaskContext from "../../../../../context/TaskContext";
 import Button from "../../../atoms/Button";
 import Text from "../../../atoms/Text";
@@ -8,10 +8,11 @@ import Paragraph from "../../../atoms/Paragraph";
 
 import { Answers, Answer, TaskBottomSection } from "./styles";
 
-export default function TaskBottom() {
+export default function TaskBottom({isReview}) {
 	const { task, setTask, pickedAnswer, setNewPickedAnswer } =
 		useContext(TaskContext);
-	const [inReviewMode, setInReviewMode] = useRecoilState(inReviewModeState);
+	// const [isReview, setisReview] = useRecoilState(isReviewState);
+	
 
 	function getTaskResult(answer) {
 		if (task.poprawna_odpowiedz === answer) {
@@ -36,11 +37,11 @@ export default function TaskBottom() {
 								<Button
 									primary
 									onClick={() => {
-										!inReviewMode && setNewPickedAnswer(index);
+										!isReview && setNewPickedAnswer(index);
 									}}
 									size="s"
 									picked={index === pickedAnswer}
-									result={inReviewMode ? getTaskResult(index) : ""}
+									result={isReview ? getTaskResult(index) : ""}
 								>
 									<Text>{answer}</Text>
 								</Button>
@@ -58,11 +59,11 @@ export default function TaskBottom() {
 								<Button
 									bubble
 									onClick={() => {
-										!inReviewMode && setNewPickedAnswer(index);
+										!isReview && setNewPickedAnswer(index);
 									}}
 									size="m"
 									picked={index === pickedAnswer}
-									result={inReviewMode ? getTaskResult(index) : ""}
+									result={isReview ? getTaskResult(index) : ""}
 								>
 									{String.fromCharCode(65 + index)}
 								</Button>

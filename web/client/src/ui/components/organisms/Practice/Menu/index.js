@@ -1,13 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-import { useRecoilState } from "recoil";
-import {
-	inReviewModeState,
-	cachedAnswersState,
-	resultsState,
-} from "../../../../../recoil/atoms";
-
 import TaskContext from "../../../../../context/TaskContext";
 import ArrowRight from "/src/icons/ArrowRight";
 import ArrowLeft from "/src/icons/ArrowLeft";
@@ -29,8 +22,9 @@ import {
 	NextPrevious,
 } from "./styles";
 import Heading from "../../../atoms/Heading";
+import { func } from "prop-types";
 
-export default function Menu() {
+export default function Menu({isReview}) {
 	const {
 		task,
 		setNewTask,
@@ -41,10 +35,9 @@ export default function Menu() {
 	} = useContext(TaskContext);
 	const [currentTime, setCurrentTime] = useState(30);
 	const [explanationModalShow, setExplanationModalShow] = useState(false);
-	const [inReviewMode, setInReviewMode] = useRecoilState(inReviewModeState);
-	const [cachedAnswers, setCachedAnswers] = useRecoilState(cachedAnswersState);
-	const [result, setResult] = useRecoilState(resultsState);
-	const [taskIdx, setTaskIdx] = useState(inReviewMode ? 0 : -1);
+	const [cachedAnswers, setCachedAnswers] = useState([]);
+	const [result, setResult] = useState({});
+	const [taskIdx, setTaskIdx] = useState(isReview ? 0 : -1);
 
 	function decrementTimer() {
 		if (taskStarted && currentTime > 0) {
@@ -53,7 +46,7 @@ export default function Menu() {
 	}
 
 	async function nextQuestion() {
-		if (inReviewMode) {
+		if (isReview) {
 			const newTaskIdx =
 				taskIdx + 1 <= cachedAnswers.length - 1 ? taskIdx + 1 : taskIdx;
 			setNewTask(cachedAnswers[newTaskIdx]);
@@ -80,12 +73,47 @@ export default function Menu() {
 		setNewPickedAnswer(cachedAnswers[newTaskIdx].wybrana_odpowiedz);
 	}
 
-	function getRandomTask() {
+	async function getRandomTask() {
 		return fetch("http://localhost:5000/api/practice/random")
 			.then((response) => response.json())
 			.then((data) => {
 				return data;
 			});
+	}
+
+	async function sendResultsToDatabase() {
+		let data = {
+			user_id: 321,
+			questions: cachedAnswers,
+			summary: result,
+		}
+		try {
+			const response = await fetch('http://localhost:5000/api/exam/results', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
+	
+			if (response.ok) {
+				console.log('Data submitted successfully');
+				// Additional actions or state updates after successful submission
+			} else {
+				console.error('Error submitting data');
+			}
+		} catch (error) {
+			console.error('Network error:', error);
+		}
+	}
+
+	async function getRandomResult() {
+		let res = await fetch("http://localhost:5000/api/exam/results")
+			.then((response) => response.json())
+			.then((data) => {
+				return data;
+			});
+		console.log("odebrano", res);
 	}
 
 	function verifyAnswer(pickedAnswer) {
@@ -126,14 +154,17 @@ export default function Menu() {
 	}
 
 	function handleNextQuestionButton() {
-		if (!inReviewMode) {
+		if (!isReview) {
 			verifyAnswer(pickedAnswer);
 		}
 		nextQuestion();
+		console.log("WYSYŁAMY", cachedAnswers, result)
+		sendResultsToDatabase();
+		let r = getRandomResult();
 	}
 
 	function handlePreviousQuestionButton() {
-		if (!inReviewMode) {
+		if (!isReview) {
 			verifyAnswer(pickedAnswer);
 		}
 		previousQuestion();
@@ -149,7 +180,7 @@ export default function Menu() {
 	}, [taskStarted, currentTime]);
 
 	useEffect(() => {
-		if (inReviewMode) {
+		if (isReview) {
 			setNewTask(cachedAnswers[0]);
 			setNewPickedAnswer(cachedAnswers[0].wybrana_odpowiedz);
 			setNewTaskStarted(true);
@@ -157,7 +188,7 @@ export default function Menu() {
 	}, []);
 
 	return (
-		<MenuContainer inReviewMode={inReviewMode}>
+		<MenuContainer isReview={isReview}>
 			<Button
 				blank
 				className="justify-center items-center w-[200px]"
@@ -169,7 +200,7 @@ export default function Menu() {
 			<Quit />
 			<Modal
 				onClose={() => {
-					setExplanationModalShow(false);
+					setExplanationModalShow(False);
 				}}
 				show={explanationModalShow}
 			>
@@ -181,7 +212,7 @@ export default function Menu() {
 					pieszemu znajdującemu się na przejściu.
 				</Text>
 			</Modal>
-			{!inReviewMode ? (
+			{!isReview ? (
 				<TimerContainer>
 					<Row>
 						<Button primary hover size="s" onClick={handleStartButton}>
@@ -210,7 +241,7 @@ export default function Menu() {
 					<ArrowRight />
 				</Button>
 			</NextPrevious>
-			{inReviewMode ? (
+			{isReview ? (
 				<ReviewTasks taskIdx={taskIdx} updateTaskIdx={updateTaskIdx} />
 			) : (
 				<></>
