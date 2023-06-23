@@ -1,15 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import NoNavbarTemplate from "../components/templates/NoNavbarTemplate";
 import Navbar from "../components/organisms/Navbar";
 import Footer from "../components/organisms/Footer";
-import TaskBottom from "../components/organisms/Practice/TaskBottom";
-import Menu from "../components/organisms/Practice/Menu";
-import TaskTop from "../components/organisms/Practice/TaskTop";
+import TaskBottom from "../components/organisms/Practice/Regular/TaskBottom";
+import Menu from "../components/organisms/Practice/Regular/Menu";
+import TaskTop from "../components/organisms/Practice/Regular/TaskTop";
 import TaskContext from "../../context/TaskContext";
 import Loading from "../components/molecules/Practice/Loading";
 
 export default function ExamPage() {
-	const { task, setTask } = useContext(TaskContext);
+	const { task, setNewTask, setNewSavedQuestions } = useContext(TaskContext);
+
+	function getFullExam() {
+		return fetch("http://localhost:5000/api/exam")
+			.then((response) => response.json())
+			.then((data) => {
+				return data;
+			});
+	}
+
+	useEffect(() => {
+		const fetchRandomTask = async () => {
+			const questions = await getFullExam();
+			const modifiedQuestions = questions.map((question) => {
+				return { ...question, wybrana_odpowiedz: null };
+			});
+
+			setNewSavedQuestions(modifiedQuestions);
+			setNewTask(modifiedQuestions[0]);
+		};
+
+		fetchRandomTask();
+		return;
+	}, []);
 
 	return (
 		<NoNavbarTemplate
@@ -19,9 +42,9 @@ export default function ExamPage() {
 		>
 			{task ? (
 				<>
-					<TaskTop isReview={false}/>
-					<Menu isReview={false}/>
-					<TaskBottom isReview={false}/>
+					<TaskTop isExam={true} />
+					<Menu isExam={true} />
+					<TaskBottom isExam={true} />
 				</>
 			) : (
 				<Loading />

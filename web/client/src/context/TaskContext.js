@@ -6,24 +6,7 @@ export const TaskProvider = ({ children }) => {
 	const [task, setTask] = useState(null);
 	const [pickedAnswer, setPickedAnswer] = useState(null);
 	const [taskStarted, setTaskStarted] = useState(false);
-
-	function getRandomTask() {
-		return fetch("http://localhost:5000/api/practice/random")
-			.then((response) => response.json())
-			.then((data) => {
-				return data;
-			});
-	}
-
-	useEffect(() => {
-		const fetchRandomTask = async () => {
-			const newTask = await getRandomTask();
-			setTask({ ...newTask });
-		};
-
-		fetchRandomTask();
-		return;
-	}, []);
+	const [savedQuestions, setSavedQuestions] = useState([]);
 
 	const setNewTask = (newTask) => {
 		setTask(newTask);
@@ -37,6 +20,10 @@ export const TaskProvider = ({ children }) => {
 		setTaskStarted(newTask);
 	};
 
+	const setNewSavedQuestions = (newSavedQuestions) => {
+		setSavedQuestions(newSavedQuestions);
+	};
+
 	return (
 		<TaskContext.Provider
 			value={{
@@ -46,6 +33,8 @@ export const TaskProvider = ({ children }) => {
 				setNewPickedAnswer,
 				taskStarted,
 				setNewTaskStarted,
+				savedQuestions,
+				setNewSavedQuestions,
 			}}
 		>
 			{children}

@@ -1,4 +1,3 @@
-
 import tw from "tailwind-styled-components";
 
 const Container = tw.div`
@@ -7,6 +6,8 @@ const Container = tw.div`
 	max-md:flex-col
 	min-h-[calc(100vh-90px)]
 	bg-[#FFEFD0]
+	mt-[90px]
+	max-lg:mt-[61px]
 `;
 
 const HeaderContainer = tw.div`
@@ -38,7 +39,6 @@ const Subtitle = tw.div`
 	text-overflow
 	text-[#0d0d0d]
 `;
-
 
 export {
 	Container,

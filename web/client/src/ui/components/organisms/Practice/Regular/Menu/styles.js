@@ -71,20 +71,4 @@ const NextPrevious = tw.div`
 	max-2xl:[&>*]:w-[50%]
 `;
 
-const ReviewQuestions = tw.div`
-	flex
-	flex-col
-	items-start
-	gap-2
-	h-full
-	w-full
-`;
-
-export {
-	MenuContainer,
-	TimerContainer,
-	CustomTimer,
-	Row,
-	NextPrevious,
-	ReviewQuestions,
-};
+export { MenuContainer, TimerContainer, CustomTimer, Row, NextPrevious };

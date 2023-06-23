@@ -6,6 +6,7 @@ import HeroIllustration from "./hero.svg";
 import HeroCar from "./hero-car.svg";
 import HeroLogo from "./hero-logo.svg";
 import HeroInfo1 from "./hero-info-1.svg";
+import PurpleCar from "./purple-car.svg";
 
 export default {
 	TextbookIllustration,
@@ -16,4 +17,5 @@ export default {
 	HeroCar,
 	HeroLogo,
 	HeroInfo1,
+	PurpleCar,
 };

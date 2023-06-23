@@ -11,7 +11,9 @@ const SummaryContainer = tw.div`
 	max-2xl:p-2
 	text-center
 	bg-[#FFEFD0]
-`;
+	mt-[90px]
+	max-lg:mt-[61px]
+	`;
 
 const InnerTextBox = tw.div`
 	relative

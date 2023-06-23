@@ -1,25 +1,21 @@
-import React, { useContext, useState } from "react";
-import { useRecoilState } from "recoil";
-// import { isReviewState } from "../../../../../recoil/atoms";
-import TaskContext from "../../../../../context/TaskContext";
-import Button from "../../../atoms/Button";
-import Text from "../../../atoms/Text";
-import Paragraph from "../../../atoms/Paragraph";
+import React, { useContext } from "react";
+
+import TaskContext from "../../../../../../context/TaskContext";
+import Button from "../../../../atoms/Button";
+import Text from "../../../../atoms/Text";
+import Paragraph from "../../../../atoms/Paragraph";
 
 import { Answers, Answer, TaskBottomSection } from "./styles";
 
-export default function TaskBottom({isReview}) {
-	const { task, setTask, pickedAnswer, setNewPickedAnswer } =
-		useContext(TaskContext);
-	// const [isReview, setisReview] = useRecoilState(isReviewState);
-	
+export default function TaskBottomReview() {
+	const { task } = useContext(TaskContext);
 
 	function getTaskResult(answer) {
 		if (task.poprawna_odpowiedz === answer) {
 			return "correct";
 		} else if (
-			answer === pickedAnswer &&
-			task.poprawna_odpowiedz !== pickedAnswer
+			answer === task.wybrana_odpowiedz &&
+			task.poprawna_odpowiedz !== task.wybrana_odpowiedz
 		) {
 			return "incorrect";
 		}
@@ -28,6 +24,7 @@ export default function TaskBottom({isReview}) {
 	}
 
 	function renderAnswers(task) {
+		console.log(task);
 		if (task.zakres_struktury === "PODSTAWOWY") {
 			return (
 				<Answers row={true}>
@@ -36,12 +33,9 @@ export default function TaskBottom({isReview}) {
 							<Answer>
 								<Button
 									primary
-									onClick={() => {
-										!isReview && setNewPickedAnswer(index);
-									}}
 									size="s"
-									picked={index === pickedAnswer}
-									result={isReview ? getTaskResult(index) : ""}
+									picked={index === task.wybrana_odpowiedz}
+									result={getTaskResult(index)}
 								>
 									<Text>{answer}</Text>
 								</Button>
@@ -58,12 +52,9 @@ export default function TaskBottom({isReview}) {
 							<Answer>
 								<Button
 									bubble
-									onClick={() => {
-										!isReview && setNewPickedAnswer(index);
-									}}
 									size="m"
-									picked={index === pickedAnswer}
-									result={isReview ? getTaskResult(index) : ""}
+									picked={index === task.wybrana_odpowiedz}
+									result={getTaskResult(index)}
 								>
 									{String.fromCharCode(65 + index)}
 								</Button>

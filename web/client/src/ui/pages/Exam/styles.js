@@ -34,7 +34,6 @@ const Menu = tw.div`
   flex-col
 `;
 
-
 const MenuTop = tw.div`
   pb-10
 `;
@@ -56,7 +55,6 @@ const QuestionInfo = tw.div`
   gap-8
 `;
 
-
 const MediaContainer = tw.div`
 flex
 justify-center
@@ -67,7 +65,6 @@ const QuestionContent = tw.div`
 flex
 flex-col
 `;
-
 
 const AnswerInput = tw.input`
 hidden
@@ -241,35 +238,35 @@ gap-2
 `;
 
 export {
-  ExamContainer,
-  MainContent,
-  Menu,
-  MenuTop,
-  MenuTopMid,
-  MenuBotMid,
-  MenuBottom,
-  QuestionInfo,
-  QuestionContent,
-  ExamInfo,
-  ExamNavigation,
-  MediaContainer,
-  InfoValue,
-  InfoValueFullWidth,
-  InfoElementRow,
-  InfoElementColumn,
-  AnswersForm,
-  QuestionHeader,
-  InfoText,
-  AnswerLabel,
-  AnswerText,
-  NavigationButton,
-  NextQuestionButton,
-  ExamTimer,
-  ExamTimerContainer,
-  SelectButton,
-  AnswerMarker,
-  AnswerInput,
-  TimerOuterBar,
-  TimerInnerBar,
-  TimerText,
+	ExamContainer,
+	MainContent,
+	Menu,
+	MenuTop,
+	MenuTopMid,
+	MenuBotMid,
+	MenuBottom,
+	QuestionInfo,
+	QuestionContent,
+	ExamInfo,
+	ExamNavigation,
+	MediaContainer,
+	InfoValue,
+	InfoValueFullWidth,
+	InfoElementRow,
+	InfoElementColumn,
+	AnswersForm,
+	QuestionHeader,
+	InfoText,
+	AnswerLabel,
+	AnswerText,
+	NavigationButton,
+	NextQuestionButton,
+	ExamTimer,
+	ExamTimerContainer,
+	SelectButton,
+	AnswerMarker,
+	AnswerInput,
+	TimerOuterBar,
+	TimerInnerBar,
+	TimerText,
 };

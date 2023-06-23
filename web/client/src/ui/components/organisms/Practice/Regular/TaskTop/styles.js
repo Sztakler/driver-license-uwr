@@ -8,12 +8,6 @@ const TaskTopSection = tw.div`
 	max-2xl:w-full
 `;
 
-const InnerWrapper = tw.div`
-	flex
-	flex-col
-	w-full
-`;
-
 const TaskInfo = tw.div`
 	flex
 	flex-row
@@ -44,4 +38,4 @@ const ImageBox = tw.div`
 	max-2xl:h-auto
 `;
 
-export { TaskTopSection, InnerWrapper, TaskInfo, ImageBox };
+export { TaskTopSection, TaskInfo, ImageBox };

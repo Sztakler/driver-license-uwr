@@ -61,18 +61,9 @@ export default function Training({ data, headings, ...props }) {
 						<div className="flex flex-col max-w-[1830px] ">
 							<img
 								src={Illustrations.TrainingIllustration2}
-								className="self-center w-[100%]"
+								className="self-center w-[100%] mt-8"
 							></img>
-							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px] mt-8">
-								<Button
-									primary
-									hover
-									size="l"
-									onClick={() => navigate("/trening/praktyka")}
-									className="w-108 h-16"
-								>
-									Podsumowanie treningu
-								</Button>
+							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px] mt-6">
 								<Button primary hover onClick={scrollDown} size="l">
 									Wybór pytań
 								</Button>

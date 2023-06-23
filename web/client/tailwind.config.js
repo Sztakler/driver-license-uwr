@@ -4,6 +4,7 @@ module.exports = {
 		fontFamily: {
 			display: ["Barriecito", "cursive"],
 			sans: ["Inter", "sans-serif"],
+			rampart: ["Rampart One", "cursive"],
 		},
 		extend: {
 			borderRadius: {

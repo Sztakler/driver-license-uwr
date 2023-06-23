@@ -11,14 +11,6 @@ import Cancel from "../../../../icons/Cancel";
 import Button from "../../atoms/Button";
 
 export default function Modal(props) {
-	const bodyScrollLock = require("body-scroll-lock");
-	const disableBodyScroll = bodyScrollLock.disableBodyScroll;
-	const enableBodyScroll = bodyScrollLock.enableBodyScroll;
-
-	const targetElement = document.querySelector("body");
-
-	// disableBodyScroll(targetElement);
-
 	return (
 		<ModalContainer show={props.show}>
 			<ModalDialog show={props.show}>

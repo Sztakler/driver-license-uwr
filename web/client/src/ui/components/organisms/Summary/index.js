@@ -1,11 +1,9 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router";
-import { useRecoilState } from "recoil";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 
 import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
 import ArrowLeft from "../../../../icons/ArrowLeft";
-import { inReviewModeState, resultsState } from "../../../../recoil/atoms";
 
 import {
 	SummaryContainer,
@@ -17,55 +15,48 @@ import {
 	Points,
 } from "./styles";
 
-// typeorm + postgres
-// ts-node
-// args [ -r ""]
-// portable web application
-// media query print
-
-function feedbackGenerator(isTraining, results) {
-	if (isTraining) {
-		let percentage =
-			(100 * results.correctAnswers) /
-			(results.correctAnswers +
-				results.incorrectAnswers +
-				results.skippedQuestions);
-
-		if (isNaN(percentage)) {
-			return "ERROR";
-		}
-		if (percentage < 50) {
-			return "SPRÓBUJ PONOWNIE";
-		}
-		if (percentage >= 50 && percentage <= 70) {
-			return "DOBRA ROBOTA";
-		}
-		return "WYŚMIENICIE";
+function feedbackGenerator(results) {
+	if (results.scoredPoints > 75) {
+		return "EGZAMIN ZALICZONY";
 	} else {
-		if (results.scoredPoints > 75) {
-			return "EGZAMIN ZALICZONY";
-		} else {
-			return "EGZAMIN NIEZALICZONY";
-		}
+		return "EGZAMIN NIEZALICZONY";
 	}
 }
 
-export default function Summary({ isTraining }) {
-	if (isTraining === undefined) {
-		isTraining = true;
-	}
-
-	const [results, setResults] = useRecoilState(resultsState);
-	const [inReview, setInReview] = useRecoilState(inReviewModeState);
+export default function Summary() {
+	const { id } = useParams();
 
 	const navigate = useNavigate();
+	const [results, setResult] = useState({
+		questionCounter: 0,
+		scoredPoints: 0,
+		correctAnswers: 0,
+		incorrectAnswers: 0,
+		skippedQuestions: 0,
+	});
+
+	async function getExamResult() {
+		let res = await fetch(`http://localhost:5000/api/exam/results/${id}`).then(
+			(response) => response.json()
+		);
+		return res.summary;
+	}
+
+	useEffect(() => {
+		async function fetchDataAndSetIt() {
+			let res = await getExamResult();
+			setResult(res);
+		}
+
+		fetchDataAndSetIt();
+	}, []);
+
 	return (
 		<SummaryContainer>
 			<InnerTextBox positive={true}>
 				<InsideBackground>
-					<Text className="font-[Barriecito]">
-						{console.log("HERE", isTraining)}
-						{feedbackGenerator(isTraining, results)}
+					<Text className="font-[Barriecito] text-[87px]">
+						{feedbackGenerator(results)}
 					</Text>
 					<Table>
 						<Column>
@@ -96,23 +87,15 @@ export default function Summary({ isTraining }) {
 						hover
 						size="l"
 						onClick={() => {
-							if (isTraining) {
-								navigate("/trening");
-							} else {
-								navigate("/egzamin");
-							}
+							navigate("/egzamin");
 						}}
 					>
-						{isTraining ? "NOWY TRENING" : "NOWY EGZAMIN"}
+						{"NOWY EGZAMIN"}
 					</Button>
 					<Button
 						blank
 						onClick={() => {
-							if (isTraining) {
-								navigate("/trening/praktyka");
-							} else {
-								navigate("/egzamin");
-							}
+							navigate(`/egzamin/przeglad-odpowiedzi/${id}`);
 						}}
 					>
 						<ArrowLeft /> <Text>Przejrzyj odpowiedzi</Text>

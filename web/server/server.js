@@ -46,53 +46,85 @@ app.get("/", (req, res) => {
 	res.json({ test: "test" });
 });
 
-app.get("/api/practice/random", async (req, res) => {
+app.get("/api/practice/", async (req, res) => {
 	try {
 		const allTasks = await pool.query(
-			"SELECT * FROM questions ORDER BY RANDOM() LIMIT 1;"
+			"SELECT * FROM questions ORDER BY RANDOM() LIMIT 25;"
 		);
-		res.json(allTasks.rows[0]);
+		res.json(allTasks.rows);
 	} catch (err) {
 		console.error(err.message);
 	}
 });
 
-app.get("/api/test", async (req, res) => {
+app.get("/api/exam/", async (req, res) => {
 	try {
-		const content = await pool.query("select * from users;");
-		res.json(content.rows);
-	} catch (error) {
-		console.error(error.message);
+		const allTasks = await pool.query(
+			`(
+				SELECT *
+				FROM questions
+				WHERE zakres_struktury = 'PODSTAWOWY'
+				LIMIT 20
+			)
+			UNION ALL
+			(
+				SELECT *
+				FROM questions
+				WHERE zakres_struktury = 'SPECJALISTYCZNY'
+				LIMIT 12
+			);`
+		);
+		res.json(allTasks.rows);
+	} catch (err) {
+		console.error(err.message);
 	}
 });
 
 app.post("/api/exam/results", async (req, res) => {
 	try {
-		const { user_id, questions, summary} = req.body;
-		let result = await pool.query(`
+		const { user_id, questions, summary } = req.body;
+
+		const result = await pool.query(`
 		insert into results (user_id, questions, summary)
 		values (
 			${user_id},
 			'${JSON.stringify(questions)}',
 			'${JSON.stringify(summary)}'
-		);
+		)
+		returning id;
 		`);
+		console.log("correct insert and response", result.rows[0]);
+		res.json({ id: result.rows[0].id });
 	} catch (error) {
 		console.error(error.message);
 	}
-})
+});
 
 app.get("/api/exam/results", async (req, res) => {
 	try {
 		const randomResult = await pool.query(
 			"SELECT * FROM results ORDER BY RANDOM() LIMIT 1;"
 		);
-		console.log(randomResult.rows[0])
+		console.log(randomResult.rows[0]);
 		res.json(randomResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
 	}
-})
+});
+
+app.get("/api/exam/results/:id", async (req, res) => {
+	const itemId = req.params.id;
+
+	try {
+		const randomResult = await pool.query(
+			`SELECT * FROM results WHERE id = ${itemId}`
+		);
+		console.log(randomResult.rows[0]);
+		res.json(randomResult.rows[0]);
+	} catch (err) {
+		console.error(err.message);
+	}
+});
 
 app.listen(5000, () => {
 	console.log("Server started on port 5000");

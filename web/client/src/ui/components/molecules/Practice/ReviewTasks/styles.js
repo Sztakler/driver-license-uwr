@@ -7,7 +7,6 @@ const ReviewTasksContainer = tw.div`
 	gap-2
 	h-full
 	w-full
-	overflow-y-scroll
 `;
 
 const BubblesWrapper = tw.div`

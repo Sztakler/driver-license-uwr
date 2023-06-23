@@ -1,17 +1,19 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TrainingPage from "../src/ui/pages/TrainingPage";
+import TrainingMenuPage from "../src/ui/pages/TrainingMenuPage";
 import PracticePage from "../src/ui/pages/PracticePage";
 import TheoryPage from "../src/ui/pages/TheoryPage";
 import HomePage from "../src/ui/pages/HomePage";
 import ExamPage from "../src/ui/pages/ExamPage";
-import ExamMenuPage from "../src/ui/pages/ExamMenu/ExamMenuPage";
+import ExamMenuPage from "../src/ui/pages/ExamMenu";
 import LoginPage from "../src/ui/pages/LoginPage";
 import ContactPage from "../src/ui/pages/ContactPage";
 import FaqPage from "../src/ui/pages/FaqPage";
 import RegisterPage from "../src/ui/pages/RegisterPage";
 import SummaryPage from "../src/ui/pages/SummaryPage";
 import NotFound from "../src/ui/pages/NotFound";
+import ReviewPage from "../src/ui/pages/ReviewPage";
+
 import { TaskProvider } from "../src/context/TaskContext";
 
 const Routing = () => (
@@ -19,13 +21,23 @@ const Routing = () => (
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/egzamin" element={<ExamMenuPage />} />
-			<Route path="/egzamin/test" element={
+			<Route
+				path="/egzamin/test"
+				element={
 					<TaskProvider>
 						<ExamPage />
 					</TaskProvider>
 				}
 			/>
-			<Route path="/trening" element={<TrainingPage />} />
+			<Route
+				path="/egzamin/przeglad-odpowiedzi/:id"
+				element={
+					<TaskProvider>
+						<ReviewPage />
+					</TaskProvider>
+				}
+			/>
+			<Route path="/trening" element={<TrainingMenuPage />} />
 			<Route
 				path="/trening/praktyka"
 				element={
@@ -51,7 +63,7 @@ const Routing = () => (
 				element={<SummaryPage isTraining={true} />}
 			/>
 			<Route
-				path="/egzamin/podsumowanie"
+				path="/egzamin/podsumowanie/:id"
 				element={<SummaryPage isTraining={false} />}
 			/>
 			<Route path="/kontakt" element={<ContactPage />} />

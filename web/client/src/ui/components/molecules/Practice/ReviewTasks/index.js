@@ -9,15 +9,17 @@ import Text from "../../../atoms/Text";
 import { ReviewTasksContainer, BubblesWrapper } from "./styles";
 import Button from "../../../atoms/Button";
 
-export default function ReviewTasks({ taskIdx, updateTaskIdx }) {
-	const { task, setNewTask } = useContext(TaskContext);
-	const { pickedAnswer, setNewPickedAnswer } = useContext(TaskContext);
-	const [cachedAnswers] = useRecoilState(cachedAnswersState);
+export default function ReviewTasks({
+	taskIdx,
+	updateTaskIdx,
+	savedQuestions,
+}) {
+	const { setNewTask, setNewPickedAnswer } = useContext(TaskContext);
 
 	function handleBubbleSelect(index) {
 		updateTaskIdx(index);
-		setNewTask(cachedAnswers[index]);
-		setNewPickedAnswer(cachedAnswers[index].wybrana_odpowiedz);
+		setNewTask(savedQuestions[index]);
+		setNewPickedAnswer(savedQuestions[index].wybrana_odpowiedz);
 	}
 
 	function getTaskResult(answer) {
@@ -33,9 +35,9 @@ export default function ReviewTasks({ taskIdx, updateTaskIdx }) {
 
 	return (
 		<ReviewTasksContainer>
-			<Text>Pytania</Text>
+			<Text>Pytania podstawowe</Text>
 			<BubblesWrapper>
-				{cachedAnswers.map((answer, index) => {
+				{savedQuestions.slice(0, 20).map((answer, index) => {
 					return (
 						<Button
 							bubble
@@ -43,6 +45,26 @@ export default function ReviewTasks({ taskIdx, updateTaskIdx }) {
 							result={getTaskResult(answer)}
 							onClick={() => handleBubbleSelect(index)}
 							className={index === taskIdx ? "border-[3px] font-semibold" : ""}
+						>
+							{index + 1}
+						</Button>
+					);
+				})}
+			</BubblesWrapper>
+			<Text>Pytania specjalistyczne</Text>
+			<BubblesWrapper>
+				{savedQuestions.slice(20).map((answer, index) => {
+					const adjustedIndex = index + 20; // Adjust index to start from 21
+
+					return (
+						<Button
+							bubble
+							size="m"
+							result={getTaskResult(answer)}
+							onClick={() => handleBubbleSelect(adjustedIndex)}
+							className={
+								adjustedIndex === taskIdx ? "border-[3px] font-semibold" : ""
+							}
 						>
 							{index + 1}
 						</Button>
