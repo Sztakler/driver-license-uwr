@@ -11,6 +11,7 @@ import userIcon from "./userIcon.svg";
 import star from "./star.svg";
 import stats from "./stats.svg";
 import settings from "./settings.svg";
+import Plus from "./plus.svg";
 
 export default {
 	TextbookIllustration,
@@ -26,4 +27,5 @@ export default {
 	star,
 	stats,
 	settings,
+	Plus,
 };
