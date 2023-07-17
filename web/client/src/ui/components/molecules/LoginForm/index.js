@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthenticationContext } from "../../../../context/AuthenticationContext";
 
 import Label from "../../atoms/Label";
 import Input from "../../atoms/Input";
+import Text from "../../atoms/Text";
 import {
 	LoginFormContainer,
 	InnerWrapper,
@@ -14,6 +16,7 @@ import Button from "../../atoms/Button";
 export default function LoginForm(props) {
 	const [usernameInput, setUsernameInput] = useState("");
 	const [passwordInput, setPasswordInput] = useState("");
+	const [test, setTest] = useState("TEST");
 
 	function handleUsername(event) {
 		setUsernameInput(event.target.value);
@@ -23,23 +26,47 @@ export default function LoginForm(props) {
 		setPasswordInput(event.target.value);
 	}
 
-	function handleSubmit(event) {
+	async function handleSubmit(event) {
 		event.preventDefault();
-
-		alert(usernameInput + " " + passwordInput);
+		try {
+			const respond = await fetch("http://localhost:5000/login", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				credentials: "include", // this is needed for browser to set the cookie it receives
+				body: JSON.stringify({
+					email: "a@a",
+					password: "a",
+				}),
+			});
+			if (respond.status === 200) {
+				setTest("POPRAWNE");
+				let res = await respond.json();
+				window.sessionStorage.setItem(
+					"User",
+					JSON.stringify({ id: res.id, name: res.name })
+				);
+				console.log(window.sessionStorage.getItem("User"));
+			}
+		} catch (err) {
+			console.log(err);
+		}
 	}
 
 	return (
 		<LoginFormContainer onSubmit={handleSubmit}>
 			<Heading>Zaloguj się</Heading>
+			<Text>{test}</Text>
 			<InnerWrapper>
 				<Label size="2xl">Login</Label>
 				<InputSection>
 					<Image icon src={require("/src/assets/images/mail.png")} />
 					<Input
 						login
-						id="usernameInput"
-						type="text"
+						id="email"
+						type="email"
+						name="email"
 						value={usernameInput}
 						onChange={handleUsername}
 						placeholder="Username"
@@ -52,8 +79,9 @@ export default function LoginForm(props) {
 					<Image icon src={require("/src/assets/images/lock.png")} />
 					<Input
 						login
-						id="passwordInput"
+						id="password"
 						type="password"
+						name="password"
 						value={passwordInput}
 						onChange={handlePassword}
 						placeholder="******************"

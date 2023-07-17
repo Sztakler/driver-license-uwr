@@ -11,6 +11,8 @@ const PageWrapper = tw.div`
 	snap-mandatory
 	snap-y
 	scroll-p-[200px]
+	bg-[#FFFAED]
+	mt-[90px]
 `;
 
 const HeroSection = tw.div`

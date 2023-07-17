@@ -7,6 +7,10 @@ import HeroCar from "./hero-car.svg";
 import HeroLogo from "./hero-logo.svg";
 import HeroInfo1 from "./hero-info-1.svg";
 import PurpleCar from "./purple-car.svg";
+import userIcon from "./userIcon.svg";
+import star from "./star.svg";
+import stats from "./stats.svg";
+import settings from "./settings.svg";
 
 export default {
 	TextbookIllustration,
@@ -18,4 +22,8 @@ export default {
 	HeroLogo,
 	HeroInfo1,
 	PurpleCar,
+	userIcon,
+	star,
+	stats,
+	settings,
 };

@@ -57,7 +57,7 @@ export default function Navbar(props) {
 		{
 			id: uuidv4,
 			child: <User className="h-10"></User>,
-			navigationTarget: "/login",
+			navigationTarget: "/konto",
 			fontSize: "xl",
 		},
 	];

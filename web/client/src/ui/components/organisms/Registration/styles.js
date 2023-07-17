@@ -59,7 +59,7 @@ const BottomInputsContainer = tw.div`
 flex flex-col gap-y-10
 `;
 
-const SubmitButtonContainer = tw.div`
+const SubmitButtonContainer = tw.button`
 
 `;
 

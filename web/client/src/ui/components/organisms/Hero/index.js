@@ -59,7 +59,7 @@ export default function Hero() {
 	function scrollDown() {}
 
 	function handleRegister() {
-		navigate("/register/");
+		navigate("/register");
 	}
 
 	return (

@@ -1,13 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
 	RegistrationContainer,
 	LeftContainer,
-	InfoContainer,
 	Title,
-	Subtitle,
 	ImageContainer,
-	ListContainer,
 	RightContainer,
 	RegisterForm,
 	RegisterFormContainer,
@@ -24,19 +21,60 @@ import {
 } from "./styles";
 
 import Input from "../../atoms/Input";
-import Paragraph from "../../atoms/Paragraph";
 import Button from "../../atoms/Button";
-import BulletList from "../../molecules/BulletList";
 
 import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 import Image from "../../atoms/Image";
+import { useNavigate } from "react-router";
+import Text from "../../atoms/Text";
 
 export default function Registration() {
-	const points = [
-		"wglądu w Twoje statystyki i analizy",
-		"zapisywania wybranych pytań",
-		"śledzenia swoich postępów",
-	];
+	const navigate = useNavigate();
+	const [name, setName] = useState("");
+	const [mail, setMail] = useState("");
+	const [password, setPassword] = useState("");
+	const [userAlreadyExistsAlert, setUserAlreadyExistsAlert] = useState(false);
+
+	const handleNameChange = (event) => {
+		setName(event.target.value);
+	};
+
+	const handleMailChange = (event) => {
+		setMail(event.target.value);
+	};
+
+	const handlePasswordChange = (event) => {
+		setPassword(event.target.value);
+	};
+
+	let registerUser = async (e) => {
+		e.preventDefault();
+		console.log(mail, password);
+		try {
+			let res = await fetch("http://localhost:5000/register", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					name: name,
+					email: mail,
+					password: password,
+				}),
+			});
+			if (res.status === 400) {
+				setUserAlreadyExistsAlert(true);
+			}
+
+			if (res.ok) {
+				navigate("/login");
+			} else {
+				navigate("/register");
+			}
+		} catch (err) {
+			console.log("CIPA");
+		}
+	};
 
 	return (
 		<RegistrationContainer>
@@ -49,23 +87,27 @@ export default function Registration() {
 			<RightContainer>
 				<LoginButtonContainer>
 					<TextGrayedSpan>Masz już konto? </TextGrayedSpan>
-					<LoginButton>Zaloguj się</LoginButton>
+					<LoginButton
+						onClick={() => {
+							navigate("/login");
+						}}
+					>
+						Zaloguj się
+					</LoginButton>
 				</LoginButtonContainer>
 				<RegisterFormContainer>
 					<Title>Zarejestruj się</Title>
-					<RegisterForm>
+					<RegisterForm onSubmit={registerUser}>
 						<TopInputsContainer>
 							<InputWrapper for="name">
 								<InputLabelText>Imię</InputLabelText>
-								<Input register id="name" type="text" placeholder="Jan"></Input>
-							</InputWrapper>
-							<InputWrapper for="login">
-								<InputLabelText>Login</InputLabelText>
 								<Input
 									register
-									id="login"
+									id="name"
 									type="text"
-									placeholder="djjanek227"
+									placeholder="Jan"
+									value={name}
+									onChange={handleNameChange}
 								></Input>
 							</InputWrapper>
 						</TopInputsContainer>
@@ -75,20 +117,31 @@ export default function Registration() {
 								<InputLabelText>E-mail</InputLabelText>
 								<Input
 									register
+									required
 									id="email"
-									type="text"
+									type="email"
 									placeholder="jan@example.com"
+									value={mail}
+									onChange={handleMailChange}
 								></Input>
 							</InputWrapper>
 							<InputWrapper for="password">
 								<InputLabelText>Hasło</InputLabelText>
 								<Input
 									register
+									required
 									id="password"
 									type="password"
 									placeholder="••••••••••••••••"
+									value={password}
+									onChange={handlePasswordChange}
 								></Input>
 							</InputWrapper>
+							{userAlreadyExistsAlert && (
+								<Text className="text-red-600">
+									Użytkownik o podanym mailu już istnieje!
+								</Text>
+							)}
 						</BottomInputsContainer>
 
 						<SubmitButtonContainer>
@@ -104,7 +157,7 @@ export default function Registration() {
 								</TextUnderlineSpan>
 								.
 							</Disclaimer>
-							<Button primary size="s">
+							<Button primary size="s" type="submit">
 								Załóż konto
 							</Button>
 						</SubmitButtonContainer>

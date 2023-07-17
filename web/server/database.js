@@ -1,5 +1,5 @@
 const Pool = require("pg").Pool;
-require('dotenv').config();
+require("dotenv").config();
 
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
 const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?options=endpoint%3D${ENDPOINT_ID}`;
@@ -7,12 +7,12 @@ const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?options=
 const pool = new Pool({
 	user: PGUSER,
 	password: PGPASSWORD,
-  host: PGHOST,
+	host: PGHOST,
 	port: 5432,
 	database: PGDATABASE,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+	ssl: {
+		rejectUnauthorized: false,
+	},
 });
 
 module.exports = pool;

@@ -11,7 +11,7 @@ export default function NewUser(props) {
 	const navigate = useNavigate();
 
 	function handleRegistration() {
-		navigate("/register/");
+		navigate("/register");
 	}
 
 	return (
@@ -19,7 +19,12 @@ export default function NewUser(props) {
 			<Column>
 				<Row>
 					<Heading4>Jesteś nowym użytkownikiem?</Heading4>
-					<Button primary size="xl" className="w-full" onClick={handleRegistration}>
+					<Button
+						primary
+						size="xl"
+						className="w-full"
+						onClick={handleRegistration}
+					>
 						Załóż konto
 					</Button>
 				</Row>
