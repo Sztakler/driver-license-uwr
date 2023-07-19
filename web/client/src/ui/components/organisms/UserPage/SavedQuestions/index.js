@@ -27,6 +27,7 @@ import {
 import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
 
 function renderAnswers(task) {
+	console.log(task);
 	if (task.zakres_struktury === "PODSTAWOWY") {
 		return (
 			<Answers row={true}>
@@ -86,14 +87,14 @@ export default function SavedQuestions() {
 		{
 			wybrana_odpowiedz: 1,
 			odpowiedzi: ["odp_a", "odp_b", "odp_b"],
-			zakres_struktury: "SPECJALISTYCZNE",
+			zakres_struktury: "SPECJALISTYCZNY",
 			poprawna_odpowiedz: 0,
 			znajomosc: "NISKI",
 		},
 		{
 			wybrana_odpowiedz: 1,
 			odpowiedzi: ["odp_a", "odp_b"],
-			zakres_struktury: "PODSTAWOWE",
+			zakres_struktury: "PODSTAWOWY",
 			poprawna_odpowiedz: 1,
 			znajomosc: "WYSOKI",
 		},
@@ -104,9 +105,9 @@ export default function SavedQuestions() {
 		setFilteredTasks(
 			tasks.filter((task) => {
 				return (
-					(task.zakres_struktury === "PODSTAWOWE"
+					(task.zakres_struktury === "PODSTAWOWY"
 						? filtersPicked.PODSTAWOWE
-						: task.zakres_struktury === "SPECJALISTYCZNE"
+						: task.zakres_struktury === "SPECJALISTYCZNY"
 						? filtersPicked.SPECJALISTYCZNE
 						: false) &&
 					(task.znajomosc === "NISKI"
