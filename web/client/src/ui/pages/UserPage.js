@@ -11,10 +11,11 @@ import Settings from "../components/organisms/UserPage/Settings";
 import ViewsNavigation from "../components/molecules/UserPage/ViewsNavigation";
 import User from "../components/molecules/UserPage/User";
 
+
 export default function UserPage() {
 	// let user = JSON.parse(window.sessionStorage.getItem("User"));
 
-	const [selectedView, setSelectedView] = useState(1);
+	const [selectedView, setSelectedView] = useState(0);
 
 	const changeSelectedView = (newValue) => {
 		setSelectedView(newValue);

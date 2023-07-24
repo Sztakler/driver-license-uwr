@@ -9,6 +9,7 @@ const StatisticsAlign = tw.div`
 
 const InnerContainer = tw.div`
 	flex
+	flex-wrap
 	self-center
 	bg-[#FCF1DB]
 	border
@@ -16,10 +17,11 @@ const InnerContainer = tw.div`
 	rounded-xl
 	h-full
 	w-full
-	pt-16
-	pb-32
-	px-24
+	pt-12
+	pb-24
 	justify-evenly
+	max-w-[1600px]
+	max-h-[800px]
 	`;
 
 export { StatisticsAlign, InnerContainer };
