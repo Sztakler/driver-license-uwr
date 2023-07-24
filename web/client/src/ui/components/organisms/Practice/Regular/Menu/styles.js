@@ -52,6 +52,13 @@ const CustomTimer = tw.div`
 	text-xl
 `;
 
+const KnowledgeLevel = tw.div`
+	flex
+	flex-col
+	items-start
+	gap-2
+`;
+
 const Row = tw.div`
 	flex
 	flex-row
@@ -71,4 +78,11 @@ const NextPrevious = tw.div`
 	max-2xl:[&>*]:w-[50%]
 `;
 
-export { MenuContainer, TimerContainer, CustomTimer, Row, NextPrevious };
+export {
+	MenuContainer,
+	TimerContainer,
+	CustomTimer,
+	KnowledgeLevel,
+	Row,
+	NextPrevious,
+};

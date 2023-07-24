@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import TaskContext from "../../../../../../context/TaskContext";
 import Star from "../../../../../../icons/Star";
@@ -16,6 +16,34 @@ export default function TaskTop({ isReview }) {
 	const mediaExtension = task.media.includes(".")
 		? task.media.split(".").pop()
 		: "";
+
+	async function setSavedQuestion(id) {
+		try {
+			const response = await fetch(
+				"http://localhost:5000/api/saved-questions",
+				{
+					method: "POST",
+					credentials: "include",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ question_id: id }),
+				}
+			);
+
+			if (response.ok) {
+				console.log("Data submitted successfully");
+			} else {
+				console.error("Error submitting data");
+			}
+		} catch (error) {
+			console.error("Network error:", error);
+		}
+
+		return 0;
+	}
+
+	console.log("task", task);
 
 	return (
 		<TaskTopSection>
@@ -36,14 +64,12 @@ export default function TaskTop({ isReview }) {
 			<Button
 				bubble
 				onClick={() => {
-					setFavoriteTask((prevState) => {
-						return !prevState;
-					});
+					setSavedQuestion(task.id);
 				}}
 				size="l"
 				className="absolute top-4 -right-16"
 			>
-				<Star picked={favoriteTask} />
+				<Star picked={task.is_saved} />
 			</Button>
 			<ImageBox>
 				{taskStarted || isReview ? (

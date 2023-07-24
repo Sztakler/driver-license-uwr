@@ -23,6 +23,7 @@ import {
 	Answer,
 	StatusIcon,
 	Questions,
+	Placeholder,
 } from "./styles";
 import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
 
@@ -75,7 +76,7 @@ function renderAnswers(task) {
 export default function SavedQuestions() {
 	const expandedQuestionRef = useRef(null);
 	const [expandedTaskIdx, setExpandedTaskIdx] = useState(-1);
-	const [rotation, setRotation] = useState(false);
+
 	const [filtersPicked, setFiltersPicked] = useState({
 		PODSTAWOWE: true,
 		SPECJALISTYCZNE: true,
@@ -83,45 +84,71 @@ export default function SavedQuestions() {
 		ŚREDNI: true,
 		WYSOKI: true,
 	});
-	const [tasks, setTasks] = useState([
-		{
-			wybrana_odpowiedz: 1,
-			odpowiedzi: ["odp_a", "odp_b", "odp_b"],
-			zakres_struktury: "SPECJALISTYCZNY",
-			poprawna_odpowiedz: 0,
-			znajomosc: "NISKI",
-		},
-		{
-			wybrana_odpowiedz: 1,
-			odpowiedzi: ["odp_a", "odp_b"],
-			zakres_struktury: "PODSTAWOWY",
-			poprawna_odpowiedz: 1,
-			znajomosc: "WYSOKI",
-		},
-	]);
-	const [filteredTasks, setFilteredTasks] = useState(tasks);
+	const [tasks, setTasks] = useState([]);
+	const [filteredTasks, setFilteredTasks] = useState([]);
+	const [questionsLoaded, setQuestionsLoaded] = useState(false);
+
+	function getSavedQuestions() {
+		return fetch("http://localhost:5000/api/saved-questions", {
+			method: "GET",
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				return data;
+			});
+	}
+
+	useEffect(() => {
+		const fetchQuestions = async () => {
+			const questions = await getSavedQuestions();
+			setTasks(questions);
+			setFilteredTasks(questions);
+			setQuestionsLoaded(true);
+		};
+		fetchQuestions();
+	}, []);
 
 	useEffect(() => {
 		setFilteredTasks(
 			tasks.filter((task) => {
+				console.log(
+					"result",
+					task.zakres_struktury === "PODSTAWOWY"
+						? filtersPicked.PODSTAWOWE
+						: task.zakres_struktury === "SPECJALISTYCZNY"
+						? filtersPicked.SPECJALISTYCZNE
+						: false,
+					task.knowledge_level === 0 || task.knowledge_level === null
+						? filtersPicked.NISKI
+						: task.knowledge_level === 1
+						? filtersPicked.ŚREDNI
+						: task.knowledge_level === 2
+						? filtersPicked.WYSOKI
+						: false
+				);
+
 				return (
 					(task.zakres_struktury === "PODSTAWOWY"
 						? filtersPicked.PODSTAWOWE
 						: task.zakres_struktury === "SPECJALISTYCZNY"
 						? filtersPicked.SPECJALISTYCZNE
 						: false) &&
-					(task.znajomosc === "NISKI"
+					(task.knowledge_level === 0 || task.knowledge_level === null
 						? filtersPicked.NISKI
-						: task.znajomosc === "ŚREDNI"
+						: task.knowledge_level === 1
 						? filtersPicked.ŚREDNI
-						: task.znajomosc === "WYSOKI"
+						: task.knowledge_level === 2
 						? filtersPicked.WYSOKI
 						: false)
 				);
 			})
 		);
+		setExpandedTaskIdx(-1);
 	}, [filtersPicked]);
-	//Example of filtering questions by question type
 
 	useEffect(() => {
 		if (expandedQuestionRef.current) {
@@ -148,7 +175,9 @@ export default function SavedQuestions() {
 
 	return (
 		<ListAlign>
-			<Text className="ml-auto mr-2 pb-2">Liczba zapisanych pytań: 25</Text>
+			<Text className="ml-auto mr-2 pb-2">
+				Liczba zapisanych pytań: {tasks.length}
+			</Text>
 			<InnerContainer>
 				<Header>
 					<FiltersList>
@@ -231,67 +260,77 @@ export default function SavedQuestions() {
 				</Header>
 
 				<Questions>
-					{filteredTasks.map((task, index) => {
-						return (
-							<ListItem active={expandedTaskIdx === index}>
-								<ItemHeader
-									onClick={() => {
-										setExpandedTaskIdx((prevState) => {
-											if (prevState !== index) {
-												return index;
-											}
-											return -1;
-										});
-									}}
-								>
-									<div className="flex flex-row gap-6">
-										<Image
-											className={`
+					{questionsLoaded && filteredTasks.length === 0 ? (
+						<Placeholder>
+							Żadne z pytań nie spełnia podanych filtrów{" "}
+						</Placeholder>
+					) : !questionsLoaded ? (
+						<Placeholder>Wczytywanie pytań...</Placeholder>
+					) : (
+						filteredTasks.map((task, index) => {
+							return (
+								<ListItem active={expandedTaskIdx === index}>
+									<ItemHeader
+										onClick={() => {
+											setExpandedTaskIdx((prevState) => {
+												if (prevState !== index) {
+													return index;
+												}
+												return -1;
+											});
+										}}
+									>
+										<div className="flex flex-row gap-6">
+											<Image
+												className={`
 										transition-transform duration-500
 										${expandedTaskIdx === index ? " rotate-45" : ""}
 										`}
-											src={Illustrations.Plus}
-										></Image>
-										<Text className="font-medium text-base">
-											Czy w tej sytuacji masz pierwszeństwo przed pojazdem
-											wjeżdżającym z lewej strony na pas ruchu?
-										</Text>
-									</div>
-									<div className="flex flex-col text-left">
-										<Text className="font-normal text-[15px]">
-											Rodzaj pytania:{" "}
-											<Text className="font-light">
-												{capitalizeFirstLetter(task.zakres_struktury)}
+												src={Illustrations.Plus}
+											></Image>
+											<Text className="font-medium text-base max-w-[900px] text-left">
+												{task.pytanie}
 											</Text>
-										</Text>
-										<Text className="font-normal text-[15px]">
-											Znajomość pytania:{" "}
-											<Text className="font-light">
-												{capitalizeFirstLetter(task.znajomosc)}
+										</div>
+										<div className="flex flex-col text-left self-end w-[230px]">
+											<Text className="font-normal text-[15px]">
+												Rodzaj pytania:{" "}
+												<Text className="font-light">
+													{capitalizeFirstLetter(task.zakres_struktury)}
+												</Text>
 											</Text>
-										</Text>
-									</div>
-								</ItemHeader>
-								{expandedTaskIdx === index && (
-									<ItemBody ref={expandedQuestionRef}>
-										<ImageBox>
-											<Image
-												exam
-												src={require("/src/assets/images/multi.png")}
-											/>
-										</ImageBox>
-										<TaskData>
-											{renderAnswers(task)}
-											<Button blank className="self-start">
-												<Explanation />
-												<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
-											</Button>
-										</TaskData>
-									</ItemBody>
-								)}
-							</ListItem>
-						);
-					})}
+											<Text className="font-normal text-[15px]">
+												Znajomość pytania:{" "}
+												<Text className="font-light">
+													{capitalizeFirstLetter(
+														task.knowledge_level === 2
+															? "WYSOKI"
+															: task.knowledge_level === 1
+															? "ŚREDNI"
+															: "NISKI"
+													)}
+												</Text>
+											</Text>
+										</div>
+									</ItemHeader>
+									{expandedTaskIdx === index && (
+										<ItemBody ref={expandedQuestionRef}>
+											<ImageBox>
+												<Image exam src={task.media} />
+											</ImageBox>
+											<TaskData>
+												{renderAnswers(task)}
+												<Button blank className="self-start">
+													<Explanation />
+													<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
+												</Button>
+											</TaskData>
+										</ItemBody>
+									)}
+								</ListItem>
+							);
+						})
+					)}
 				</Questions>
 			</InnerContainer>
 		</ListAlign>

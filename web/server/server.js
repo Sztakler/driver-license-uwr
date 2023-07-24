@@ -77,8 +77,13 @@ app.post("/register", async (req, res) => {
 			'${name}',
 			'${email}',
 			'${hashedPassword}'
-		);
+		)
+		returning id;
 		`);
+		const userId = result.rows[0].id;
+		await pool.query(
+			`INSERT INTO saved_questions (user_id) VALUES ('${userId}');`
+		);
 		res.status(200).json({ message: "Registration successful" });
 	} catch {
 		res.status(400).json({ message: "Registration unsuccessful" });
@@ -120,8 +125,32 @@ app.post("/login", (req, res, next) =>
 app.get("/api/practice/", async (req, res) => {
 	try {
 		const allTasks = await pool.query(
-			"SELECT * FROM questions ORDER BY RANDOM() LIMIT 25;"
+			`
+		SELECT 
+    		questions.*, 
+				saved_questions.user_id IS NOT NULL AS is_saved,
+				COALESCE(user_knowledge_levels.knowledge_level, 0) AS knowledge_level
+		FROM 
+				questions
+		LEFT JOIN 
+				(SELECT user_id, questions 
+				FROM saved_questions 
+				WHERE user_id = $1) AS saved_questions 
+		ON 
+    		questions.id = ANY(saved_questions.questions)
+		LEFT JOIN 
+			(SELECT *
+				FROM user_knowledge_levels 
+				WHERE user_id = $1) AS user_knowledge_levels
+		ON
+				questions.id = user_knowledge_levels.question_id
+		ORDER BY
+				RANDOM()
+		LIMIT 25;
+				`,
+			[req.user.id]
 		);
+		console.log(allTasks.rows, req.user.id);
 		res.json(allTasks.rows);
 	} catch (err) {
 		console.error(err.message);
@@ -194,6 +223,56 @@ app.get("/api/exam/results/:id", async (req, res) => {
 		res.json(randomResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
+	}
+});
+
+app.get("/api/saved-questions", async (req, res) => {
+	try {
+		const results = await pool.query(
+			"SELECT q.*, uk.knowledge_level " +
+				"FROM questions q " +
+				"LEFT JOIN user_knowledge_levels uk ON q.id = uk.question_id AND uk.user_id = $1 " +
+				"WHERE q.id = ANY (" +
+				"  SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
+				");",
+			[req.user.id]
+		);
+		res.json(results.rows);
+	} catch {
+		res.status(400).json({ message: "Error" });
+	}
+});
+
+app.post("/api/saved-questions", async (req, res) => {
+	try {
+		const { question_id } = req.body;
+		await pool.query(`UPDATE saved_questions
+		SET questions = 
+				CASE 
+						WHEN questions @> ARRAY[${question_id}] THEN array_remove(questions, ${question_id})
+						ELSE array_append(questions, ${question_id})
+				END
+		WHERE user_id = ${req.user.id};`);
+		res.status(200).json({ message: "Registration successful" });
+	} catch {
+		res.status(400).json({ message: "Registration unsuccessful" });
+	}
+});
+
+app.post("/api/user-knowledge-levels", async (req, res) => {
+	try {
+		const { question_id, knowledgeLevel } = req.body;
+		await pool.query(
+			`      
+		INSERT INTO user_knowledge_levels (user_id, question_id, knowledge_level)
+				VALUES ($1, $2, $3)
+		ON CONFLICT (user_id, question_id)
+				DO UPDATE SET knowledge_level = EXCLUDED.knowledge_level;`,
+			[req.user.id, question_id, knowledgeLevel]
+		);
+		res.status(200).json({ message: "Registration successful" });
+	} catch {
+		res.status(400).json({ message: "Registration unsuccessful" });
 	}
 });
 

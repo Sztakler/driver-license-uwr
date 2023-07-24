@@ -16,7 +16,8 @@ const InnerContainer = tw.div`
 	border
 	border-[#CECECE]
 	rounded-xl
-	h-full
+	h-[784px]
+	overflow-y-scroll
 	w-full
 `;
 
@@ -30,10 +31,8 @@ const ListItem = tw.div`
 	flex
 	flex-col
 	w-full
-	grow-[0]
 	transition-all
 	duration-500
-	${(props) => (props.active ? "grow-[1]" : "")}
 `;
 
 const ItemHeader = tw.button`
@@ -51,7 +50,6 @@ const ItemHeader = tw.button`
 
 const ItemBody = tw.div`
 	flex
-	h-full
 	px-14
 	py-6
 	flex-row
@@ -63,8 +61,9 @@ const ItemBody = tw.div`
 
 const ImageBox = tw.div`
 	flex
-	min-w-[752px]
-	min-h-[423px]
+	max-w-[758px]
+	max-h-[428px]
+
 	overflow-hidden
 	border-2
 	border-[#424242]
@@ -101,6 +100,10 @@ const Header = tw.div`
 	flex
 	flex-row
 	flex-wrap
+	sticky
+	top-0
+	z-100
+	bg-[#FCF1DB]
 	gap-8
 	py-8
 	px-16
@@ -126,6 +129,15 @@ const Name = tw.text`
   font-medium
 `;
 
+const Placeholder = tw.div`
+	flex
+	w-full
+	h-full
+	text-4xl
+	items-center
+	justify-center
+`;
+
 export {
 	ListAlign,
 	InnerContainer,
@@ -142,4 +154,5 @@ export {
 	Answer,
 	ItemHeader,
 	Questions,
+	Placeholder,
 };

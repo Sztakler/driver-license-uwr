@@ -12,12 +12,18 @@ export default function PracticePage() {
 	const { task, setNewTask, setNewSavedQuestions } = useContext(TaskContext);
 
 	function getPracticeQuestions() {
-		return fetch("http://localhost:5000/api/practice")
+		return fetch("http://localhost:5000/api/practice", {
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				return data;
 			});
 	}
+
 	useEffect(() => {
 		const fetchQuestions = async () => {
 			const questions = await getPracticeQuestions();

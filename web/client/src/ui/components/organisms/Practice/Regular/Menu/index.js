@@ -17,8 +17,10 @@ import {
 	CustomTimer,
 	Row,
 	NextPrevious,
+	KnowledgeLevel,
 } from "./styles";
 import Heading from "../../../../atoms/Heading";
+import Input from "../../../../atoms/Input";
 
 export default function Menu({ isExam }) {
 	const {
@@ -40,6 +42,7 @@ export default function Menu({ isExam }) {
 	});
 	const [taskIdx, setTaskIdx] = useState(0);
 	const [examFinished, setExamFinished] = useState(false);
+	const [knowledgeLevel, setKnowledgeLevel] = useState("-");
 
 	function decrementTimer() {
 		if (taskStarted && currentTime > 0) {
@@ -72,6 +75,14 @@ export default function Menu({ isExam }) {
 		setNewTask(savedQuestions[newTaskIdx]);
 		setTaskIdx(newTaskIdx);
 		setCurrentTime(30);
+
+		const selectElement = document.getElementById("knowledge_level");
+		selectElement.selectedIndex = savedQuestions[newTaskIdx].knowledge_level;
+		console.log(
+			"nowy task",
+			savedQuestions[newTaskIdx].knowledge_level,
+			selectElement.selectedIndex
+		);
 	}
 
 	function previousQuestion() {
@@ -117,6 +128,53 @@ export default function Menu({ isExam }) {
 		taskStarted && setExplanationModalShow(true);
 	}
 
+	function handleChangeKnowledgeLevel(e) {
+		setKnowledgeLevel(e.target.value);
+	}
+
+	async function handleChangeKnowledgeLevel(e) {
+		let newKnowledgeLevel = e.target.value;
+		if (newKnowledgeLevel === "-") return;
+
+		setKnowledgeLevel(newKnowledgeLevel);
+
+		try {
+			if (newKnowledgeLevel === "") {
+				newKnowledgeLevel = null;
+			} else if (newKnowledgeLevel === "Niska") {
+				newKnowledgeLevel = 0;
+			} else if (newKnowledgeLevel === "Średnia") {
+				newKnowledgeLevel = 1;
+			} else {
+				newKnowledgeLevel = 2;
+			}
+
+			const response = await fetch(
+				"http://localhost:5000/api/user-knowledge-levels",
+				{
+					method: "POST",
+					credentials: "include",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						question_id: task.id,
+						knowledgeLevel: newKnowledgeLevel,
+					}),
+				}
+			);
+
+			if (response.ok) {
+				console.log("Data submitted successfully");
+			} else {
+				console.error("Error submitting data");
+			}
+		} catch (error) {
+			console.error("Network error:", error);
+		}
+
+		return 0;
+	}
 	function handleNextQuestionButton() {
 		if (examFinished) {
 			return;
@@ -175,6 +233,21 @@ export default function Menu({ isExam }) {
 					</CustomTimer>
 				</Row>
 			</TimerContainer>
+
+			<KnowledgeLevel>
+				<Text className="text-[16px] px-2">Poziom znajomości pytania</Text>
+				<Input
+					id="knowledge_level"
+					type="select"
+					className="bg-[#FFE49E] rounded-xl w-full px-2 py-1"
+					onChange={handleChangeKnowledgeLevel}
+				>
+					<option hidden>-</option>
+					<option>Niska</option>
+					<option>Średnia</option>
+					<option>Wysoka</option>
+				</Input>
+			</KnowledgeLevel>
 
 			<NextPrevious>
 				{!isExam ? (
