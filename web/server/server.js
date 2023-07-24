@@ -122,6 +122,17 @@ app.post("/login", (req, res, next) =>
 	})(req, res, next)
 );
 
+app.post("/logout", (req, res, next) =>
+	req.logout((err) => {
+		if (err) {
+			console.log("LOGOUT ERROR");
+			throw err;
+		}
+		console.log("Logged out successfully");
+		res.status(200).send();
+	})
+);
+
 app.get("/api/practice/", async (req, res) => {
 	try {
 		const allTasks = await pool.query(

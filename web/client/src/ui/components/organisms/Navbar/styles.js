@@ -64,6 +64,18 @@ const NavbarLinks = tw.ul`
 	max-lg:flex-col
 `;
 
+const Logout = tw.button`
+	flex
+	items-center
+	justify-center
+	hover:cursor-pointer
+	text-[#0D0D0D]
+	font-medium
+	
+	lg:h-full
+	max-lg:w-full
+`;
+
 export {
 	NavbarContainer,
 	BrandTitle,
@@ -71,4 +83,5 @@ export {
 	HamburgerOptionArea,
 	NavbarLinks,
 	NavigationArea,
+	Logout,
 };

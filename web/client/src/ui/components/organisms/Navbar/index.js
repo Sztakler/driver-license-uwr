@@ -17,6 +17,7 @@ import {
 	HamburgerOptionArea,
 	NavbarLinks,
 	NavigationArea,
+	Logout,
 } from "./styles";
 import User from "../../../../icons/User";
 
@@ -62,7 +63,20 @@ export default function Navbar(props) {
 		},
 	];
 
-	console.log(props.lighter);
+	async function Logout()
+	{
+		console.log("LOGOOUT")
+		await fetch("http://localhost:5000/logout", {
+				method: "POST",
+				credentials: "include",
+				headers: {
+					"Content-Type": "application/json",
+				},
+		})
+		
+		setActivePage("/");
+		navigate("/");
+	}
 
 	return (
 		<NavbarContainer lighter={props.lighter}>
@@ -108,6 +122,17 @@ export default function Navbar(props) {
 							</NavbarItem>
 						);
 					})}
+
+					<NavbarItem>
+						<Button
+							navbar
+							navbarIcon
+							size={"xl"}
+							onClick={() => Logout()}
+						>
+							Wyloguj
+						</Button>
+					</NavbarItem>
 				</NavbarLinks>
 			</NavigationArea>
 			<HamburgerOptionArea>
