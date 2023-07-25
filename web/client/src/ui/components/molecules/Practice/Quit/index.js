@@ -23,7 +23,7 @@ export default function Quit({ isReview, isExam, result }) {
 
 	async function sendResultsToDatabase() {
 		let data = {
-			user_id: 321,
+			user_id: 34,
 			questions: savedQuestions,
 			summary: result,
 		};

@@ -251,6 +251,63 @@ app.get("/api/exam/results/:id", async (req, res) => {
 	}
 });
 
+app.get("/api/statistics", async (req, res) => {
+	try {
+		const { from, to } = req.body;
+
+		const questions_count = await pool.query(
+			`
+		SELECT COUNT(*) AS record_count FROM questions;
+			`
+		);
+
+		const medium_knowledge_questions_count = await pool.query(
+			`
+		SELECT COUNT(*)
+		AS record_count
+		FROM user_knowledge_levels
+		WHERE user_knowledge_levels.knowledge_level = 1 AND user_knowledge_levels.user_id = $1;
+			`, [req.user.id]
+		);
+
+		const high_knowledge_questions_count = await pool.query(
+			`
+		SELECT COUNT(*)
+		AS record_count
+		FROM user_knowledge_levels
+		WHERE user_knowledge_levels.knowledge_level = 2 AND user_knowledge_levels.user_id = $1;
+			`, [req.user.id]
+		);
+
+		let total_count = Number(questions_count.rows[0].record_count);
+		let medium_count = Number(medium_knowledge_questions_count.rows[0].record_count);
+		let high_count = Number(high_knowledge_questions_count.rows[0].record_count);
+		let low_count = total_count - medium_count - high_count;
+
+		const weekly_exams = await pool.query(
+			`
+			SELECT created_at
+			FROM results
+			WHERE user_id = $1 AND created_at BETWEEN $2 AND $3;
+			`,
+			[req.user.id, from, to]
+		);
+
+		console.log(weekly_exams.rows);
+
+		res.json({
+			material_progress: {
+				low_count: low_count,
+				medium_count: medium_count,
+				high_count: high_count,
+			},
+			weekly_exams: weekly_exams.rows,
+		});
+	} catch (err) {
+		console.error(err.message);
+	}
+});
+
 app.get("/api/saved-questions", async (req, res) => {
 	try {
 		const results = await pool.query(
@@ -258,7 +315,7 @@ app.get("/api/saved-questions", async (req, res) => {
 			"FROM questions q " +
 			"LEFT JOIN user_knowledge_levels uk ON q.id = uk.question_id AND uk.user_id = $1 " +
 			"WHERE q.id = ANY (" +
-			"  SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
+			"SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
 			");",
 			[req.user.id]
 		);
