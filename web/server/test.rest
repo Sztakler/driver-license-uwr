@@ -6,4 +6,5 @@
 # 	"password": "abcdefg"
 # }
 
-GET http://localhost:5000/check-auth
+GET http://localhost:5000/api/questions-count
+

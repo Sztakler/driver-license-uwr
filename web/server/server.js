@@ -133,6 +133,20 @@ app.post("/logout", (req, res, next) =>
 	})
 );
 
+app.get("/api/questions-count", async (req, res) => {
+	try {
+		const questions_count = await pool.query(
+			`
+		SELECT COUNT(*) AS record_count FROM questions;
+			`
+		);
+		res.json(Number(questions_count.rows[0].record_count));
+	} catch (err) {
+		console.error(err.message);
+	}
+})
+
+
 app.get("/api/practice/", async (req, res) => {
 	try {
 		const allTasks = await pool.query(
@@ -241,11 +255,11 @@ app.get("/api/saved-questions", async (req, res) => {
 	try {
 		const results = await pool.query(
 			"SELECT q.*, uk.knowledge_level " +
-				"FROM questions q " +
-				"LEFT JOIN user_knowledge_levels uk ON q.id = uk.question_id AND uk.user_id = $1 " +
-				"WHERE q.id = ANY (" +
-				"  SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
-				");",
+			"FROM questions q " +
+			"LEFT JOIN user_knowledge_levels uk ON q.id = uk.question_id AND uk.user_id = $1 " +
+			"WHERE q.id = ANY (" +
+			"  SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
+			");",
 			[req.user.id]
 		);
 		res.json(results.rows);
@@ -269,6 +283,35 @@ app.post("/api/saved-questions", async (req, res) => {
 		res.status(400).json({ message: "Registration unsuccessful" });
 	}
 });
+
+app.get("/api/user-knowledge-levels", async (req, res) => {
+	try {
+		const medium_knowledge_questions_count = await pool.query(
+			`
+		SELECT COUNT(*)
+		AS record_count
+		FROM user_knowledge_levels
+		WHERE user_knowledge_levels.knowledge_level = 1 AND user_knowledge_levels.user_id = $1;
+			`, [req.user.id]
+		);
+
+		const high_knowledge_questions_count = await pool.query(
+			`
+		SELECT COUNT(*)
+		AS record_count
+		FROM user_knowledge_levels
+		WHERE user_knowledge_levels.knowledge_level = 2 AND user_knowledge_levels.user_id = $1;
+			`, [req.user.id]
+		);
+
+		res.json({
+			high_count: Number(high_knowledge_questions_count.rows[0].record_count),
+			medium_count: Number(medium_knowledge_questions_count.rows[0].record_count),
+		});
+	} catch (err) {
+		console.error(err.message);
+	}
+})
 
 app.post("/api/user-knowledge-levels", async (req, res) => {
 	try {
