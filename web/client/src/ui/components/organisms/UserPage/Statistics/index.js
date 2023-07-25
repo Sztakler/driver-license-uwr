@@ -7,7 +7,8 @@ export default function Statistics() {
 	return (
 		<StatisticsAlign>
 			<InnerContainer>
-				<Diagram />
+				<Diagram >
+				</Diagram>
 				<Diagram />
 			</InnerContainer>
 		</StatisticsAlign>
