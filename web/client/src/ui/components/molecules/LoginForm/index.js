@@ -12,11 +12,13 @@ import {
 } from "./styles";
 import Image from "../../atoms/Image";
 import Button from "../../atoms/Button";
+import { useNavigate } from "react-router";
 
 export default function LoginForm(props) {
 	const [usernameInput, setUsernameInput] = useState("");
 	const [passwordInput, setPasswordInput] = useState("");
 	const [test, setTest] = useState("TEST");
+	let navigate = useNavigate();
 
 	function handleUsername(event) {
 		setUsernameInput(event.target.value);
@@ -28,6 +30,11 @@ export default function LoginForm(props) {
 
 	async function handleSubmit(event) {
 		event.preventDefault();
+
+		const form = event.target;
+		const formData = new FormData(form);
+		const formJson = Object.fromEntries(formData.entries());
+		console.log(formJson);
 		try {
 			const respond = await fetch("http://localhost:5000/login", {
 				method: "POST",
@@ -35,10 +42,7 @@ export default function LoginForm(props) {
 					"Content-Type": "application/json",
 				},
 				credentials: "include", // this is needed for browser to set the cookie it receives
-				body: JSON.stringify({
-					email: "a@a",
-					password: "a",
-				}),
+				body: JSON.stringify(formJson),
 			});
 			if (respond.status === 200) {
 				setTest("POPRAWNE");
@@ -48,6 +52,7 @@ export default function LoginForm(props) {
 					JSON.stringify({ id: res.id, name: res.name })
 				);
 				console.log(window.sessionStorage.getItem("User"));
+				navigate("/");
 			}
 		} catch (err) {
 			console.log(err);
@@ -67,6 +72,7 @@ export default function LoginForm(props) {
 						id="email"
 						type="email"
 						name="email"
+						required
 						value={usernameInput}
 						onChange={handleUsername}
 						placeholder="Username"
@@ -82,6 +88,8 @@ export default function LoginForm(props) {
 						id="password"
 						type="password"
 						name="password"
+						required
+						minLength="8"
 						value={passwordInput}
 						onChange={handlePassword}
 						placeholder="******************"

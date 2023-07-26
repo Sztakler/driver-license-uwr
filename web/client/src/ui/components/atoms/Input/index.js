@@ -8,6 +8,8 @@ import {
 	inputRadioClasses,
 	inputCheckboxClasses,
 	inputRegisterClasses,
+	fullWidthClasses,
+	fixedWidthClasses,
 } from "./styles";
 
 const StyledInput = tw.input`
@@ -15,6 +17,8 @@ const StyledInput = tw.input`
 	${(props) => props.primary && inputPrimaryClasses}
 	${(props) => props.login && inputLoginClasses}
 	${(props) => props.register && inputRegisterClasses}
+	${(props) => props.fullWidth && fullWidthClasses}
+	${(props) => props.fixedWidth && fixedWidthClasses}
 	${(props) => props.type == "radio" && inputRadioClasses}
 	${(props) => props.type == "checkbox" && inputCheckboxClasses}
 `;

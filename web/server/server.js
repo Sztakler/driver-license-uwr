@@ -308,6 +308,46 @@ app.get("/api/statistics", async (req, res) => {
 	}
 });
 
+app.post("/api/user-settings", async (req, res) => {
+	try {
+		console.log("DUPA");
+		let providedPassword = req.body.providedPassword;
+		let userData = await pool.query(
+			`SELECT * from users where id = $1;`,
+			[req.user.id]
+		);
+		console.log("userdata", userData.rows);
+		let result = await bcrypt.compare(providedPassword, userData.rows[0].password);
+		console.log("result:", result);
+		
+		if (result === false) {
+			res.status(400).json({ message: "Wprowadzone hasło jest niepoprawne" });
+		}
+
+		console.log("request body:", req.body);
+
+		let newName = req.body.userName !== "" ? req.body.userName : userData.rows[0].name; 
+		let newEmail = req.body.userEmail !== "" ? req.body.userEmail : userData.rows[0].email; 
+		let newPassword = req.body.newPassword !== "" ? await bcrypt.hash(req.body.newPassword, 10) : userData.rows[0].password; 
+
+		console.log(newName, newEmail, newPassword, userData.rows[0].name, userData.rows[0].email, userData.rows[0].password)
+
+		await pool.query(
+			`
+			UPDATE users
+			SET name = $1,
+			email = $2,
+			password = $3
+			WHERE id = ${req.user.id};`,
+			[newName, newEmail, newPassword]
+		)
+
+
+	} catch {
+		res.status(400).json({ message: "Error" });
+	}
+});
+
 app.get("/api/saved-questions", async (req, res) => {
 	try {
 		const results = await pool.query(

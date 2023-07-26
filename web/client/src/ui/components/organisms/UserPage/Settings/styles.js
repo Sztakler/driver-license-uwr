@@ -1,9 +1,50 @@
 import tw from "tailwind-styled-components";
 
-const SettingsContainer = tw.div`
-	w-full
-	px-[132px]
-	bg-red-700
+const SettingsAlign = tw.div`
+	px-48
+	mb-24
+	mt-6
 `;
 
-export { SettingsContainer };
+const InnerContainer = tw.div`
+	flex
+	flex-col
+	items-center
+	py-16
+	self-center
+	bg-[#FCF1DB]
+	border
+	border-[#CECECE00]
+	rounded-xl
+	h-[700px]
+	w-full
+	bg-gradient-to-b from-[#fff4d6] to-[#fff8e5]
+`;
+
+const Form = tw.form`
+	flex
+	flex-col
+	justify-evenly
+	h-full
+`;
+
+const HorizontalContainer = tw.div`
+	flex
+	flex-row
+	gap-24
+`;
+
+const VerticalContainer = tw.div`
+	flex
+	flex-col
+	gap-4
+`;
+
+const InputContainer = tw.div`
+	flex
+	flex-col
+`;
+
+
+
+export { SettingsAlign, InnerContainer, Form, HorizontalContainer, VerticalContainer, InputContainer,};
