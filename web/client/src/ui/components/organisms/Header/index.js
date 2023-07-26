@@ -6,25 +6,22 @@ import {
 	IllustrationContainer,
 	Title,
 	Subtitle,
-  Buttons,
+	Buttons,
 } from "./styles";
 
 import Image from "../../atoms/Image";
 
-export default function Header({ title, subtitle, illustration, children}) {
-
-  return(
-			<HeaderContainer>
-				<TitleContainer>
-          <Title>{title}</Title>
-          <Subtitle>{subtitle}</Subtitle>
-				</TitleContainer>
-				<IllustrationContainer>
-          <Image src={illustration} />
-				</IllustrationContainer>
-        <Buttons>
-          {children}
-        </Buttons>
-			</HeaderContainer>
-  );
+export default function Header({ title, subtitle, illustration, children }) {
+	return (
+		<HeaderContainer>
+			<TitleContainer>
+				<Title>{title}</Title>
+				<Subtitle>{subtitle}</Subtitle>
+			</TitleContainer>
+			<IllustrationContainer>
+				<Image src={illustration} className="w-[90%]" />
+			</IllustrationContainer>
+			<Buttons>{children}</Buttons>
+		</HeaderContainer>
+	);
 }

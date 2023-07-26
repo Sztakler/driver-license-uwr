@@ -5,14 +5,13 @@ const PageWrapper = tw.div`
 	flex-col
 	w-full
 	h-full
-
+	bg-local
+	bg-gradient-to-b from-[0%] from-[#FFF1DB]  via-[#FFFBF3] via-[20%] to-[#FFFBF3] to-100%
 	overflow-y-auto
 	scrollbar
 	snap-mandatory
 	snap-y
 	scroll-p-[200px]
-	bg-[#FFFAED]
-	mt-[90px]
 `;
 
 const HeroSection = tw.div`
@@ -20,7 +19,6 @@ const HeroSection = tw.div`
 	flex-[1_0_auto]
 	align-middle 
 	justify-center
-	bg-[#ffefd0]
 `;
 
 const MainContent = tw.div`

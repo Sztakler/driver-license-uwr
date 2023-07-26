@@ -74,7 +74,6 @@ function renderAnswers(task) {
 }
 
 export default function SavedQuestions() {
-	const expandedQuestionRef = useRef(null);
 	const [expandedTaskIdx, setExpandedTaskIdx] = useState(-1);
 
 	const [filtersPicked, setFiltersPicked] = useState({
@@ -150,16 +149,6 @@ export default function SavedQuestions() {
 		setExpandedTaskIdx(-1);
 	}, [filtersPicked]);
 
-	useEffect(() => {
-		if (expandedQuestionRef.current) {
-			expandedQuestionRef.current.scrollIntoView({
-				behavior: "smooth",
-				block: "nearest",
-				inline: "start",
-			});
-		}
-	}, [expandedTaskIdx]);
-
 	function capitalizeFirstLetter(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 	}
@@ -173,12 +162,64 @@ export default function SavedQuestions() {
 		});
 	}
 
+	function getRelativePos(elm) {
+		var pPos = elm.parentNode.getBoundingClientRect(), // parent pos
+			cPos = elm.getBoundingClientRect(), // target pos
+			pos = {};
+
+		(pos.top = cPos.top - pPos.top + elm.parentNode.scrollTop),
+			(pos.right = cPos.right - pPos.right),
+			(pos.bottom = cPos.bottom - pPos.bottom),
+			(pos.left = cPos.left - pPos.left);
+
+		return pos;
+	}
+
+	function scrollToElm(container, elm, duration) {
+		var pos = getRelativePos(elm);
+		scrollTo(container, pos.top, duration); // duration in seconds
+	}
+
+	function scrollElement(id) {
+		scrollToElm(
+			document.getElementById("scrollable"),
+			document.getElementById("div" + id),
+			1
+		);
+	}
+
+	function scrollTo(element, to, duration, onDone) {
+		var start = element.scrollTop,
+			change = to - start,
+			startTime = performance.now(),
+			val,
+			now,
+			elapsed,
+			t;
+
+		function animateScroll() {
+			now = performance.now();
+			elapsed = (now - startTime) / 1000;
+			t = elapsed / duration;
+
+			element.scrollTop = start + change * easeInOutQuad(t);
+
+			if (t < 1) window.requestAnimationFrame(animateScroll);
+			else onDone && onDone();
+		}
+
+		animateScroll();
+	}
+	function easeInOutQuad(t) {
+		return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+	}
+
 	return (
 		<ListAlign>
 			<Text className="ml-auto mr-2 pb-2">
 				Liczba zapisanych pytań: {tasks.length}
 			</Text>
-			<InnerContainer>
+			<InnerContainer id="scrollable">
 				<Header>
 					<FiltersList>
 						<Name>Typ pytania:</Name>
@@ -235,7 +276,6 @@ export default function SavedQuestions() {
 								id="saved"
 								type="checkbox"
 								value="saved"
-								vvcvv
 								className="mr-2"
 								onChange={() => {
 									handleCheckboxChange("ŚREDNI");
@@ -260,7 +300,7 @@ export default function SavedQuestions() {
 					</FiltersList>
 				</Header>
 
-				<Questions>
+				<Questions id="scrollable">
 					{questionsLoaded && filteredTasks.length === 0 ? (
 						<Placeholder>
 							Żadne z pytań nie spełnia podanych filtrów{" "}
@@ -270,7 +310,11 @@ export default function SavedQuestions() {
 					) : (
 						filteredTasks.map((task, index) => {
 							return (
-								<ListItem active={expandedTaskIdx === index}>
+								<ListItem
+									active={expandedTaskIdx === index}
+									id={"div" + index}
+									onClick={() => scrollElement(index)}
+								>
 									<ItemHeader
 										onClick={() => {
 											setExpandedTaskIdx((prevState) => {
@@ -315,7 +359,7 @@ export default function SavedQuestions() {
 										</div>
 									</ItemHeader>
 									{expandedTaskIdx === index && (
-										<ItemBody ref={expandedQuestionRef}>
+										<ItemBody>
 											<ImageBox>
 												<Image exam src={task.media} />
 											</ImageBox>

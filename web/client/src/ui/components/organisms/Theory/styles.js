@@ -5,9 +5,6 @@ const Container = tw.div`
 	flex-col
 	max-md:flex-col
 	h-full
-	mt-[90px]
-	max-lg:mt-[61px]
-	bg-[#FFF3DD]
 	pt-12
 `;
 
@@ -41,7 +38,6 @@ const MainContainer = tw.div`
 	max-md:flex-col
 	w-full
 	h-full
-	bg-[#FFFAED]
 	pt-6
 `;
 
@@ -50,7 +46,6 @@ const SidebarContainer = tw.div`
 	flex-row
 	max-md:flex-col
 	h-full
-	bg-[#FFFAED]
 `;
 
 const SidebarArrowButton = tw.div`

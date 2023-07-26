@@ -38,8 +38,8 @@ export default function ExamMenuPage() {
 			<Container>
 				<HeaderContainer>
 					<TitleContainer>
-						<Title className="text-8xl">Symulacja egzaminu</Title>
-						<Subtitle className="pt-5 mb-8 text-2xl max-w-prose">
+						<Title>Symulacja egzaminu</Title>
+						<Subtitle className="pt-5 mb-8 text-[20px] max-w-prose">
 							Symulacja egzaminu to tryb, w którym możesz przetestować nabyte
 							przez siebie umiejętności. Odwzorowaliśmy dla Ciebie formę
 							egzaminu, tak żeby na państwowym egzaminie nic Cię nie zaskoczyło.
@@ -51,7 +51,7 @@ export default function ExamMenuPage() {
 						<div className="flex flex-col">
 							<img
 								src={Illustrations.PurpleCar}
-								className="self-center w-[70%]"
+								className="self-center w-[70%] max-w-[2100px]"
 							></img>
 							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px] mt-8">
 								<Button primary hover size="l">

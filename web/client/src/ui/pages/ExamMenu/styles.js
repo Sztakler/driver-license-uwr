@@ -4,16 +4,15 @@ const Container = tw.div`
 	flex
 	flex-col
 	max-md:flex-col
-	min-h-[calc(100vh-90px)]
-	bg-[#FFEFD0]
-	mt-[90px]
-	max-lg:mt-[61px]
+	min-h-[calc(100vh-91px)]
+	p-4
 `;
 
 const HeaderContainer = tw.div`
 	flex
+	justify-center
 	flex-col
-	h-full
+	h-[calc(100vh-38px)]
 `;
 
 const TitleContainer = tw.div`
@@ -29,7 +28,7 @@ const IllustrationContainer = tw.div`
 `;
 
 const Title = tw.div`
-	text-5xl
+	text-[90px]
 	text-[#0d0d0d]
 	font-display
 `;

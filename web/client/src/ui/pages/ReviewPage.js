@@ -30,8 +30,6 @@ export default function ReviewPage() {
 		fetchDataAndSetIt();
 	}, []);
 
-	console.log("xd");
-
 	return (
 		<NoNavbarTemplate
 			header={<Navbar />}

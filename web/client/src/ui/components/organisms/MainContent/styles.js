@@ -1,6 +1,5 @@
 import tw from "tailwind-styled-components";
 
-
 const Container = tw.div`
 	relative
 	flex
@@ -17,7 +16,9 @@ const SidebarContainer = tw.div`
 	flex-row
 	max-md:flex-col
 	h-full
-	bg-[#FFFAED]
+	bg-gradient-to-r
+	from-[#FFF6E4]
+	to-[#FFFBF3]
 `;
 
 const SidebarArrowButton = tw.div`
@@ -93,7 +94,7 @@ self-center mt-10
 `;
 
 export {
-  Container,
+	Container,
 	SidebarContainer,
 	Content,
 	Title,

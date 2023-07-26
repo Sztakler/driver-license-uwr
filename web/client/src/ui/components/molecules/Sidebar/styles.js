@@ -4,8 +4,10 @@ const Container = tw.div`
 	flex
 	min-w-[20rem]
 	max-w-[20rem]
-	bg-[#FFC120]
-	max-md:min-w-full
+	bg-gradient-to-b
+	from-[#FFF6E4]
+	to-[#FFFBF3]
+		max-md:min-w-full
 	p-8
 	select-none
 

@@ -4,7 +4,6 @@ const HeaderContainer = tw.div`
 	flex
 	flex-col
   min-h-[calc(100vh-300px)]
-	bg-[#FFFAED]
 	mb-48
 `;
 
@@ -17,18 +16,20 @@ const TitleContainer = tw.div`
 const IllustrationContainer = tw.div`
 	flex
 	flex-col
+	w-full
 	relative
+	items-center
 `;
 
 const Title = tw.div`
-	text-8xl
+	text-[90px]
 	text-[#0d0d0d]
 	font-display
 `;
 
 const Subtitle = tw.div`
-	text-2xl
-	mb-6
+	text-[20px]
+	mb-8
 	pt-5
 	text-overflow
 	text-[#0d0d0d]
@@ -36,14 +37,15 @@ const Subtitle = tw.div`
 `;
 
 const Buttons = tw.div`
-self-center mt-10
+	self-center
+	mt-4
 `;
 
 export {
-  HeaderContainer,
-  TitleContainer,
-  IllustrationContainer,
-  Title,
-  Subtitle,
-  Buttons,
+	HeaderContainer,
+	TitleContainer,
+	IllustrationContainer,
+	Title,
+	Subtitle,
+	Buttons,
 };

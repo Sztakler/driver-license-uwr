@@ -4,20 +4,20 @@ import Sidebar from "../../molecules/Sidebar";
 import PanelsScroller from "../../molecules/PanelScroller";
 
 import {
-  Container,
-  SidebarContainer,
-  Content,
-  Title,
-  Subtitle,
-  SidebarArrowButton,
-  SidebarArrowButtonParagraph,
-  SidebarButtonInvisibleCheckbox,
+	Container,
+	SidebarContainer,
+	Content,
+	Title,
+	Subtitle,
+	SidebarArrowButton,
+	SidebarArrowButtonParagraph,
+	SidebarButtonInvisibleCheckbox,
 } from "./styles";
 
 import Paragraph from "../../atoms/Paragraph";
 
-export default function MainContent({ navigation, panelsContents}) {
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+export default function MainContent({ navigation, panelsContents }) {
+	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
 	function Arrow(props) {
 		return (
@@ -72,30 +72,30 @@ export default function MainContent({ navigation, panelsContents}) {
 		);
 	}
 
-  return(
-    <Container id="MainContent" >
-      {isSidebarVisible ? (
-        <SidebarContainer>
-          <ToggleSidebarButton />
-          <Sidebar navigation={navigation}></Sidebar>
-        </SidebarContainer>
-      ) : (
-        <ToggleSidebarButton sidebarHidden />
-      )}
-      <Content>
-        <Title>Znaki ostrzegawcze</Title>
-        <Subtitle>rozdział: Znaki pionowe</Subtitle>
-        <Paragraph
-          style="text-[#0d0d0d] max-w-prose text-lg text-left"
-          content=""
-        >
-          Znaki te wskazują kierującemu jak powinien się zachować w miejscu,
-          do którego się zbliża. Znaki nakazujące kierunek jazdy mogą być
-          umieszczone na przedłużeniu osi jezdni (drogi) lub na samej jezdni
-          (drodze).
-        </Paragraph>
-        <PanelsScroller panelsContents={panelsContents} />
-      </Content>
-    </Container>
-  );
+	return (
+		<Container id="MainContent">
+			{isSidebarVisible ? (
+				<SidebarContainer>
+					<ToggleSidebarButton />
+					<Sidebar navigation={navigation}></Sidebar>
+				</SidebarContainer>
+			) : (
+				<ToggleSidebarButton sidebarHidden />
+			)}
+			<Content>
+				<Title>Znaki ostrzegawcze</Title>
+				<Subtitle>rozdział: Znaki pionowe</Subtitle>
+				<Paragraph
+					style="text-[#0d0d0d] max-w-prose text-lg text-left"
+					content=""
+				>
+					Znaki te wskazują kierującemu jak powinien się zachować w miejscu, do
+					którego się zbliża. Znaki nakazujące kierunek jazdy mogą być
+					umieszczone na przedłużeniu osi jezdni (drogi) lub na samej jezdni
+					(drodze).
+				</Paragraph>
+				<PanelsScroller panelsContents={panelsContents} />
+			</Content>
+		</Container>
+	);
 }

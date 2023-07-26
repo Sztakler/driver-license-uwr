@@ -1,24 +1,18 @@
 import tw from "tailwind-styled-components";
 
 const Container = tw.div`
-    flex
-    flex-col
-    max-md:flex-col
-    min-h-[calc(100vh-90px)]
-    mt-[90px]
-    max-lg:mt-[61px]
-    items-center
-    bg-[#FFF3DD]
+		flex
+		flex-col
+		max-md:flex-col
+		min-h-[calc(100vh-91px)]
+		p-4
+		justify-center
 `;
 
 const HeaderContainer = tw.div`
-    flex
-    flex-col
-    max-lg:items-center
-    max-lg:justify-center
-    max-lg:text-center
-    w-full
-    max-w-[1830px]    
+		flex
+		justify-center
+		flex-col
 `;
 
 const TitleContainer = tw.div`
@@ -35,7 +29,7 @@ const IllustrationContainer = tw.div`
 `;
 
 const MainContainer = tw.div`
-    flex
+		hidden
     max-md:flex-col
     h-full
 `;
@@ -57,7 +51,6 @@ const Content = tw.div`
 
 const Title = tw.div`
     text-[90px]
-    leading-[1.4]
     text-[#0d0d0d]
     font-display
 `;
@@ -103,15 +96,15 @@ const Panel = tw.div`
 `;
 
 export {
-    Container,
-    HeaderContainer,
-    MainContainer,
-    IllustrationContainer,
-    TitleContainer,
-    SidebarContainer,
-    Content,
-    Title,
-    Subtitle,
-    PanelsScroller,
-    Panel,
+	Container,
+	HeaderContainer,
+	MainContainer,
+	IllustrationContainer,
+	TitleContainer,
+	SidebarContainer,
+	Content,
+	Title,
+	Subtitle,
+	PanelsScroller,
+	Panel,
 };

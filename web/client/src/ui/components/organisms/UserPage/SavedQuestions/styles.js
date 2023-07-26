@@ -12,9 +12,6 @@ const InnerContainer = tw.div`
 	flex
 	flex-col
 	self-center
-	bg-[#FCF1DB]
-	border
-	border-[#CECECE]
 	rounded-xl
 	h-[784px]
 	overflow-y-scroll
@@ -25,6 +22,8 @@ const Questions = tw.div`
 	flex
 	flex-col
 	h-full
+	pb-32
+
 `;
 
 const ListItem = tw.div`
@@ -102,7 +101,7 @@ const Header = tw.div`
 	flex-wrap
 	sticky
 	top-0
-	z-100
+	z-10
 	bg-[#FCF1DB]
 	gap-8
 	py-8

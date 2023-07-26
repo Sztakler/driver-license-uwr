@@ -1,22 +1,18 @@
 import tw from "tailwind-styled-components";
 
 const NavbarContainer = tw.div`
-	fixed
-	top-0
 	w-full
 	z-10
 	flex 
 	flex-[0_1_auto]
 	max-lg:flex-col
 	items-center 
-	bg-[#FFEFCF]
 
 	lg:justify-between
 	max-lg:justify-center
 	lg:px-8
 	lg:min-h-[91px]
 	lg:max-h-[91px]
-	${(props) => (props.lighter ? "bg-[#FFFCF5]" : "")}
 	`;
 
 const BrandTitle = tw.div`

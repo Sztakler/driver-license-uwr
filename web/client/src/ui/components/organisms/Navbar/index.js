@@ -30,9 +30,8 @@ export default function Navbar(props) {
 	const [activePage, setActivePage] = useState(
 		`/${location.pathname.split("/")[1]}`
 	);
-	console.log(activePage);
+
 	const handleHamburgerClick = () => {
-		console.log(hamburgerView);
 		setHamburgerView((state) => !state);
 	};
 
@@ -63,17 +62,15 @@ export default function Navbar(props) {
 		},
 	];
 
-	async function Logout()
-	{
-		console.log("LOGOOUT")
+	async function Logout() {
 		await fetch("http://localhost:5000/logout", {
-				method: "POST",
-				credentials: "include",
-				headers: {
-					"Content-Type": "application/json",
-				},
-		})
-		
+			method: "POST",
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
 		setActivePage("/");
 		navigate("/");
 	}
@@ -124,12 +121,7 @@ export default function Navbar(props) {
 					})}
 
 					<NavbarItem>
-						<Button
-							navbar
-							navbarIcon
-							size={"xl"}
-							onClick={() => Logout()}
-						>
+						<Button navbar navbarIcon size={"xl"} onClick={() => Logout()}>
 							Wyloguj
 						</Button>
 					</NavbarItem>

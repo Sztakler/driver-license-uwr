@@ -12,9 +12,6 @@ const InnerContainer = tw.div`
 	items-center
 	py-16
 	self-center
-	bg-[#FCF1DB]
-	border
-	border-[#CECECE00]
 	rounded-xl
 	h-[700px]
 	w-full
@@ -45,6 +42,11 @@ const InputContainer = tw.div`
 	flex-col
 `;
 
-
-
-export { SettingsAlign, InnerContainer, Form, HorizontalContainer, VerticalContainer, InputContainer,};
+export {
+	SettingsAlign,
+	InnerContainer,
+	Form,
+	HorizontalContainer,
+	VerticalContainer,
+	InputContainer,
+};

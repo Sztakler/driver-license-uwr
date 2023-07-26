@@ -5,10 +5,7 @@ import Image from "../../atoms/Image";
 import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 import MainContent from "../../organisms/MainContent";
 
-import {
-	Container,
-	ScrolldownButton,
-} from "./styles";
+import { Container, ScrolldownButton } from "./styles";
 
 import znakiOstrzegawcze from "/src/assets/images/svg/textbook/znaki-ostrzegawcze/znaki-ostrzegawcze";
 import Arrows from "/src/assets/images/svg/icons/Arrows";
@@ -161,15 +158,20 @@ export default function Theory({ navigation, content }) {
 			.scrollIntoView({ behavior: "smooth" });
 	};
 
-
 	return (
 		<Container>
-      <Header title={"Podręcznik"} subtitle={"Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii zasad ruchu drogowego."} illustration={Illustrations.TextbookIllustration}>
-					<ScrolldownButton onClick={scrollDown}>
-						<Image src={Arrows.Down}></Image>
-					</ScrolldownButton>
-      </Header>
-      <MainContent navigation={navigation} panelsContents={panelsContents}/>
+			<Header
+				title={"Podręcznik"}
+				subtitle={
+					"Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii zasad ruchu drogowego."
+				}
+				illustration={Illustrations.TextbookIllustration}
+			>
+				<ScrolldownButton onClick={scrollDown}>
+					<Image src={Arrows.Down}></Image>
+				</ScrolldownButton>
+			</Header>
+			<MainContent navigation={navigation} panelsContents={panelsContents} />
 		</Container>
 	);
 }
