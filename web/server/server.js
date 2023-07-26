@@ -92,7 +92,6 @@ app.post("/register", async (req, res) => {
 
 app.get("/check-auth", (req, res) => {
 	const clientSessionId = req.headers.authorization.split(" ")[1]; // Extract session ID from the request header
-	console.log("sesja", clientSessionId);
 	if (clientSessionId && clientSessionId === req.sessionID) {
 		res.json({ isAuthenticated: true, user: req.session.user });
 	} else {
@@ -144,8 +143,7 @@ app.get("/api/questions-count", async (req, res) => {
 	} catch (err) {
 		console.error(err.message);
 	}
-})
-
+});
 
 app.get("/api/practice/", async (req, res) => {
 	try {
@@ -175,7 +173,6 @@ app.get("/api/practice/", async (req, res) => {
 				`,
 			[req.user.id]
 		);
-		console.log(allTasks.rows, req.user.id);
 		res.json(allTasks.rows);
 	} catch (err) {
 		console.error(err.message);
@@ -218,7 +215,6 @@ app.post("/api/exam/results", async (req, res) => {
 		)
 		returning id;
 		`);
-		console.log("correct insert and response", result.rows[0]);
 		res.json({ id: result.rows[0].id });
 	} catch (error) {
 		console.error(error.message);
@@ -230,7 +226,6 @@ app.get("/api/exam/results", async (req, res) => {
 		const randomResult = await pool.query(
 			"SELECT * FROM results ORDER BY RANDOM() LIMIT 1;"
 		);
-		console.log(randomResult.rows[0]);
 		res.json(randomResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
@@ -244,16 +239,16 @@ app.get("/api/exam/results/:id", async (req, res) => {
 		const randomResult = await pool.query(
 			`SELECT * FROM results WHERE id = ${itemId}`
 		);
-		console.log(randomResult.rows[0]);
 		res.json(randomResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
 	}
 });
 
-app.get("/api/statistics", async (req, res) => {
+app.get("/api/statistics/:from/:to", async (req, res) => {
 	try {
-		const { from, to } = req.body;
+		const from = req.params["from"];
+		const to = req.params["to"];
 
 		const questions_count = await pool.query(
 			`
@@ -267,7 +262,8 @@ app.get("/api/statistics", async (req, res) => {
 		AS record_count
 		FROM user_knowledge_levels
 		WHERE user_knowledge_levels.knowledge_level = 1 AND user_knowledge_levels.user_id = $1;
-			`, [req.user.id]
+			`,
+			[req.user.id]
 		);
 
 		const high_knowledge_questions_count = await pool.query(
@@ -276,12 +272,17 @@ app.get("/api/statistics", async (req, res) => {
 		AS record_count
 		FROM user_knowledge_levels
 		WHERE user_knowledge_levels.knowledge_level = 2 AND user_knowledge_levels.user_id = $1;
-			`, [req.user.id]
+			`,
+			[req.user.id]
 		);
 
 		let total_count = Number(questions_count.rows[0].record_count);
-		let medium_count = Number(medium_knowledge_questions_count.rows[0].record_count);
-		let high_count = Number(high_knowledge_questions_count.rows[0].record_count);
+		let medium_count = Number(
+			medium_knowledge_questions_count.rows[0].record_count
+		);
+		let high_count = Number(
+			high_knowledge_questions_count.rows[0].record_count
+		);
 		let low_count = total_count - medium_count - high_count;
 
 		const weekly_exams = await pool.query(
@@ -292,8 +293,6 @@ app.get("/api/statistics", async (req, res) => {
 			`,
 			[req.user.id, from, to]
 		);
-
-		console.log(weekly_exams.rows);
 
 		res.json({
 			material_progress: {
@@ -352,11 +351,11 @@ app.get("/api/saved-questions", async (req, res) => {
 	try {
 		const results = await pool.query(
 			"SELECT q.*, uk.knowledge_level " +
-			"FROM questions q " +
-			"LEFT JOIN user_knowledge_levels uk ON q.id = uk.question_id AND uk.user_id = $1 " +
-			"WHERE q.id = ANY (" +
-			"SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
-			");",
+				"FROM questions q " +
+				"LEFT JOIN user_knowledge_levels uk ON q.id = uk.question_id AND uk.user_id = $1 " +
+				"WHERE q.id = ANY (" +
+				"SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
+				");",
 			[req.user.id]
 		);
 		res.json(results.rows);
@@ -389,7 +388,8 @@ app.get("/api/user-knowledge-levels", async (req, res) => {
 		AS record_count
 		FROM user_knowledge_levels
 		WHERE user_knowledge_levels.knowledge_level = 1 AND user_knowledge_levels.user_id = $1;
-			`, [req.user.id]
+			`,
+			[req.user.id]
 		);
 
 		const high_knowledge_questions_count = await pool.query(
@@ -398,17 +398,20 @@ app.get("/api/user-knowledge-levels", async (req, res) => {
 		AS record_count
 		FROM user_knowledge_levels
 		WHERE user_knowledge_levels.knowledge_level = 2 AND user_knowledge_levels.user_id = $1;
-			`, [req.user.id]
+			`,
+			[req.user.id]
 		);
 
 		res.json({
 			high_count: Number(high_knowledge_questions_count.rows[0].record_count),
-			medium_count: Number(medium_knowledge_questions_count.rows[0].record_count),
+			medium_count: Number(
+				medium_knowledge_questions_count.rows[0].record_count
+			),
 		});
 	} catch (err) {
 		console.error(err.message);
 	}
-})
+});
 
 app.post("/api/user-knowledge-levels", async (req, res) => {
 	try {

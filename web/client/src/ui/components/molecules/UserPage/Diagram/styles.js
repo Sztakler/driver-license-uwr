@@ -2,6 +2,8 @@ import tw from "tailwind-styled-components";
 
 const DiagramContainer = tw.div`
 	flex
+	flex-col
+	relative
 	justify-center
 	items-center
 	border
@@ -18,6 +20,7 @@ const DiagramContainer = tw.div`
 	max-sm:h-[100px]
 
 	p-4
+	py-8
 `;
 
 export { DiagramContainer };
