@@ -76,7 +76,7 @@ export default function Hero() {
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"
-						src={HomePageIllustrations.HeroImage3}
+						src={HomePageIllustrations.HeroImage1}
 					></Image>
 				</ImageContainer>
 				<div className="flex flex-col absolute top-[55.5%] left-[60%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
@@ -97,7 +97,7 @@ export default function Hero() {
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"
-						src={HomePageIllustrations.HeroImage3}
+						src={HomePageIllustrations.HeroImage2}
 					></Image>
 				</ImageContainer>
 				<div className="flex flex-col absolute top-[55.5%] left-[60%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
@@ -118,7 +118,7 @@ export default function Hero() {
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"
-						src={HomePageIllustrations.HeroImage2}
+						src={HomePageIllustrations.HeroImage3}
 					></Image>
 				</ImageContainer>
 				<div className="flex flex-col absolute top-[35%] right-[61%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
@@ -146,7 +146,7 @@ export default function Hero() {
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"
-						src={HomePageIllustrations.HeroImage1}
+						src={HomePageIllustrations.HeroImage4}
 					></Image>
 				</ImageContainer>
 				<div className="flex flex-col absolute top-[40%] left-[61%] -translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
