@@ -12,7 +12,7 @@ const InnerContainer = tw.div`
 	flex
 	flex-col
 	self-center
-	rounded-xl
+	rounded-[39px]
 	h-[784px]
 	overflow-y-scroll
 	w-full
@@ -66,7 +66,7 @@ const ImageBox = tw.div`
 	overflow-hidden
 	border-2
 	border-[#424242]
-	rounded-lg
+	rounded-[39px]
 	bg-[#FFE5A3]
 `;
 

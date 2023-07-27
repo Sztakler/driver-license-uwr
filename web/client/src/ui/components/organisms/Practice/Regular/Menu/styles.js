@@ -13,7 +13,7 @@ const MenuContainer = tw.div`
 	p-4
 	mt-[36px]
 	bg-[#FFF6E4]
-	rounded-xl
+	rounded-[39px]
 	shadow-xl
 	max-w-[528px]
 	max-h-[558px]

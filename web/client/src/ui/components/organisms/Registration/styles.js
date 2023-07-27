@@ -7,7 +7,7 @@ const RegistrationContainer = tw.div`
 	align-center
 	gap-36
 	w-full
-	rounded-3xl 
+	rounded-[39px]
 	h-max
 	pt-6
 `;

@@ -13,7 +13,7 @@ const NavigationItem = tw.div`
 	flex
 	flex-row
 	gap-2
-	rounded-3xl
+	rounded-[39px]
 	px-2
 	py-1
 	${(props) => (props.active ? "bg-[#FFD363]" : "")}

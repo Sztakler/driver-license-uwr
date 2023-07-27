@@ -8,7 +8,7 @@ const DiagramContainer = tw.div`
 	items-center
 	border
 	border-[#0D0D0D]
-	rounded-3xl
+	rounded-[39px]
 	bg-[#FFFAED]
 	w-[600px]
 	h-[500px]

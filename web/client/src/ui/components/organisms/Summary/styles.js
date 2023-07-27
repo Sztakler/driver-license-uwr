@@ -52,7 +52,7 @@ const Table = tw.div`
 	justify-between 
 	text-xl 
 	border-2
-	rounded-xl
+	rounded-[39px]
 	border-black
 	p-4
 	my-8

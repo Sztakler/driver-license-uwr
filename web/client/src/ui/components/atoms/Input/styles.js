@@ -6,7 +6,7 @@ const inputLoginClasses =
 	"flex flex-auto w-9/12 px-2 py-3 bg-white bg-opacity-0 border-b-2 border-solid border-black";
 
 const inputRegisterClasses =
-	"bg-[#fffdfa] border border-[#cecece] rounded-[18px] py-2 px-4 mt-1";
+	"bg-[#fffdfa] border border-[#cecece] rounded-[39px] py-2 px-4 mt-1";
 
 const fullWidthClasses =
 	"w-full";

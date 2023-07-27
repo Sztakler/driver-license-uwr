@@ -7,7 +7,7 @@ const LoginFormContainer = tw.form`
 	justify-center
 	h-full
 	w-1/2
-	rounded-3xl
+	rounded-[39px]
 	p-6
 `;
 

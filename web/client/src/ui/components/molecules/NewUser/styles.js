@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 const NewUserContainer = tw.div`
 	h-full
 	w-1/2
-	rounded-3xl
+	rounded-[39px]
 `;
 
 const Row = tw.div`

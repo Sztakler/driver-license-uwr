@@ -97,7 +97,7 @@ const Panel = tw.div`
 	mb-6
 	border
 	border-[#dcdcdc]
-	rounded-[46px]
+	rounded-[39px]
 	p-6
 	bg-[#fffcf5]
 	max-w-[440px]

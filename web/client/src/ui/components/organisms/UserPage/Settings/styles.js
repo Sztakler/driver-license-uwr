@@ -12,7 +12,7 @@ const InnerContainer = tw.div`
 	items-center
 	py-16
 	self-center
-	rounded-xl
+	rounded-[39px]
 	h-[700px]
 	w-full
 	bg-gradient-to-b from-[#fff4d6] to-[#fff8e5]

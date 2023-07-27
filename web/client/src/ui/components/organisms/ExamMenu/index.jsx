@@ -46,14 +46,14 @@ export default function ExamMenu() {
 							></img>
 							<div className="flex flex-row justify-center w-full gap-4">
 								<button
-									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[100px] border-[#0d0d0d]"
+									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[39px] border-[#0d0d0d]"
 								>
 									<Subtitle className="py-6 m-0 text-4xl font-semibold text-center">
 										Poczytaj o egzaminie
 									</Subtitle>
 								</button>
 								<button
-									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[100px] border-[#0d0d0d]"
+									className=" bg-[#fffcf5] hover:bg-[#ffd363] mt-10 w-[500px] border rounded-[39px] border-[#0d0d0d]"
 									onClick={() => navigate("/egzamin/test")}
 								>
 									<Subtitle className="py-6 m-0 text-4xl font-semibold text-center">

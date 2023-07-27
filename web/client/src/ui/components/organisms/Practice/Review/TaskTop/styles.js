@@ -31,7 +31,7 @@ const ImageBox = tw.div`
 	overflow-hidden
 	border-2
 	border-[#424242]
-	rounded-lg
+	rounded-[39px]
 	bg-[#FFE5A3]
 
 	max-2xl:w-full

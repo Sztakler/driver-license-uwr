@@ -5,7 +5,7 @@ const AuthenticationContainer = tw.div`
 	flex-row 
 	w-[60rem] 
 	h-[36rem] 
-	rounded-3xl 
+	rounded-[39px] 
 	bg-[#ffffff] 
 	bg-opacity-80
 	mt-[90px]

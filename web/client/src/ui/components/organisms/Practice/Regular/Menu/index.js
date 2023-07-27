@@ -239,7 +239,7 @@ export default function Menu({ isExam }) {
 				<Input
 					id="knowledge_level"
 					type="select"
-					className="bg-[#FFE49E] rounded-xl w-full px-2 py-1"
+					className="bg-[#FFE49E] rounded-[39px] w-full px-2 py-1"
 					onChange={handleChangeKnowledgeLevel}
 				>
 					<option hidden>-</option>

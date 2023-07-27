@@ -10,7 +10,7 @@ const InnerContainer = tw.div`
 	flex
 	flex-wrap
 	self-center
-	rounded-xl
+	rounded-[39px]
 	py-10
 	justify-around
 	gap-12
