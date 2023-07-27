@@ -73,10 +73,10 @@ export default function Hero() {
 						src={HomePageIllustrations.HeroImage3}
 					></Image>
 				</ImageContainer>
-				<div className="flex flex-col absolute top-[63.5%] left-[66%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
-					<Button primary className="flex self-start">
-						<Text className="text-[1.1vw] 2xl:text-[16px] leading-none">
-							Załóż darmowe konto
+				<div className="flex flex-col absolute top-[55.5%] left-[60%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
+					<Button primary className="flex self-start px-[6.435vw] py-[1.888vh]">
+						<Text className="text-[1.1vw] leading-none">
+							Trenuj z nami
 						</Text>
 					</Button>
 				</div>
@@ -89,10 +89,10 @@ export default function Hero() {
 						src={HomePageIllustrations.HeroImage3}
 					></Image>
 				</ImageContainer>
-				<div className="flex flex-col absolute top-[63.5%] left-[66%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
-					<Button primary className="flex self-start">
+				<div className="flex flex-col absolute top-[55.5%] left-[60%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
+					<Button primary className="self-start">
 						<Text className="text-[1.1vw] leading-none">
-							Załóż darmowe konto
+							Trenuj z nami
 						</Text>
 					</Button>
 				</div>
@@ -114,7 +114,7 @@ export default function Hero() {
 						z nami do egzaminu w 2023!
 					</Text>
 					<Button primary className="self-start ">
-						<Text className="text-[1.1vw] 2xl:text-[16px] leading-none">
+						<Text className="text-[1.1vw] leading-none">
 							Załóż darmowe konto
 						</Text>
 					</Button>

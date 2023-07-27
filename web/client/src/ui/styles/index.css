@@ -44,21 +44,25 @@
 	.scrollbar::-webkit-scrollbar {
 		width: 20px;
 		height: 20px;
+		z-index: 1000;
 	}
 
 	.scrollbar::-webkit-scrollbar-track {
 		border-radius: 100vh;
 		border: 1px solid #8d8d8d;
 		background: #fffaed;
+		z-index: 1000;
 	}
 
 	.scrollbar::-webkit-scrollbar-thumb {
 		background: #fffaed;
 		border-radius: 100vh;
 		border: 1px solid #8d8d8d;
+		z-index: 1000;
 	}
 
 	.scrollbar::-webkit-scrollbar-thumb:hover {
 		background: #ffedbe;
+		z-index: 1000;
 	}
 }
