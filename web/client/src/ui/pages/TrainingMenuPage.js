@@ -6,7 +6,7 @@ import Training from "../components/organisms/Training";
 
 export default function TrainingMenuPage() {
 	return (
-		<PageTemplate header={<Navbar />} footer={<Footer />}>
+		<PageTemplate header={<Navbar />}>
 			<Training />
 		</PageTemplate>
 	);

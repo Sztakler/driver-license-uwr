@@ -9,7 +9,7 @@ const imageIconClasses = "absolute w-9 h-auto mr-4 right-0";
 
 const imageExamClasses = "w-full";
 
-const imageTheoryClasses= "min-h-[20rem] w-auto";
+const imageTheoryClasses = "min-h-[20rem] w-auto";
 
 export {
 	imageDefaultClasses,

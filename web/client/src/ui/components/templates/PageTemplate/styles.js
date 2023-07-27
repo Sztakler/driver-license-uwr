@@ -5,8 +5,8 @@ const PageWrapper = tw.div`
 	flex-col
 	w-full
 	h-full
-	bg-local
-	bg-gradient-to-b from-[0%] from-[#FFF1DB]  via-[#FFFBF3] via-[20%] to-[#FFFBF3] to-100%
+	bg-fixed
+	bg-gradient-to-b from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[20%] to-[#FFFBF3] to-100%
 	overflow-y-auto
 	scrollbar
 	snap-mandatory

@@ -1,13 +1,14 @@
 import tw from "tailwind-styled-components";
 
 const HeroContainer = tw.div`
-	container
 	flex
 	flex-col
 	gap-64
 	items-center
 	justify-center
-	p-10
+	w-[100vw]
+	py-16
+	overflow-x-hidden
 `;
 
 const UpperSection = tw.section`
@@ -26,12 +27,20 @@ const LowerSection = tw.section`
 const Title = tw.span`
 	text-[#141414]
 	font-display
-	text-[70px]
+	text-6xl
+	2xl:text-6xl
+	xl:text-xl
+	lg:text-base
+	md:text-[12px]
+	max-md:text-[6px]
 `;
 
 const SubTitle = tw.span`
 	text-[#1c1c1c]
-	text-[26px]
+	2xl:text-[20px]
+	xl:text-[16px]
+	md:text-[12px]
+	max-md:text-[6px]
 	font-normal
 `;
 
@@ -66,6 +75,7 @@ const InfoContainer = tw.div`
 	flex
 	flex-col
 	gap-[30px]
+	max-md:gap-0
 `;
 
 const ImageContainer = tw.div`

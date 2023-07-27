@@ -6,7 +6,5 @@ import Navbar from "../components/organisms/Navbar";
 import Footer from "../components/organisms/Footer";
 
 export default function HomePage() {
-	return (
-		<PageTemplate header={<Navbar />} hero={<Hero />} footer={<Footer />} />
-	);
+	return <PageTemplate header={<Navbar />} hero={<Hero />} />;
 }
