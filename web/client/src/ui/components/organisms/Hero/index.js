@@ -32,6 +32,7 @@ import HomePageIllustrations from "../../../../assets/images/svg/HomePage/HomePa
 export default function Hero() {
 	const uuidv4 = require("uuid/v4");
 	const navigate = useNavigate();
+	let panelsCount = 4;
 
 	let infoContent = [
 		{
@@ -58,7 +59,12 @@ export default function Hero() {
 		},
 	];
 
-	function scrollDown() {}
+	let scrollDown = (panelIndex) => {
+		console.log("panel-" + (panelIndex));
+		document
+			.getElementById("panel-" + (panelIndex))
+			.scrollIntoView({ behavior: "smooth" });
+	};
 
 	function handleRegister() {
 		navigate("/register");
@@ -66,7 +72,7 @@ export default function Hero() {
 
 	return (
 		<HeroContainer id="HeroContainer">
-			<PanelContainer className="relative min-h-screen">
+			<PanelContainer className="relative min-h-screen" id="panel-0">
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"
@@ -80,9 +86,14 @@ export default function Hero() {
 						</Text>
 					</Button>
 				</div>
+				<ImageContainer className="flex justify-center">
+					<Button onClick={() => { scrollDown(1) }}>
+						<Image className="flex self-center py-8" src={HomePageIllustrations.ArrowDown}></Image>
+					</Button>
+				</ImageContainer>
 			</PanelContainer>
 
-			<PanelContainer className="relative min-h-screen">
+			<PanelContainer className="relative min-h-screen" id="panel-1">
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"
@@ -96,9 +107,14 @@ export default function Hero() {
 						</Text>
 					</Button>
 				</div>
+				<ImageContainer className="flex justify-center">
+					<Button onClick={() => { scrollDown(2) }}>
+						<Image className="flex self-center py-8" src={HomePageIllustrations.ArrowDown}></Image>
+					</Button>
+				</ImageContainer>
 			</PanelContainer>
 
-			<PanelContainer className="relative min-h-screen">
+			<PanelContainer className="relative min-h-screen" id="panel-2">
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"
@@ -119,9 +135,14 @@ export default function Hero() {
 						</Text>
 					</Button>
 				</div>
+				<ImageContainer className="flex justify-center">
+					<Button onClick={() => { scrollDown(3) }}>
+						<Image className="flex self-center py-8" src={HomePageIllustrations.ArrowDown}></Image>
+					</Button>
+				</ImageContainer>
 			</PanelContainer>
 
-			<PanelContainer className="relative min-h-[100vh-91px]">
+			<PanelContainer className="relative min-h-[100vh-91px]" id="panel-3">
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"
