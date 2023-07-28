@@ -5,13 +5,16 @@ const Container = tw.div`
 	flex-col
 	max-md:flex-col
 	h-full
-	pt-12
+	min-h-[calc(100vh-115px)]
+	pt-16
+	justify-center
+	self-center
+	mb-[100px]
 `;
 
 const HeaderContainer = tw.div`
 	flex
 	flex-col
-	h-full
 	mb-48
 `;
 
@@ -55,7 +58,7 @@ absolute top-[16px] left-[330px] flex flex-col cursor-pointer
 const Content = tw.div`
 	grid
 	grid-rows-auto
-	py-4
+	pt-4
 	px-24
 `;
 
@@ -117,7 +120,7 @@ appearance-none w-[60px] checked:bg-blue-500
 `;
 
 const ScrolldownButton = tw.button`
-self-center mt-10
+self-center 
 `;
 
 export {

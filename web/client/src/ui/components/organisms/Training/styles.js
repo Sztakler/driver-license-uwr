@@ -4,9 +4,11 @@ const Container = tw.div`
 		flex
 		flex-col
 		max-md:flex-col
-		min-h-[calc(100vh-91px)]
+		min-h-[calc(100vh-115px)]
+		max-w-[2500px]
 		p-4
 		justify-center
+		self-center
 `;
 
 const HeaderContainer = tw.div`

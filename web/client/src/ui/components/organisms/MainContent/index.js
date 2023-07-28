@@ -18,6 +18,7 @@ import Paragraph from "../../atoms/Paragraph";
 
 export default function MainContent({ navigation, panelsContents }) {
 	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+	const [sidebarSticky, setSidebarSticky] = useState(false);
 
 	function Arrow(props) {
 		return (
@@ -57,12 +58,15 @@ export default function MainContent({ navigation, panelsContents }) {
 		return (
 			<SidebarArrowButton
 				onClick={handleSidebarClick}
-				className={props.sidebarHidden ? "top-[16px] left-[8px]" : ""}
+				className={props.sidebarHidden ? " top-[16px] left-[8px] " : ""}
+				sidebarSticky={sidebarSticky}
 			>
 				{props.sidebarHidden ? <Arrow sidebarHidden /> : <Arrow />}
 				<SidebarArrowButtonParagraph
 					className={
-						props.sidebarHidden ? "translate-y-16 -translate-x-14" : ""
+						props.sidebarHidden
+							? "translate-y-16 -translate-x-14 "
+							: "whitespace-nowrap"
 					}
 				>
 					Zwiń spis treści
@@ -72,17 +76,30 @@ export default function MainContent({ navigation, panelsContents }) {
 		);
 	}
 
+	const handleScroll = () => {
+		console.log("hir");
+
+		const parent = document.querySelector("#MainContent");
+		const stickyDiv = document.querySelector("#sidebar");
+		const scrollPosition = window.scrollY;
+		const parentOffsetTop = parent.offsetTop;
+
+		setSidebarSticky(scrollPosition > parentOffsetTop);
+	};
+
+	window.addEventListener("scroll", handleScroll, false);
+
 	return (
 		<Container id="MainContent">
 			{isSidebarVisible ? (
-				<SidebarContainer>
+				<SidebarContainer id="sidebar" sticky={sidebarSticky}>
 					<ToggleSidebarButton />
 					<Sidebar navigation={navigation}></Sidebar>
 				</SidebarContainer>
 			) : (
 				<ToggleSidebarButton sidebarHidden />
 			)}
-			<Content>
+			<Content moveRight={isSidebarVisible}>
 				<Title>Znaki ostrzegawcze</Title>
 				<Subtitle>rozdział: Znaki pionowe</Subtitle>
 				<Paragraph

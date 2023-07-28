@@ -3,7 +3,6 @@ import tw from "tailwind-styled-components";
 const HeaderContainer = tw.div`
 	flex
 	flex-col
-  min-h-[calc(100vh-300px)]
 	mb-48
 `;
 

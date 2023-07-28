@@ -5,35 +5,42 @@ const Container = tw.div`
 	flex
 	flex-row
 	max-md:flex-col
-	w-full
-	h-full
-	bg-[#FFFAED]
-	pt-6
+	max-w-[2800px]
 `;
 
 const SidebarContainer = tw.div`
 	flex
-	flex-row
-	max-md:flex-col
+	flex-col
 	h-full
 	bg-gradient-to-r
 	from-[#FFF6E4]
 	to-[#FFFBF3]
-`;
+	self-start
+	${(props) => (props.sticky ? "fixed pt-[110px]" : "absolute ")}
+	top-0
+	left-0
+	`;
 
 const SidebarArrowButton = tw.div`
-absolute top-[16px] left-[330px] flex flex-col cursor-pointer
+	absolute
+	top-[16px]
+	left-[350px]
+	flex
+	flex-col
+	cursor-pointer
+	${(props) => (props.sidebarSticky ? "pt-[110px]" : "")}
 `;
 
 const Content = tw.div`
 	grid
 	grid-rows-auto
-	py-4
 	px-24
-`;
+	pt-[30px]
+	${(props) => (props.moveRight ? "ml-[320px]" : "")}
+	`;
 
 const Title = tw.div`
-	text-8xl
+	text-[56px]
 	text-[#0d0d0d]
 	font-display
 `;

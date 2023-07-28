@@ -10,13 +10,7 @@ const Container = tw.div`
 		max-md:min-w-full
 	p-8
 	select-none
-
-	border-solid
-	border
-	border-[#8d8d8d]
-	rounded-tr-[50px]
-	border-l-0
-
+	h-full 
 	m-0
 	`;
 

@@ -158,6 +158,18 @@ export default function Theory({ navigation, content }) {
 			.scrollIntoView({ behavior: "smooth" });
 	};
 
+	window.addEventListener(
+		"scroll",
+		function () {
+			myFunc();
+		},
+		false
+	);
+
+	function myFunc() {
+		console.log("in myFunc");
+	}
+
 	return (
 		<Container>
 			<Header
