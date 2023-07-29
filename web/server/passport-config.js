@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 function initializePassport(passport, getUserByEmail, getUserById, users) {
 	const authenticate = async (email, password, done) => {
 		const user = await getUserByEmail(email);
-
 		if (user == null) {
 			return done(null, false, { message: "Incorrect email!" });
 		}

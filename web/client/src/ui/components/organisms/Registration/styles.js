@@ -10,6 +10,7 @@ const RegistrationContainer = tw.div`
 	rounded-[39px]
 	h-max
 	pt-6
+
 `;
 
 const LeftContainer = tw.div`
@@ -20,8 +21,10 @@ const InfoContainer = tw.div`
 flex flex-col gap-y-4
 `;
 
-const Title = tw.h1`
-font-display
+const Title = tw.h2`
+self-start
+mt-24
+mb-16
 `;
 
 const Subtitle = tw.p`
@@ -37,22 +40,18 @@ const ImageContainer = tw.div`
 `;
 
 const RightContainer = tw.div`
-flex flex-col bg-[#fffaed] border border-[#0d0d0d] rounded-[46px] py-16 px-16 pt-8 mr-8
+relative flex flex-col bg-gradient-to-b from-[#FFEDCAFF] from-[0%]  via-[#FFEDCAD9] via-[80%] to-[#FFEDCA00] rounded-[39px] mr-8 px-32 aspect-[652/805] w-[602px]
 `;
 
 const RegisterFormContainer = tw.div`
-
+	w-full
 `;
 
 const RegisterForm = tw.form`
 flex flex-col gap-y-10 mt-12
 `;
 
-const TopInputsContainer = tw.div`
-flex flex-row justify-between gap-x-6
-`;
-
-const BottomInputsContainer = tw.div`
+const InputsContainer = tw.div`
 flex flex-col gap-y-10
 `;
 
@@ -61,7 +60,9 @@ const SubmitButtonContainer = tw.button`
 `;
 
 const LoginButtonContainer = tw.div`
-self-end mb-16
+absolute
+top-6
+right-8
 `;
 
 const TextGrayedSpan = tw.span`
@@ -81,7 +82,7 @@ flex flex-col pb-2
 `;
 
 const InputLabelText = tw.p`
-text-base font-bold
+text-[19px] font-semibold
 `;
 
 const Disclaimer = tw.p`
@@ -98,8 +99,7 @@ export {
 	RightContainer,
 	RegisterForm,
 	RegisterFormContainer,
-	TopInputsContainer,
-	BottomInputsContainer,
+	InputsContainer,
 	SubmitButtonContainer,
 	LoginButtonContainer,
 	TextGrayedSpan,

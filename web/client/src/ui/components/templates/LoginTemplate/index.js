@@ -2,12 +2,7 @@ import React from "react";
 
 import { PageWrapper, MainContent } from "./styles";
 
-export default function ContentFillTemplate({
-	header,
-	children,
-	footer,
-	...props
-}) {
+export default function LoginTemplate({ header, children, footer, ...props }) {
 	return (
 		<PageWrapper {...props}>
 			{header}

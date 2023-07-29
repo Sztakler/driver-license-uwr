@@ -1,14 +1,13 @@
 import React from "react";
 
-import ContentFillTemplate from "../components/templates/ContentFillTemplate";
+import LoginTemplate from "../components/templates/LoginTemplate";
 import Navbar from "../components/organisms/Navbar";
-import Footer from "../components/organisms/Footer";
 import Authentication from "../components/organisms/Authentication";
 
 export default function HomePage() {
 	return (
-		<ContentFillTemplate header={<Navbar />} footer={<Footer />}>
+		<LoginTemplate header={<Navbar />}>
 			<Authentication />
-		</ContentFillTemplate>
+		</LoginTemplate>
 	);
 }

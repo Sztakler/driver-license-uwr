@@ -7,7 +7,7 @@ import Registration from "../components/organisms/Registration/";
 
 export default function HomePage() {
 	return (
-		<ContentFillTemplate header={<Navbar />} footer={<Footer />}>
+		<ContentFillTemplate header={<Navbar />}>
 			<Registration />
 		</ContentFillTemplate>
 	);

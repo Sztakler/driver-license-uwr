@@ -8,8 +8,7 @@ import {
 	RightContainer,
 	RegisterForm,
 	RegisterFormContainer,
-	TopInputsContainer,
-	BottomInputsContainer,
+	InputsContainer,
 	SubmitButtonContainer,
 	LoginButtonContainer,
 	TextGrayedSpan,
@@ -72,7 +71,7 @@ export default function Registration() {
 				navigate("/register");
 			}
 		} catch (err) {
-			console.log("CIPA");
+			console.log("ERROR");
 		}
 	};
 
@@ -98,21 +97,17 @@ export default function Registration() {
 				<RegisterFormContainer>
 					<Title>Zarejestruj się</Title>
 					<RegisterForm onSubmit={registerUser}>
-						<TopInputsContainer>
+						<InputsContainer>
 							<InputWrapper for="name">
 								<InputLabelText>Imię</InputLabelText>
 								<Input
 									register
 									id="name"
 									type="text"
-									placeholder="Jan"
 									value={name}
 									onChange={handleNameChange}
 								></Input>
 							</InputWrapper>
-						</TopInputsContainer>
-
-						<BottomInputsContainer>
 							<InputWrapper for="email">
 								<InputLabelText>E-mail</InputLabelText>
 								<Input
@@ -120,7 +115,6 @@ export default function Registration() {
 									required
 									id="email"
 									type="email"
-									placeholder="jan@example.com"
 									value={mail}
 									onChange={handleMailChange}
 								></Input>
@@ -132,7 +126,7 @@ export default function Registration() {
 									required
 									id="password"
 									type="password"
-									placeholder="••••••••••••••••"
+									placeholder="min. 8 liter"
 									value={password}
 									onChange={handlePasswordChange}
 								></Input>
@@ -142,7 +136,7 @@ export default function Registration() {
 									Użytkownik o podanym mailu już istnieje!
 								</Text>
 							)}
-						</BottomInputsContainer>
+						</InputsContainer>
 
 						<SubmitButtonContainer>
 							<Disclaimer>
@@ -157,7 +151,7 @@ export default function Registration() {
 								</TextUnderlineSpan>
 								.
 							</Disclaimer>
-							<Button primary size="s" type="submit">
+							<Button primary size="s" type="submit" className="w-[80%]">
 								Załóż konto
 							</Button>
 						</SubmitButtonContainer>

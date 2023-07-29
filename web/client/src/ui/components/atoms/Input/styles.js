@@ -3,16 +3,14 @@ const inputDefaultClasses = "";
 const inputPrimaryClasses = "";
 
 const inputLoginClasses =
-	"flex flex-auto w-9/12 px-2 py-3 bg-white bg-opacity-0 border-b-2 border-solid border-black";
+	"flex flex-auto px-2 py-2 bg-white border border-solid border-[#BDBAAE] rounded-3xl";
 
 const inputRegisterClasses =
 	"bg-[#fffdfa] border border-[#cecece] rounded-[39px] py-2 px-4 mt-1";
 
-const fullWidthClasses =
-	"w-full";
+const fullWidthClasses = "w-full";
 
-const fixedWidthClasses =
-	"w-[300px]";
+const fixedWidthClasses = "w-[300px]";
 
 const inputRadioClasses = "mr-4";
 

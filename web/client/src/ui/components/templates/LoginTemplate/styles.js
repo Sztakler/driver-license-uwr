@@ -12,6 +12,10 @@ const MainContent = tw.div`
 	flex-auto 
 	justify-center 
 	min-h-screen
+	bg-login
+	bg-no-repeat 
+	bg-center 
+	bg-contain
 	pt-[115px]
 
 `;

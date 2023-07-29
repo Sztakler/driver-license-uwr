@@ -1,4 +1,3 @@
-
 module.exports = {
 	content: ["./src/**/*.{html,js}"],
 	theme: {
@@ -55,6 +54,7 @@ module.exports = {
 				"road-texture": "url(../../src/assets/images/road.jpg)",
 				"positive-result": "url(/src/assets/images/resultPositive.svg)",
 				"negative-result": "url(/src/assets/images/resultNegative.svg)",
+				login: "url(/src/assets/images/svg/LoginPage/background.svg)",
 			},
 		},
 	},

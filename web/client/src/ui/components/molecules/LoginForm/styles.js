@@ -4,18 +4,24 @@ const LoginFormContainer = tw.form`
 	flex
 	flex-col
 	items-center
-	justify-center
+	justify-start
 	h-full
-	w-1/2
+	w-full
 	rounded-[39px]
-	p-6
+`;
+
+const NoAccount = tw.div`
+	absolute	
+	text-[#757575]
+	top-6
+	right-8
 `;
 
 const InnerWrapper = tw.div`
 	flex
 	flex-col
 	w-full
-	mb-10
+	mb-12
 `;
 
 const LabelSection = tw.div`
@@ -30,15 +36,17 @@ const InputSection = tw.div`
 	flex-row
 	items-center
 	w-full
-	h-20
 `;
 
 const Heading = tw.h2`
-	mb-10
+	self-start
+	mt-24
+	mb-16
 `;
 
 export {
 	LoginFormContainer,
+	NoAccount,
 	InnerWrapper,
 	LabelSection,
 	InputSection,

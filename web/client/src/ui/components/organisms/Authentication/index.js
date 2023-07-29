@@ -9,8 +9,6 @@ export default function Authentication() {
 	return (
 		<AuthenticationContainer>
 			<LoginForm />
-			<Separator vertical />
-			<NewUser />
 		</AuthenticationContainer>
 	);
 }

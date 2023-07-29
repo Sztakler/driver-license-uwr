@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router";
 
+import LoadingPage from "../src/ui/pages/LoadingPage";
+
 export default function ProtectedComponent() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isAuthStatusChecked, setIsAuthStatusChecked] = useState(false);
@@ -12,13 +14,14 @@ export default function ProtectedComponent() {
 
 	useEffect(() => {
 		const checkAuthenticationStatus = async () => {
+			setIsAuthStatusChecked(false);
+			setIsLoggedIn(false);
 			try {
 				const response = await fetch("http://localhost:5000/check-auth", {
 					credentials: "include",
 					headers: {
 						Accept: "application/json",
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${sessionId}`,
 					},
 				});
 				const data = await response.json();
@@ -30,17 +33,11 @@ export default function ProtectedComponent() {
 				console.error("Error checking authentication status:", error);
 			}
 		};
-
-		if (sessionId) {
-			checkAuthenticationStatus();
-		} else {
-			setIsLoggedIn(false);
-			setIsAuthStatusChecked(true);
-		}
+		checkAuthenticationStatus();
 	}, [sessionId]);
 
 	if (!isAuthStatusChecked) {
-		return <div>Dupa</div>;
+		return <LoadingPage />;
 	}
 
 	return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;

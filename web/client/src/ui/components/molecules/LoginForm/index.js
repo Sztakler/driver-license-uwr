@@ -6,6 +6,7 @@ import Input from "../../atoms/Input";
 import Text from "../../atoms/Text";
 import {
 	LoginFormContainer,
+	NoAccount,
 	InnerWrapper,
 	InputSection,
 	Heading,
@@ -17,8 +18,7 @@ import { useNavigate } from "react-router";
 export default function LoginForm(props) {
 	const [usernameInput, setUsernameInput] = useState("");
 	const [passwordInput, setPasswordInput] = useState("");
-	const [test, setTest] = useState("TEST");
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 
 	function handleUsername(event) {
 		setUsernameInput(event.target.value);
@@ -34,7 +34,6 @@ export default function LoginForm(props) {
 		const form = event.target;
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
-		console.log(formJson);
 		try {
 			const respond = await fetch("http://localhost:5000/login", {
 				method: "POST",
@@ -45,13 +44,11 @@ export default function LoginForm(props) {
 				body: JSON.stringify(formJson),
 			});
 			if (respond.status === 200) {
-				setTest("POPRAWNE");
 				let res = await respond.json();
 				window.sessionStorage.setItem(
 					"User",
 					JSON.stringify({ id: res.id, name: res.name })
 				);
-				console.log(window.sessionStorage.getItem("User"));
 				navigate("/");
 			}
 		} catch (err) {
@@ -61,12 +58,21 @@ export default function LoginForm(props) {
 
 	return (
 		<LoginFormContainer onSubmit={handleSubmit}>
+			<NoAccount>
+				Nie masz jeszcze konta?{" "}
+				<Button
+					className="text-black underline font-semibold "
+					onClick={() => {
+						navigate("/register");
+					}}
+				>
+					Zarejestruj się
+				</Button>
+			</NoAccount>
 			<Heading>Zaloguj się</Heading>
-			<Text>{test}</Text>
 			<InnerWrapper>
-				<Label size="2xl">Login</Label>
+				<Label className="text-[19px] font-semibold">E-mail</Label>
 				<InputSection>
-					<Image icon src={require("/src/assets/images/mail.png")} />
 					<Input
 						login
 						id="email"
@@ -75,14 +81,12 @@ export default function LoginForm(props) {
 						required
 						value={usernameInput}
 						onChange={handleUsername}
-						placeholder="Username"
 					/>
 				</InputSection>
 			</InnerWrapper>
 			<InnerWrapper>
-				<Label size="2xl">Hasło</Label>
+				<Label className="text-[19px] font-semibold">Hasło</Label>
 				<InputSection>
-					<Image icon src={require("/src/assets/images/lock.png")} />
 					<Input
 						login
 						id="password"
@@ -92,13 +96,12 @@ export default function LoginForm(props) {
 						minLength="8"
 						value={passwordInput}
 						onChange={handlePassword}
-						placeholder="******************"
 					/>
 				</InputSection>
 			</InnerWrapper>
 
 			<InnerWrapper>
-				<Button type="submit" className="bg-orange-600 text-white text-xl">
+				<Button primary hover type="submit" className="text-[19px]">
 					Zaloguj
 				</Button>
 			</InnerWrapper>

@@ -16,6 +16,7 @@ import SummaryPage from "../src/ui/pages/SummaryPage";
 import NotFound from "../src/ui/pages/NotFound";
 import ReviewPage from "../src/ui/pages/ReviewPage";
 import UserPage from "../src/ui/pages/UserPage";
+import LoadingPage from "../src/ui/pages/LoadingPage";
 
 import { TaskProvider } from "../src/context/TaskContext";
 
@@ -24,46 +25,7 @@ function Routing() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-				<Route path="/egzamin" element={<ExamMenuPage />} />
-				<Route
-					path="/egzamin/test"
-					element={
-						<TaskProvider>
-							<ExamPage />
-						</TaskProvider>
-					}
-				/>
-				<Route
-					path="/egzamin/przeglad-odpowiedzi/:id"
-					element={
-						<TaskProvider>
-							<ReviewPage />
-						</TaskProvider>
-					}
-				/>
-				<Route path="/trening" element={<TrainingMenuPage />} />
-				<Route
-					path="/trening/praktyka"
-					element={
-						<TaskProvider>
-							<PracticePage />
-						</TaskProvider>
-					}
-				/>
-				<Route path="/trening/teoria" element={<TheoryPage />} />
-				<Route path="/podrecznik/" element={<TheoryPage />} />
-				<Route path="/podrecznik/znaki-ostrzegawcze" element={<TheoryPage />} />
-				<Route path="/podrecznik/znaki-nakazu" element={<TheoryPage />} />
-				<Route path="/podrecznik/znaki-zakazu" element={<TheoryPage />} />
-				<Route
-					path="/podrecznik/znaki-kierunku-i-miejscowosci"
-					element={<TheoryPage />}
-				/>
-				<Route path="/podrecznik/znaki-informacyjne" element={<TheoryPage />} />
-				<Route
-					path="/podrecznik/znaki-uzupelniajace"
-					element={<TheoryPage />}
-				/>
+
 				<Route
 					path="/trening/podsumowanie"
 					element={<SummaryPage isTraining={true} />}
@@ -78,8 +40,56 @@ function Routing() {
 				<Route path="/register" element={<RegisterPage />} />
 
 				<Route path="*" element={<NotFound />} />
-				<Route path="/konto" element={<UserPage />} />
-				<Route element={<ProtectedComponent />}></Route>
+
+				<Route element={<ProtectedComponent />}>
+					<Route path="/konto" element={<UserPage />} />
+					<Route path="/egzamin" element={<ExamMenuPage />} />
+					<Route
+						path="/egzamin/test"
+						element={
+							<TaskProvider>
+								<ExamPage />
+							</TaskProvider>
+						}
+					/>
+					<Route
+						path="/egzamin/przeglad-odpowiedzi/:id"
+						element={
+							<TaskProvider>
+								<ReviewPage />
+							</TaskProvider>
+						}
+					/>
+					<Route path="/trening" element={<TrainingMenuPage />} />
+					<Route
+						path="/trening/praktyka"
+						element={
+							<TaskProvider>
+								<PracticePage />
+							</TaskProvider>
+						}
+					/>
+					<Route path="/trening/teoria" element={<TheoryPage />} />
+					<Route path="/podrecznik/" element={<TheoryPage />} />
+					<Route
+						path="/podrecznik/znaki-ostrzegawcze"
+						element={<TheoryPage />}
+					/>
+					<Route path="/podrecznik/znaki-nakazu" element={<TheoryPage />} />
+					<Route path="/podrecznik/znaki-zakazu" element={<TheoryPage />} />
+					<Route
+						path="/podrecznik/znaki-kierunku-i-miejscowosci"
+						element={<TheoryPage />}
+					/>
+					<Route
+						path="/podrecznik/znaki-informacyjne"
+						element={<TheoryPage />}
+					/>
+					<Route
+						path="/podrecznik/znaki-uzupelniajace"
+						element={<TheoryPage />}
+					/>
+				</Route>
 			</Routes>
 		</BrowserRouter>
 	);
