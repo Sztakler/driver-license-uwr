@@ -19,7 +19,7 @@ export default function Header({ title, subtitle, illustration, children }) {
 				<Subtitle>{subtitle}</Subtitle>
 			</TitleContainer>
 			<IllustrationContainer>
-				<Image src={illustration} className="w-[90%]" />
+				<Image src={illustration} className="w-full" />
 			</IllustrationContainer>
 			<Buttons>{children}</Buttons>
 		</HeaderContainer>

@@ -14,7 +14,7 @@ import {
 	Subtitle,
 } from "./styles";
 
-import Illustrations from "/src/assets/images/svg/icons/Illustrations";
+import ExamPageIllustrations from "../../../assets/images/svg/ExamPage/ExamPageIllustrations";
 import { useNavigate } from "react-router";
 import Paragraph from "../../components/atoms/Paragraph";
 import BulletList from "../../components/molecules/BulletList";
@@ -34,12 +34,12 @@ export default function ExamMenuPage() {
 	];
 
 	return (
-		<PageTemplate header={<Navbar />} footer={<Footer />}>
+		<PageTemplate header={<Navbar />}>
 			<Container>
 				<HeaderContainer>
 					<TitleContainer>
-						<Title>Symulacja egzaminu</Title>
-						<Subtitle className="pt-5 mb-8 text-[20px] max-w-prose">
+						<Title>Egzamin</Title>
+						<Subtitle className="mb-8 text-[18px] max-w-prose">
 							Symulacja egzaminu to tryb, w którym możesz przetestować nabyte
 							przez siebie umiejętności. Odwzorowaliśmy dla Ciebie formę
 							egzaminu, tak żeby na państwowym egzaminie nic Cię nie zaskoczyło.
@@ -50,10 +50,10 @@ export default function ExamMenuPage() {
 					<IllustrationContainer>
 						<div className="flex flex-col">
 							<img
-								src={Illustrations.PurpleCar}
-								className="self-center w-[70%] max-w-[2100px]"
+								src={ExamPageIllustrations.Image1}
+								className="self-center w-full"
 							></img>
-							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px] mt-8">
+							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px]">
 								<Button primary hover size="l">
 									Poczytaj o egzaminie
 								</Button>

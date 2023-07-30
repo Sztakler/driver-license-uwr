@@ -4,6 +4,7 @@ const Container = tw.div`
 	grid
 	grid-flow-col
 	auto-cols-[30%]
+	max-md:auto-cols-[70%]
 	gap-4
 	pt-10
 	overflow-x-auto

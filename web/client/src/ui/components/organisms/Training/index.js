@@ -19,7 +19,7 @@ import {
 
 import Paragraph from "../../atoms/Paragraph";
 import Text from "../../atoms/Text";
-import Illustrations from "/src/assets/images/svg/icons/Illustrations";
+import TrainingPageIllustrations from "../../../../assets/images/svg/TrainingPage/TrainingPageIllustrations";
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 import Heading from "../../atoms/Heading";
@@ -48,7 +48,7 @@ export default function Training({ data, headings, ...props }) {
 			<HeaderContainer>
 				<TitleContainer>
 					<Title>Trening</Title>
-					<Subtitle className="text-[20px] max-w-prose mb-8 pt-5">
+					<Subtitle className="mb-8 max-w-prose">
 						Zapraszamy Cię na sesję treningową! TRENING to pytania egzaminacyjne
 						bez końca. Możesz użyć filtrów, aby wybrać pytania, których chcesz
 						się dziś uczyć.
@@ -164,8 +164,8 @@ export default function Training({ data, headings, ...props }) {
 					) : (
 						<div className="flex flex-col ">
 							<img
-								src={Illustrations.TrainingIllustration2}
-								className="self-center w-[100%] mt-8 max-w-[1900px]"
+								src={TrainingPageIllustrations.Image1}
+								className="self-center w-full mt-8 "
 							></img>
 							<div className="flex flex-row flex-wrap w-full gap-4 justify-center p-[43px] mt-6">
 								<Button primary hover onClick={scrollDown} size="l">

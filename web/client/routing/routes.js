@@ -41,55 +41,49 @@ function Routing() {
 
 				<Route path="*" element={<NotFound />} />
 
-				<Route element={<ProtectedComponent />}>
-					<Route path="/konto" element={<UserPage />} />
-					<Route path="/egzamin" element={<ExamMenuPage />} />
-					<Route
-						path="/egzamin/test"
-						element={
-							<TaskProvider>
-								<ExamPage />
-							</TaskProvider>
-						}
-					/>
-					<Route
-						path="/egzamin/przeglad-odpowiedzi/:id"
-						element={
-							<TaskProvider>
-								<ReviewPage />
-							</TaskProvider>
-						}
-					/>
-					<Route path="/trening" element={<TrainingMenuPage />} />
-					<Route
-						path="/trening/praktyka"
-						element={
-							<TaskProvider>
-								<PracticePage />
-							</TaskProvider>
-						}
-					/>
-					<Route path="/trening/teoria" element={<TheoryPage />} />
-					<Route path="/podrecznik/" element={<TheoryPage />} />
-					<Route
-						path="/podrecznik/znaki-ostrzegawcze"
-						element={<TheoryPage />}
-					/>
-					<Route path="/podrecznik/znaki-nakazu" element={<TheoryPage />} />
-					<Route path="/podrecznik/znaki-zakazu" element={<TheoryPage />} />
-					<Route
-						path="/podrecznik/znaki-kierunku-i-miejscowosci"
-						element={<TheoryPage />}
-					/>
-					<Route
-						path="/podrecznik/znaki-informacyjne"
-						element={<TheoryPage />}
-					/>
-					<Route
-						path="/podrecznik/znaki-uzupelniajace"
-						element={<TheoryPage />}
-					/>
-				</Route>
+				{/* <Route element={<ProtectedComponent />}> */}
+				<Route path="/konto" element={<UserPage />} />
+				<Route path="/egzamin" element={<ExamMenuPage />} />
+				<Route
+					path="/egzamin/test"
+					element={
+						<TaskProvider>
+							<ExamPage />
+						</TaskProvider>
+					}
+				/>
+				<Route
+					path="/egzamin/przeglad-odpowiedzi/:id"
+					element={
+						<TaskProvider>
+							<ReviewPage />
+						</TaskProvider>
+					}
+				/>
+				<Route path="/trening" element={<TrainingMenuPage />} />
+				<Route
+					path="/trening/praktyka"
+					element={
+						<TaskProvider>
+							<PracticePage />
+						</TaskProvider>
+					}
+				/>
+				<Route path="/trening/teoria" element={<TheoryPage />} />
+				<Route path="/podrecznik/" element={<TheoryPage />} />
+				<Route path="/podrecznik/znaki-ostrzegawcze" element={<TheoryPage />} />
+				<Route path="/podrecznik/znaki-nakazu" element={<TheoryPage />} />
+				<Route path="/podrecznik/znaki-zakazu" element={<TheoryPage />} />
+				<Route
+					path="/podrecznik/znaki-kierunku-i-miejscowosci"
+					element={<TheoryPage />}
+				/>
+				<Route path="/podrecznik/znaki-informacyjne" element={<TheoryPage />} />
+				<Route
+					path="/podrecznik/znaki-uzupelniajace"
+					element={<TheoryPage />}
+				/>
+				{/* </Route> */}
 			</Routes>
 		</BrowserRouter>
 	);

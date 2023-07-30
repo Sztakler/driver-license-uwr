@@ -42,7 +42,7 @@ const ImageContainer = tw.div`
 `;
 
 const RightContainer = tw.div`
-relative flex flex-col bg-gradient-to-b from-[#FFEDCAFF] from-[0%]  via-[#FFEDCAD9] via-[80%] to-[#FFEDCA00] rounded-[39px] mr-8 px-32 aspect-[652/805] w-[602px]
+relative flex flex-col bg-gradient-to-b from-[#FFEDCAFF] from-[0%]  via-[#FFEDCAD9] via-[80%] to-[#FFEDCA00] rounded-[39px] mr-8 px-32 aspect-[652/805] w-[602px] w-max(10px, 10px)
 `;
 
 const RegisterFormContainer = tw.div`

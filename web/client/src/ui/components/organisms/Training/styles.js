@@ -4,30 +4,27 @@ const Container = tw.div`
 		flex
 		flex-col
 		max-md:flex-col
-		min-h-[calc(100vh-115px)]
-		max-w-[2500px]
+		lg:min-h-[calc(100vh-115px)]
+		max-lg:min-h-screen
 		p-4
-		justify-center
-		self-center
 `;
 
 const HeaderContainer = tw.div`
 		flex
 		justify-center
 		flex-col
+		pt-12
 `;
 
 const TitleContainer = tw.div`
     flex 
     flex-col
-    px-44
-    mb-8
 `;
 
 const IllustrationContainer = tw.div`
     flex
     flex-col
-    mb-10
+		lg:px-44
 `;
 
 const MainContainer = tw.div`
@@ -58,7 +55,7 @@ const Title = tw.div`
 `;
 
 const Subtitle = tw.div`
-    text-sm
+    text-[18px]
     text-overflow
     text-[#0d0d0d]
 `;

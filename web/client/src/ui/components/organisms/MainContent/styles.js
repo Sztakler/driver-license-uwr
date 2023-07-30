@@ -5,23 +5,24 @@ const Container = tw.div`
 	flex
 	flex-row
 	max-md:flex-col
-	max-w-[2800px]
 `;
 
 const SidebarContainer = tw.div`
 	flex
 	flex-col
 	h-full
+	w-full
 	bg-gradient-to-r
 	from-[#FFF6E4]
 	to-[#FFFBF3]
 	self-start
-	${(props) => (props.sticky ? "fixed pt-[110px]" : "absolute ")}
+	${(props) => (props.sticky ? "md:fixed md:pt-[110px]" : "md:absolute ")}
 	top-0
 	left-0
 	`;
 
 const SidebarArrowButton = tw.div`
+  max-md:hidden
 	absolute
 	top-[16px]
 	left-[350px]
@@ -34,9 +35,10 @@ const SidebarArrowButton = tw.div`
 const Content = tw.div`
 	grid
 	grid-rows-auto
-	px-24
+	pl-24
+	max-md:pl-4
 	pt-[30px]
-	${(props) => (props.moveRight ? "ml-[320px]" : "")}
+	${(props) => (props.moveRight ? "md:ml-[320px]" : "")}
 	`;
 
 const Title = tw.div`
