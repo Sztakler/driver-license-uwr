@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 
@@ -27,9 +27,15 @@ export default function Navbar(props) {
 	const uuidv4 = require("uuid/v4");
 
 	const [hamburgerView, setHamburgerView] = useState(false);
+	const [isMenuHidden, setIsMenuHidden] = useState(true);
 	const [activePage, setActivePage] = useState(
 		`/${location.pathname.split("/")[1]}`
 	);
+
+	useEffect(() => {
+		setActivePage(`/${location.pathname.split("/")[1]}`);
+	}, [location.pathname]
+	)
 
 	const handleHamburgerClick = () => {
 		setHamburgerView((state) => !state);
@@ -54,12 +60,6 @@ export default function Navbar(props) {
 			navigationTarget: "/podrecznik",
 			fontSize: "xl",
 		},
-		{
-			id: uuidv4,
-			child: <User className="h-10"></User>,
-			navigationTarget: "/konto",
-			fontSize: "xl",
-		},
 	];
 
 	async function Logout() {
@@ -71,8 +71,12 @@ export default function Navbar(props) {
 			},
 		});
 
-		setActivePage("/");
 		navigate("/");
+	}
+
+	function ToggleMenu(newIsMenuHidden) {
+		setIsMenuHidden(newIsMenuHidden);
+		console.log("toggluje menu!" + isMenuHidden);
 	}
 
 	return (
@@ -88,40 +92,34 @@ export default function Navbar(props) {
 								active={link.navigationTarget === activePage ? true : false}
 								key={uuidv4 + index}
 							>
-								{link.name !== undefined ? (
-									<Button
-										active={link.navigationTarget === activePage ? true : false}
-										navbar
-										size={link.fontSize}
-										onClick={() => {
-											setActivePage(link.navigationTarget);
-											navigate(link.navigationTarget);
-										}}
-									>
-										{link.name}
-									</Button>
-								) : link.child !== undefined ? (
-									<Button
-										active={link.navigationTarget === activePage ? true : false}
-										navbar
-										navbarIcon
-										size={link.fontSize}
-										onClick={() => {
-											setActivePage(link.navigationTarget);
-											navigate(link.navigationTarget);
-										}}
-									>
-										{link.child}
-									</Button>
-								) : (
-									<div></div>
-								)}
+								<Button
+									active={link.navigationTarget === activePage ? true : false}
+									navbar
+									size={link.fontSize}
+									onClick={() => {
+										navigate(link.navigationTarget);
+									}}
+								>
+									{link.name}
+								</Button>
 							</NavbarItem>
 						);
 					})}
 
-					<NavbarItem>
-						<Button navbar navbarIcon size={"xl"} onClick={() => Logout()}>
+					<NavbarItem className="flex-col" onMouseEnter={() => ToggleMenu(false)} onMouseLeave={() => ToggleMenu(true)}>
+						<Button
+							active={"/konto" === activePage ? true : false}
+							navbar
+							navbarIcon
+							size={"xl"}
+							onClick={() => {
+								navigate("/konto");
+							}}
+						>
+							
+							<User className="h-10"></User>
+						</Button>
+						<Button hidden={isMenuHidden} navbar navbarIcon size={"xl"} onClick={() => Logout()}>
 							Wyloguj
 						</Button>
 					</NavbarItem>
