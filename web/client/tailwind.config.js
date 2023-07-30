@@ -56,6 +56,16 @@ module.exports = {
 				"negative-result": "url(/src/assets/images/resultNegative.svg)",
 				login: "url(/src/assets/images/svg/LoginPage/background.svg)",
 			},
+			typography: {
+				'@variants responsive': {
+				  '.text-max': {
+					'font-size': 'max(var(--text-a), var(--text-b))',
+				  },
+				},
+			},
+			fontSize: {
+				'max-vhvw': 'max(2.6vw, 7vh)', // Customize the values as per your needs
+			  },
 		},
 	},
 	plugins: [],

@@ -1,5 +1,5 @@
 const buttonPrimaryClasses =
-	"flex items-center px-[68px] py-[17px] justify-center bg-[#FFDE8A]  rounded-[39px] border border-[#BDBAAE] gap-2 flex-wrap";
+	"flex items-center px-[50px] py-[13px] justify-center bg-[#FFDE8A]  rounded-[39px] border border-[#BDBAAE] gap-2 flex-wrap";
 
 const buttonBlankClasses =
 	"flex gap-2 items-center justify-center hover:font-semibold";

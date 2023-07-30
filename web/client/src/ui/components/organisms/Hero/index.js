@@ -79,8 +79,8 @@ export default function Hero() {
 						src={HomePageIllustrations.HeroImage1}
 					></Image>
 				</ImageContainer>
-				<div className="flex flex-col absolute top-[55.5%] left-[60%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
-					<Button primary className="flex self-start px-[6.435vw] py-[1.888vh]">
+				<div className="flex flex-col absolute top-[57%] left-[35%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
+					<Button primary className="flex self-start px-[6.435vw] py-[1.888vh]" onClick={() => navigate("/register")}>
 						<Text className="text-[1.1vw] leading-none">
 							Trenuj z nami
 						</Text>
@@ -101,7 +101,7 @@ export default function Hero() {
 					></Image>
 				</ImageContainer>
 				<div className="flex flex-col absolute top-[55.5%] left-[60%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
-					<Button primary className="self-start">
+					<Button primary className="self-start" onClick={() => navigate("/register")}>
 						<Text className="text-[1.1vw] leading-none">
 							Trenuj z nami
 						</Text>
@@ -129,7 +129,7 @@ export default function Hero() {
 						Stale aktualizujemy naszą bazę pytań egzaminacyjnych. Przygotuj się
 						z nami do egzaminu w 2023!
 					</Text>
-					<Button primary className="self-start ">
+					<Button primary className="self-start" onClick={() => navigate("/register")}>
 						<Text className="text-[1.1vw] leading-none">
 							Załóż darmowe konto
 						</Text>
@@ -158,7 +158,7 @@ export default function Hero() {
 						możesz wybierać z bazy wszystkich pytań wglądu w Twoje statystki i
 						analizy zapisywania wybranych pytań
 					</Text>
-					<Button primary className="self-start ">
+					<Button primary className="self-start" onClick={() => navigate("/register")}>
 						<Text className="text-[1.1vw] leading-none">Zarejestruj się</Text>
 					</Button>
 				</div>

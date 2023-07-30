@@ -58,6 +58,7 @@ export default function LoginForm(props) {
 
 	return (
 		<LoginFormContainer onSubmit={handleSubmit}>
+			<input type="submit" className="hidden"></input>
 			<NoAccount>
 				Nie masz jeszcze konta?{" "}
 				<Button

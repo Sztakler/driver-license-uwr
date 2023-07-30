@@ -79,8 +79,13 @@ export default function Registration() {
 		<RegistrationContainer>
 			<LeftContainer>
 				<ImageContainer>
-					<Image src={Illustrations.RegistrationIllustration}></Image>
+					<Image className="w-full h-full max-w-full block" src={Illustrations.RegistrationIllustration}></Image>
 				</ImageContainer>
+				<div className="flex flex-col absolute top-[21%] left-[30%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
+					<Text className="font-display text-[64px] leading-none w-[500px] whitespace-normal">
+						Załóż darmowe konto
+					</Text>
+				</div>
 			</LeftContainer>
 
 			<RightContainer>
@@ -151,7 +156,7 @@ export default function Registration() {
 								</TextUnderlineSpan>
 								.
 							</Disclaimer>
-							<Button primary size="s" type="submit" className="w-[80%]">
+							<Button primary hover type="submit" className="text-[19px] w-full">
 								Załóż konto
 							</Button>
 						</SubmitButtonContainer>

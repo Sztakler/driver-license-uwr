@@ -10,11 +10,13 @@ const RegistrationContainer = tw.div`
 	rounded-[39px]
 	h-max
 	pt-6
+	h-[calc(100vh-115px)]
 
 `;
 
 const LeftContainer = tw.div`
-hidden lg:flex flex-col gap-y-20 py-11 min-w-[850px]
+lg:flex flex-col gap-y-20 py-11 min-w-[850px]
+relative
 `;
 
 const InfoContainer = tw.div`
@@ -86,7 +88,7 @@ text-[19px] font-semibold
 `;
 
 const Disclaimer = tw.p`
-text-xs text-[#808080] max-w-prose py-4
+text-xs text-[#808080] text-left max-w-prose pb-4 mr-auto
 `;
 
 export {
