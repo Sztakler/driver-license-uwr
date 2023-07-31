@@ -14,7 +14,7 @@ export default function ViewsNavigation({ selectedView, changeSelectedView }) {
 					changeSelectedView(0);
 				}}
 			>
-				<Image src={Illustrations.stats} />
+				<Image src={Illustrations.Stats} />
 				<Text className="text-[16px] font-medium w-full">Statystyki</Text>
 			</NavigationItem>
 			<NavigationItem
@@ -23,7 +23,7 @@ export default function ViewsNavigation({ selectedView, changeSelectedView }) {
 					changeSelectedView(1);
 				}}
 			>
-				<Image src={Illustrations.star} />
+				<Image src={Illustrations.SavedQuestions} />
 				<Text className="text-[16px] font-medium w-full">Zapisane pytania</Text>
 			</NavigationItem>
 			<NavigationItem
@@ -32,7 +32,7 @@ export default function ViewsNavigation({ selectedView, changeSelectedView }) {
 					changeSelectedView(2);
 				}}
 			>
-				<Image src={Illustrations.settings} />
+				<Image src={Illustrations.Settings} />
 				<Text className="text-[16px] font-medium w-full">Ustawienia konta</Text>
 			</NavigationItem>
 		</ViewsNavigationContainer>

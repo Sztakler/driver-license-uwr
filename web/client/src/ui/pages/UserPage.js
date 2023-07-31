@@ -18,7 +18,7 @@ export default function UserPage() {
 	};
 
 	return (
-		<PageTemplate header={<Navbar />} footer={<Footer />}>
+		<PageTemplate header={<Navbar />}>
 			<User />
 			<ViewsNavigation
 				selectedView={selectedView}

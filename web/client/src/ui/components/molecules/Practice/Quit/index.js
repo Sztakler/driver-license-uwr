@@ -1,18 +1,15 @@
 import React, { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import TaskContext from "../../../../../context/TaskContext";
 
-import { useRecoilState } from "recoil";
-
-import { resultsExamState } from "../../../../../recoil/atoms";
-
+import Text from "../../../atoms/Text";
 import Modal from "../../Modal";
 import Button from "../../../atoms/Button";
 import Heading from "../../../atoms/Heading";
-
-import Cancel from "../../../../../icons/Cancel";
+import Image from "../../../atoms/Image";
+import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
 
 import { QuitOptions } from "./styles";
-import { useNavigate, useParams } from "react-router";
-import TaskContext from "../../../../../context/TaskContext";
 
 export default function Quit({ isReview, isExam, result }) {
 	const navigate = useNavigate();
@@ -77,16 +74,15 @@ export default function Quit({ isReview, isExam, result }) {
 
 	return (
 		<QuitOptions>
-			{console.log("EXAM", isExam)}
-			<span>
+			<Text>
 				{isReview
 					? "Wróć do podsumowania"
 					: isExam
 					? "Zakończ egzamin"
 					: "Zakończ trening"}
-			</span>
+			</Text>
 			<Button bubble hover size="m" onClick={() => setExitModalShow(true)}>
-				<Cancel />
+				<Image src={Illustrations.Cancel} />
 			</Button>
 
 			<Modal onClose={() => setExitModalShow(false)} show={exitModalShow}>

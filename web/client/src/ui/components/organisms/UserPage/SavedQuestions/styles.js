@@ -91,10 +91,6 @@ const Answer = tw.div`
 	gap-2
 `;
 
-const StatusIcon = tw.image`
-
-`;
-
 const Header = tw.div`
 	flex
 	flex-row
@@ -145,7 +141,6 @@ export {
 	FiltersList,
 	Filter,
 	Name,
-	StatusIcon,
 	ItemBody,
 	ImageBox,
 	TaskData,

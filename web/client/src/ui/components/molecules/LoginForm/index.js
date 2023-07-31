@@ -1,9 +1,7 @@
-import React, { useContext, useState } from "react";
-import { AuthenticationContext } from "../../../../context/AuthenticationContext";
+import React, { useState } from "react";
 
 import Label from "../../atoms/Label";
 import Input from "../../atoms/Input";
-import Text from "../../atoms/Text";
 import {
 	LoginFormContainer,
 	NoAccount,
@@ -11,7 +9,6 @@ import {
 	InputSection,
 	Heading,
 } from "./styles";
-import Image from "../../atoms/Image";
 import Button from "../../atoms/Button";
 import { useNavigate } from "react-router";
 

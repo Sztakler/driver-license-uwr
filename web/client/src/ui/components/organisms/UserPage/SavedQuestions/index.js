@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
 
 import Text from "../../../atoms/Text";
 import Input from "../../../atoms/Input";
 import Paragraph from "../../../atoms/Paragraph";
 import Image from "../../../atoms/Image";
 import Button from "../../../atoms/Button";
-import Explanation from "/src/icons/Explanation";
 
 import {
 	ListAlign,
@@ -21,14 +22,11 @@ import {
 	TaskData,
 	Answers,
 	Answer,
-	StatusIcon,
 	Questions,
 	Placeholder,
 } from "./styles";
-import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
 
 function renderAnswers(task) {
-	console.log(task);
 	if (task.zakres_struktury === "PODSTAWOWY") {
 		return (
 			<Answers row={true}>
@@ -366,7 +364,7 @@ export default function SavedQuestions() {
 											<TaskData>
 												{renderAnswers(task)}
 												<Button blank className="self-start">
-													<Explanation />
+													<Image src={Illustrations.Explanation} />
 													<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
 												</Button>
 											</TaskData>

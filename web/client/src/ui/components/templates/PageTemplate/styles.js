@@ -4,7 +4,7 @@ const PageWrapper = tw.div`
 	flex 
 	flex-col
 	w-full
-	h-full
+	min-h-screen
 	bg-gradient-to-b from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[200px] to-[#FFFBF3] to-100%
 	overflow-y-auto
 	scrollbar

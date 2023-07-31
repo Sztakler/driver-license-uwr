@@ -19,6 +19,7 @@ const HeaderContainer = tw.div`
 const TitleContainer = tw.div`
     flex 
     flex-col
+		lg:px-44
 `;
 
 const IllustrationContainer = tw.div`

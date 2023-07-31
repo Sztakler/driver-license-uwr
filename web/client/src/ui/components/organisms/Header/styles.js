@@ -14,6 +14,7 @@ const TitleContainer = tw.div`
 	flex-col
 	pt-12
 	max-md:p-4
+	lg:px-44
 	
 `;
 

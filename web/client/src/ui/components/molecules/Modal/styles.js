@@ -61,7 +61,4 @@ const ModalBody = tw.div`
 	[&>div]:flex-row
 `;
 
-const ModalOptions = tw.div`
-`;
-
-export { ModalContainer, ModalDialog, ModalContent, ModalOptions, ModalBody };
+export { ModalContainer, ModalDialog, ModalContent, ModalBody };

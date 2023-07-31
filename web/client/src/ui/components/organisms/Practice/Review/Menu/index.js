@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 
 import TaskContext from "../../../../../../context/TaskContext";
-import ArrowRight from "/src/icons/ArrowRight";
-import ArrowLeft from "/src/icons/ArrowLeft";
-import Explanation from "/src/icons/Explanation";
+import Illustrations from "../../../../../../assets/images/svg/icons/Illustrations";
 
+import Heading from "../../../../atoms/Heading";
+import Image from "../../../../atoms/Image";
 import Button from "../../../../atoms/Button";
 import Text from "../../../../atoms/Text";
 import Modal from "../../../../molecules/Modal";
@@ -12,8 +12,6 @@ import Quit from "../../../../molecules/Practice/Quit";
 import ReviewTasks from "../../../../molecules/Practice/ReviewTasks";
 
 import { MenuContainer, NextPrevious } from "./styles";
-
-import Heading from "../../../../atoms/Heading";
 
 export default function MenuReview({ isExam }) {
 	const { setNewTask, setNewPickedAnswer, savedQuestions } =
@@ -59,7 +57,7 @@ export default function MenuReview({ isExam }) {
 				className="justify-center items-center w-[200px]"
 				onClick={handleExplanationShowButton}
 			>
-				<Explanation />
+				<Image src={Illustrations.Explanation} />
 				<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
 			</Button>
 			<Quit isReview={true} isExam={isExam} result={result} />
@@ -83,12 +81,12 @@ export default function MenuReview({ isExam }) {
 					className="max-2xl:mt-auto max-2xl:justify-start"
 					onClick={handlePreviousQuestionButton}
 				>
-					<ArrowLeft />
+					<Image src={Illustrations.ArrowLeft} />
 					<Text>Poprzednie pytanie</Text>
 				</Button>
 				<Button full hover size="m" primary onClick={handleNextQuestionButton}>
 					<Text>Następne pytanie</Text>
-					<ArrowRight />
+					<Image src={Illustrations.ArrowRight} />
 				</Button>
 			</NextPrevious>
 			<ReviewTasks

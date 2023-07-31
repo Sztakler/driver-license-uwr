@@ -12,7 +12,7 @@ export default function User() {
 			<ImageBox>
 				<Image
 					className="object-cover min-w-full min-h-full"
-					src={Illustrations.userIcon}
+					src={Illustrations.UserIcon}
 				/>
 			</ImageBox>
 			<Info>

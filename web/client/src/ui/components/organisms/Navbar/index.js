@@ -2,13 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 
-import PageLogo from "/src/assets/images/svg/icons/PageLogo";
-import userLogo from "/src/assets/images/user-logo.png";
-import hamburger from "/src/assets/images/menu.png";
+import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 import Button from "../../atoms/Button";
 import Image from "../../atoms/Image";
-
-import NavbarIcons from "/src/assets/images/svg/icons/NavbarIcons";
 
 import {
 	NavbarContainer,
@@ -19,7 +15,6 @@ import {
 	NavigationArea,
 	Logout,
 } from "./styles";
-import User from "../../../../icons/User";
 
 export default function Navbar(props) {
 	const location = useLocation();
@@ -34,8 +29,37 @@ export default function Navbar(props) {
 
 	useEffect(() => {
 		setActivePage(`/${location.pathname.split("/")[1]}`);
-	}, [location.pathname]
-	)
+		console.log("change");
+		const checkAuthenticationStatus = async () => {
+			setIsAuthStatusChecked(false);
+			setIsLoggedIn(false);
+			try {
+				const response = await fetch("http://localhost:5000/check-auth", {
+					credentials: "include",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+					},
+				});
+
+				const data = await response.json();
+				setIsLoggedIn(data.isAuthenticated);
+				setIsAuthStatusChecked(true);
+				let userData = JSON.stringify(data.user);
+				window.sessionStorage.setItem("User", userData);
+			} catch (error) {
+				console.error("Error checking authentication status:", error);
+			}
+		};
+
+		checkAuthenticationStatus();
+	}, [location.pathname]);
+
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isAuthStatusChecked, setIsAuthStatusChecked] = useState(false);
+
+	useEffect(() => {}, []);
+	console.log("change");
 
 	const handleHamburgerClick = () => {
 		setHamburgerView((state) => !state);
@@ -82,7 +106,7 @@ export default function Navbar(props) {
 	return (
 		<NavbarContainer lighter={props.lighter}>
 			<BrandTitle hover size="2xl" onClick={() => navigate("/")}>
-				<Image src={PageLogo.PageLogo}></Image>
+				<Image src={Illustrations.PageLogo}></Image>
 			</BrandTitle>
 			<NavigationArea active={hamburgerView}>
 				<NavbarLinks>
@@ -106,7 +130,11 @@ export default function Navbar(props) {
 						);
 					})}
 
-					<NavbarItem className="flex-col" onMouseEnter={() => ToggleMenu(false)} onMouseLeave={() => ToggleMenu(true)}>
+					<NavbarItem
+						className="flex-col"
+						onMouseEnter={() => ToggleMenu(false)}
+						onMouseLeave={() => ToggleMenu(true)}
+					>
 						<Button
 							active={"/konto" === activePage ? true : false}
 							navbar
@@ -116,17 +144,25 @@ export default function Navbar(props) {
 								navigate("/konto");
 							}}
 						>
-							
-							<User className="h-10"></User>
+							<Image src={Illustrations.User} />
 						</Button>
-						<Button hidden={isMenuHidden} navbar navbarIcon size={"xl"} onClick={() => Logout()}>
-							Wyloguj
-						</Button>
+
+						{isLoggedIn && isAuthStatusChecked && (
+							<Button
+								hidden={isMenuHidden}
+								navbar
+								navbarIcon
+								size={"xl"}
+								onClick={() => Logout()}
+							>
+								Wyloguj
+							</Button>
+						)}
 					</NavbarItem>
 				</NavbarLinks>
 			</NavigationArea>
 			<HamburgerOptionArea>
-				<Button navbar hover image={hamburger} onClick={handleHamburgerClick} />
+				{/* <Button navbar hover image={hamburger} onClick={handleHamburgerClick} /> */}
 			</HamburgerOptionArea>
 		</NavbarContainer>
 	);

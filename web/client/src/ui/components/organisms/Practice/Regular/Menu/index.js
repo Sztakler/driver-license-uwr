@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 
 import TaskContext from "../../../../../../context/TaskContext";
-import ArrowRight from "/src/icons/ArrowRight";
-import ArrowLeft from "/src/icons/ArrowLeft";
-import Explanation from "/src/icons/Explanation";
-import Clock from "/src/icons/Clock";
+import Illustrations from "../../../../../../assets/images/svg/icons/Illustrations";
 
 import Button from "../../../../atoms/Button";
 import Text from "../../../../atoms/Text";
 import Modal from "../../../../molecules/Modal";
 import Quit from "../../../../molecules/Practice/Quit";
+import Heading from "../../../../atoms/Heading";
+import Input from "../../../../atoms/Input";
+import Image from "../../../../atoms/Image";
 
 import {
 	MenuContainer,
@@ -19,8 +19,6 @@ import {
 	NextPrevious,
 	KnowledgeLevel,
 } from "./styles";
-import Heading from "../../../../atoms/Heading";
-import Input from "../../../../atoms/Input";
 
 export default function Menu({ isExam }) {
 	const {
@@ -206,7 +204,7 @@ export default function Menu({ isExam }) {
 				className="justify-center items-center w-[200px]"
 				onClick={handleExplanationShowButton}
 			>
-				<Explanation />
+				<Image src={Illustrations.Explanation} />
 				<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
 			</Button>
 			<Quit isReview={false} isExam={isExam} result={result} />
@@ -228,7 +226,7 @@ export default function Menu({ isExam }) {
 						<Text>START</Text>
 					</Button>
 					<CustomTimer expired={currentTime === 0}>
-						<Clock />
+						<Image src={Illustrations.Clock} />
 						<Text>{currentTime} sekund</Text>
 					</CustomTimer>
 				</Row>
@@ -256,7 +254,7 @@ export default function Menu({ isExam }) {
 						className="max-2xl:mt-auto max-2xl:justify-start"
 						onClick={handlePreviousQuestionButton}
 					>
-						<ArrowLeft />
+						<Image src={Illustrations.ArrowLeft} />
 						<Text>Poprzednie pytanie</Text>
 					</Button>
 				) : (
@@ -264,7 +262,7 @@ export default function Menu({ isExam }) {
 				)}
 				<Button full hover size="m" primary onClick={handleNextQuestionButton}>
 					<Text>Następne pytanie</Text>
-					<ArrowRight />
+					<Image src={Illustrations.ArrowRight} />
 				</Button>
 			</NextPrevious>
 		</MenuContainer>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
+import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
-import ArrowLeft from "../../../../icons/ArrowLeft";
 
 import {
 	SummaryContainer,
@@ -98,7 +98,8 @@ export default function Summary() {
 							navigate(`/egzamin/przeglad-odpowiedzi/${id}`);
 						}}
 					>
-						<ArrowLeft /> <Text>Przejrzyj odpowiedzi</Text>
+						<Image src={Illustrations.ArrowLeft} />
+						<Text>Przejrzyj odpowiedzi</Text>
 					</Button>
 				</InsideBackground>
 			</InnerTextBox>

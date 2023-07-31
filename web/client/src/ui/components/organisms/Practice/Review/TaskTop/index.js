@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 
 import TaskContext from "../../../../../../context/TaskContext";
-import Star from "../../../../../../icons/Star";
+import Illustrations from "../../../../../../assets/images/svg/icons/Illustrations";
+
 import Text from "../../../../atoms/Text";
 import Image from "../../../../atoms/Image";
 import Video from "../../../../atoms/Video";
@@ -43,7 +44,11 @@ export default function TaskTopReview() {
 				size="l"
 				className="absolute top-4 -right-16"
 			>
-				<Star picked={favoriteTask} />
+				{favoriteTask ? (
+					<Image src={Illustrations.StarSet} />
+				) : (
+					<Image src={Illustrations.StarNotSet} />
+				)}
 			</Button>
 			<ImageBox>
 				{mediaExtension === "mp4" ? (

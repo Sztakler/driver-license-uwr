@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
+import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 import Image from "../../atoms/Image";
-import PageLogo from "/src/assets/images/svg/icons/PageLogo";
 
 import { BrandTitle } from "./styles";
 
@@ -11,7 +11,7 @@ export default function BrandAbsoluted() {
 
 	return (
 		<BrandTitle onClick={() => navigate("/")}>
-			<Image src={PageLogo.PageLogo} />
+			<Image src={Illustrations.PageLogo} />
 		</BrandTitle>
 	);
 }

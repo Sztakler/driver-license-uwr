@@ -7,7 +7,6 @@ const AuthenticationProvider = ({ children }) => {
 	const [user, setUser] = useState({});
 
 	useEffect(() => {
-		console.log("Page navigation detected, check auth");
 		const checkAuthenticationStatus = async () => {
 			try {
 				const response = await fetch("http://localhost:5000/check-auth", {

@@ -22,7 +22,7 @@ import {
 import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 
-import Illustrations from "/src/assets/images/svg/icons/Illustrations";
+import RegisterPageIllustrations from "../../../../assets/images/svg/RegisterPage/RegisterPageIllustrations";
 import Image from "../../atoms/Image";
 import { useNavigate } from "react-router";
 import Text from "../../atoms/Text";
@@ -79,7 +79,10 @@ export default function Registration() {
 		<RegistrationContainer>
 			<LeftContainer>
 				<ImageContainer>
-					<Image className="w-full h-full max-w-full block" src={Illustrations.RegistrationIllustration}></Image>
+					<Image
+						className="w-full h-full max-w-full block"
+						src={RegisterPageIllustrations.Image1}
+					></Image>
 				</ImageContainer>
 				<div className="flex flex-col absolute top-[21%] left-[30%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
 					<Text className="font-display text-[64px] leading-none w-[500px] whitespace-normal">
@@ -156,7 +159,12 @@ export default function Registration() {
 								</TextUnderlineSpan>
 								.
 							</Disclaimer>
-							<Button primary hover type="submit" className="text-[19px] w-full">
+							<Button
+								primary
+								hover
+								type="submit"
+								className="text-[19px] w-full"
+							>
 								Załóż konto
 							</Button>
 						</SubmitButtonContainer>

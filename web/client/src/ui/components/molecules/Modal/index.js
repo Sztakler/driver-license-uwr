@@ -1,14 +1,10 @@
 import React from "react";
 
-import {
-	ModalContainer,
-	ModalDialog,
-	ModalContent,
-	ModalOptions,
-	ModalBody,
-} from "./styles";
-import Cancel from "../../../../icons/Cancel";
+import { ModalContainer, ModalDialog, ModalContent, ModalBody } from "./styles";
+
+import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 import Button from "../../atoms/Button";
+import Image from "../../atoms/Image";
 
 export default function Modal(props) {
 	return (
@@ -22,7 +18,7 @@ export default function Modal(props) {
 						className="absolute top-3 right-3"
 						onClick={props.onClose}
 					>
-						<Cancel />
+						<Image src={Illustrations.Cancel} />
 					</Button>
 					<ModalBody>{props.children}</ModalBody>
 				</ModalContent>

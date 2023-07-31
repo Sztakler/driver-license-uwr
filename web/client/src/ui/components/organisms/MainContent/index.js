@@ -77,10 +77,7 @@ export default function MainContent({ navigation, panelsContents }) {
 	}
 
 	const handleScroll = () => {
-		console.log("hir");
-
 		const parent = document.querySelector("#MainContent");
-		const stickyDiv = document.querySelector("#sidebar");
 		const scrollPosition = window.scrollY;
 		const parentOffsetTop = parent.offsetTop;
 

@@ -1,31 +1,31 @@
-import TextbookIllustration from "./textbook-image.svg";
-import TrainingIllustration from "./training-image.svg";
-import TrainingIllustration2 from "./training-new.svg";
-import RegistrationIllustration from "./registration-image.svg";
-import HeroIllustration from "./hero.svg";
-import HeroCar from "./hero-car.svg";
-import HeroLogo from "./hero-logo.svg";
-import HeroInfo1 from "./hero-info-1.svg";
-import PurpleCar from "./purple-car.svg";
-import userIcon from "./userIcon.svg";
-import star from "./star.svg";
-import stats from "./stats.svg";
-import settings from "./settings.svg";
-import Plus from "./plus.svg";
+import UserIcon from "./UserIcon.svg";
+import Stats from "./Stats.svg";
+import Settings from "./Settings.svg";
+import SavedQuestions from "./SavedQuestions.svg";
+import Plus from "./Plus.svg";
+import ArrowDown from "./ArrowDown.svg";
+import ArrowLeft from "./ArrowLeft.svg";
+import ArrowRight from "./ArrowRight.svg";
+import Cancel from "./Cancel.svg";
+import Clock from "./Clock.svg";
+import Explanation from "./Explanation.svg";
+import SummaryBackground from "./SummaryBackground.svg";
+import User from "./User.svg";
+import PageLogo from "./PageLogo.svg";
 
 export default {
-	TextbookIllustration,
-	TrainingIllustration,
-	TrainingIllustration2,
-	RegistrationIllustration,
-	HeroIllustration,
-	HeroCar,
-	HeroLogo,
-	HeroInfo1,
-	PurpleCar,
-	userIcon,
-	star,
-	stats,
-	settings,
+	UserIcon,
+	Stats,
+	Settings,
+	SavedQuestions,
 	Plus,
+	ArrowDown,
+	ArrowLeft,
+	ArrowRight,
+	Cancel,
+	Clock,
+	Explanation,
+	SummaryBackground,
+	User,
+	PageLogo,
 };

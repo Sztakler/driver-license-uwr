@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import TaskContext from "../../../../../../context/TaskContext";
-import Star from "../../../../../../icons/Star";
+import Illustrations from "../../../../../../assets/images/svg/icons/Illustrations";
+import Star from "../../../../../../assets/images/svg/icons/Star";
+
 import Text from "../../../../atoms/Text";
 import Image from "../../../../atoms/Image";
 import Video from "../../../../atoms/Video";
@@ -10,8 +12,8 @@ import Button from "../../../../atoms/Button";
 import { TaskTopSection, TaskInfo, ImageBox } from "./styles";
 
 export default function TaskTop({ isReview }) {
-	const [favoriteTask, setFavoriteTask] = useState(false);
 	const { task, taskStarted } = useContext(TaskContext);
+	const [favoriteTask, setFavoriteTask] = useState(task.is_saved);
 
 	const mediaExtension = task.media.includes(".")
 		? task.media.split(".").pop()
@@ -32,6 +34,9 @@ export default function TaskTop({ isReview }) {
 			);
 
 			if (response.ok) {
+				setFavoriteTask((prevState) => {
+					return !prevState;
+				});
 				console.log("Data submitted successfully");
 			} else {
 				console.error("Error submitting data");
@@ -42,8 +47,6 @@ export default function TaskTop({ isReview }) {
 
 		return 0;
 	}
-
-	console.log("task", task);
 
 	return (
 		<TaskTopSection>
@@ -69,7 +72,7 @@ export default function TaskTop({ isReview }) {
 				size="l"
 				className="absolute top-4 -right-16"
 			>
-				<Star picked={task.is_saved} />
+				<Star picked={favoriteTask} />
 			</Button>
 			<ImageBox>
 				{taskStarted || isReview ? (

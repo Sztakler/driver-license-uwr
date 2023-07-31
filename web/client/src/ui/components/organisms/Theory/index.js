@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
+import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 import Header from "../../organisms/Header";
 import Image from "../../atoms/Image";
-import Illustrations from "/src/assets/images/svg/icons/Illustrations";
 import MainContent from "../../organisms/MainContent";
+import znakiOstrzegawcze from "/src/assets/images/svg/textbook/znaki-ostrzegawcze/znaki-ostrzegawcze";
 
 import { Container, ScrolldownButton } from "./styles";
-
-import znakiOstrzegawcze from "/src/assets/images/svg/textbook/znaki-ostrzegawcze/znaki-ostrzegawcze";
-import Arrows from "/src/assets/images/svg/icons/Arrows";
 
 export default function Theory({ navigation, content }) {
 	const panelsContents = [
@@ -158,18 +156,6 @@ export default function Theory({ navigation, content }) {
 			.scrollIntoView({ behavior: "smooth" });
 	};
 
-	window.addEventListener(
-		"scroll",
-		function () {
-			myFunc();
-		},
-		false
-	);
-
-	function myFunc() {
-		console.log("in myFunc");
-	}
-
 	return (
 		<Container>
 			<Header
@@ -180,7 +166,7 @@ export default function Theory({ navigation, content }) {
 				illustration={Illustrations.TextbookIllustration}
 			>
 				<ScrolldownButton onClick={scrollDown}>
-					<Image src={Arrows.Down}></Image>
+					<Image src={Illustrations.ArrowDown}></Image>
 				</ScrolldownButton>
 			</Header>
 			<MainContent navigation={navigation} panelsContents={panelsContents} />
