@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { useRecoilState, useResetRecoilState } from "recoil";
-import {
-	cachedAnswersState,
-	inReviewModeState,
-	resultsState,
-} from "../../../../recoil/atoms";
+
+import TrainingPageIllustrations from "../../../../assets/images/svg/TrainingPage/TrainingPageIllustrations";
+
+import Paragraph from "../../atoms/Paragraph";
+import Text from "../../atoms/Text";
+import Input from "../../atoms/Input";
+import Button from "../../atoms/Button";
 
 import {
 	Container,
@@ -17,29 +18,16 @@ import {
 	Subtitle,
 } from "./styles";
 
-import Paragraph from "../../atoms/Paragraph";
-import Text from "../../atoms/Text";
-import TrainingPageIllustrations from "../../../../assets/images/svg/TrainingPage/TrainingPageIllustrations";
-import Input from "../../atoms/Input";
-import Button from "../../atoms/Button";
-import Heading from "../../atoms/Heading";
-
 export default function Training({ data, headings, ...props }) {
 	const navigate = useNavigate();
 
-	const [isTrainingSelected, setIsTraningSelected] = useState(false);
-	const resetResult = useResetRecoilState(resultsState);
-	const resetReviewMode = useResetRecoilState(inReviewModeState);
-	const resetCachedAnswers = useResetRecoilState(cachedAnswersState);
+	const [isTrainingSelected, setIsTrainingSelected] = useState(false);
 
 	let scrollDown = () => {
-		setIsTraningSelected(true);
+		setIsTrainingSelected(true);
 	};
 
 	let startPractice = () => {
-		resetReviewMode();
-		resetResult();
-		resetCachedAnswers();
 		navigate("/trening/praktyka");
 	};
 

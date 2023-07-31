@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
-import { useRecoilState } from "recoil";
 
-import { cachedAnswersState } from "../../../../../recoil/atoms";
 import TaskContext from "../../../../../context/TaskContext";
 
+import Button from "../../../atoms/Button";
 import Text from "../../../atoms/Text";
 
 import { ReviewTasksContainer, BubblesWrapper } from "./styles";
-import Button from "../../../atoms/Button";
 
 export default function ReviewTasks({
 	taskIdx,

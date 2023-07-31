@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
+import Image from "../../atoms/Image";
 
 import {
 	SummaryContainer,
