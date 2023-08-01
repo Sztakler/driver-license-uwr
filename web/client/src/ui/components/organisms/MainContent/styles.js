@@ -11,12 +11,12 @@ const SidebarContainer = tw.div`
 	flex
 	flex-col
 	h-full
-	w-full
 	bg-gradient-to-r
 	from-[#FFF6E4]
 	to-[#FFFBF3]
 	self-start
-	${(props) => (props.sticky ? "md:fixed md:pt-[110px]" : "md:absolute ")}
+	${(props) =>
+		props.sticky ? "md:fixed md:pt-[110px]" : "md:absolute md:left-[-16px]"}
 	top-0
 	left-0
 	`;
@@ -29,7 +29,7 @@ const SidebarArrowButton = tw.div`
 	flex
 	flex-col
 	cursor-pointer
-	${(props) => (props.sidebarSticky ? "pt-[110px]" : "")}
+	${(props) => (props.sidebarSticky ? "md:fixed md:pt-[110px]" : "")}
 `;
 
 const Content = tw.div`

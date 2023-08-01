@@ -50,7 +50,12 @@ const SidebarContainer = tw.div`
 `;
 
 const SidebarArrowButton = tw.div`
-absolute top-[16px] left-[330px] flex flex-col cursor-pointer
+	absolute
+	top-[16px] 
+	left-[330px] 
+	flex 
+	flex-col 
+	cursor-pointer
 `;
 
 const Content = tw.div`
@@ -110,15 +115,20 @@ const Panel = tw.div`
 `;
 
 const SidebarArrowButtonParagraph = tw.div`
-rotate-90 translate-y-16 -translate-x-10
+	rotate-90 
+	translate-y-16 
+	-translate-x-10
 `;
 
 const SidebarButtonInvisibleCheckbox = tw.input`
-appearance-none w-[60px] checked:bg-blue-500
+	appearance-none 
+	w-[60px] 
+	checked:bg-blue-500
 `;
 
 const ScrolldownButton = tw.button`
-self-center 
+	self-center 
+	mt-14
 `;
 
 export {

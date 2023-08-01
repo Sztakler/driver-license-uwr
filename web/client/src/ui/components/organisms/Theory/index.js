@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import Header from "../../organisms/Header";
 import Image from "../../atoms/Image";
 import MainContent from "../../organisms/MainContent";
@@ -155,7 +154,7 @@ export default function Theory({ navigation, content }) {
 	let scrollDown = () => {
 		document
 			.getElementById("MainContent")
-			.scrollIntoView({ behavior: "smooth" });
+			.scrollIntoView({ behavior: "smooth", block: "nearest" });
 	};
 
 	return (
