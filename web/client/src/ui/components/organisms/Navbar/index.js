@@ -132,7 +132,7 @@ export default function Navbar(props) {
 					})}
 
 					<NavbarItem
-						className="flex-col relative"
+						className={isMenuHidden ? "flex-col relative justify-center items-center  self-center justify-start w-[78px]" : "flex-col relative justify-center items-center  self-center justify-start mt-[34px] min-h-[76px] max-h-[76px] w-[78px] bg-[#FFD363]"}
 						onMouseEnter={() => ToggleMenu(false)}
 						onMouseLeave={() => ToggleMenu(true)}
 					>
@@ -149,7 +149,7 @@ export default function Navbar(props) {
 						</Button>
 
 						{isLoggedIn && isAuthStatusChecked && (
-							<div className="absolute mt-[70px] pt-2">
+							
 								<Button
 									hidden={isMenuHidden}
 									navbar
@@ -160,7 +160,6 @@ export default function Navbar(props) {
 								>
 									Wyloguj
 								</Button>
-							</div>
 						)}
 					</NavbarItem>
 				</NavbarLinks>
