@@ -8,12 +8,12 @@ const Container = tw.div`
 	min-h-[calc(100vh-115px)]
 	self-center
 	mb-[100px]
+	p-4
 `;
 
 const HeaderContainer = tw.div`
 	flex
 	flex-col
-	pt-12
 	mb-48
 `;
 

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import PageTemplate from "../../components/templates/PageTemplate";
-import ExamMenu from "../../components/organisms/ExamMenu";
 import Navbar from "../../components/organisms/Navbar";
-import Footer from "../../components/organisms/Footer";
 
 import {
 	Container,

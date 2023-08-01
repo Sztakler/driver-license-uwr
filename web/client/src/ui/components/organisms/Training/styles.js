@@ -6,14 +6,13 @@ const Container = tw.div`
 		max-md:flex-col
 		lg:min-h-[calc(100vh-115px)]
 		max-lg:min-h-screen
-		p-4
+        p-4
 `;
 
 const HeaderContainer = tw.div`
 		flex
 		justify-center
 		flex-col
-		pt-12
 `;
 
 const TitleContainer = tw.div`

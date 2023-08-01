@@ -1,10 +1,12 @@
 import React from "react";
 
-import Illustrations from "/src/assets/images/svg/icons/Illustrations";
+
 import Header from "../../organisms/Header";
 import Image from "../../atoms/Image";
 import MainContent from "../../organisms/MainContent";
-import znakiOstrzegawcze from "/src/assets/images/svg/textbook/znaki-ostrzegawcze/znaki-ostrzegawcze";
+import znakiOstrzegawcze from "../../../../assets/images/svg/TextbookPage/znaki-ostrzegawcze/znaki-ostrzegawcze";
+import TextbookPageIllustrations from "../../../../assets/images/svg/TextbookPage/TextbookPageIllustrations";
+import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 
 import { Container, ScrolldownButton } from "./styles";
 
@@ -163,7 +165,7 @@ export default function Theory({ navigation, content }) {
 				subtitle={
 					"Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii zasad ruchu drogowego."
 				}
-				illustration={Illustrations.TextbookIllustration}
+				illustration={TextbookPageIllustrations.Image1}
 			>
 				<ScrolldownButton onClick={scrollDown}>
 					<Image src={Illustrations.ArrowDown}></Image>

@@ -7,11 +7,10 @@ const PageWrapper = tw.div`
 	min-h-screen
 	bg-gradient-to-b from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[200px] to-[#FFFBF3] to-100%
 	overflow-y-auto
-	scrollbar
 	snap-mandatory
 	snap-y
 	scroll-p-[200px]
-	pt-[115px]
+	pt-[80px]
 `;
 
 const HeroSection = tw.div`

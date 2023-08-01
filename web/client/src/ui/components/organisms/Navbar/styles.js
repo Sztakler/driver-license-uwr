@@ -28,6 +28,7 @@ const BrandTitle = tw.div`
 
 const NavigationArea = tw.div`
 	flex
+	items-start
 	text-center
 	h-full
 	${(props) => (props.active ? "max-lg:w-full max-lg:flex" : " max-lg:hidden")}
@@ -58,7 +59,7 @@ const NavbarLinks = tw.ul`
 	gap-x-[8px]
 	max-lg:w-full
 	max-h-min
-
+	items-center
 	max-lg:items-center
 	max-lg:flex-col
 `;

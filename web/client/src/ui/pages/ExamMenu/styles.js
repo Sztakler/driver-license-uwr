@@ -12,7 +12,6 @@ const Container = tw.div`
 const HeaderContainer = tw.div`
 	flex
 	flex-col
-	pt-12
 `;
 
 const TitleContainer = tw.div`

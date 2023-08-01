@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 import Button from "../../atoms/Button";
 import Image from "../../atoms/Image";
+import Text from "../../atoms/Text";
 
 import {
 	NavbarContainer,
@@ -58,7 +59,7 @@ export default function Navbar(props) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isAuthStatusChecked, setIsAuthStatusChecked] = useState(false);
 
-	useEffect(() => {}, []);
+	useEffect(() => { }, []);
 	console.log("change");
 
 	const handleHamburgerClick = () => {
@@ -131,7 +132,7 @@ export default function Navbar(props) {
 					})}
 
 					<NavbarItem
-						className="flex-col"
+						className="flex-col relative"
 						onMouseEnter={() => ToggleMenu(false)}
 						onMouseLeave={() => ToggleMenu(true)}
 					>
@@ -148,15 +149,18 @@ export default function Navbar(props) {
 						</Button>
 
 						{isLoggedIn && isAuthStatusChecked && (
-							<Button
-								hidden={isMenuHidden}
-								navbar
-								navbarIcon
-								size={"xl"}
-								onClick={() => Logout()}
-							>
-								Wyloguj
-							</Button>
+							<div className="absolute mt-[70px] pt-2">
+								<Button
+									hidden={isMenuHidden}
+									navbar
+									navbarIcon
+									size={"xl"}
+									onClick={() => Logout()}
+
+								>
+									Wyloguj
+								</Button>
+							</div>
 						)}
 					</NavbarItem>
 				</NavbarLinks>

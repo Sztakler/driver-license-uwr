@@ -7,7 +7,7 @@ import {
 	TitleContainer,
 	Title,
 	Subtitle,
-} from "./styles.jsx";
+} from "./styles.js";
 
 
 import Illustrations from "/src/assets/images/svg/icons/Illustrations";
