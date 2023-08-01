@@ -12,15 +12,13 @@ const DiagramContainer = tw.div`
 	bg-[#FFFAED]
 	w-[600px]
 	h-[500px]
-	max-lg:w-[450px]
-	max-lg:h-[450px]
-	max-md:w-[300px]
-	max-md:h-[200px]
-	max-sm:w-[200px]
-	max-sm:h-[100px]
+	break-words
+	whitespace-normal
+
 
 	p-4
-	py-8
+	pt-16
+	max-md:pt-4
 `;
 
 export { DiagramContainer };

@@ -10,7 +10,7 @@ import {
 	HorizontalContainer,
 	VerticalContainer,
 	InputContainer,
-} from "./styles"
+} from "./styles";
 import { Left } from "../../Footer/styles";
 import Input from "../../../atoms/Input";
 import Button from "../../../atoms/Button";
@@ -31,33 +31,32 @@ export default function Settings() {
 				"Content-Type": "application/json",
 			},
 		})
-		.then((response) => response.json())
-		.then((data) => {
+			.then((response) => response.json())
+			.then((data) => {
 				return data;
 			});
 	}
-	
+
 	function ValidateFields(formJson) {
 		console.log(formJson);
 
 		if (formJson.newPassword !== formJson.confirmedNewPassword) {
 			alert("Nowe hasła nie są takie same!");
-    		return false;
+			return false;
 		}
 	}
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		
+
 		const form = e.target;
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
 
-		if (ValidateFields(formJson) === false)
-			return;
-	
+		if (ValidateFields(formJson) === false) return;
+
 		return await ConfirmChanges(form, formJson);
-	  }
+	}
 
 	return (
 		<SettingsAlign>
@@ -68,9 +67,13 @@ export default function Settings() {
 							<Heading level={5}>Zmień e-mail:</Heading>
 							<InputContainer>
 								<Label>Nowy e-mail:</Label>
-								<Input name="userEmail" type="email" register fixedWidth></Input>
+								<Input
+									name="userEmail"
+									type="email"
+									register
+									fixedWidth
+								></Input>
 							</InputContainer>
-							
 						</VerticalContainer>
 						<VerticalContainer>
 							<Heading level={5}>Zmień imię:</Heading>
@@ -78,7 +81,6 @@ export default function Settings() {
 								<Label>Nowe imię:</Label>
 								<Input name="userName" register fixedWidth></Input>
 							</InputContainer>
-							
 						</VerticalContainer>
 					</HorizontalContainer>
 					<VerticalContainer>
@@ -86,27 +88,50 @@ export default function Settings() {
 						<VerticalContainer className="gap-4">
 							<InputContainer>
 								<Label>Nowe hasło:</Label>
-								<Input name="newPassword" type="password" minLength="8" register fixedWidth></Input>
+								<Input
+									name="newPassword"
+									type="password"
+									minLength="8"
+									register
+									fixedWidth
+								></Input>
 							</InputContainer>
 							<InputContainer>
 								<Label>Potwierdź nowe hasło:</Label>
-								<Input name="confirmedNewPassword" type="password" minLength="8" register fixedWidth></Input>
+								<Input
+									name="confirmedNewPassword"
+									type="password"
+									minLength="8"
+									register
+									fixedWidth
+								></Input>
 							</InputContainer>
 						</VerticalContainer>
 					</VerticalContainer>
 
 					<VerticalContainer>
 						<Heading level={5}>Potwierdź zmiany:</Heading>
-						<HorizontalContainer>
 						<InputContainer>
-								<Label>Wprowadź aktualne hasło:</Label>
-								<Input name="providedPassword" type="password" required register fixedWidth></Input>
+							<Label>Wprowadź aktualne hasło:</Label>
+							<Input
+								name="providedPassword"
+								type="password"
+								required
+								register
+								fixedWidth
+							></Input>
 						</InputContainer>
-						<Button type="submit" primary hover className="w-[300px] h-[42px] self-end">Potwierdź</Button>
-						</HorizontalContainer>
-						
+						<Button
+							type="submit"
+							primary
+							hover
+							className="w-[300px] h-[42px] self-end"
+						>
+							Potwierdź
+						</Button>
 					</VerticalContainer>
 				</Form>
 			</InnerContainer>
-		</SettingsAlign>);
+		</SettingsAlign>
+	);
 }

@@ -59,7 +59,7 @@ export default function Navbar(props) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isAuthStatusChecked, setIsAuthStatusChecked] = useState(false);
 
-	useEffect(() => { }, []);
+	useEffect(() => {}, []);
 	console.log("change");
 
 	const handleHamburgerClick = () => {
@@ -132,35 +132,42 @@ export default function Navbar(props) {
 					})}
 
 					<NavbarItem
-						className={isMenuHidden ? "flex-col relative justify-center items-center  self-center justify-start w-[78px]" : "flex-col relative justify-center items-center  self-center justify-start mt-[34px] min-h-[76px] max-h-[76px] w-[78px] bg-[#FFD363]"}
+						className={
+							"relative rounded-t-[18px] hover:bg-[#FFBC0D] py-1 px-[18px]" +
+							(isMenuHidden ? " rounded-b-[18px]" : " ") +
+							("/konto" === activePage ? "bg-[#FFBC0D]" : "")
+						}
 						onMouseEnter={() => ToggleMenu(false)}
 						onMouseLeave={() => ToggleMenu(true)}
 					>
-						<Button
-							active={"/konto" === activePage ? true : false}
-							navbar
-							navbarIcon
-							size={"xl"}
-							onClick={() => {
-								navigate("/konto");
-							}}
-						>
-							<Image src={Illustrations.User} />
-						</Button>
-
-						{isLoggedIn && isAuthStatusChecked && (
-							
+						<div className="group w-full rounded-[18px]">
+							<Button
+								active={"/konto" === activePage ? true : false}
+								navbar
+								navbarIcon
+								size={"xl"}
+								onClick={() => {
+									navigate("/konto");
+								}}
+								className={"group-hover:bg-[#FFDD87] px-3 "}
+							>
+								<Image src={Illustrations.User} />
+							</Button>
+						</div>
+						<div className="absolute top-full left-[50%] -translate-x-1/2 w-full bg-inherit pb-1 rounded-b-[18px]">
+							{isLoggedIn && isAuthStatusChecked && (
 								<Button
 									hidden={isMenuHidden}
 									navbar
 									navbarIcon
 									size={"xl"}
 									onClick={() => Logout()}
-
+									className="hover:bg-[#FFDD87] "
 								>
 									Wyloguj
 								</Button>
-						)}
+							)}
+						</div>
 					</NavbarItem>
 				</NavbarLinks>
 			</NavigationArea>

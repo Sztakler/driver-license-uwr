@@ -4,7 +4,10 @@ const StatisticsAlign = tw.div`
 	px-48
 	mb-24
 	mt-6
-`;
+
+	max-lg:px-8
+	max-md:px-4
+	`;
 
 const InnerContainer = tw.div`
 	flex
@@ -15,6 +18,9 @@ const InnerContainer = tw.div`
 	justify-around
 	gap-12
 	px-12
+
+	max-md:px-2
+	max-md:w-full
 	`;
 
 export { StatisticsAlign, InnerContainer };

@@ -50,8 +50,8 @@ export default function Diagram({ type, diagramTitle, data }) {
 			},
 			legend: {
 				display: type === "doughnut" ? true : false,
-				position: "right",
-				align: "end",
+				position: "bottom",
+				align: "center",
 			},
 		},
 	};
@@ -59,7 +59,7 @@ export default function Diagram({ type, diagramTitle, data }) {
 	if (type === "doughnut") {
 		return (
 			<DiagramContainer>
-				<Heading level={5} styles="absolute top-4">
+				<Heading level={5} styles="absolute top-4 pb-2">
 					{diagramTitle}
 				</Heading>
 				<Doughnut data={data} options={o} />
@@ -68,10 +68,10 @@ export default function Diagram({ type, diagramTitle, data }) {
 	} else if (type === "vertical-bar") {
 		return (
 			<DiagramContainer>
-				<Heading level={5} styles="absolute top-4">
+				<Heading level={5} styles="absolute top-4 pb-2">
 					{diagramTitle}
 				</Heading>
-				<Bar options={o} data={data} />
+				<Bar data={data} options={o} />
 			</DiagramContainer>
 		);
 	} else {

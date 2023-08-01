@@ -6,7 +6,10 @@ const ListAlign = tw.div`
 	px-48
 	min-h-[calc(100vh-310px)]
 	mb-24
-`;
+
+	max-lg:px-8
+	max-md:px-4
+	`;
 
 const InnerContainer = tw.div`
 	flex

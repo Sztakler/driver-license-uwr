@@ -6,7 +6,10 @@ const UserContainer = tw.div`
 	w-full
 	px-56
 	mt-12
-`;
+
+	max-lg:px-8
+	max-md:px-4
+	`;
 
 const Info = tw.div`
 	flex

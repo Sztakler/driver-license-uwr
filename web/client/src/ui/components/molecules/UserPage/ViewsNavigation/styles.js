@@ -3,11 +3,15 @@ import tw from "tailwind-styled-components";
 const ViewsNavigationContainer = tw.div`
 	flex
 	flex-row
+	flex-wrap
 	w-full
 	px-56
 	py-3
 	gap-2
-`;
+
+	max-lg:px-8
+	max-md:px-4
+	`;
 
 const NavigationItem = tw.div`
 	flex
