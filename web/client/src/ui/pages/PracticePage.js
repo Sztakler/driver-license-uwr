@@ -9,7 +9,8 @@ import TaskContext from "../../context/TaskContext";
 import Loading from "../components/molecules/Practice/Loading";
 
 export default function PracticePage() {
-	const { task, setNewTask, setNewSavedQuestions } = useContext(TaskContext);
+	const { task, setNewTask, setNewSavedQuestions, setNewTaskStarted } =
+		useContext(TaskContext);
 
 	function getPracticeQuestions() {
 		return fetch("http://localhost:5000/api/practice", {
@@ -33,6 +34,9 @@ export default function PracticePage() {
 
 			setNewSavedQuestions(modifiedQuestions);
 			setNewTask(modifiedQuestions[0]);
+			setNewTaskStarted(
+				modifiedQuestions[0].zakres_struktury == "PODSTAWOWY" ? false : true
+			);
 		};
 
 		fetchQuestions();

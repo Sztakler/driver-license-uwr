@@ -12,7 +12,8 @@ import Button from "../../../../atoms/Button";
 import { TaskTopSection, TaskInfo, ImageBox } from "./styles";
 
 export default function TaskTop({ isReview }) {
-	const { task, taskStarted } = useContext(TaskContext);
+	const { task, taskStarted, setNewVideoIsPlaying, setNewImageIsLoaded } =
+		useContext(TaskContext);
 	const [favoriteTask, setFavoriteTask] = useState(task.is_saved);
 
 	const mediaExtension = task.media.includes(".")
@@ -48,6 +49,19 @@ export default function TaskTop({ isReview }) {
 		return 0;
 	}
 
+	function handleVideoPlay() {
+		console.log("video is playing");
+		setNewVideoIsPlaying(true);
+	}
+
+	function handleVideoEnd() {
+		setNewVideoIsPlaying(false);
+	}
+
+	function handleImageLoad() {
+		setNewImageIsLoaded(true);
+	}
+
 	return (
 		<TaskTopSection>
 			<TaskInfo>
@@ -77,9 +91,14 @@ export default function TaskTop({ isReview }) {
 			<ImageBox>
 				{taskStarted || isReview ? (
 					mediaExtension === "mp4" ? (
-						<Video src={task.media} autoPlay></Video>
+						<Video
+							src={task.media}
+							autoPlay
+							onPlay={handleVideoPlay}
+							onEnded={handleVideoEnd}
+						></Video>
 					) : mediaExtension === "jpg" ? (
-						<Image exam src={task.media}></Image>
+						<Image exam src={task.media} onLoad={handleImageLoad}></Image>
 					) : (
 						""
 					)

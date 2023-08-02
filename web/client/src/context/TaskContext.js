@@ -7,6 +7,8 @@ export const TaskProvider = ({ children }) => {
 	const [pickedAnswer, setPickedAnswer] = useState(null);
 	const [taskStarted, setTaskStarted] = useState(false);
 	const [savedQuestions, setSavedQuestions] = useState([]);
+	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
+	const [imageIsLoaded, setImageIsLoaded] = useState(false);
 
 	const setNewTask = (newTask) => {
 		setTask(newTask);
@@ -24,6 +26,14 @@ export const TaskProvider = ({ children }) => {
 		setSavedQuestions(newSavedQuestions);
 	};
 
+	const setNewVideoIsPlaying = (newVideoIsPlaying) => {
+		setVideoIsPlaying(newVideoIsPlaying);
+	};
+
+	const setNewImageIsLoaded = (newImageIsLoaded) => {
+		setImageIsLoaded(newImageIsLoaded);
+	};
+
 	return (
 		<TaskContext.Provider
 			value={{
@@ -35,6 +45,10 @@ export const TaskProvider = ({ children }) => {
 				setNewTaskStarted,
 				savedQuestions,
 				setNewSavedQuestions,
+				videoIsPlaying,
+				setNewVideoIsPlaying,
+				imageIsLoaded,
+				setNewImageIsLoaded,
 			}}
 		>
 			{children}
