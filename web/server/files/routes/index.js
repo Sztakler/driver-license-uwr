@@ -13,12 +13,12 @@ router.get("/api/statistics/:from/:to", controllers.statisticsController);
 router.get("/api/saved-questions", controllers.savedQuestionsController);
 router.get("/api/user-knowledge-levels", controllers.userKnowledgeLevelsController);
 
-router.post("/register", controllers.reqistrationController);
+router.post("/register", controllers.registrationController);
 router.post("/login", controllers.loginController);
-router.post("/logout", () => { });
-router.post("/api/exam/results", () => { });
-router.post("/api/user-settings", () => { });
-router.post("/api/saved-questions", () => { });
-router.post("/api/user-knowledge-levels", () => { });
+router.post("/logout", controllers.logoutController);
+router.post("/api/exam/results", controllers.updateExamResultsController);
+router.post("/api/user-settings", controllers.updateUserSettingsController);
+router.post("/api/saved-questions", controllers.updateSavedQuestionsController);
+router.post("/api/user-knowledge-levels", controllers.updateUserKnowledgeLevelsController);
 
 module.exports = router;

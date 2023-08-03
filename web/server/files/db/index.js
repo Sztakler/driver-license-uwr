@@ -114,13 +114,13 @@ const savedQuestions = (userId) => {
 	);
 }
 
-const existingUser = (email) => {
+const existingUserByEmail = (email) => {
 	return pool.query(`
 	SELECT * FROM USERS WHERE email = '${email}';
 	`);
 }
 
-const insertUser = (name, email, password) => {
+const insertUser = (name, email, hashedPassword) => {
 	return pool.query(`
 	INSERT INTO USERS (name, email, password)
 	VALUES (
@@ -138,6 +138,57 @@ const createSavedQuestionsEntryFor = (userId) => {
 	);
 }
 
+const updateExamResults = (user_id, questions, summary) => {
+	return pool.query(`
+	INSERT INTO results (user_id, questions, summary)
+	VALUES (
+		${user_id},
+		'${JSON.stringify(questions)}',
+		'${JSON.stringify(summary)}'
+	)
+	RETURNING id;
+	`);
+}
+
+const existingUserById = (user_id) => {
+	return pool.query(`
+	SELECT * FROM USERS WHERE user_id = '${user_id}';
+	`);
+}
+
+const updateUserData = (newData, user_id) => {
+	return pool.query(
+		`
+    UPDATE users
+    SET name = $1,
+    email = $2,
+    password = $3
+    WHERE id = ${user_id};`,
+		[newData.name, newData.email, newData.password]
+	);
+}
+
+const updateSavedQuestion = (question_id, user_id) => {
+	return pool.query(`UPDATE saved_questions
+		SET questions = 
+				CASE 
+						WHEN questions @> ARRAY[${question_id}] THEN array_remove(questions, ${question_id})
+						ELSE array_append(questions, ${question_id})
+				END
+		WHERE user_id = ${user_id};`);
+}
+
+const updateUserKnowledgeLevels = (question_id, knowledgeLevel, user_id) => {
+	return pool.query(
+		`      
+  INSERT INTO user_knowledge_levels (user_id, question_id, knowledge_level)
+      VALUES ($1, $2, $3)
+  ON CONFLICT (user_id, question_id)
+      DO UPDATE SET knowledge_level = EXCLUDED.knowledge_level;`,
+		[user_id, question_id, knowledgeLevel]
+	);
+}
+
 module.exports.questionsCount = questionsCount;
 module.exports.practiceQuestions = practiceQuestions;
 module.exports.examQuestions = examQuestions;
@@ -147,6 +198,11 @@ module.exports.highKnowledgeQuestionsCount = highKnowledgeQuestionsCount;
 module.exports.mediumKnowledgeQuestionsCount = mediumKnowledgeQuestionsCount;
 module.exports.weeklyExams = weeklyExams;
 module.exports.savedQuestions = savedQuestions;
-module.exports.existingUser = existingUser;
+module.exports.existingUserByEmail = existingUserByEmail;
 module.exports.insertUser = insertUser;
 module.exports.createSavedQuestionsEntryFor = createSavedQuestionsEntryFor;
+module.exports.updateExamResults = updateExamResults;
+module.exports.existingUserById = existingUserById;
+module.exports.updateUserData = updateUserData;
+module.exports.updateSavedQuestion = updateSavedQuestion;
+module.exports.updateUserKnowledgeLevels = updateUserKnowledgeLevels;

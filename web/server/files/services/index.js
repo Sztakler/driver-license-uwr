@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const dbRequests = require('../db');
+const { request } = require("express");
 
 const checkRequestAuthentication = (isAuthenticated, user) => {
   if (isAuthenticated) {
@@ -85,7 +86,6 @@ const userKnowledgeLevelsService = async (userId) => {
   try {
     const medium_knowledge_questions_count = await dbRequests.mediumKnowledgeQuestionsCount(userId);
     const high_knowledge_questions_count = await dbRequests.highKnowledgeQuestionsCount(userId);
-    console.log("WIEDZA", medium_knowledge_questions_count, high_knowledge_questions_count)
 
     return { medium_knowledge_questions_count, high_knowledge_questions_count };
   } catch (e) {
@@ -94,7 +94,7 @@ const userKnowledgeLevelsService = async (userId) => {
 }
 
 const registrationService = async (name, email, password) => {
-  const existingUser = await dbRequests.existingUser(email);
+  const existingUser = await dbRequests.existingUserByEmail(email);
 
   if (existingUser.rows.length > 0) {
     return { status: 400, message: "Email already in use" };
@@ -108,6 +108,50 @@ const registrationService = async (name, email, password) => {
   return { status: 200, message: "Registration successful" };
 }
 
+const updateExamResultsService = async (user_id, questions, summary) => {
+  try {
+    return await dbRequests.updateExamResults(user_id, questions, summary);
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
+const updateUserSettingsService = async (providedPassword, user_id, requestBody) => {
+  let userData = await dbRequests.existingUserById(user_id);
+  let result = await bcrypt.compare(
+    providedPassword,
+    userData.rows[0].password
+  );
+
+  if (result === false) {
+    return { status: 400, message: "Wprowadzone hasło jest niepoprawne" };
+  }
+
+  let newName =
+    request.userName !== "" ? request.userName : userData.rows[0].name;
+  let newEmail =
+    request.userEmail !== "" ? request.userEmail : userData.rows[0].email;
+  let newPassword =
+    request.newPassword !== ""
+      ? await bcrypt.hash(request.newPassword, 10)
+      : userData.rows[0].password;
+
+  const newData = { name: newName, email: newEmail, password: newPassword };
+
+  await dbRequests.updateUserData(newData, user_id);
+  return { status: 200, message: "Poprawnie zmodyfikowano dane użytkownika" };
+}
+
+const updateSavedQuestionsService = async (question_id, user_id) => {
+  await dbRequests.updateSavedQuestion(question_id, user_id);
+  return { status: 200, message: "Poprawnie zmodyfikowano pytanie" };
+}
+
+const updateUserKnowledgeLevelsService = async (question_id, knowledgeLevel, user_id) => {
+  await dbRequests.updateUserKnowledgeLevels(question_id, knowledgeLevel, user_id);
+  return { status: 200, message: "Poprawnie zmodyfikowano poziom znajomości pytania" };
+}
+
 module.exports = {
   checkRequestAuthentication,
   questionsCountService,
@@ -119,4 +163,8 @@ module.exports = {
   savedQuestionsService,
   userKnowledgeLevelsService,
   registrationService,
+  updateExamResultsService,
+  updateUserSettingsService,
+  updateSavedQuestionsService,
+  updateUserKnowledgeLevelsService
 }
