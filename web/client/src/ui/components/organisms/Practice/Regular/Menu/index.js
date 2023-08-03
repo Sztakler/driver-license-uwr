@@ -28,8 +28,15 @@ export default function Menu({ isExam }) {
 		setNewTaskStarted,
 		savedQuestions,
 		setNewSavedQuestions,
+		videoIsPlaying,
+		setNewVideoIsPlaying,
+		imageIsLoaded,
+		setNewImageIsLoaded,
 	} = useContext(TaskContext);
-	const [currentTime, setCurrentTime] = useState(30);
+
+	const [questionTimer, setQuestionTimer] = useState(
+		task.zakres_struktury === "PODSTAWOWY" ? 20 : 50
+	);
 	const [explanationModalShow, setExplanationModalShow] = useState(false);
 	const [result, setResult] = useState({
 		questionCounter: 0,
@@ -43,12 +50,35 @@ export default function Menu({ isExam }) {
 	const [knowledgeLevel, setKnowledgeLevel] = useState("-");
 
 	function decrementTimer() {
-		if (taskStarted && currentTime > 0) {
-			setCurrentTime(currentTime - 1);
+		if (videoIsPlaying && taskStarted) {
+			return;
+		}
+
+		if (questionTimer > 0) {
+			setQuestionTimer(questionTimer - 1);
+		} else if (questionTimer === 0) {
+			if (!taskStarted) {
+				setNewTaskStarted(true);
+				setQuestionTimer(20);
+				return;
+			}
+
+			nextQuestion();
 		}
 	}
 
 	function nextQuestion() {
+		if (examFinished) {
+			return;
+		}
+
+		if (isExam) {
+			verifyAnswer(task.wybrana_odpowiedz);
+			if (taskIdx === savedQuestions.length - 1) {
+				setExamFinished(true);
+			}
+		}
+
 		let newTaskIdx = taskIdx;
 		if (newTaskIdx + 1 <= savedQuestions.length - 1) {
 			newTaskIdx = newTaskIdx + 1;
@@ -68,25 +98,27 @@ export default function Menu({ isExam }) {
 			console.log("Item not found.");
 		}
 
-		setNewTaskStarted(false);
+		let isTaskBasic =
+			savedQuestions[newTaskIdx].zakres_struktury === "PODSTAWOWY";
+
+		console.log("typ taska", savedQuestions[newTaskIdx], isTaskBasic);
 
 		setNewTask(savedQuestions[newTaskIdx]);
+		setNewTaskStarted(!isTaskBasic);
 		setTaskIdx(newTaskIdx);
-		setCurrentTime(30);
+		setNewVideoIsPlaying(false);
+		setQuestionTimer(isTaskBasic ? 20 : 50);
 
 		const selectElement = document.getElementById("knowledge_level");
 		selectElement.selectedIndex = savedQuestions[newTaskIdx].knowledge_level;
-		console.log(
-			"nowy task",
-			savedQuestions[newTaskIdx].knowledge_level,
-			selectElement.selectedIndex
-		);
 	}
 
 	function previousQuestion() {
 		let newTaskIdx = taskIdx > 0 ? taskIdx - 1 : taskIdx;
 		setTaskIdx(newTaskIdx);
 		setNewTask(savedQuestions[newTaskIdx]);
+		const selectElement = document.getElementById("knowledge_level");
+		selectElement.selectedIndex = savedQuestions[newTaskIdx].knowledge_level;
 	}
 
 	function verifyAnswer(pickedAnswer) {
@@ -119,7 +151,11 @@ export default function Menu({ isExam }) {
 	}
 
 	function handleStartButton() {
+		if (taskStarted) {
+			return;
+		}
 		setNewTaskStarted(true);
+		setQuestionTimer(15);
 	}
 
 	function handleExplanationShowButton() {
@@ -133,8 +169,19 @@ export default function Menu({ isExam }) {
 	async function handleChangeKnowledgeLevel(e) {
 		let newKnowledgeLevel = e.target.value;
 		if (newKnowledgeLevel === "-") return;
-
 		setKnowledgeLevel(newKnowledgeLevel);
+
+		const changedItemIndex = savedQuestions.findIndex(
+			(item) => item.id === task.id
+		);
+
+		if (changedItemIndex !== -1) {
+			const updatedQuestions = [...savedQuestions];
+			updatedQuestions[changedItemIndex].knowledge_level = newKnowledgeLevel;
+			setNewSavedQuestions(updatedQuestions);
+		} else {
+			console.log("Item not found.");
+		}
 
 		try {
 			if (newKnowledgeLevel === "") {
@@ -173,18 +220,8 @@ export default function Menu({ isExam }) {
 
 		return 0;
 	}
+
 	function handleNextQuestionButton() {
-		if (examFinished) {
-			return;
-		}
-
-		if (isExam) {
-			verifyAnswer(task.wybrana_odpowiedz);
-			if (taskIdx === savedQuestions.length - 1) {
-				setExamFinished(true);
-			}
-		}
-
 		nextQuestion();
 	}
 
@@ -192,10 +229,26 @@ export default function Menu({ isExam }) {
 		previousQuestion();
 	}
 
+	function getMessage() {
+		if (taskStarted) {
+			if (videoIsPlaying) {
+				return "Trwa odtwarzanie filmu";
+			}
+
+			if (imageIsLoaded) {
+				return "Czas na udzielenie odpowiedzi";
+			}
+
+			return "";
+		}
+
+		return "Czas na zapoznanie się z pytaniem";
+	}
+
 	useEffect(() => {
-		const interval = setInterval(decrementTimer, 1000);
+		const interval = setInterval(decrementTimer, 1001);
 		return () => clearInterval(interval);
-	}, [taskStarted, currentTime]);
+	}, [taskStarted, questionTimer, videoIsPlaying]);
 
 	return (
 		<MenuContainer isReview={false}>
@@ -222,13 +275,24 @@ export default function Menu({ isExam }) {
 			</Modal>
 			<TimerContainer>
 				<Row>
-					<Button primary hover size="s" onClick={handleStartButton}>
+					<Button
+						primary
+						hover
+						size="s"
+						onClick={handleStartButton}
+						className="bg-[#FFEDCD]"
+					>
 						<Text>START</Text>
 					</Button>
-					<CustomTimer expired={currentTime === 0}>
-						<Image src={Illustrations.Clock} />
-						<Text>{currentTime} sekund</Text>
-					</CustomTimer>
+					<div className="relative w-full max-w-[332px]">
+						<Text className="absolute -top-6 left-[50%] -translate-x-1/2 whitespace-nowrap">
+							{getMessage()}
+						</Text>
+						<CustomTimer expired={questionTimer === 0}>
+							<Image src={Illustrations.Clock} />
+							<Text>{questionTimer} sekund</Text>
+						</CustomTimer>
+					</div>
 				</Row>
 			</TimerContainer>
 
@@ -240,10 +304,12 @@ export default function Menu({ isExam }) {
 					className="bg-[#FFE49E] rounded-[39px] w-full px-2 py-1"
 					onChange={handleChangeKnowledgeLevel}
 				>
-					<option hidden>-</option>
-					<option>Niska</option>
-					<option>Średnia</option>
-					<option>Wysoka</option>
+					<option hidden value={0}>
+						-
+					</option>
+					<option value={1}>Niska</option>
+					<option value={2}>Średnia</option>
+					<option value={3}>Wysoka</option>
 				</Input>
 			</KnowledgeLevel>
 
