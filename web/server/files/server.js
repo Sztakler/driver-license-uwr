@@ -9,6 +9,8 @@ const pgSession = require("connect-pg-simple")(session);
 const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
 
+const routes = require("./routes");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -57,6 +59,8 @@ const userExists = async (id) => {
 const initializePassport = require("./PassportConfiguration/passport-config");
 initializePassport(passport, emailExists, userExists);
 
+app.use("", routes);
+
 app.post("/register", async (req, res) => {
 	try {
 		const { name, email, password } = req.body;
@@ -89,14 +93,14 @@ app.post("/register", async (req, res) => {
 	}
 });
 
-app.get("/check-auth", (req, res) => {
-	const isAuthenticated = req.isAuthenticated();
-	if (isAuthenticated) {
-		res.json({ isAuthenticated: true, user: req.session.user });
-	} else {
-		res.json({ isAuthenticated: false, user: {} });
-	}
-});
+// app.get("/check-auth", (req, res) => {
+// 	const isAuthenticated = req.isAuthenticated();
+// 	if (isAuthenticated) {
+// 		res.json({ isAuthenticated: true, user: req.session.user });
+// 	} else {
+// 		res.json({ isAuthenticated: false, user: {} });
+// 	}
+// });
 
 app.post("/login", (req, res, next) =>
 	passport.authenticate("local", (err, user, info) => {
@@ -130,52 +134,52 @@ app.post("/logout", (req, res, next) =>
 	})
 );
 
-app.get("/api/questions-count", async (req, res) => {
-	try {
-		const questions_count = await pool.query(
-			`
-		SELECT COUNT(*) AS record_count FROM questions;
-			`
-		);
-		res.json(Number(questions_count.rows[0].record_count));
-	} catch (err) {
-		console.error(err.message);
-	}
-});
+// app.get("/api/questions-count", async (req, res) => {
+// 	try {
+// 		const questions_count = await pool.query(
+// 			`
+// 		SELECT COUNT(*) AS record_count FROM questions;
+// 			`
+// 		);
+// 		res.json(Number(questions_count.rows[0].record_count));
+// 	} catch (err) {
+// 		console.error(err.message);
+// 	}
+// });
 
-app.get("/api/practice/", async (req, res) => {
-	try {
-		const allTasks = await pool.query(
-			`
-		SELECT 
-    		questions.*, 
-				saved_questions.user_id IS NOT NULL AS is_saved,
-				COALESCE(user_knowledge_levels.knowledge_level, 0) AS knowledge_level
-		FROM 
-				questions
-		LEFT JOIN 
-				(SELECT user_id, questions 
-				FROM saved_questions 
-				WHERE user_id = $1) AS saved_questions 
-		ON 
-    		questions.id = ANY(saved_questions.questions)
-		LEFT JOIN 
-			(SELECT *
-				FROM user_knowledge_levels 
-				WHERE user_id = $1) AS user_knowledge_levels
-		ON
-				questions.id = user_knowledge_levels.question_id
-		ORDER BY
-				RANDOM()
-		LIMIT 25;
-				`,
-			[req.user.id]
-		);
-		res.json(allTasks.rows);
-	} catch (err) {
-		console.error(err.message);
-	}
-});
+// app.get("/api/practice/", async (req, res) => {
+// 	try {
+// 		const allTasks = await pool.query(
+// 			`
+// 		SELECT 
+//     		questions.*, 
+// 				saved_questions.user_id IS NOT NULL AS is_saved,
+// 				COALESCE(user_knowledge_levels.knowledge_level, 0) AS knowledge_level
+// 		FROM 
+// 				questions
+// 		LEFT JOIN 
+// 				(SELECT user_id, questions 
+// 				FROM saved_questions 
+// 				WHERE user_id = $1) AS saved_questions 
+// 		ON 
+//     		questions.id = ANY(saved_questions.questions)
+// 		LEFT JOIN 
+// 			(SELECT *
+// 				FROM user_knowledge_levels 
+// 				WHERE user_id = $1) AS user_knowledge_levels
+// 		ON
+// 				questions.id = user_knowledge_levels.question_id
+// 		ORDER BY
+// 				RANDOM()
+// 		LIMIT 25;
+// 				`,
+// 			[req.user.id]
+// 		);
+// 		res.json(allTasks.rows);
+// 	} catch (err) {
+// 		console.error(err.message);
+// 	}
+// });
 
 app.get("/api/exam/", async (req, res) => {
 	try {
