@@ -46,26 +46,21 @@ export default function ExamMenuPage() {
 					</TitleContainer>
 
 					<IllustrationContainer>
-						<div className="flex flex-col">
-							<img
-								src={ExamPageIllustrations.Image1}
-								className="self-center w-full"
-							></img>
-							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px]">
-								<Button primary hover size="l">
-									Poczytaj o egzaminie
-								</Button>
-								<Button
-									primary
-									hover
-									onClick={() => navigate("/egzamin/test")}
-									size="l"
-								>
-									Rozpocznij egzamin
-								</Button>
-							</div>
-						</div>
+						<div className="block bg-exam-menu w-full h-[500px] bg-center bg-no-repeat bg-contain"></div>
 					</IllustrationContainer>
+					<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px]">
+						<Button primary hover size="l">
+							Poczytaj o egzaminie
+						</Button>
+						<Button
+							primary
+							hover
+							onClick={() => navigate("/egzamin/test")}
+							size="l"
+						>
+							Rozpocznij egzamin
+						</Button>
+					</div>
 				</HeaderContainer>
 
 				{/* TODO: This is only placeholder. Consult with Karolina how to navigate to section below (scrolldown, new path, replace current path content). */}

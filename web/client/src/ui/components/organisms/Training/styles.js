@@ -4,27 +4,34 @@ const Container = tw.div`
 		flex
 		flex-col
 		max-md:flex-col
-		lg:min-h-[calc(100vh-115px)]
+		lg:min-h-[calc(100vh-91px)]
+		h-[calc(100vh-91px)]
 		max-lg:min-h-screen
-        p-4
+    p-4
+		items-center
 `;
 
 const HeaderContainer = tw.div`
 		flex
-		justify-center
 		flex-col
+		min-h-full
+		w-full
+		items-center
+		max-w-[3000px]
+
 `;
 
 const TitleContainer = tw.div`
     flex 
     flex-col
 		lg:px-44
+		w-full
 `;
 
 const IllustrationContainer = tw.div`
     flex
     flex-col
-		lg:px-44
+		w-full
 `;
 
 const MainContainer = tw.div`

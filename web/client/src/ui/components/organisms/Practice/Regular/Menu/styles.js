@@ -9,12 +9,11 @@ const MenuContainer = tw.div`
 	justify-start
 	gap-16
 	${(props) => (props.inReviewMode ? "gap-4" : "gap-16")}
+	bg-gradient-to-b from-[0px] from-[#FFDFA3] to-[#FFE8BC00] to-100%
 	text-center
 	p-4
 	mt-[36px]
-	bg-[#FFF6E4]
 	rounded-[39px]
-	shadow-xl
 	max-w-[528px]
 	max-h-[558px]
 	ml-[112px]

@@ -275,13 +275,7 @@ export default function Menu({ isExam }) {
 			</Modal>
 			<TimerContainer>
 				<Row>
-					<Button
-						primary
-						hover
-						size="s"
-						onClick={handleStartButton}
-						className="bg-[#FFEDCD]"
-					>
+					<Button primary hover size="s" onClick={handleStartButton}>
 						<Text>START</Text>
 					</Button>
 					<div className="relative w-full max-w-[332px]">

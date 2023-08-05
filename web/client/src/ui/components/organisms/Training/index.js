@@ -150,17 +150,14 @@ export default function Training({ data, headings, ...props }) {
 							)}
 						</MainContainer>
 					) : (
-						<div className="flex flex-col ">
-							<img
-								src={TrainingPageIllustrations.Image1}
-								className="self-center w-full mt-8 "
-							></img>
+						<>
+							<div className="w-full h-[500px] bg-training-menu bg-no-repeat bg-center bg-contain"></div>
 							<div className="flex flex-row flex-wrap w-full gap-4 justify-center p-[43px] mt-6">
 								<Button primary hover onClick={scrollDown} size="l">
 									Wybór pytań
 								</Button>
 							</div>
-						</div>
+						</>
 					)}
 				</IllustrationContainer>
 			</HeaderContainer>

@@ -15,13 +15,13 @@ export default function Hero() {
 		console.log("panel-" + panelIndex);
 		document
 			.getElementById("panel-" + panelIndex)
-			.scrollIntoView({ behavior: "smooth" });
+			.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
 	};
 
 	return (
 		<HeroContainer id="HeroContainer">
-			<PanelContainer className="relative min-h-screen" id="panel-0">
-				<ImageContainer className="w-full h-full">
+			<PanelContainer className="relative h-[calc(100vh-145px)]" id="panel-0">
+				<ImageContainer className="w-full h-[80%]">
 					<Image
 						className="w-full h-full max-w-full block"
 						src={HomePageIllustrations.HeroImage1}
@@ -36,7 +36,7 @@ export default function Hero() {
 						<Text className="text-[1.1vw] leading-none">Trenuj z nami</Text>
 					</Button>
 				</div>
-				<ImageContainer className="flex justify-center">
+				<ImageContainer className="flex justify-center h-[20%]">
 					<Button
 						onClick={() => {
 							scrollDown(1);
@@ -50,10 +50,10 @@ export default function Hero() {
 				</ImageContainer>
 			</PanelContainer>
 
-			<PanelContainer className="relative min-h-screen" id="panel-1">
-				<ImageContainer className="w-full h-full">
+			<PanelContainer className="relative h-[calc(100vh-145px)]" id="panel-1">
+				<ImageContainer className="w-full h-[80%]">
 					<Image
-						className="w-full h-full max-w-full block"
+						className=" h-full max-w-full block object-contain"
 						src={HomePageIllustrations.HeroImage2}
 					></Image>
 				</ImageContainer>
@@ -66,7 +66,7 @@ export default function Hero() {
 						<Text className="text-[1.1vw] leading-none">Trenuj z nami</Text>
 					</Button>
 				</div>
-				<ImageContainer className="flex justify-center">
+				<ImageContainer className="flex justify-center h-[20%]">
 					<Button
 						onClick={() => {
 							scrollDown(2);
@@ -80,8 +80,8 @@ export default function Hero() {
 				</ImageContainer>
 			</PanelContainer>
 
-			<PanelContainer className="relative min-h-screen" id="panel-2">
-				<ImageContainer className="w-full h-full">
+			<PanelContainer className="relative h-[calc(100vh-145px)]" id="panel-2">
+				<ImageContainer className="w-full h-[80%]">
 					<Image
 						className="w-full h-full max-w-full block"
 						src={HomePageIllustrations.HeroImage3}
@@ -105,7 +105,7 @@ export default function Hero() {
 						</Text>
 					</Button>
 				</div>
-				<ImageContainer className="flex justify-center">
+				<ImageContainer className="flex justify-center h-[20%]">
 					<Button
 						onClick={() => {
 							scrollDown(3);
@@ -119,7 +119,7 @@ export default function Hero() {
 				</ImageContainer>
 			</PanelContainer>
 
-			<PanelContainer className="relative min-h-[100vh-91px]" id="panel-3">
+			<PanelContainer className="relative h-[calc(100vh-145px)]" id="panel-3">
 				<ImageContainer className="w-full h-full">
 					<Image
 						className="w-full h-full max-w-full block"

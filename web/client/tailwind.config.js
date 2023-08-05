@@ -54,18 +54,21 @@ module.exports = {
 				"road-texture": "url(../../src/assets/images/road.jpg)",
 				"positive-result": "url(/src/assets/images/resultPositive.svg)",
 				"negative-result": "url(/src/assets/images/resultNegative.svg)",
+				"training-menu":
+					"url(/src/assets/images/svg/TrainingPage/graphic1.svg)",
+				"exam-menu": "url(/src/assets/images/svg/ExamPage/graphic1.svg)",
 				login: "url(/src/assets/images/svg/LoginPage/background.svg)",
 			},
 			typography: {
-				'@variants responsive': {
-				  '.text-max': {
-					'font-size': 'max(var(--text-a), var(--text-b))',
-				  },
+				"@variants responsive": {
+					".text-max": {
+						"font-size": "max(var(--text-a), var(--text-b))",
+					},
 				},
 			},
 			fontSize: {
-				'max-vhvw': 'max(2.6vw, 7vh)', // Customize the values as per your needs
-			  },
+				"max-vhvw": "max(2.6vw, 7vh)", // Customize the values as per your needs
+			},
 		},
 	},
 	plugins: [],
