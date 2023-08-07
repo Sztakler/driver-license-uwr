@@ -8,6 +8,7 @@ const HeroContainer = tw.div`
 	w-[100vw]
 	pt-16
 	overflow-x-hidden
+	gap-5
 `;
 
 const PanelContainer = tw.div`

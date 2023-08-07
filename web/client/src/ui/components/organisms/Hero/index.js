@@ -5,8 +5,10 @@ import { HeroContainer, PanelContainer, ImageContainer } from "./styles";
 
 import Text from "../../atoms/Text";
 import Button from "../../atoms/Button";
+import BulletList from "../../molecules/BulletList";
 import { useNavigate } from "react-router";
 import HomePageIllustrations from "../../../../assets/images/svg/HomePage/HomePageIllustrations";
+import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 
 export default function Hero() {
 	const navigate = useNavigate();
@@ -21,29 +23,30 @@ export default function Hero() {
 	return (
 		<HeroContainer id="HeroContainer">
 			<PanelContainer className="relative h-[calc(100vh-145px)]" id="panel-0">
-				<ImageContainer className="w-full h-[80%]">
+				<ImageContainer className="w-full h-[100%]">
 					<Image
 						className="w-full h-full max-w-full block"
 						src={HomePageIllustrations.HeroImage1}
 					></Image>
 				</ImageContainer>
-				<div className="flex flex-col absolute top-[57%] left-[35%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
+				<div className="flex flex-col absolute top-[63%] left-[42%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
 					<Button
 						primary
-						className="flex self-start px-[6.435vw] py-[1.888vh]"
+						className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
 						onClick={() => navigate("/register")}
 					>
-						<Text className="text-[1.1vw] leading-none">Trenuj z nami</Text>
+						<Text className="text-[0.85vw] font-medium leading-none">Trenuj z nami</Text>
+						<Image className="w-[0.85vw]" src={Illustrations.ArrowRight} />
 					</Button>
 				</div>
-				<ImageContainer className="flex justify-center h-[20%]">
+				<ImageContainer className="absolute bottom-10 flex justify-center w-full">
 					<Button
 						onClick={() => {
 							scrollDown(1);
 						}}
 					>
 						<Image
-							className="flex self-center py-8"
+							className="flex self-center w-[2vw]"
 							src={HomePageIllustrations.ArrowDown}
 						></Image>
 					</Button>
@@ -51,29 +54,30 @@ export default function Hero() {
 			</PanelContainer>
 
 			<PanelContainer className="relative h-[calc(100vh-145px)]" id="panel-1">
-				<ImageContainer className="w-full h-[80%]">
+				<ImageContainer className="w-full h-full">
 					<Image
 						className=" h-full max-w-full block object-contain"
 						src={HomePageIllustrations.HeroImage2}
 					></Image>
 				</ImageContainer>
-				<div className="flex flex-col absolute top-[55.5%] left-[60%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
+				<div className="flex flex-col absolute top-[66%] left-[67.3%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
 					<Button
 						primary
-						className="self-start"
+						className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
 						onClick={() => navigate("/register")}
 					>
-						<Text className="text-[1.1vw] leading-none">Trenuj z nami</Text>
+						<Text className="text-[0.85vw] font-medium leading-none">Trenuj z nami</Text>
+						<Image src={Illustrations.ArrowRight} />
 					</Button>
 				</div>
-				<ImageContainer className="flex justify-center h-[20%]">
+				<ImageContainer className="absolute bottom-10 flex justify-center w-full">
 					<Button
 						onClick={() => {
 							scrollDown(2);
 						}}
 					>
 						<Image
-							className="flex self-center py-8"
+							className="flex self-center w-[2vw]"
 							src={HomePageIllustrations.ArrowDown}
 						></Image>
 					</Button>
@@ -81,7 +85,7 @@ export default function Hero() {
 			</PanelContainer>
 
 			<PanelContainer className="relative h-[calc(100vh-145px)]" id="panel-2">
-				<ImageContainer className="w-full h-[80%]">
+				<ImageContainer className="w-full h-[100%]">
 					<Image
 						className="w-full h-full max-w-full block"
 						src={HomePageIllustrations.HeroImage3}
@@ -97,22 +101,23 @@ export default function Hero() {
 					</Text>
 					<Button
 						primary
-						className="self-start"
+						className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
 						onClick={() => navigate("/register")}
 					>
-						<Text className="text-[1.1vw] leading-none">
+						<Text className="text-[0.85vw] font-medium leading-none">
 							Załóż darmowe konto
 						</Text>
+						<Image src={Illustrations.ArrowRight} />
 					</Button>
 				</div>
-				<ImageContainer className="flex justify-center h-[20%]">
+				<ImageContainer className="absolute bottom-10 flex justify-center w-full">
 					<Button
 						onClick={() => {
 							scrollDown(3);
 						}}
 					>
 						<Image
-							className="flex self-center py-8"
+							className="flex self-center w-[2vw]"
 							src={HomePageIllustrations.ArrowDown}
 						></Image>
 					</Button>
@@ -131,16 +136,22 @@ export default function Hero() {
 						Zacznij teraz!
 					</Text>
 					<Text className="text-[1vw] leading-none ">
-						Z darmowym kontem zyskasz możliwość: dostępu do trybu Trening, gdzie
-						możesz wybierać z bazy wszystkich pytań wglądu w Twoje statystki i
-						analizy zapisywania wybranych pytań
+						Z darmowym kontem zyskasz możliwość:
 					</Text>
+					<BulletList points={
+						[
+						 "dostępu do trybu Trening, gdzie możesz wybierać z bazy wszystkich pytań",
+						 "wglądu w Twoje statystyki i analizy",
+						 "zapisywania wybranych pytań",
+						]
+						} bullet="•"></BulletList>
 					<Button
 						primary
-						className="self-start"
+						className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
 						onClick={() => navigate("/register")}
 					>
-						<Text className="text-[1.1vw] leading-none">Zarejestruj się</Text>
+						<Text className="text-[0.85vw] font-medium leading-none">Zarejestruj się</Text>
+						<Image src={Illustrations.ArrowRight} />
 					</Button>
 				</div>
 			</PanelContainer>
