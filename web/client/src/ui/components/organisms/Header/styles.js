@@ -6,24 +6,32 @@ const HeaderContainer = tw.div`
 	mb-48
 	max-md:mb-10
 	lg:min-h-[calc(100vh-145px)]
-
+	w-full
+	items-center
+	max-w-[2648px]
 `;
 
 const TitleContainer = tw.div`
 	flex 
 	flex-col
 	max-md:p-4
-	lg:px-44
-	
+	lg:px-[10vw]
+	w-full
+	pt-4
 `;
 
 const IllustrationContainer = tw.div`
 	flex
 	flex-col
-	w-full
 	relative
 	items-center
-	lg:px-44
+	w-full 
+	h-[386px]
+	bg-theory-menu
+	bg-center
+	bg-no-repeat
+	bg-contain
+	my-8
 `;
 
 const Title = tw.div`

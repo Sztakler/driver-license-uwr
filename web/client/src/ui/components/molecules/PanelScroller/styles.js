@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 const Container = tw.div`
 	grid
 	grid-flow-col
-	auto-cols-[30%]
+	auto-cols-[20%]
 	max-md:auto-cols-[70%]
 	gap-4
 	pt-10
@@ -26,9 +26,8 @@ const Panel = tw.div`
 	rounded-[39px]
 	p-6
 	bg-[#fffcf5]
-	max-w-[440px]
-	max-h-[590px]
-	aspect-[1/2]
+	max-h-[500px]
+	overflow-y-auto
 
 	snap-normal
 	snap-start

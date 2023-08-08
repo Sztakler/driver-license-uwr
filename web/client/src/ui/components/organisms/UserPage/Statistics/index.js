@@ -2,18 +2,13 @@ import React, { useState, useEffect } from "react";
 import { StatisticsAlign, InnerContainer } from "./styles";
 import Diagram from "../../../molecules/UserPage/Diagram";
 
-async function getStatistics() {
-	let actualDate = new Date(Date.now());
-	let startDate = new Date(actualDate.setDate(actualDate.getDate() - 6));
-	let temporaryDate = new Date(Date.now());
-	let numberOfDaysToAdd = 6;
-	let endDate = new Date(
-		temporaryDate.setDate(startDate.getDate() + numberOfDaysToAdd)
-	);
+async function getStatistics(endDate) {
+	let tempDate = new Date(endDate.getTime());
+	let startDate = new Date(tempDate.setDate(tempDate.getDate() - 6));
 
-	let from = `${actualDate.getUTCFullYear()}-${
-		actualDate.getUTCMonth() + 1
-	}-${actualDate.getUTCDate()} 00:00:00`;
+	let from = `${startDate.getUTCFullYear()}-${
+		startDate.getUTCMonth() + 1
+	}-${startDate.getUTCDate()} 00:00:00`;
 	let to = `${endDate.getUTCFullYear()}-${
 		endDate.getUTCMonth() + 1
 	}-${endDate.getUTCDate()} 23:59:59`;
@@ -53,21 +48,13 @@ export default function Statistics() {
 		low_count: 0,
 	});
 	const [examsDone, setExamsDone] = useState({});
-
-	let actualDate = new Date(Date.now());
-	let startDate = new Date(actualDate.setDate(actualDate.getDate() - 6));
-
-	function prepareMaterialProgress() {
-		let data = [];
-		let high_count = userKnowledgeCounts.high_count;
-		let medium_count = userKnowledgeCounts.medium_count;
-		let low_count = userKnowledgeCounts.low_count;
-
-		data.push(low_count, medium_count, high_count);
-		return data;
-	}
-
-	const doughnutData = {
+	const [endDate, setEndDate] = useState(new Date(Date.now()));
+	const [verticalLabels, setVerticalLabels] = useState([]);
+	const [verticalData, setVerticalData] = useState({
+		labels: [],
+		datasets: [],
+	});
+	const [doughnutData, setDoughnutData] = useState({
 		labels: [
 			"Materiał nieopanowany",
 			"Materiał do powtórki",
@@ -82,7 +69,17 @@ export default function Statistics() {
 				borderWidth: 1,
 			},
 		],
-	};
+	});
+
+	function prepareMaterialProgress() {
+		let data = [];
+		let high_count = userKnowledgeCounts.high_count;
+		let medium_count = userKnowledgeCounts.medium_count;
+		let low_count = userKnowledgeCounts.low_count;
+
+		data.push(low_count, medium_count, high_count);
+		return data;
+	}
 
 	function assignBackgroundColor(exams) {
 		if (exams < 2) return "#FF6230";
@@ -91,47 +88,72 @@ export default function Statistics() {
 	}
 
 	// Set vertical bar labels and data
-	let labels = [];
-	for (let i = 0; i < 7; i++) {
-		labels.push(mapIntDayWeekToString(startDate.getUTCDay()));
-		startDate.setDate(startDate.getDate() + 1);
-	}
+	useEffect(() => {
+		let labels = [];
+		let tempDate = new Date(Date.now());
+		let startDate = new Date(tempDate.setDate(tempDate.getDate() - 6));
+		for (let i = 0; i < 7; i++) {
+			labels.push(mapIntDayWeekToString(startDate.getUTCDay()));
+			startDate.setDate(startDate.getDate() + 1);
+		}
+		setVerticalLabels(labels);
+	}, [endDate]);
 
-	const verticalData = {
-		labels,
-		datasets: [
-			{
-				label: "Liczba przerobionych egzaminów",
-				data: labels.map((label) => {
-					return examsDone[label] !== undefined ? examsDone[label] : 0;
-				}),
-				backgroundColor: labels.map((label) =>
-					assignBackgroundColor(examsDone[label])
-				),
-			},
-		],
-	};
+	useEffect(() => {
+		setVerticalData({
+			labels: verticalLabels,
+			datasets: [
+				{
+					label: "Liczba przerobionych egzaminów",
+					data: verticalLabels.map((label) => {
+						return examsDone[label] !== undefined ? examsDone[label] : 0;
+					}),
+					backgroundColor: verticalLabels.map((label) =>
+						assignBackgroundColor(examsDone[label])
+					),
+				},
+			],
+		});
+	}, [verticalLabels, examsDone]);
 
 	useEffect(() => {
 		const fetchQuestions = async () => {
-			const statistics = await getStatistics();
+			const statistics = await getStatistics(endDate);
 			setUserKnowledgeCounts(statistics.material_progress);
 			setExamsDone(() => {
 				let newState = {};
 				statistics.weekly_exams.forEach((date) => {
 					let tempDate = new Date(date.created_at);
 					let key = mapIntDayWeekToString(tempDate.getUTCDay());
+
 					newState[key] = Number.isInteger(newState[key])
 						? newState[key] + 1
 						: 1;
 				});
-				console.log(newState);
 				return newState;
 			});
 		};
-
 		fetchQuestions();
-	}, []);
+	}, [endDate]);
+
+	function moveByWeekBackwards() {
+		let tempDate = new Date(endDate.getTime());
+		setEndDate(new Date(tempDate.setDate(tempDate.getDate() - 6)));
+	}
+
+	function moveByWeekForwards() {
+		let tempDate = new Date(endDate.getTime());
+		let actualDate = new Date(Date.now());
+
+		if (
+			tempDate.getUTCFullYear() === actualDate.getFullYear() &&
+			tempDate.getUTCMonth() === actualDate.getUTCMonth() &&
+			tempDate.getUTCDate() === actualDate.getUTCDate()
+		) {
+			return;
+		}
+		setEndDate(new Date(tempDate.setDate(tempDate.getDate() + 6)));
+	}
 
 	return (
 		<StatisticsAlign>
@@ -145,6 +167,9 @@ export default function Statistics() {
 					type="vertical-bar"
 					data={verticalData}
 					diagramTitle={"Liczba ukończonych egzaminów"}
+					moveByWeekBackwards={moveByWeekBackwards}
+					moveByWeekForwards={moveByWeekForwards}
+					endDate={endDate}
 				/>
 			</InnerContainer>
 		</StatisticsAlign>

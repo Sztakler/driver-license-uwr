@@ -10,10 +10,49 @@ import {
 	Title,
 } from "chart.js";
 import { Doughnut, Bar } from "react-chartjs-2";
-import { DiagramContainer } from "./styles";
-import Heading from "../../../atoms/Heading";
 
-export default function Diagram({ type, diagramTitle, data }) {
+import Heading from "../../../atoms/Heading";
+import Image from "../../../atoms/Image";
+import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
+
+import { DiagramContainer, DateRange } from "./styles";
+
+export default function Diagram({
+	type,
+	diagramTitle,
+	data,
+	moveByWeekBackwards,
+	moveByWeekForwards,
+	endDate,
+}) {
+	function convertDateToString(date) {
+		let day =
+			date.getUTCDate() >= 10
+				? String(date.getUTCDate())
+				: `0${date.getUTCDate()}`;
+		let month =
+			date.getUTCMonth() >= 10
+				? String(date.getUTCMonth())
+				: `0${date.getUTCMonth()}`;
+
+		return day + "." + month;
+	}
+
+	const [startDateString, setStartDateString] = useState(() => {
+		if (!endDate) return null;
+
+		let tempDate = new Date(endDate.getTime());
+		let startDate = new Date(tempDate.setDate(tempDate.getDate() - 6));
+
+		return convertDateToString(startDate);
+	});
+
+	const [endDateString, setEndDateString] = useState(() => {
+		if (!endDate) return null;
+
+		return convertDateToString(endDate);
+	});
+
 	ChartJS.register(
 		ArcElement,
 		Tooltip,
@@ -56,6 +95,22 @@ export default function Diagram({ type, diagramTitle, data }) {
 		},
 	};
 
+	useEffect(() => {
+		setStartDateString(() => {
+			if (!endDate) return null;
+
+			let tempDate = new Date(endDate.getTime());
+			let startDate = new Date(tempDate.setDate(tempDate.getDate() - 6));
+
+			return convertDateToString(startDate);
+		});
+		setEndDateString(() => {
+			if (!endDate) return null;
+
+			return convertDateToString(endDate);
+		});
+	}, [endDate]);
+
 	if (type === "doughnut") {
 		return (
 			<DiagramContainer>
@@ -72,6 +127,23 @@ export default function Diagram({ type, diagramTitle, data }) {
 					{diagramTitle}
 				</Heading>
 				<Bar data={data} options={o} />
+				<DateRange>
+					<Image
+						className="cursor-pointer"
+						src={Illustrations.ArrowLeftAlternative}
+						onClick={() => {
+							moveByWeekBackwards();
+						}}
+					/>
+					{startDateString}-{endDateString}
+					<Image
+						className="cursor-pointer"
+						src={Illustrations.ArrowRightAlternative}
+						onClick={() => {
+							moveByWeekForwards();
+						}}
+					/>
+				</DateRange>
 			</DiagramContainer>
 		);
 	} else {

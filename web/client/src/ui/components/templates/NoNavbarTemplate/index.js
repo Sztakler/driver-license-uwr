@@ -11,8 +11,10 @@ export default function NoNavbarTemplate({
 	count,
 	...props
 }) {
+	const { hamburgerView } = useContext(HamburgerContext);
+
 	return (
-		<PageWrapper {...props}>
+		<PageWrapper hamburgerView={hamburgerView} {...props}>
 			<BrandAbsoluted />
 			{children && (
 				<MainContent>

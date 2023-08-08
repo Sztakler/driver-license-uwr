@@ -4,6 +4,7 @@ module.exports = {
 		fontFamily: {
 			display: ["Barriecito", "cursive"],
 			sans: ["Inter", "sans-serif"],
+			altInter: ["Inter", "cursive"],
 			rampart: ["Rampart One", "cursive"],
 		},
 		extend: {
@@ -57,6 +58,7 @@ module.exports = {
 				"training-menu":
 					"url(/src/assets/images/svg/TrainingPage/graphic1.svg)",
 				"exam-menu": "url(/src/assets/images/svg/ExamPage/graphic1.svg)",
+				"theory-menu": "url(/src/assets/images/svg/TextbookPage/graphic1.svg)",
 				login: "url(/src/assets/images/svg/LoginPage/background.svg)",
 			},
 			typography: {

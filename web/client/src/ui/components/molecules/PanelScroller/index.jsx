@@ -10,7 +10,10 @@ export default function PanelsScroller({ panelsContents }) {
 		<Container>
 			{panelsContents.map((panel) => (
 				<Panel>
-					<Image src={panel.image} className="h-[300px] text-elipsis"></Image>
+					<Image
+						src={panel.image}
+						className="h-[10px] w-auto text-elipsis"
+					></Image>
 					<Paragraph style="text-[#0d0d0d]">{panel.description}</Paragraph>
 				</Panel>
 			))}

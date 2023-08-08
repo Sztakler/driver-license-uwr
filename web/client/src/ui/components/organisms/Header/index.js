@@ -18,9 +18,7 @@ export default function Header({ title, subtitle, illustration, children }) {
 				<Title>{title}</Title>
 				<Subtitle>{subtitle}</Subtitle>
 			</TitleContainer>
-			<IllustrationContainer>
-				<Image src={illustration} className="w-full" />
-			</IllustrationContainer>
+			<IllustrationContainer />
 			<Buttons>{children}</Buttons>
 		</HeaderContainer>
 	);

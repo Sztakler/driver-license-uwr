@@ -7,6 +7,7 @@ const PageWrapper = tw.div`
 	min-w-screen
 	bg-gradient-to-b from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[200px] to-[#FFFBF3] to-100%
 	min-h-screen
+	${(props) => (props.hamburgerView ? "pt-[210px]" : "pt-[80px]")}
 `;
 
 const MainContent = tw.div`

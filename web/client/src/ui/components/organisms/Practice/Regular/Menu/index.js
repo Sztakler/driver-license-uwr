@@ -50,7 +50,10 @@ export default function Menu({ isExam }) {
 	const [knowledgeLevel, setKnowledgeLevel] = useState("-");
 
 	function decrementTimer() {
-		if (videoIsPlaying && taskStarted) {
+		if (
+			(videoIsPlaying && taskStarted) ||
+			(task.wybrana_odpowiedz && !isExam)
+		) {
 			return;
 		}
 
@@ -63,7 +66,9 @@ export default function Menu({ isExam }) {
 				return;
 			}
 
-			nextQuestion();
+			if (isExam) {
+				nextQuestion();
+			}
 		}
 	}
 
@@ -117,6 +122,7 @@ export default function Menu({ isExam }) {
 		let newTaskIdx = taskIdx > 0 ? taskIdx - 1 : taskIdx;
 		setTaskIdx(newTaskIdx);
 		setNewTask(savedQuestions[newTaskIdx]);
+		setQuestionTimer(0);
 		const selectElement = document.getElementById("knowledge_level");
 		selectElement.selectedIndex = savedQuestions[newTaskIdx].knowledge_level;
 	}
@@ -162,13 +168,8 @@ export default function Menu({ isExam }) {
 		taskStarted && setExplanationModalShow(true);
 	}
 
-	function handleChangeKnowledgeLevel(e) {
-		setKnowledgeLevel(e.target.value);
-	}
-
 	async function handleChangeKnowledgeLevel(e) {
-		let newKnowledgeLevel = e.target.value;
-		if (newKnowledgeLevel === "-") return;
+		let newKnowledgeLevel = Number(e.target.value);
 		setKnowledgeLevel(newKnowledgeLevel);
 
 		const changedItemIndex = savedQuestions.findIndex(
@@ -184,16 +185,6 @@ export default function Menu({ isExam }) {
 		}
 
 		try {
-			if (newKnowledgeLevel === "") {
-				newKnowledgeLevel = null;
-			} else if (newKnowledgeLevel === "Niska") {
-				newKnowledgeLevel = 0;
-			} else if (newKnowledgeLevel === "Średnia") {
-				newKnowledgeLevel = 1;
-			} else {
-				newKnowledgeLevel = 2;
-			}
-
 			const response = await fetch(
 				"http://localhost:5000/api/user-knowledge-levels",
 				{
@@ -235,7 +226,7 @@ export default function Menu({ isExam }) {
 				return "Trwa odtwarzanie filmu";
 			}
 
-			if (imageIsLoaded) {
+			if (imageIsLoaded || !videoIsPlaying) {
 				return "Czas na udzielenie odpowiedzi";
 			}
 
@@ -290,22 +281,24 @@ export default function Menu({ isExam }) {
 				</Row>
 			</TimerContainer>
 
-			<KnowledgeLevel>
-				<Text className="text-[16px] px-2">Poziom znajomości pytania</Text>
-				<Input
-					id="knowledge_level"
-					type="select"
-					className="bg-[#FFE49E] rounded-[39px] w-full px-2 py-1"
-					onChange={handleChangeKnowledgeLevel}
-				>
-					<option hidden value={0}>
-						-
-					</option>
-					<option value={1}>Niska</option>
-					<option value={2}>Średnia</option>
-					<option value={3}>Wysoka</option>
-				</Input>
-			</KnowledgeLevel>
+			{!isExam && (
+				<KnowledgeLevel>
+					<Text className="text-[16px] px-2">Poziom znajomości pytania</Text>
+					<Input
+						id="knowledge_level"
+						type="select"
+						className="bg-[#FFE49E] rounded-[39px] w-full px-2 py-1"
+						onChange={handleChangeKnowledgeLevel}
+					>
+						<option hidden value={0}>
+							-
+						</option>
+						<option value={1}>Niska</option>
+						<option value={2}>Średnia</option>
+						<option value={3}>Wysoka</option>
+					</Input>
+				</KnowledgeLevel>
+			)}
 
 			<NextPrevious>
 				{!isExam ? (

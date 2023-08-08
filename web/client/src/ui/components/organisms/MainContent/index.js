@@ -58,7 +58,7 @@ export default function MainContent({ navigation, panelsContents }) {
 		return (
 			<SidebarArrowButton
 				onClick={handleSidebarClick}
-				className={props.sidebarHidden ? " top-[16px] left-[8px] " : ""}
+				sidebarHidden={props.sidebarHidden}
 				sidebarSticky={sidebarSticky}
 			>
 				{props.sidebarHidden ? <Arrow sidebarHidden /> : <Arrow />}
@@ -71,7 +71,6 @@ export default function MainContent({ navigation, panelsContents }) {
 				>
 					Zwiń spis treści
 				</SidebarArrowButtonParagraph>
-				<SidebarButtonInvisibleCheckbox type="checkbox"></SidebarButtonInvisibleCheckbox>
 			</SidebarArrowButton>
 		);
 	}

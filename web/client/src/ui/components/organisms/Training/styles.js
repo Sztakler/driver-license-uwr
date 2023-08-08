@@ -7,7 +7,6 @@ const Container = tw.div`
 		lg:min-h-[calc(100vh-91px)]
 		h-[calc(100vh-91px)]
 		max-lg:min-h-screen
-    p-4
 		items-center
 `;
 
@@ -17,14 +16,14 @@ const HeaderContainer = tw.div`
 		min-h-full
 		w-full
 		items-center
-		max-w-[3000px]
-
+		max-w-[2648px]
+		pt-4
 `;
 
 const TitleContainer = tw.div`
     flex 
     flex-col
-		lg:px-44
+		lg:px-[10vw]
 		w-full
 `;
 

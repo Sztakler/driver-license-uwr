@@ -21,4 +21,13 @@ const DiagramContainer = tw.div`
 	max-md:pt-4
 `;
 
-export { DiagramContainer };
+const DateRange = tw.div`
+	flex
+	flex-row
+	w-full
+	justify-center
+	gap-4
+	mt-4
+	`;
+
+export { DiagramContainer, DateRange };

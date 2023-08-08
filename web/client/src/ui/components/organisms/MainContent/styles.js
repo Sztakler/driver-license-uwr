@@ -15,8 +15,8 @@ const SidebarContainer = tw.div`
 	from-[#FFF6E4]
 	to-[#FFFBF3]
 	self-start
-	${(props) =>
-		props.sticky ? "md:fixed md:pt-[110px]" : "md:absolute md:left-[-16px]"}
+	md:-left-2
+	${(props) => (props.sticky ? "md:fixed md:pt-[80px]" : "md:absolute md:top-0")}
 	top-0
 	left-0
 	`;
@@ -24,12 +24,17 @@ const SidebarContainer = tw.div`
 const SidebarArrowButton = tw.div`
   max-md:hidden
 	absolute
-	top-[16px]
 	left-[350px]
+	h-[250px]
+	w-[25px]
+	hover:font-semibold
 	flex
 	flex-col
 	cursor-pointer
-	${(props) => (props.sidebarSticky ? "md:fixed md:pt-[110px]" : "")}
+	pt-[25px]
+	${(props) =>
+		props.sidebarSticky ? " md:fixed md:pt-[40px]  md:left-[340px]" : ""}
+	${(props) => (props.sidebarHidden ? " left-[24px]" : "")}
 `;
 
 const Content = tw.div`
@@ -91,11 +96,13 @@ const Panel = tw.div`
 `;
 
 const SidebarArrowButtonParagraph = tw.div`
-rotate-90 translate-y-16 -translate-x-10
+rotate-90
+inline-block
+mt-2
 `;
 
 const SidebarButtonInvisibleCheckbox = tw.input`
-appearance-none w-[60px] checked:bg-blue-500
+hidden w-[60px]
 `;
 
 const ScrolldownButton = tw.button`

@@ -151,8 +151,11 @@ export default function Training({ data, headings, ...props }) {
 						</MainContainer>
 					) : (
 						<>
-							<div className="w-full h-[500px] bg-training-menu bg-no-repeat bg-center bg-contain"></div>
-							<div className="flex flex-row flex-wrap w-full gap-4 justify-center p-[43px] mt-6">
+							<div
+								className="w-full h-[382px] bg-training-menu bg-no-repeat bg-center bg-contain 	my-8
+"
+							></div>
+							<div className="flex flex-row flex-wrap w-full gap-4 justify-center p-[23px] mt-6">
 								<Button primary hover onClick={scrollDown} size="l">
 									Wybór pytań
 								</Button>

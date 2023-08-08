@@ -7,14 +7,18 @@ const NavbarContainer = tw.div`
 	z-10
 	flex 
 	flex-[0_1_auto]
-	max-lg:flex-col
+	max-md:flex-col
 	min-h-[145px]
 	items-center 
-	lg:justify-between
-	max-lg:justify-center
-	lg:px-8
-	lg:pb-8
-
+	md:justify-between
+	max-md:justify-center
+	md:px-8
+	md:pb-8
+	bg-gradient-to-b from-[0px] from-[#FFF1DBff] via-[90px]  via-[#FFF1DBff] to-[#FFFBF300] to-[130px] 
+	${(props) =>
+		props.hamburgerExpand
+			? "max-md:via-[100px] max-md:to-[200px] pb-4"
+			: "max-md:via-[50px] max-md:to-[90px]"}
 	`;
 
 const BrandTitle = tw.div`
@@ -23,6 +27,16 @@ const BrandTitle = tw.div`
 	px-5
 	py-2
 	hover:cursor-pointer
+
+	max-md:absolute
+	max-md:top-0
+	max-md:left-0
+`;
+
+const Shortcut = tw.div`
+	absolute
+	top-4
+	right-16
 `;
 
 const NavigationArea = tw.div`
@@ -30,7 +44,10 @@ const NavigationArea = tw.div`
 	items-start
 	text-center
 	h-full
-	${(props) => (props.active ? "max-lg:w-full max-lg:flex" : " max-lg:hidden")}
+	${(props) =>
+		props.hamburgerExpand
+			? "max-md:w-full max-md:flex pt-[50px]"
+			: " max-md:hidden"}
 `;
 
 const NavbarItem = tw.li`
@@ -41,46 +58,38 @@ const NavbarItem = tw.li`
 	text-[#0D0D0D]
 	font-medium
 
-	lg:h-full
-	max-lg:w-full
+	md:h-full
+	max-md:w-full
 `;
 
 const HamburgerOptionArea = tw.div`
-	absolute
-	-top-1
-	right-0
+	block
+	text-2xl 
+	py-2
+	hover:cursor-pointer
 
-	lg:hidden
+	max-md:absolute
+	max-md:top-[14px]
+	max-md:right-3
+	md:hidden
 `;
 
 const NavbarLinks = tw.ul`
 	flex
 	gap-x-[8px]
-	max-lg:w-full
+	max-md:w-full
 	max-h-min
 	items-center
-	max-lg:items-center
-	max-lg:flex-col
-`;
-
-const Logout = tw.button`
-	flex
-	items-center
-	justify-center
-	hover:cursor-pointer
-	text-[#0D0D0D]
-	font-medium
-	
-	lg:h-full
-	max-lg:w-full
+	max-md:items-center
+	max-md:flex-col
 `;
 
 export {
 	NavbarContainer,
 	BrandTitle,
+	Shortcut,
 	NavbarItem,
 	HamburgerOptionArea,
 	NavbarLinks,
 	NavigationArea,
-	Logout,
 };

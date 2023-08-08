@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import HamburgerContext from "../../../../context/HamburgerViewContext";
 
 import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 import Button from "../../atoms/Button";
@@ -11,11 +12,11 @@ import Text from "../../atoms/Text";
 import {
 	NavbarContainer,
 	BrandTitle,
+	Shortcut,
 	NavbarItem,
 	HamburgerOptionArea,
 	NavbarLinks,
 	NavigationArea,
-	Logout,
 } from "./styles";
 
 export default function Navbar(props) {
@@ -23,15 +24,16 @@ export default function Navbar(props) {
 	const navigate = useNavigate();
 	const uuidv4 = require("uuid/v4");
 
-	const [hamburgerView, setHamburgerView] = useState(false);
+	const { hamburgerView, setNewHamburgerView } = useContext(HamburgerContext);
 	const [isMenuHidden, setIsMenuHidden] = useState(true);
 	const [activePage, setActivePage] = useState(
 		`/${location.pathname.split("/")[1]}`
 	);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isAuthStatusChecked, setIsAuthStatusChecked] = useState(false);
 
 	useEffect(() => {
 		setActivePage(`/${location.pathname.split("/")[1]}`);
-		console.log("change");
 		const checkAuthenticationStatus = async () => {
 			setIsAuthStatusChecked(false);
 			setIsLoggedIn(false);
@@ -43,7 +45,6 @@ export default function Navbar(props) {
 						"Content-Type": "application/json",
 					},
 				});
-
 				const data = await response.json();
 				setIsLoggedIn(data.isAuthenticated);
 				setIsAuthStatusChecked(true);
@@ -57,14 +58,8 @@ export default function Navbar(props) {
 		checkAuthenticationStatus();
 	}, [location.pathname]);
 
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [isAuthStatusChecked, setIsAuthStatusChecked] = useState(false);
-
-	useEffect(() => {}, []);
-	console.log("change");
-
 	const handleHamburgerClick = () => {
-		setHamburgerView((state) => !state);
+		setNewHamburgerView((prevState) => !prevState);
 	};
 
 	let navigationLinks = [
@@ -73,18 +68,21 @@ export default function Navbar(props) {
 			name: "Egzamin",
 			navigationTarget: "/egzamin",
 			fontSize: "xl",
+			visibleInMobile: false,
 		},
 		{
 			id: uuidv4,
 			name: "Trening",
 			navigationTarget: "/trening",
 			fontSize: "xl",
+			visibleInMobile: true,
 		},
 		{
 			id: uuidv4,
 			name: "Podręcznik",
 			navigationTarget: "/podrecznik",
 			fontSize: "xl",
+			visibleInMobile: true,
 		},
 	];
 
@@ -105,16 +103,35 @@ export default function Navbar(props) {
 		console.log("toggluje menu!" + isMenuHidden);
 	}
 
-	const isDesktop = useMediaQuery({ query: "(min-width: 1280px)" });
-	
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
 	return (
-		<NavbarContainer lighter={props.lighter} className={isDesktop ? "bg-gradient-to-b from-[0px] from-[#FFF1DBff] via-[90px] via-[#FFF1DBff] to-[#FFFBF300] to-[130px]" : "" }>
-			<BrandTitle hover size="2xl" onClick={() => navigate("/")}>
+		<NavbarContainer lighter={props.lighter} hamburgerExpand={hamburgerView}>
+			<BrandTitle hover onClick={() => navigate("/")}>
 				<Image src={Illustrations.PageLogo}></Image>
 			</BrandTitle>
-			<NavigationArea active={hamburgerView}>
+			<HamburgerOptionArea>
+				<Image src={Illustrations.Hamburger} onClick={handleHamburgerClick} />
+			</HamburgerOptionArea>
+			{!isDesktop && (
+				<Shortcut>
+					<Button
+						active={"/egzamin" === activePage ? true : false}
+						navbar
+						onClick={() => {
+							navigate("/egzamin");
+						}}
+					>
+						<Text className="	italic underline underline-offset-2 font-medium">
+							Egzamin
+						</Text>
+					</Button>
+				</Shortcut>
+			)}
+			<NavigationArea hamburgerExpand={hamburgerView}>
 				<NavbarLinks>
 					{navigationLinks.slice().map((link, index) => {
+						if (!link.visibleInMobile && !isDesktop) return;
 						return (
 							<NavbarItem
 								active={link.navigationTarget === activePage ? true : false}
@@ -174,9 +191,6 @@ export default function Navbar(props) {
 					</NavbarItem>
 				</NavbarLinks>
 			</NavigationArea>
-			<HamburgerOptionArea>
-				{/* <Button navbar hover image={hamburger} onClick={handleHamburgerClick} /> */}
-			</HamburgerOptionArea>
 		</NavbarContainer>
 	);
 }

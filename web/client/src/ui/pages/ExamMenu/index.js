@@ -46,9 +46,9 @@ export default function ExamMenuPage() {
 					</TitleContainer>
 
 					<IllustrationContainer>
-						<div className="block bg-exam-menu w-full h-[500px] bg-center bg-no-repeat bg-contain"></div>
+						<div className="block bg-exam-menu w-full h-[371px] bg-center bg-no-repeat bg-contain"></div>
 					</IllustrationContainer>
-					<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[43px]">
+					<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[23px]">
 						<Button primary hover size="l">
 							Poczytaj o egzaminie
 						</Button>
