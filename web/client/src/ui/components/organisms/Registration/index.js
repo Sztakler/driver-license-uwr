@@ -1,11 +1,10 @@
 import React, { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import {
 	RegistrationContainer,
-	LeftContainer,
 	Title,
-	ImageContainer,
-	RightContainer,
+	FormContainer,
 	RegisterForm,
 	RegisterFormContainer,
 	InputsContainer,
@@ -75,35 +74,98 @@ export default function Registration() {
 		}
 	};
 
-	return (
-		<RegistrationContainer>
-			<LeftContainer>
-				<ImageContainer>
-					<Image
-						className="w-full h-full max-w-full block"
-						src={RegisterPageIllustrations.Image1}
-					></Image>
-				</ImageContainer>
-				<div className="flex flex-col absolute top-[21%] left-[30%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
-					<Text className="font-display text-[64px] leading-none w-[500px] whitespace-normal">
-						Załóż darmowe konto
-					</Text>
-				</div>
-			</LeftContainer>
+	const isDesktop = useMediaQuery({ query: "(min-width: 1280px)" });
 
-			<RightContainer>
-				<LoginButtonContainer>
-					<TextGrayedSpan>Masz już konto? </TextGrayedSpan>
-					<LoginButton
-						onClick={() => {
-							navigate("/login");
-						}}
-					>
-						Zaloguj się
-					</LoginButton>
-				</LoginButtonContainer>
+	if (isDesktop) {
+		return (
+			<RegistrationContainer style={isDesktop ? { backgroundImage: `url(${RegisterPageIllustrations.Image1_Desktop})` } : ""} >
+				<FormContainer>
+					<LoginButtonContainer>
+						<TextGrayedSpan>Masz już konto? </TextGrayedSpan>
+						<LoginButton
+							onClick={() => {
+								navigate("/login");
+							}}
+						>
+							Zaloguj się
+						</LoginButton>
+					</LoginButtonContainer>
+					<RegisterFormContainer>
+						<Title>Zarejestruj się</Title>
+						<RegisterForm onSubmit={registerUser}>
+							<InputsContainer>
+								<InputWrapper for="name">
+									<InputLabelText>Imię</InputLabelText>
+									<Input
+										register
+										id="name"
+										type="text"
+										value={name}
+										onChange={handleNameChange}
+									></Input>
+								</InputWrapper>
+								<InputWrapper for="email">
+									<InputLabelText>E-mail</InputLabelText>
+									<Input
+										register
+										required
+										id="email"
+										type="email"
+										value={mail}
+										onChange={handleMailChange}
+									></Input>
+								</InputWrapper>
+								<InputWrapper for="password">
+									<InputLabelText>Hasło</InputLabelText>
+									<Input
+										register
+										required
+										id="password"
+										type="password"
+										placeholder="min. 8 liter"
+										value={password}
+										onChange={handlePasswordChange}
+									></Input>
+								</InputWrapper>
+								{userAlreadyExistsAlert && (
+									<Text className="text-red-600">
+										Użytkownik o podanym mailu już istnieje!
+									</Text>
+								)}
+							</InputsContainer>
+
+							<SubmitButtonContainer>
+								<Disclaimer>
+									Klikając przycisk Załóż konto, akceptujesz nasz&nbsp;
+									<TextUnderlineSpan>Regulamin</TextUnderlineSpan>,&nbsp;
+									<TextUnderlineSpan>
+										zasady ochrony prywatności&nbsp;
+									</TextUnderlineSpan>
+									i&nbsp;
+									<TextUnderlineSpan>
+										zasady dotyczące plików cookie
+									</TextUnderlineSpan>
+									.
+								</Disclaimer>
+								<Button
+									primary
+									hover
+									type="submit"
+									className="text-[16px] w-full"
+								>
+									Załóż konto
+								</Button>
+							</SubmitButtonContainer>
+						</RegisterForm>
+					</RegisterFormContainer>
+				</FormContainer>
+			</RegistrationContainer>
+		);
+	} else {
+		return (
+			<div className="h-[calc(100vh-145px)] flex flex-col p-8">
 				<RegisterFormContainer>
-					<Title>Zarejestruj się</Title>
+					<Title className="text-[26px] font-medium pt-0">Zarejestruj się</Title>
 					<RegisterForm onSubmit={registerUser}>
 						<InputsContainer>
 							<InputWrapper for="name">
@@ -163,14 +225,24 @@ export default function Registration() {
 								primary
 								hover
 								type="submit"
-								className="text-[19px] w-full"
+								className="text-[16px] font-medium w-full px-[50px] py-[13px] max-md:px-[50px] max-md:py-[13px]"
 							>
 								Załóż konto
 							</Button>
+							<LoginButton
+								className="pt-2"
+								onClick={() => {
+									navigate("/login");
+								}}
+							>
+								<TextGrayedSpan className="text-[16px]">Masz już konto?</TextGrayedSpan>
+							</LoginButton>
 						</SubmitButtonContainer>
+
 					</RegisterForm>
 				</RegisterFormContainer>
-			</RightContainer>
-		</RegistrationContainer>
-	);
+			</div>
+
+		);
+	}
 }

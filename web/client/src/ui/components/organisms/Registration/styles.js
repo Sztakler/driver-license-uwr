@@ -2,21 +2,16 @@ import tw from "tailwind-styled-components";
 
 const RegistrationContainer = tw.div`
 	flex 
-	flex-row
 	justify-center
 	align-center
-	gap-36
 	w-full
-	rounded-[39px]
 	h-max
 	pt-6
 	h-[calc(100vh-115px)]
-
-`;
-
-const LeftContainer = tw.div`
-lg:flex flex-col gap-y-20 py-11 min-w-[850px]
-relative
+	bg-contain
+	bg-no-repeat
+	bg-center
+	xl:pl-[35vw]
 `;
 
 const InfoContainer = tw.div`
@@ -25,8 +20,8 @@ flex flex-col gap-y-4
 
 const Title = tw.h2`
 self-start
-mt-24
-mb-16
+pt-24
+m-0
 `;
 
 const Subtitle = tw.p`
@@ -41,8 +36,8 @@ const ImageContainer = tw.div`
 	h-full
 `;
 
-const RightContainer = tw.div`
-relative flex flex-col bg-gradient-to-b from-[#FFEDCAFF] from-[0%]  via-[#FFEDCAD9] via-[80%] to-[#FFEDCA00] rounded-[39px] mr-8 px-32 aspect-[652/805] w-[602px] w-max(10px, 10px)
+const FormContainer = tw.div`
+	relative flex flex-col bg-gradient-to-b from-[#FFEDCAFF] from-[0%]  via-[#FFEDCAD9] via-[80%] to-[#FFEDCA00] rounded-[39px] px-32 aspect-[652/805] self-center h-[85vh]
 `;
 
 const RegisterFormContainer = tw.div`
@@ -50,11 +45,11 @@ const RegisterFormContainer = tw.div`
 `;
 
 const RegisterForm = tw.form`
-flex flex-col gap-y-10 mt-12
+flex flex-col gap-y-6 pt-12
 `;
 
 const InputsContainer = tw.div`
-flex flex-col gap-y-10
+flex flex-col gap-y-6
 `;
 
 const SubmitButtonContainer = tw.button`
@@ -84,7 +79,7 @@ flex flex-col pb-2
 `;
 
 const InputLabelText = tw.p`
-text-[19px] font-semibold
+text-[16px] font-semibold
 `;
 
 const Disclaimer = tw.p`
@@ -93,12 +88,11 @@ text-xs text-[#808080] text-left max-w-prose pb-4 mr-auto
 
 export {
 	RegistrationContainer,
-	LeftContainer,
 	InfoContainer,
 	Title,
 	ImageContainer,
 	ListContainer,
-	RightContainer,
+	FormContainer,
 	RegisterForm,
 	RegisterFormContainer,
 	InputsContainer,

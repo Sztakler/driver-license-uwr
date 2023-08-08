@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 
@@ -104,8 +105,10 @@ export default function Navbar(props) {
 		console.log("toggluje menu!" + isMenuHidden);
 	}
 
+	const isDesktop = useMediaQuery({ query: "(min-width: 1280px)" });
+	
 	return (
-		<NavbarContainer lighter={props.lighter}>
+		<NavbarContainer lighter={props.lighter} className={isDesktop ? "bg-gradient-to-b from-[0px] from-[#FFF1DBff] via-[90px] via-[#FFF1DBff] to-[#FFFBF300] to-[130px]" : "" }>
 			<BrandTitle hover size="2xl" onClick={() => navigate("/")}>
 				<Image src={Illustrations.PageLogo}></Image>
 			</BrandTitle>
