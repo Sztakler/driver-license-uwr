@@ -4,58 +4,64 @@ const SummaryContainer = tw.div`
 	flex
 	justify-center
 	items-center
-	h-[calc(100vh-91px)]
 	w-full
-	pb-8
-	pt-4
 	max-2xl:p-2
 	text-center
-	bg-[#FFEFD0]
+	pt-12
+	max-xl:pt-0
 	`;
 
 const InnerTextBox = tw.div`
 	relative
-	${(props) => (props.positive ? "bg-positive-result" : "bg-negative-result")}
+	${(props) =>
+		props.positive
+			? "bg-positive-result max-xl:bg-positive-result-mobile"
+			: "bg-negative-result max-xl:bg-negative-result-mobile"}
 	bg-no-repeat
-	bg-center
+	bg-top
+	max-xl:bg-center
 	bg-contain
+	max-xl:bg-auto
 	h-full
-	max-h-[1000px]
+	max-h-[823px]
+	min-h-[823px]
 	w-full
 
 	flex
 	flex-col
 	items-center
 	justify-center
-	gap-4
 `;
 
 const InsideBackground = tw.div`
 	flex 
 	flex-col 
+	xl:absolute
 	justify-center 
-	items-center
-	absolute 
-	mt-20
+	items-center 
+	max-xl:mt-16
 	text-center 
-	w-[700px] 
+	max-w-[700px]
+	min-w-[700px]
+	break-words
 	text-8xl 
 	max-xl:text-4xl 
-	max-lg:text-3xl 
-	max-md:text-3xl 
-	max-sm:text-3xl
+
 `;
 
 const Table = tw.div`
 	flex
 	flex-row
-	justify-between 
+	max-xl:absolute
+	max-xl:top-72
+	max-xl:flex-col
+	flex-wrap
+	justify-center
+	max-xl:gap-4
 	text-xl 
-	border-2
-	rounded-[39px]
-	border-black
 	p-4
-	my-8
+	my-4
+	gap-4
 	font-semibold
 `;
 
@@ -63,19 +69,32 @@ const Row = tw.div`
 
 `;
 
-const Column = tw.div`
+const StatisticContainer = tw.div`
 	flex
 	flex-col
+	max-xl:justify-between
+	max-xl:items-center
+	max-xl:flex-row
 	flex-[0_1_20%]
+	max-xl:gap-4
+	gap-2
 `;
 
 const Statistic = tw.span`
-	text-lg
-	mb-2
+	text-base
+	max-w-[125px]
+	break-words
+	max-xl:text-left
 `;
 
 const Points = tw.span`
+	flex
+	max-xl:items-center
+	justify-center
 	text-5xl
+	max-xl:text-right
+	self-center
+	w-[50px]
 `;
 
 export {
@@ -84,7 +103,7 @@ export {
 	InsideBackground,
 	Table,
 	Row,
-	Column,
+	StatisticContainer,
 	Statistic,
 	Points,
 };

@@ -53,13 +53,21 @@ module.exports = {
 			backgroundImage: {
 				"gradient-0": "linear-gradient(0deg, var(--tw-gradient-stops))",
 				"road-texture": "url(../../src/assets/images/road.jpg)",
-				"positive-result": "url(/src/assets/images/resultPositive.svg)",
-				"negative-result": "url(/src/assets/images/resultNegative.svg)",
+				"negative-result":
+					"url(/src/assets/images/svg/Results/wynik-negatywny.svg)",
+				"positive-result":
+					"url(/src/assets/images/svg/Results/wynik-pozytywny.svg)",
+				"negative-result-mobile":
+					"url(/src/assets/images/svg/Results/wynik-negatywny-mobile.svg)",
+				"positive-result-mobile":
+					"url(/src/assets/images/svg/Results/wynik-pozytywny-mobile.svg)",
 				"training-menu":
 					"url(/src/assets/images/svg/TrainingPage/graphic1.svg)",
 				"exam-menu": "url(/src/assets/images/svg/ExamPage/graphic1.svg)",
 				"theory-menu": "url(/src/assets/images/svg/TextbookPage/graphic1.svg)",
-				login: "url(/src/assets/images/svg/LoginPage/background.svg)",
+				login: "url(/src/assets/images/svg/LoginPage/zaloguj-się.svg)",
+				"login-mobile":
+					"url(/src/assets/images/svg/LoginPage/zaloguj-się-mobile.svg)",
 			},
 			typography: {
 				"@variants responsive": {

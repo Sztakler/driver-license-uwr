@@ -9,6 +9,7 @@ const NavbarContainer = tw.div`
 	flex-[0_1_auto]
 	max-md:flex-col
 	min-h-[145px]
+	max-md:min-h-[70px]
 	items-center 
 	md:justify-between
 	max-md:justify-center

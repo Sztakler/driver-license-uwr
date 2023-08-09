@@ -1,7 +1,14 @@
 import React from "react";
 import Image from "../../atoms/Image";
 
-import { HeroContainer, PanelContainer, ImageContainer, MobileHeroContainer, MobileBottomContainer, MobileTopContainer, } from "./styles";
+import {
+	HeroContainer,
+	PanelContainer,
+	ImageContainer,
+	MobileHeroContainer,
+	MobileBottomContainer,
+	MobileTopContainer,
+} from "./styles";
 
 import Text from "../../atoms/Text";
 import Button from "../../atoms/Button";
@@ -39,7 +46,9 @@ export default function Hero() {
 							className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
 							onClick={() => navigate("/register")}
 						>
-							<Text className="text-[0.85vw] font-medium leading-none">Trenuj z nami</Text>
+							<Text className="text-[0.85vw] font-medium leading-none">
+								Trenuj z nami
+							</Text>
 							<Image className="w-[0.85vw]" src={Illustrations.ArrowRight} />
 						</Button>
 					</div>
@@ -70,7 +79,9 @@ export default function Hero() {
 							className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
 							onClick={() => navigate("/register")}
 						>
-							<Text className="text-[0.85vw] font-medium leading-none">Trenuj z nami</Text>
+							<Text className="text-[0.85vw] font-medium leading-none">
+								Trenuj z nami
+							</Text>
 							<Image src={Illustrations.ArrowRight} />
 						</Button>
 					</div>
@@ -100,8 +111,8 @@ export default function Hero() {
 							Trenuj z nami!
 						</Text>
 						<Text className="text-[1vw] leading-none ">
-							Stale aktualizujemy naszą bazę pytań egzaminacyjnych. Przygotuj się
-							z nami do egzaminu w 2023!
+							Stale aktualizujemy naszą bazę pytań egzaminacyjnych. Przygotuj
+							się z nami do egzaminu w 2023!
 						</Text>
 						<Button
 							primary
@@ -142,19 +153,22 @@ export default function Hero() {
 						<Text className="text-[1vw] leading-none ">
 							Z darmowym kontem zyskasz możliwość:
 						</Text>
-						<BulletList points={
-							[
+						<BulletList
+							points={[
 								"dostępu do trybu Trening, gdzie możesz wybierać z bazy wszystkich pytań",
 								"wglądu w Twoje statystyki i analizy",
 								"zapisywania wybranych pytań",
-							]
-						} bullet="•"></BulletList>
+							]}
+							bullet="•"
+						></BulletList>
 						<Button
 							primary
 							className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
 							onClick={() => navigate("/register")}
 						>
-							<Text className="text-[0.85vw] font-medium leading-none">Zarejestruj się</Text>
+							<Text className="text-[0.85vw] font-medium leading-none">
+								Zarejestruj się
+							</Text>
 							<Image src={Illustrations.ArrowRight} />
 						</Button>
 					</div>
@@ -163,23 +177,34 @@ export default function Hero() {
 		);
 	} else {
 		return (
-			<MobileHeroContainer style={{ backgroundImage: `url(${HomePageIllustrations.HeroImage_Mobile})` }}>
+			<MobileHeroContainer
+				style={{
+					backgroundImage: `url(${HomePageIllustrations.HeroImage_Mobile})`,
+				}}
+			>
 				<MobileTopContainer>
-					<Text className="font-medium text-[6.66vw] leading-tight"><span className="font-semibold">Przygotuj się</span><br /> do egzaminu na prawo jazdy w <span className="italic">ekspresowym</span> tempie.</Text>
+					<Text className="font-medium text-[6.66vw] leading-tight">
+						<span className="font-semibold">Przygotuj się</span>
+						<br /> do egzaminu na prawo jazdy w{" "}
+						<span className="italic">ekspresowym</span> tempie.
+					</Text>
 				</MobileTopContainer>
 				<MobileBottomContainer>
-					<Text className="font-semibold text-[5.38vw] leading-tight text-[#FFB800]">Założ darmowe konto i uzyskaj dostęp do pytań egzaminacyjnych.</Text>
+					<Text className="font-semibold text-[5.38vw] leading-tight text-[#FFB800]">
+						Założ darmowe konto i uzyskaj dostęp do pytań egzaminacyjnych.
+					</Text>
 					<Button
 						primary
-						className="flex flex-row self-end w-fit px-[13.84vw] py-[3.33vw] max-md:px-[13.84vw] max-md:py-[3.33vw]"
+						className="flex flex-row self-end w-fit px-[13.84vw] py-[3.33vw] max-md:px-[13.84vw] max-md:py-[3.33vw] mr-4"
 						onClick={() => navigate("/register")}
 					>
-						<Text className="text-[4.36vw] font-medium leading-none">Trenuj z nami</Text>
+						<Text className="text-[4.36vw] font-medium leading-none">
+							Trenuj z nami
+						</Text>
 						<Image className="w-[4.36vw]" src={Illustrations.ArrowRight} />
 					</Button>
 				</MobileBottomContainer>
 			</MobileHeroContainer>
 		);
 	}
-
 }

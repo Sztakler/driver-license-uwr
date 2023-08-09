@@ -56,17 +56,7 @@ export default function LoginForm(props) {
 	return (
 		<LoginFormContainer onSubmit={handleSubmit}>
 			<input type="submit" className="hidden"></input>
-			<NoAccount>
-				Nie masz jeszcze konta?{" "}
-				<Button
-					className="text-black underline font-semibold "
-					onClick={() => {
-						navigate("/register");
-					}}
-				>
-					Zarejestruj się
-				</Button>
-			</NoAccount>
+
 			<Heading>Zaloguj się</Heading>
 			<InnerWrapper>
 				<Label className="text-[19px] font-semibold">E-mail</Label>
@@ -99,9 +89,25 @@ export default function LoginForm(props) {
 			</InnerWrapper>
 
 			<InnerWrapper>
-				<Button primary hover type="submit" className="text-[19px]">
+				<Button
+					primary
+					hover
+					type="submit"
+					className="text-[19px] max-md:w-full"
+				>
 					Zaloguj
 				</Button>
+				<NoAccount>
+					Nie masz jeszcze konta?{" "}
+					<Button
+						className="text-black underline font-semibold "
+						onClick={() => {
+							navigate("/register");
+						}}
+					>
+						Zarejestruj się
+					</Button>
+				</NoAccount>
 			</InnerWrapper>
 		</LoginFormContainer>
 	);

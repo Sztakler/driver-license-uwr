@@ -11,17 +11,19 @@ const LoginFormContainer = tw.form`
 `;
 
 const NoAccount = tw.div`
-	absolute	
+	md:absolute
 	text-[#757575]
-	top-6
-	right-8
+	md:top-6
+	md:right-8
+	max-md:mt-2
 `;
 
 const InnerWrapper = tw.div`
 	flex
 	flex-col
 	w-full
-	mb-12
+	mb-10
+	max-md:w-[80vw]
 `;
 
 const LabelSection = tw.div`
@@ -40,8 +42,10 @@ const InputSection = tw.div`
 
 const Heading = tw.h2`
 	self-start
-	mt-24
-	mb-16
+	md:mt-24
+	md:mb-16
+	max-md:mt-16
+	max-md:mb-8
 `;
 
 export {

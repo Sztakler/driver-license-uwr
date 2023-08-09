@@ -9,12 +9,12 @@ const DiagramContainer = tw.div`
 	border
 	border-[#0D0D0D]
 	rounded-[39px]
+	max-md:border-0
 	bg-[#FFFAED]
 	w-[600px]
 	h-[500px]
 	break-words
 	whitespace-normal
-
 
 	p-4
 	pt-16

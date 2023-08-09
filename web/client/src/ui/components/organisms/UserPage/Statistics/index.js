@@ -55,21 +55,15 @@ export default function Statistics() {
 		datasets: [],
 	});
 	const [doughnutData, setDoughnutData] = useState({
-		labels: [
-			"Materiał nieopanowany",
-			"Materiał do powtórki",
-			"Materiał w pełni opanowany",
-		],
-		datasets: [
-			{
-				label: "Procent opanowanego materiału",
-				data: prepareMaterialProgress(),
-				backgroundColor: ["#FF6230", "#FFC120", "#A4E057"],
-				borderColor: ["#0D0D0D", "#0D0D0D", "#0D0D0D"],
-				borderWidth: 1,
-			},
-		],
+		labels: [],
+		datasets: [],
 	});
+
+	function assignBackgroundColor(exams) {
+		if (exams < 2) return "#FF6230";
+		else if (exams < 4) return "#FFBA07";
+		else return "#A4E057";
+	}
 
 	function prepareMaterialProgress() {
 		let data = [];
@@ -79,12 +73,6 @@ export default function Statistics() {
 
 		data.push(low_count, medium_count, high_count);
 		return data;
-	}
-
-	function assignBackgroundColor(exams) {
-		if (exams < 2) return "#FF6230";
-		else if (exams < 4) return "#FFBA07";
-		else return "#A4E057";
 	}
 
 	// Set vertical bar labels and data
@@ -115,6 +103,25 @@ export default function Statistics() {
 			],
 		});
 	}, [verticalLabels, examsDone]);
+
+	useEffect(() => {
+		setDoughnutData({
+			labels: [
+				"Materiał nieopanowany",
+				"Materiał do powtórki",
+				"Materiał w pełni opanowany",
+			],
+			datasets: [
+				{
+					label: "Procent opanowanego materiału",
+					data: prepareMaterialProgress(),
+					backgroundColor: ["#FF6230", "#FFC120", "#A4E057"],
+					borderColor: ["#0D0D0D", "#0D0D0D", "#0D0D0D"],
+					borderWidth: 1,
+				},
+			],
+		});
+	}, [userKnowledgeCounts]);
 
 	useEffect(() => {
 		const fetchQuestions = async () => {

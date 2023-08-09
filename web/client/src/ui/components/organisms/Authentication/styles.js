@@ -5,12 +5,12 @@ const AuthenticationContainer = tw.div`
 	flex 
 	flex-row
 	aspect-[652/805]
-	w-[602px]
+	md:w-[602px]
 	px-32
-	py-8
+	max-md:px-4
 	rounded-[39px] 
-	bg-gradient-to-b from-[#FFEDCAFF] from-[0%]  via-[#FFEDCAD9] via-[80%] to-[#FFEDCA00] 
-	max-lg:mt-[61px]
+	md:bg-gradient-to-b md:from-[#FFEDCAFF] md:from-[0%]  md:via-[#FFEDCAD9] md:via-[80%] md:to-[#FFEDCA00] 
+
 	self-center
 `;
 

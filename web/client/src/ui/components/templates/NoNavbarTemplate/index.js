@@ -1,8 +1,9 @@
-import React, { Children, useEffect, useMemo } from "react";
-
-import { PageWrapper, MainContent, Wrapper } from "./styles";
+import React, { useContext } from "react";
+import HamburgerContext from "../../../../context/HamburgerViewContext";
 
 import BrandAbsoluted from "../../molecules/BrandAbsoluted";
+
+import { PageWrapper, MainContent, Wrapper } from "./styles";
 
 export default function NoNavbarTemplate({
 	hero,
@@ -12,7 +13,6 @@ export default function NoNavbarTemplate({
 	...props
 }) {
 	const { hamburgerView } = useContext(HamburgerContext);
-
 	return (
 		<PageWrapper hamburgerView={hamburgerView} {...props}>
 			<BrandAbsoluted />

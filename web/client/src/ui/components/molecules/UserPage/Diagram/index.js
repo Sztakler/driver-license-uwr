@@ -114,7 +114,7 @@ export default function Diagram({
 	if (type === "doughnut") {
 		return (
 			<DiagramContainer>
-				<Heading level={5} styles="absolute top-4 pb-2">
+				<Heading level={5} styles="md:absolute top-4 pb-2 text-center">
 					{diagramTitle}
 				</Heading>
 				<Doughnut data={data} options={o} />
@@ -123,7 +123,7 @@ export default function Diagram({
 	} else if (type === "vertical-bar") {
 		return (
 			<DiagramContainer>
-				<Heading level={5} styles="absolute top-4 pb-2">
+				<Heading level={5} styles="md:absolute top-4 pb-2 text-center">
 					{diagramTitle}
 				</Heading>
 				<Bar data={data} options={o} />

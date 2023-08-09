@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
-import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 import Button from "../../atoms/Button";
 import Text from "../../atoms/Text";
 import Image from "../../atoms/Image";
+import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 
 import {
 	SummaryContainer,
 	InnerTextBox,
 	InsideBackground,
 	Table,
-	Column,
+	StatisticContainer,
 	Statistic,
 	Points,
 } from "./styles";
@@ -54,39 +54,40 @@ export default function Summary() {
 
 	return (
 		<SummaryContainer>
-			<InnerTextBox positive={true}>
+			<InnerTextBox positive={results.scoredPoints >= 68}>
 				<InsideBackground>
-					<Text className="font-[Barriecito] text-[87px]">
+					<Text className="font-[Barriecito] max-xl:text-[125%] text-[4vw] max-xl:max-w-[300px] max-w-[600px] break-words max-xl:absolute max-xl:top-[24%] ">
 						{feedbackGenerator(results)}
 					</Text>
 					<Table>
-						<Column>
+						<StatisticContainer>
 							<Statistic>zdobyte punkty:</Statistic>
 							<Points>{results.scoredPoints}</Points>
-						</Column>
-						<Column>
+						</StatisticContainer>
+						<StatisticContainer>
 							<Statistic>dobre odpowiedzi:</Statistic>
 							<Points className="text-[#518402]">
 								{results.correctAnswers}
 							</Points>
-						</Column>
-						<Column>
+						</StatisticContainer>
+						<StatisticContainer>
 							<Statistic>błędne odpowiedzi:</Statistic>
 							<Points className="text-[#FF4412]">
 								{results.incorrectAnswers}
 							</Points>
-						</Column>
-						<Column>
+						</StatisticContainer>
+						<StatisticContainer>
 							<Statistic>pominięte odpowiedzi:</Statistic>
 							<Points className="text-[#FBBD1F]">
 								{results.skippedQuestions}
 							</Points>
-						</Column>
+						</StatisticContainer>
 					</Table>
 					<Button
 						primary
 						hover
-						size="l"
+						size="m"
+						className="mb-2 max-xl:absolute top-[72%] max-w-[280px]"
 						onClick={() => {
 							navigate("/egzamin");
 						}}
@@ -95,6 +96,7 @@ export default function Summary() {
 					</Button>
 					<Button
 						blank
+						className="max-xl:absolute top-[79.5%]"
 						onClick={() => {
 							navigate(`/egzamin/przeglad-odpowiedzi/${id}`);
 						}}

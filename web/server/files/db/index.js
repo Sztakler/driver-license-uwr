@@ -1,4 +1,4 @@
-const pool = require("../DatabaseConfiguration/database")
+const pool = require("../DatabaseConfiguration/database");
 
 const questionsCount = () => {
 	return pool.query(
@@ -6,7 +6,7 @@ const questionsCount = () => {
 		SELECT COUNT(*) AS record_count FROM questions;
 			`
 	);
-}
+};
 
 const practiceQuestions = (user_id) => {
 	return pool.query(
@@ -35,7 +35,7 @@ LIMIT 25;
     `,
 		[user_id]
 	);
-}
+};
 
 const examQuestions = () => {
 	return pool.query(
@@ -53,21 +53,29 @@ const examQuestions = () => {
       LIMIT 12
     );`
 	);
-}
+};
 
 const examResults = () => {
-	return pool.query(
-		"SELECT * FROM results ORDER BY RANDOM() LIMIT 1;"
-	);
-}
+	return pool.query("SELECT * FROM results ORDER BY RANDOM() LIMIT 1;");
+};
 
 const examResultsId = (itemId) => {
-	return pool.query(
-		`SELECT * FROM results WHERE id = ${itemId}`
-	);
-}
+	return pool.query(`SELECT * FROM results WHERE id = ${itemId}`);
+};
 
 const highKnowledgeQuestionsCount = (userId) => {
+	return pool.query(
+		`
+	SELECT COUNT(*)
+	AS record_count
+	FROM user_knowledge_levels
+	WHERE user_knowledge_levels.knowledge_level = 3 AND user_knowledge_levels.user_id = $1;
+		`,
+		[userId]
+	);
+};
+
+const mediumKnowledgeQuestionsCount = (userId) => {
 	return pool.query(
 		`
 	SELECT COUNT(*)
@@ -77,19 +85,7 @@ const highKnowledgeQuestionsCount = (userId) => {
 		`,
 		[userId]
 	);
-}
-
-const mediumKnowledgeQuestionsCount = (userId) => {
-	return pool.query(
-		`
-	SELECT COUNT(*)
-	AS record_count
-	FROM user_knowledge_levels
-	WHERE user_knowledge_levels.knowledge_level = 1 AND user_knowledge_levels.user_id = $1;
-		`,
-		[userId]
-	);
-}
+};
 
 const weeklyExams = (userId, from, to) => {
 	return pool.query(
@@ -100,25 +96,25 @@ const weeklyExams = (userId, from, to) => {
 		`,
 		[userId, from, to]
 	);
-}
+};
 
 const savedQuestions = (userId) => {
 	return pool.query(
 		"SELECT q.*, uk.knowledge_level " +
-		"FROM questions q " +
-		"LEFT JOIN user_knowledge_levels uk ON q.id = uk.question_id AND uk.user_id = $1 " +
-		"WHERE q.id = ANY (" +
-		"SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
-		");",
+			"FROM questions q " +
+			"LEFT JOIN user_knowledge_levels uk ON q.id = uk.question_id AND uk.user_id = $1 " +
+			"WHERE q.id = ANY (" +
+			"SELECT unnest(questions) FROM saved_questions WHERE user_id = $1" +
+			");",
 		[userId]
 	);
-}
+};
 
 const existingUserByEmail = (email) => {
 	return pool.query(`
 	SELECT * FROM USERS WHERE email = '${email}';
 	`);
-}
+};
 
 const insertUser = (name, email, hashedPassword) => {
 	return pool.query(`
@@ -136,7 +132,7 @@ const createSavedQuestionsEntryFor = (userId) => {
 	return pool.query(
 		`INSERT INTO saved_questions (user_id) VALUES ('${userId}');`
 	);
-}
+};
 
 const updateExamResults = (user_id, questions, summary) => {
 	return pool.query(`
@@ -148,13 +144,13 @@ const updateExamResults = (user_id, questions, summary) => {
 	)
 	RETURNING id;
 	`);
-}
+};
 
 const existingUserById = (user_id) => {
 	return pool.query(`
 	SELECT * FROM USERS WHERE user_id = '${user_id}';
 	`);
-}
+};
 
 const updateUserData = (newData, user_id) => {
 	return pool.query(
@@ -166,7 +162,7 @@ const updateUserData = (newData, user_id) => {
     WHERE id = ${user_id};`,
 		[newData.name, newData.email, newData.password]
 	);
-}
+};
 
 const updateSavedQuestion = (question_id, user_id) => {
 	return pool.query(`UPDATE saved_questions
@@ -176,18 +172,19 @@ const updateSavedQuestion = (question_id, user_id) => {
 						ELSE array_append(questions, ${question_id})
 				END
 		WHERE user_id = ${user_id};`);
-}
+};
 
 const updateUserKnowledgeLevels = (question_id, knowledgeLevel, user_id) => {
+	console.log("updating", question_id, knowledgeLevel, user_id);
 	return pool.query(
 		`      
   INSERT INTO user_knowledge_levels (user_id, question_id, knowledge_level)
       VALUES ($1, $2, $3)
   ON CONFLICT (user_id, question_id)
-      DO UPDATE SET knowledge_level = EXCLUDED.knowledge_level;`,
+      DO UPDATE SET knowledge_level = $3;`,
 		[user_id, question_id, knowledgeLevel]
 	);
-}
+};
 
 module.exports.questionsCount = questionsCount;
 module.exports.practiceQuestions = practiceQuestions;
