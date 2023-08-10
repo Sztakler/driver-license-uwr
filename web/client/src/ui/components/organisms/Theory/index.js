@@ -1,15 +1,17 @@
-import React from "react";
-
+import React, { useState } from "react";
 import Header from "../../organisms/Header";
 import Image from "../../atoms/Image";
 import MainContent from "../../organisms/MainContent";
+import Button from "../../atoms/Button";
 import znakiOstrzegawcze from "../../../../assets/images/svg/TextbookPage/znaki-ostrzegawcze/znaki-ostrzegawcze";
 import TextbookPageIllustrations from "../../../../assets/images/svg/TextbookPage/TextbookPageIllustrations";
 import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 
-import { Container, ScrolldownButton } from "./styles";
+import { Container, } from "./styles";
 
 export default function Theory({ navigation, content }) {
+	const [isTextbookOpen, setIsTextbookOpen] = useState(false);
+
 	const panelsContents = [
 		{
 			image: znakiOstrzegawcze.ExampleSVG,
@@ -151,26 +153,36 @@ export default function Theory({ navigation, content }) {
 		},
 	];
 
-	let scrollDown = () => {
-		document
-			.getElementById("MainContent")
-			.scrollIntoView({ behavior: "smooth", block: "nearest" });
-	};
-
-	return (
-		<Container>
-			<Header
-				title={"Podręcznik"}
-				subtitle={
-					"Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii zasad ruchu drogowego."
-				}
-				illustration={TextbookPageIllustrations.Image1}
-			>
-				<ScrolldownButton onClick={scrollDown}>
-					<Image src={Illustrations.ArrowDown}></Image>
-				</ScrolldownButton>
+	if (isTextbookOpen) {
+		return (
+			<Container>
+				<MainContent navigation={navigation} panelsContents={panelsContents} />
+			</Container>
+		);
+	} else {
+		return (
+			<Container>
+				<Header
+					title={"Podręcznik"}
+					subtitle={
+						"Ten darmowy podręcznik pozwoli ci szybko nauczyć się podstaw teorii zasad ruchu drogowego."
+					}
+					illustration={TextbookPageIllustrations.Image1}
+				>
+					<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[23px]">
+					<Button
+						primary
+						hover
+						onClick={() => { setIsTextbookOpen(true) }}
+						size="l"
+						className="max-md:max-w-[256px] max-md:h-[48px] max-md:text-[20px]"
+					>
+						Zacznij czytać
+					</Button>
+				</div>
 			</Header>
-			<MainContent navigation={navigation} panelsContents={panelsContents} />
-		</Container>
-	);
+			</Container >
+		);
+	}
+
 }

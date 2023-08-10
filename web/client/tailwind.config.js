@@ -67,7 +67,8 @@ module.exports = {
 				"exam-menu": "url(/src/assets/images/svg/ExamPage/egzamin.svg)",
 				"exam-menu-mobile":
 					"url(/src/assets/images/svg/ExamPage/egzamin-mobile.svg)",
-				"theory-menu": "url(/src/assets/images/svg/TextbookPage/graphic1.svg)",
+				"theory-menu": "url(/src/assets/images/svg/TextbookPage/podręcznik.svg)",
+				"theory-menu-mobile": "url(/src/assets/images/svg/TextbookPage/podręcznik-mobile.svg)",
 				login: "url(/src/assets/images/svg/LoginPage/zaloguj-się.svg)",
 				"login-mobile":
 					"url(/src/assets/images/svg/LoginPage/zaloguj-się-mobile.svg)",

@@ -3,12 +3,19 @@ import tw from "tailwind-styled-components";
 const HeaderContainer = tw.div`
 	flex
 	flex-col
-	mb-48
 	max-md:mb-10
 	lg:min-h-[calc(100vh-145px)]
 	w-full
 	items-center
 	max-w-[2648px]
+
+	max-md:bg-theory-menu-mobile
+	max-md:min-h-[662px]
+	max-md:max-h-[662px]
+	max-md:bg-no-repeat
+	max-md:bg-top
+	max-md:bg-auto
+	max-md:relative
 `;
 
 const TitleContainer = tw.div`
@@ -17,6 +24,16 @@ const TitleContainer = tw.div`
 	max-md:p-4
 	lg:px-[10vw]
 	w-full
+	min-w-full
+	container
+	md:px-[10vw]
+	max-md:h-[300px]
+	max-md:absolute
+	max-md:justify-center
+	max-md:items-center
+	max-md:text-center
+	max-md:top-[150px]
+	max-md:px-3
 `;
 
 const IllustrationContainer = tw.div`
@@ -25,20 +42,24 @@ const IllustrationContainer = tw.div`
 	relative
 	items-center
 	w-full 
-	h-[386px]
-	bg-theory-menu
-	bg-center
-	bg-no-repeat
-	bg-contain
+	h-[full]
+	min-[768px]:bg-theory-menu
+	min-[768px]:bg-center
+	min-[768px]:bg-no-repeat
+	min-[768px]:bg-contain
 	my-8
+	block
+	h-[371px]
+	max-md:hidden
 `;
 
 const Title = tw.div`
 	text-8xl
-	max-md:text-7xl
+	max-md:text-6xl
 	text-[#0d0d0d]
 	font-display
-	break-all
+	whitespace-break-spaces
+	mb-2
 `;
 
 const Subtitle = tw.div`
@@ -49,8 +70,11 @@ const Subtitle = tw.div`
 `;
 
 const Buttons = tw.div`
+	w-full
 	self-center
-	mt-4
+	mt-6
+	max-md:absolute
+	max-md:top-[410px]
 `;
 
 export {

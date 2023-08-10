@@ -1,10 +1,10 @@
 import React from "react";
+import { useLocation } from "react-router";
 
 import PageTemplate from "../components/templates/PageTemplate";
 import Navbar from "../components/organisms/Navbar";
 import Footer from "../components/organisms/Footer";
 import Theory from "../components/organisms/Theory";
-import { useLocation } from "react-router";
 
 const uuidv4 = require("uuid/v4");
 

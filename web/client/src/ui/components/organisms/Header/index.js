@@ -9,8 +9,6 @@ import {
 	Buttons,
 } from "./styles";
 
-import Image from "../../atoms/Image";
-
 export default function Header({ title, subtitle, illustration, children }) {
 	return (
 		<HeaderContainer>
