@@ -1,6 +1,14 @@
 import React from "react";
 import Image from "../../atoms/Image";
 
+import Text from "../../atoms/Text";
+import Button from "../../atoms/Button";
+import BulletList from "../../molecules/BulletList";
+import { useNavigate } from "react-router";
+import { useMediaQuery } from "react-responsive";
+import HomePageIllustrations from "../../../../assets/images/svg/HomePage/HomePageIllustrations";
+import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
+
 import {
 	HeroContainer,
 	PanelContainer,
@@ -9,14 +17,6 @@ import {
 	MobileBottomContainer,
 	MobileTopContainer,
 } from "./styles";
-
-import Text from "../../atoms/Text";
-import Button from "../../atoms/Button";
-import BulletList from "../../molecules/BulletList";
-import { useNavigate } from "react-router";
-import { useMediaQuery } from "react-responsive";
-import HomePageIllustrations from "../../../../assets/images/svg/HomePage/HomePageIllustrations";
-import Illustrations from "../../../../assets/images/svg/icons/Illustrations";
 
 export default function Hero() {
 	const navigate = useNavigate();
@@ -37,7 +37,7 @@ export default function Hero() {
 					<ImageContainer className="w-full h-[100%]">
 						<Image
 							className="w-full h-full max-w-full block"
-							src={HomePageIllustrations.HeroImage1}
+							src={HomePageIllustrations.HeroImage1_Desktop}
 						></Image>
 					</ImageContainer>
 					<div className="flex flex-col absolute top-[63%] left-[42%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
@@ -70,7 +70,7 @@ export default function Hero() {
 					<ImageContainer className="w-full h-full">
 						<Image
 							className=" h-full max-w-full block object-contain"
-							src={HomePageIllustrations.HeroImage2}
+							src={HomePageIllustrations.HeroImage2_Desktop}
 						></Image>
 					</ImageContainer>
 					<div className="flex flex-col absolute top-[66%] left-[67.3%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
@@ -103,7 +103,7 @@ export default function Hero() {
 					<ImageContainer className="w-full h-[100%]">
 						<Image
 							className="w-full h-full max-w-full block"
-							src={HomePageIllustrations.HeroImage3}
+							src={HomePageIllustrations.HeroImage3_Desktop}
 						></Image>
 					</ImageContainer>
 					<div className="flex flex-col absolute top-[35%] right-[61%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
@@ -143,7 +143,7 @@ export default function Hero() {
 					<ImageContainer className="w-full h-full">
 						<Image
 							className="w-full h-full max-w-full block"
-							src={HomePageIllustrations.HeroImage4}
+							src={HomePageIllustrations.HeroImage4_Desktop}
 						></Image>
 					</ImageContainer>
 					<div className="flex flex-col absolute top-[40%] left-[61%] -translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">

@@ -61,9 +61,12 @@ module.exports = {
 					"url(/src/assets/images/svg/Results/wynik-negatywny-mobile.svg)",
 				"positive-result-mobile":
 					"url(/src/assets/images/svg/Results/wynik-pozytywny-mobile.svg)",
-				"training-menu":
-					"url(/src/assets/images/svg/TrainingPage/graphic1.svg)",
-				"exam-menu": "url(/src/assets/images/svg/ExamPage/graphic1.svg)",
+				"training-menu": "url(/src/assets/images/svg/TrainingPage/trening.svg)",
+				"training-menu-mobile":
+					"url(/src/assets/images/svg/TrainingPage/trening-mobile.svg)",
+				"exam-menu": "url(/src/assets/images/svg/ExamPage/egzamin.svg)",
+				"exam-menu-mobile":
+					"url(/src/assets/images/svg/ExamPage/egzamin-mobile.svg)",
 				"theory-menu": "url(/src/assets/images/svg/TextbookPage/graphic1.svg)",
 				login: "url(/src/assets/images/svg/LoginPage/zaloguj-się.svg)",
 				"login-mobile":

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-
-import TrainingPageIllustrations from "../../../../assets/images/svg/TrainingPage/TrainingPageIllustrations";
+import { useMediaQuery } from "react-responsive";
 
 import Paragraph from "../../atoms/Paragraph";
 import Text from "../../atoms/Text";
@@ -31,16 +30,31 @@ export default function Training({ data, headings, ...props }) {
 		navigate("/trening/praktyka");
 	};
 
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
 	return (
 		<Container>
 			<HeaderContainer>
 				<TitleContainer>
 					<Title>Trening</Title>
-					<Subtitle className="mb-8 max-w-prose">
+					<Subtitle className="mb-[65px] max-w-prose">
 						Zapraszamy Cię na sesję treningową! TRENING to pytania egzaminacyjne
 						bez końca. Możesz użyć filtrów, aby wybrać pytania, których chcesz
 						się dziś uczyć.
 					</Subtitle>
+					{!isDesktop && (
+						<div className="flex flex-row flex-wrap w-full justify-center">
+							<Button
+								primary
+								hover
+								size="l"
+								className="max-md:max-w-[256px] max-md:h-[48px] max-md:text-[20px]"
+								onClick={scrollDown}
+							>
+								Wybór pytań
+							</Button>
+						</div>
+					)}
 				</TitleContainer>
 
 				<IllustrationContainer>
@@ -149,18 +163,24 @@ export default function Training({ data, headings, ...props }) {
 								<div></div>
 							)}
 						</MainContainer>
-					) : (
+					) : isDesktop ? (
 						<>
-							<div
-								className="w-full h-[382px] bg-training-menu bg-no-repeat bg-center bg-contain 	my-8
-"
-							></div>
+							<div className="w-full h-[382px] bg-training-menu bg-no-repeat bg-center bg-contain my-8"></div>
+
 							<div className="flex flex-row flex-wrap w-full gap-4 justify-center p-[23px] mt-6">
-								<Button primary hover onClick={scrollDown} size="l">
+								<Button
+									primary
+									hover
+									size="l"
+									className="max-md:max-w-[256px] max-md:h-[48px] max-md:text-[20px]"
+									onClick={scrollDown}
+								>
 									Wybór pytań
 								</Button>
 							</div>
 						</>
+					) : (
+						<></>
 					)}
 				</IllustrationContainer>
 			</HeaderContainer>

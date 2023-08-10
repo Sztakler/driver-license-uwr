@@ -25,6 +25,7 @@ const MainContent = tw.div`
 	relative
 	self-center
 	w-full
+	pt-12
 `;
 
 export { PageWrapper, HeroSection, MainContent };

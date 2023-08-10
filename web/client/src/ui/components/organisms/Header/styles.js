@@ -17,7 +17,6 @@ const TitleContainer = tw.div`
 	max-md:p-4
 	lg:px-[10vw]
 	w-full
-	pt-4
 `;
 
 const IllustrationContainer = tw.div`
@@ -35,8 +34,8 @@ const IllustrationContainer = tw.div`
 `;
 
 const Title = tw.div`
-	text-[90px]
-	max-md:text-[70px]
+	text-8xl
+	max-md:text-7xl
 	text-[#0d0d0d]
 	font-display
 	break-all

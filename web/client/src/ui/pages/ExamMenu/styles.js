@@ -4,8 +4,6 @@ const Container = tw.div`
 	flex
 	flex-col
 	max-md:flex-col
-	lg:min-h-[calc(100vh-115px)]
-	max-lg:min-h-screen
 	items-center
 `;
 
@@ -14,16 +12,27 @@ const HeaderContainer = tw.div`
 	flex-col
 	w-full
 	max-w-[2648px]
-	pt-4
+	max-md:bg-exam-menu-mobile
+	max-md:min-h-[662px]
+	max-md:max-h-[662px]
+	max-md:bg-no-repeat
+	max-md:bg-top
+	max-md:bg-auto
+	max-md:relative
 `;
 
 const TitleContainer = tw.div`
 	flex 
 	flex-col
-	lg:px-[10vw]
 	container
-	max-lg:px-16
-
+	md:px-[10vw]
+	max-md:h-[300px]
+	max-md:absolute
+	max-md:justify-center
+	max-md:items-center
+	max-md:text-center
+	max-md:top-[208px]
+	max-md:px-3
 `;
 
 const IllustrationContainer = tw.div`
@@ -33,15 +42,16 @@ const IllustrationContainer = tw.div`
 `;
 
 const Title = tw.div`
-	text-[90px]
+	text-8xl
+	max-md:text-6xl
 	text-[#0d0d0d]
 	font-display
 	whitespace-break-spaces
+	mb-2
 `;
 
 const Subtitle = tw.div`
-	text-sm
-	text-overflow
+	text-base
 	text-[#0d0d0d]
 `;
 

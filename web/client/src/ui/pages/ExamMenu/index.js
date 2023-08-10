@@ -17,6 +17,7 @@ import { useNavigate } from "react-router";
 import Paragraph from "../../components/atoms/Paragraph";
 import BulletList from "../../components/molecules/BulletList";
 import Button from "../../components/atoms/Button";
+import { useMediaQuery } from "react-responsive";
 
 export default function ExamMenuPage() {
 	const navigate = useNavigate();
@@ -31,49 +32,54 @@ export default function ExamMenuPage() {
 		],
 	];
 
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
 	return (
 		<PageTemplate header={<Navbar />}>
 			<Container>
 				<HeaderContainer>
 					<TitleContainer>
 						<Title>Egzamin</Title>
-						<Subtitle className="mb-8 text-[18px] max-w-prose">
+						<Subtitle className="mb-[65px] max-w-prose">
 							Symulacja egzaminu to tryb, w którym możesz przetestować nabyte
-							przez siebie umiejętności. Odwzorowaliśmy dla Ciebie formę
-							egzaminu, tak żeby na państwowym egzaminie nic Cię nie zaskoczyło.
-							Pamiętaj, że w tym trybie nie możesz cofać pytań.
+							przez siebie umiejętności w formie wzorowanej na państwowym
+							egzaminie. Pamiętaj, że w tym trybie nie możesz cofać pytań!
 						</Subtitle>
+						{!isDesktop && (
+							<div className="flex flex-row flex-wrap w-full justify-center">
+								<Button
+									primary
+									hover
+									size="l"
+									className="max-md:max-w-[256px] max-md:h-[48px] max-md:text-[20px]"
+									onClick={() => navigate("/egzamin/test")}
+								>
+									Rozpocznij egzamin
+								</Button>
+							</div>
+						)}
 					</TitleContainer>
 
-					<IllustrationContainer>
-						<div className="block bg-exam-menu w-full h-[371px] bg-center bg-no-repeat bg-contain"></div>
-					</IllustrationContainer>
-					<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[23px]">
-						<Button primary hover size="l">
-							Poczytaj o egzaminie
-						</Button>
-						<Button
-							primary
-							hover
-							onClick={() => navigate("/egzamin/test")}
-							size="l"
-						>
-							Rozpocznij egzamin
-						</Button>
-					</div>
+					{isDesktop ? (
+						<>
+							<IllustrationContainer>
+								<div className="block bg-exam-menu w-full h-[371px] bg-center bg-no-repeat bg-contain"></div>
+							</IllustrationContainer>
+							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[23px]">
+								<Button
+									primary
+									hover
+									onClick={() => navigate("/egzamin/test")}
+									size="l"
+								>
+									Rozpocznij egzamin
+								</Button>
+							</div>
+						</>
+					) : (
+						<></>
+					)}
 				</HeaderContainer>
-
-				{/* TODO: This is only placeholder. Consult with Karolina how to navigate to section below (scrolldown, new path, replace current path content). */}
-				<div className="p-32 grid grid-cols-2">
-					<div>
-						<Paragraph>Egzamin teoretyczny składa się z 32 pytań:</Paragraph>
-						<BulletList points={points[0]} bullet="•"></BulletList>
-					</div>
-					<div className="max-w-prose">
-						<Paragraph>Czas na udzielenie odpowiedzi:</Paragraph>
-						<BulletList points={points[1]} bullet="•"></BulletList>
-					</div>
-				</div>
 			</Container>
 		</PageTemplate>
 	);

@@ -5,7 +5,6 @@ const UserContainer = tw.div`
 	flex-row
 	w-full
 	px-56
-	mt-12
 
 	max-lg:px-8
 	max-md:px-4

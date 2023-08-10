@@ -4,9 +4,6 @@ const Container = tw.div`
 		flex
 		flex-col
 		max-md:flex-col
-		lg:min-h-[calc(100vh-91px)]
-		h-[calc(100vh-91px)]
-		max-lg:min-h-screen
 		items-center
 `;
 
@@ -17,14 +14,27 @@ const HeaderContainer = tw.div`
 		w-full
 		items-center
 		max-w-[2648px]
-		pt-4
+		max-md:bg-training-menu-mobile
+		max-md:min-h-[662px]
+		max-md:max-h-[662px]
+		max-md:bg-no-repeat
+		max-md:bg-top
+		max-md:bg-auto
+		max-md:relative
 `;
 
 const TitleContainer = tw.div`
     flex 
     flex-col
-		lg:px-[10vw]
 		w-full
+		md:px-[10vw]
+		max-md:h-[300px]
+		max-md:absolute
+		max-md:justify-center
+		max-md:items-center
+		max-md:text-center
+		max-md:top-[208px]
+		max-md:p-4
 `;
 
 const IllustrationContainer = tw.div`
@@ -55,13 +65,15 @@ const Content = tw.div`
 `;
 
 const Title = tw.div`
-    text-[90px]
-    text-[#0d0d0d]
+    text-8xl
+		max-md:text-6xl
+		text-[#0d0d0d]
     font-display
+		mb-2
 `;
 
 const Subtitle = tw.div`
-    text-[18px]
+    text-base
     text-overflow
     text-[#0d0d0d]
 `;
@@ -77,7 +89,7 @@ const PanelsScroller = tw.div`
 
     snap-mandatory
     snap-x
-    scroll-pl-10 // add padding to scroll
+    scroll-pl-10
     scrollbar
 `;
 

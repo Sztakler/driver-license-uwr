@@ -120,6 +120,7 @@ export default function Navbar(props) {
 						navbar
 						onClick={() => {
 							navigate("/egzamin");
+							setNewHamburgerView(false);
 						}}
 					>
 						<Text className="	italic underline underline-offset-2 font-medium">
@@ -143,6 +144,7 @@ export default function Navbar(props) {
 									size={link.fontSize}
 									onClick={() => {
 										navigate(link.navigationTarget);
+										setNewHamburgerView(false);
 									}}
 								>
 									{link.name}

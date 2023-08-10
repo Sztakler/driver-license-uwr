@@ -13,7 +13,8 @@ const NavbarContainer = tw.div`
 	items-center 
 	md:justify-between
 	max-md:justify-center
-	md:px-8
+	md:pr-24
+	md:pl-32
 	md:pb-8
 	bg-gradient-to-b from-[0px] from-[#FFF1DBff] via-[90px]  via-[#FFF1DBff] to-[#FFFBF300] to-[130px] 
 	${(props) =>
@@ -25,13 +26,12 @@ const NavbarContainer = tw.div`
 const BrandTitle = tw.div`
 	block
 	text-2xl 
-	px-5
 	py-2
 	hover:cursor-pointer
 
 	max-md:absolute
-	max-md:top-0
-	max-md:left-0
+	max-md:top-[3px]
+	max-md:left-4
 `;
 
 const Shortcut = tw.div`
