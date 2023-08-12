@@ -21,6 +21,7 @@ const StyledInput = tw.input`
 	${(props) => props.fixedWidth && fixedWidthClasses}
 	${(props) => props.type == "radio" && inputRadioClasses}
 	${(props) => props.type == "checkbox" && inputCheckboxClasses}
+	${(props) => props.active == true && "bg-red-400"}
 `;
 
 const StyledTextarea = tw.textarea``;

@@ -4,7 +4,6 @@ import Illustrations from "../../../../../assets/images/svg/icons/Illustrations"
 
 import Text from "../../../atoms/Text";
 import Input from "../../../atoms/Input";
-import Paragraph from "../../../atoms/Paragraph";
 import Image from "../../../atoms/Image";
 import Button from "../../../atoms/Button";
 
@@ -12,6 +11,7 @@ import {
 	ListAlign,
 	InnerContainer,
 	ListItem,
+	AboveHeader,
 	Header,
 	FiltersList,
 	Filter,
@@ -25,6 +25,7 @@ import {
 	Questions,
 	Placeholder,
 } from "./styles";
+import { useMediaQuery } from "react-responsive";
 
 function renderAnswers(task) {
 	if (task.zakres_struktury === "PODSTAWOWY") {
@@ -84,6 +85,7 @@ export default function SavedQuestions() {
 	const [tasks, setTasks] = useState([]);
 	const [filteredTasks, setFilteredTasks] = useState([]);
 	const [questionsLoaded, setQuestionsLoaded] = useState(false);
+	const [mobileFiltersDisplayed, setMobileFiltersDisplayed] = useState(false);
 
 	function getSavedQuestions() {
 		return fetch("http://localhost:5000/api/saved-questions", {
@@ -212,13 +214,46 @@ export default function SavedQuestions() {
 		return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 	}
 
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
 	return (
 		<ListAlign>
-			<Text className="ml-auto mr-2 pb-2">
-				Liczba zapisanych pytań: {tasks.length}
-			</Text>
+			<AboveHeader>
+				{!isDesktop && (
+					<Button
+						blank
+						className="underline underline-offset-2 font-medium"
+						onClick={() => {
+							setMobileFiltersDisplayed(true);
+						}}
+					>
+						Filtruj
+					</Button>
+				)}
+
+				<Text className="md:ml-auto">
+					Liczba zapisanych pytań: {tasks.length}
+				</Text>
+			</AboveHeader>
 			<InnerContainer id="scrollable">
-				<Header>
+				<Header mobileView={mobileFiltersDisplayed}>
+					{!isDesktop && (
+						<>
+							<Text className="text-xl font-medium mb-5">
+								Filtruj zapisane pytania
+							</Text>
+							<Button
+								bubble
+								className="absolute left-5 top-7"
+								size="m"
+								onClick={() => {
+									setMobileFiltersDisplayed(false);
+								}}
+							>
+								<Image src={Illustrations.Cancel} />
+							</Button>
+						</>
+					)}
 					<FiltersList>
 						<Name>Typ pytania:</Name>
 						<Filter>
@@ -233,7 +268,9 @@ export default function SavedQuestions() {
 									handleCheckboxChange("PODSTAWOWE");
 								}}
 							></Input>
-							<Paragraph>Podstawowe</Paragraph>
+							<Text className="my-auto" active={filtersPicked.PODSTAWOWE}>
+								Podstawowe
+							</Text>
 						</Filter>
 						<Filter>
 							<Input
@@ -247,7 +284,9 @@ export default function SavedQuestions() {
 									handleCheckboxChange("SPECJALISTYCZNE");
 								}}
 							></Input>
-							<Paragraph>Specjalistyczne</Paragraph>
+							<Text className="my-auto" active={filtersPicked.SPECJALISTYCZNE}>
+								Specjalistyczne
+							</Text>
 						</Filter>
 					</FiltersList>
 
@@ -265,7 +304,9 @@ export default function SavedQuestions() {
 									handleCheckboxChange("NISKI");
 								}}
 							></Input>
-							<Paragraph>Niski</Paragraph>
+							<Text className="my-auto" active={filtersPicked.NISKI}>
+								Niski
+							</Text>
 						</Filter>
 						<Filter>
 							<Input
@@ -279,7 +320,9 @@ export default function SavedQuestions() {
 									handleCheckboxChange("ŚREDNI");
 								}}
 							></Input>
-							<Paragraph>Średni</Paragraph>
+							<Text className="my-auto" active={filtersPicked.ŚREDNI}>
+								Średni
+							</Text>
 						</Filter>
 						<Filter>
 							<Input
@@ -293,7 +336,9 @@ export default function SavedQuestions() {
 									handleCheckboxChange("WYSOKI");
 								}}
 							></Input>
-							<Paragraph>Wysoki</Paragraph>
+							<Text className="my-auto" active={filtersPicked.WYSOKI}>
+								Wysoki
+							</Text>
 						</Filter>
 					</FiltersList>
 				</Header>
@@ -336,24 +381,28 @@ export default function SavedQuestions() {
 											</Text>
 										</div>
 										<div className="flex flex-col text-left self-end w-[230px]">
-											<Text className="font-normal text-[15px]">
-												Rodzaj pytania:{" "}
-												<Text className="font-light">
-													{capitalizeFirstLetter(task.zakres_struktury)}
+											{isDesktop && (
+												<Text className="font-normal text-[15px]">
+													Rodzaj pytania:{" "}
+													<Text className="font-light">
+														{capitalizeFirstLetter(task.zakres_struktury)}
+													</Text>
 												</Text>
-											</Text>
-											<Text className="font-normal text-[15px]">
-												Znajomość pytania:{" "}
-												<Text className="font-light">
-													{capitalizeFirstLetter(
-														task.knowledge_level === 2
-															? "WYSOKI"
-															: task.knowledge_level === 1
-															? "ŚREDNI"
-															: "NISKI"
-													)}
+											)}
+											{isDesktop && (
+												<Text className="font-normal text-[15px]">
+													Znajomość pytania:{" "}
+													<Text className="font-light">
+														{capitalizeFirstLetter(
+															task.knowledge_level === 2
+																? "WYSOKI"
+																: task.knowledge_level === 1
+																? "ŚREDNI"
+																: "NISKI"
+														)}
+													</Text>
 												</Text>
-											</Text>
+											)}
 										</div>
 									</ItemHeader>
 									{expandedTaskIdx === index && (

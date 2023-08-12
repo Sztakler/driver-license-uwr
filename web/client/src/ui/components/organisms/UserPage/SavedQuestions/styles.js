@@ -4,22 +4,24 @@ const ListAlign = tw.div`
 	flex
 	flex-col
 	px-48
-	min-h-[calc(100vh-310px)]
-	mb-24
 
 	max-lg:px-8
 	max-md:px-4
+	max-md:mb-0
 	`;
 
 const InnerContainer = tw.div`
 	flex
 	flex-col
 	self-center
-	rounded-[39px]
-	h-[784px]
+	lg:h-[70vh]
 	overflow-y-scroll
 	w-full
-`;
+	max-lg:max-h-[calc(100vh-325px)]
+	max-md:border-t
+	max-md:border-[#CECECE]
+	md:rounded-[39px]
+	`;
 
 const Questions = tw.div`
 	flex
@@ -48,6 +50,7 @@ const ItemHeader = tw.button`
 	justify-between
 	border-b
 	border-[#CECECE]
+	max-md:px-4
 `;
 
 const ItemBody = tw.div`
@@ -59,6 +62,8 @@ const ItemBody = tw.div`
 	gap-12
 	border-b
 	border-[#CECECE]
+
+	max-md:px-4
 `;
 
 const ImageBox = tw.div`
@@ -94,6 +99,15 @@ const Answer = tw.div`
 	gap-2
 `;
 
+const AboveHeader = tw.div`
+	flex
+	flex-row
+	w-full
+	justify-between
+	pb-2
+	my-2
+`;
+
 const Header = tw.div`
 	flex
 	flex-row
@@ -101,12 +115,16 @@ const Header = tw.div`
 	sticky
 	top-0
 	z-10
-	bg-[#FCF1DB]
+	md:bg-[#FCF1DB]
 	gap-8
 	py-8
 	px-16
 	border-b
 	border-[#CECECE]
+	${(props) =>
+		props.mobileView
+			? "max-md:flex max-md:h-[calc(100vh-80px)] max-md:px-24 max-md:w-screen left-0 max-md:bg-gradient-to-t max-md:from-[#FFE9C8] max-md:to-[#FFF8EB] max-md:absolute max-md:justify-start max-md:items-center max-md:flex-col"
+			: "max-md:hidden"}
 `;
 
 const FiltersList = tw.div`
@@ -114,17 +132,23 @@ const FiltersList = tw.div`
 	flex-row
 	gap-2
 	items-center
+
+	max-md:flex-col
+	max-md:w-[160px]
 `;
 
 const Filter = tw.div`
 	flex
 	flex-row
 	flex-wrap
-	items-center
+	md:items-center
+	max-md:w-full
 `;
 
 const Name = tw.text`
   font-medium
+	max-md:mr-auto
+	max-md:mb-6
 `;
 
 const Placeholder = tw.div`
@@ -141,6 +165,7 @@ export {
 	InnerContainer,
 	ListItem,
 	Header,
+	AboveHeader,
 	FiltersList,
 	Filter,
 	Name,

@@ -4,8 +4,7 @@ const SettingsAlign = tw.div`
 	px-48
 	mb-24
 	mt-6
-	max-lg:px-8
-	max-md:px-4
+	max-lg:px-4
 `;
 
 const InnerContainer = tw.div`
@@ -17,13 +16,16 @@ const InnerContainer = tw.div`
 	self-center
 	rounded-[39px]
 	w-full
-	bg-gradient-to-b from-[#fff4d6] to-[#fff8e5]
+	md:bg-gradient-to-b from-[#fff4d6] to-[#fff8e5]
+	max-lg:max-h-[calc(100vh-410px)]
+	max-lg:py-6
+	max-lg:overflow-y-auto
 `;
 
 const Form = tw.form`
 	flex
 	flex-col
-	min-h-[700px]
+	lg:min-h-[700px]
 	justify-evenly
 	h-full
 

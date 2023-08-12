@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StatisticsAlign, InnerContainer } from "./styles";
 import Diagram from "../../../molecules/UserPage/Diagram";
+import { useMediaQuery } from "react-responsive";
 
 async function getStatistics(endDate) {
 	let tempDate = new Date(endDate.getTime());
@@ -58,6 +59,7 @@ export default function Statistics() {
 		labels: [],
 		datasets: [],
 	});
+	const [mobileDiagramPick, setMobileDiagramPick] = useState(0);
 
 	function assignBackgroundColor(exams) {
 		if (exams < 2) return "#FF6230";
@@ -162,22 +164,42 @@ export default function Statistics() {
 		setEndDate(new Date(tempDate.setDate(tempDate.getDate() + 6)));
 	}
 
+	function pickRightDiagram() {
+		setMobileDiagramPick(1);
+	}
+
+	function pickLeftDiagram() {
+		setMobileDiagramPick(0);
+	}
+
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
 	return (
 		<StatisticsAlign>
 			<InnerContainer>
-				<Diagram
-					type="doughnut"
-					data={doughnutData}
-					diagramTitle={"Procent przerobionego materiału"}
-				/>
-				<Diagram
-					type="vertical-bar"
-					data={verticalData}
-					diagramTitle={"Liczba ukończonych egzaminów"}
-					moveByWeekBackwards={moveByWeekBackwards}
-					moveByWeekForwards={moveByWeekForwards}
-					endDate={endDate}
-				/>
+				{isDesktop || (!isDesktop && mobileDiagramPick === 0) ? (
+					<Diagram
+						type="doughnut"
+						data={doughnutData}
+						diagramTitle={"Procent przerobionego materiału"}
+						pickRightDiagram={pickRightDiagram}
+					/>
+				) : (
+					""
+				)}
+				{isDesktop || (!isDesktop && mobileDiagramPick === 1) ? (
+					<Diagram
+						type="vertical-bar"
+						data={verticalData}
+						diagramTitle={"Liczba ukończonych egzaminów"}
+						moveByWeekBackwards={moveByWeekBackwards}
+						moveByWeekForwards={moveByWeekForwards}
+						endDate={endDate}
+						pickLeftDiagram={pickLeftDiagram}
+					/>
+				) : (
+					""
+				)}
 			</InnerContainer>
 		</StatisticsAlign>
 	);

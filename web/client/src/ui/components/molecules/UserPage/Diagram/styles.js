@@ -6,6 +6,7 @@ const DiagramContainer = tw.div`
 	relative
 	justify-center
 	items-center
+	max-md:justify-start
 	border
 	border-[#0D0D0D]
 	rounded-[39px]
@@ -13,12 +14,23 @@ const DiagramContainer = tw.div`
 	bg-[#FFFAED]
 	w-[600px]
 	h-[500px]
+	max-md:h-[350px]
 	break-words
 	whitespace-normal
 
 	p-4
 	pt-16
-	max-md:pt-4
+	max-md:pt-0
+	max-md:px-2
+`;
+
+const Header = tw.div`
+	flex
+	flex-row
+	w-full
+	justify-center
+	gap-4
+	mb-4
 `;
 
 const DateRange = tw.div`
@@ -30,4 +42,4 @@ const DateRange = tw.div`
 	mt-4
 	`;
 
-export { DiagramContainer, DateRange };
+export { DiagramContainer, Header, DateRange };

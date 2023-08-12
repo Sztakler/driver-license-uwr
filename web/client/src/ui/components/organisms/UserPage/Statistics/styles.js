@@ -7,6 +7,8 @@ const StatisticsAlign = tw.div`
 
 	max-lg:px-8
 	max-md:px-4
+	max-md:mb-0
+	max-md:mt-0
 	`;
 
 const InnerContainer = tw.div`
@@ -21,6 +23,7 @@ const InnerContainer = tw.div`
 
 	max-md:px-2
 	max-md:w-full
+	max-md:pt-0
 	`;
 
 export { StatisticsAlign, InnerContainer };

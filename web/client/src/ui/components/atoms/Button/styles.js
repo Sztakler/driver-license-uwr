@@ -16,7 +16,7 @@ const buttonUnderscoredClasses =
 const buttonBoldClasses = "font-bold";
 
 const buttonBubbleClasses =
-	"flex bg-white items-center justify-center rounded-full cursor-pointer border-2 border-black";
+	"flex bg-[#FFF0CB] items-center justify-center rounded-full cursor-pointer";
 
 export {
 	buttonPrimaryClasses,

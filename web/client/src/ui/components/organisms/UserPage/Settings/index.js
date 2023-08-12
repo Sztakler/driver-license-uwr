@@ -125,9 +125,9 @@ export default function Settings() {
 							type="submit"
 							primary
 							hover
-							className="w-[300px] h-[42px] self-end"
+							className="w-[300px] h-[42px] self-end max-md:absolute bottom-4"
 						>
-							Potwierdź
+							Zapisz zmiany
 						</Button>
 					</VerticalContainer>
 				</Form>

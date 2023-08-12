@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageTemplate from "../components/templates/PageTemplate";
 import Navbar from "../components/organisms/Navbar";
 import Training from "../components/organisms/Training";

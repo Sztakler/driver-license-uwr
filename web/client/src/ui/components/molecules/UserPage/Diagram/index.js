@@ -13,9 +13,12 @@ import { Doughnut, Bar } from "react-chartjs-2";
 
 import Heading from "../../../atoms/Heading";
 import Image from "../../../atoms/Image";
+import Text from "../../../atoms/Text";
+
 import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
 
-import { DiagramContainer, DateRange } from "./styles";
+import { DiagramContainer, Header, DateRange } from "./styles";
+import { useMediaQuery } from "react-responsive";
 
 export default function Diagram({
 	type,
@@ -24,6 +27,8 @@ export default function Diagram({
 	moveByWeekBackwards,
 	moveByWeekForwards,
 	endDate,
+	pickLeftDiagram,
+	pickRightDiagram,
 }) {
 	function convertDateToString(date) {
 		let day =
@@ -62,6 +67,8 @@ export default function Diagram({
 		BarElement,
 		Title
 	);
+
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
 	let tickConfiguration =
 		type === "vertical-bar"
@@ -114,18 +121,34 @@ export default function Diagram({
 	if (type === "doughnut") {
 		return (
 			<DiagramContainer>
-				<Heading level={5} styles="md:absolute top-4 pb-2 text-center">
-					{diagramTitle}
-				</Heading>
+				<Header styles="md:absolute top-4 pb-2 ">
+					<Text className="text-[18px] text-center">{diagramTitle}</Text>
+					{!isDesktop ? (
+						<Image
+							src={Illustrations.ArrowRightAlternative}
+							onClick={pickRightDiagram}
+						/>
+					) : (
+						""
+					)}
+				</Header>
 				<Doughnut data={data} options={o} />
 			</DiagramContainer>
 		);
 	} else if (type === "vertical-bar") {
 		return (
 			<DiagramContainer>
-				<Heading level={5} styles="md:absolute top-4 pb-2 text-center">
-					{diagramTitle}
-				</Heading>
+				<Header styles="md:absolute top-4 pb-2 ">
+					{!isDesktop ? (
+						<Image
+							src={Illustrations.ArrowLeftAlternative}
+							onClick={pickLeftDiagram}
+						/>
+					) : (
+						""
+					)}
+					<Text className="text-[18px] text-center">{diagramTitle}</Text>
+				</Header>
 				<Bar data={data} options={o} />
 				<DateRange>
 					<Image
