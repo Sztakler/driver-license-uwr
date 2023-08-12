@@ -2,7 +2,7 @@ module.exports = {
 	content: ["./src/**/*.{html,js}"],
 	theme: {
 		fontFamily: {
-			display: ["Barriecito", "cursive"],
+			display: ["JEZUSMARIA", "sans-serif"],
 			sans: ["Inter", "sans-serif"],
 			altInter: ["Inter", "cursive"],
 			rampart: ["Rampart One", "cursive"],
