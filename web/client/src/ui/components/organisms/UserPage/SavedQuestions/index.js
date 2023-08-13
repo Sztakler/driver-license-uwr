@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
 
 import Text from "../../../atoms/Text";
 import Input from "../../../atoms/Input";
 import Image from "../../../atoms/Image";
+import Video from "../../../atoms/Video";
 import Button from "../../../atoms/Button";
 
 import {
@@ -28,6 +29,8 @@ import {
 import { useMediaQuery } from "react-responsive";
 
 function renderAnswers(task) {
+
+
 	if (task.zakres_struktury === "PODSTAWOWY") {
 		return (
 			<Answers row={true}>
@@ -87,6 +90,7 @@ export default function SavedQuestions() {
 	const [questionsLoaded, setQuestionsLoaded] = useState(false);
 	const [mobileFiltersDisplayed, setMobileFiltersDisplayed] = useState(false);
 
+
 	function getSavedQuestions() {
 		return fetch("http://localhost:5000/api/saved-questions", {
 			method: "GET",
@@ -119,30 +123,30 @@ export default function SavedQuestions() {
 					task.zakres_struktury === "PODSTAWOWY"
 						? filtersPicked.PODSTAWOWE
 						: task.zakres_struktury === "SPECJALISTYCZNY"
-						? filtersPicked.SPECJALISTYCZNE
-						: false,
+							? filtersPicked.SPECJALISTYCZNE
+							: false,
 					task.knowledge_level === 0 || task.knowledge_level === null
 						? filtersPicked.NISKI
 						: task.knowledge_level === 1
-						? filtersPicked.ŚREDNI
-						: task.knowledge_level === 2
-						? filtersPicked.WYSOKI
-						: false
+							? filtersPicked.ŚREDNI
+							: task.knowledge_level === 2
+								? filtersPicked.WYSOKI
+								: false
 				);
 
 				return (
 					(task.zakres_struktury === "PODSTAWOWY"
 						? filtersPicked.PODSTAWOWE
 						: task.zakres_struktury === "SPECJALISTYCZNY"
-						? filtersPicked.SPECJALISTYCZNE
-						: false) &&
+							? filtersPicked.SPECJALISTYCZNE
+							: false) &&
 					(task.knowledge_level === 0 || task.knowledge_level === null
 						? filtersPicked.NISKI
 						: task.knowledge_level === 1
-						? filtersPicked.ŚREDNI
-						: task.knowledge_level === 2
-						? filtersPicked.WYSOKI
-						: false)
+							? filtersPicked.ŚREDNI
+							: task.knowledge_level === 2
+								? filtersPicked.WYSOKI
+								: false)
 				);
 			})
 		);
@@ -377,6 +381,9 @@ export default function SavedQuestions() {
 												src={Illustrations.Plus}
 											></Image>
 											<Text className="font-medium text-base max-w-[900px] text-left">
+												{!isDesktop && (
+													<Text className="font-normal">({capitalizeFirstLetter(task.zakres_struktury.slice(0, 1))}) </Text>
+												)}
 												{task.pytanie}
 											</Text>
 										</div>
@@ -397,8 +404,8 @@ export default function SavedQuestions() {
 															task.knowledge_level === 2
 																? "WYSOKI"
 																: task.knowledge_level === 1
-																? "ŚREDNI"
-																: "NISKI"
+																	? "ŚREDNI"
+																	: "NISKI"
 														)}
 													</Text>
 												</Text>
@@ -408,13 +415,18 @@ export default function SavedQuestions() {
 									{expandedTaskIdx === index && (
 										<ItemBody>
 											<ImageBox>
-												<Image exam src={task.media} />
+												{task.media.endsWith(".mp4")
+													? <Video src={task.media} id="media-video" controls />
+													: <Image exam src={task.media} />
+												}
 											</ImageBox>
 											<TaskData>
 												{renderAnswers(task)}
-												<Button blank className="self-start">
+												<Button blank bubble={!isDesktop} size="l" className="self-start max-md:absolute max-md:right-0 max-md:bottom-0 max-md:p-3">
 													<Image src={Illustrations.Explanation} />
-													<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
+													{isDesktop && (
+														<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
+													)}
 												</Button>
 											</TaskData>
 										</ItemBody>

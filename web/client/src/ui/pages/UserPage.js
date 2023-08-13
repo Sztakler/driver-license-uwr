@@ -20,10 +20,12 @@ export default function UserPage() {
 	return (
 		<PageTemplate header={<Navbar />}>
 			<User />
+			<div className="max-lg:px-4">
 			<ViewsNavigation
 				selectedView={selectedView}
 				changeSelectedView={changeSelectedView}
-			/>
+				/>
+				</div>
 			{selectedView === 0 ? (
 				<Statistics />
 			) : selectedView === 1 ? (

@@ -17,7 +17,7 @@ const InnerContainer = tw.div`
 	lg:h-[70vh]
 	overflow-y-scroll
 	w-full
-	max-lg:max-h-[calc(100vh-325px)]
+	max-lg:max-h-[calc(100vh-357px)]
 	max-md:border-t
 	max-md:border-[#CECECE]
 	md:rounded-[39px]
@@ -60,6 +60,7 @@ const ItemBody = tw.div`
 	flex-row
 	flex-wrap
 	gap-12
+	max-md:gap-0
 	border-b
 	border-[#CECECE]
 
@@ -68,8 +69,11 @@ const ItemBody = tw.div`
 
 const ImageBox = tw.div`
 	flex
-	max-w-[758px]
-	max-h-[428px]
+	aspect-[758/428]
+	max-lg:min-w-[86vw]
+	lg:min-w-[526px]
+	lg:min-h-[296px]
+	max-h-[300px]
 
 	overflow-hidden
 	border-2
@@ -84,12 +88,17 @@ const TaskData = tw.div`
 	flex-1
 	py-6
 	gap-12
+	relative
+	max-md:pb-12
 `;
 
 const Answers = tw.div`
 	flex
-	flex-col
 	gap-4
+	${(props) =>
+	props.row
+		? "flex-row justify-center items-center"
+		: "flex-col"}
 `;
 
 const Answer = tw.div`

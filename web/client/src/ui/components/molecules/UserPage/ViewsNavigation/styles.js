@@ -10,7 +10,13 @@ const ViewsNavigationContainer = tw.div`
 	gap-2
 
 	max-lg:px-8
+	max-lg:my-4
 	max-md:px-4
+	max-lg:bg-gradient-to-b
+	max-lg:from-[#FEDDAC]
+	max-lg:via-[#FFE9C8]
+	max-lg:to-[#FFF1DB]
+	max-lg:rounded-[18px]
 	`;
 
 const NavigationItem = tw.div`

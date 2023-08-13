@@ -17,7 +17,7 @@ const InnerContainer = tw.div`
 	rounded-[39px]
 	w-full
 	md:bg-gradient-to-b from-[#fff4d6] to-[#fff8e5]
-	max-lg:max-h-[calc(100vh-410px)]
+	max-lg:max-h-[calc(100vh-426px)]
 	max-lg:py-6
 	max-lg:overflow-y-auto
 `;

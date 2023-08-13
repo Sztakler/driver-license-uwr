@@ -7,7 +7,7 @@ const imageTileLogoClasses =
 
 const imageIconClasses = "absolute w-9 h-auto mr-4 right-0";
 
-const imageExamClasses = "w-full";
+const imageExamClasses = "w-full object-cover bg-no-repeat";
 
 const imageTheoryClasses = "min-h-[20rem] w-auto";
 
