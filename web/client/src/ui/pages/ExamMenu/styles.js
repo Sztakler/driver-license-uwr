@@ -38,7 +38,7 @@ const TitleContainer = tw.div`
 const IllustrationContainer = tw.div`
 	flex
 	flex-col
-	my-8
+	mb-8
 `;
 
 const Title = tw.div`
@@ -53,6 +53,8 @@ const Title = tw.div`
 const Subtitle = tw.div`
 	text-base
 	text-[#0d0d0d]
+	h-[140px]
+    max-w-prose
 `;
 
 export {

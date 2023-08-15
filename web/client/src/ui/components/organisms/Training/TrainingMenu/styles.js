@@ -10,41 +10,41 @@ const Container = tw.div`
 const HeaderContainer = tw.div`
 		flex
 		flex-col
-		min-h-full
 		w-full
-		items-center
 		max-w-[2648px]
-		max-md:bg-training-menu-mobile
-		max-md:min-h-[662px]
-		max-md:max-h-[662px]
+        max-md:bg-training-menu-mobile
+		max-md:max-h-[calc(98vh-83px)]
+        max-md:min-h-[calc(98vh-83px)]
 		max-md:bg-no-repeat
 		max-md:bg-top
 		max-md:bg-auto
 		max-md:relative
+        
 `;
 
 const TitleContainer = tw.div`
     flex 
     flex-col
-		w-full
-		md:px-[10vw]
-		max-md:h-[300px]
-		max-md:absolute
-		max-md:justify-center
-		max-md:items-center
-		max-md:text-center
-		max-md:top-[208px]
-		max-md:p-4
+    w-full
+    md:px-[10vw]
+    max-md:h-[300px]
+    max-md:absolute
+    max-md:justify-center
+    max-md:items-center
+    max-md:text-center
+    max-md:top-[208px]
+    max-md:p-4
 `;
 
 const IllustrationContainer = tw.div`
     flex
     flex-col
-		w-full
+    w-full
+    mb-8
 `;
 
 const MainContainer = tw.div`
-		hidden
+	hidden
     max-md:flex-col
     h-full
 `;
@@ -76,6 +76,8 @@ const Subtitle = tw.div`
     text-base
     text-overflow
     text-[#0d0d0d]
+    h-[140px]
+    max-w-subtitle
 `;
 
 const PanelsScroller = tw.div`
@@ -113,15 +115,15 @@ const Panel = tw.div`
 `;
 
 export {
-	Container,
-	HeaderContainer,
-	MainContainer,
-	IllustrationContainer,
-	TitleContainer,
-	SidebarContainer,
-	Content,
-	Title,
-	Subtitle,
-	PanelsScroller,
-	Panel,
+    Container,
+    HeaderContainer,
+    MainContainer,
+    IllustrationContainer,
+    TitleContainer,
+    SidebarContainer,
+    Content,
+    Title,
+    Subtitle,
+    PanelsScroller,
+    Panel,
 };

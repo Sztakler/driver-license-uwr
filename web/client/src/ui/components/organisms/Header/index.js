@@ -5,9 +5,9 @@ import {
 	TitleContainer,
 	IllustrationContainer,
 	Title,
-	Subtitle,
 	Buttons,
 } from "./styles";
+import Subtitle from "../../atoms/Subtitle";
 
 export default function Header({ title, subtitle, illustration, children }) {
 	return (
@@ -15,7 +15,7 @@ export default function Header({ title, subtitle, illustration, children }) {
 			<TitleContainer>
 				<Title>{title}</Title>
 				<Subtitle>{subtitle}</Subtitle>
-				<div className="flex flex-row">
+				{/* <div className="flex flex-row">
 					<Title>
 						A<br />
 						Ą<br />
@@ -66,7 +66,7 @@ export default function Header({ title, subtitle, illustration, children }) {
 				</div>
 
 
-				AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUXYVZŹŻ
+				AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUXYVZŹŻ */}
 			</TitleContainer>
 			<IllustrationContainer />
 			<Buttons>{children}</Buttons>

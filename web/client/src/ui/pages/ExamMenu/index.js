@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import PageTemplate from "../../components/templates/PageTemplate";
 import Navbar from "../../components/organisms/Navbar";
+import Subtitle from "../../components/atoms/Subtitle";
 
 import {
 	Container,
@@ -9,7 +10,6 @@ import {
 	IllustrationContainer,
 	TitleContainer,
 	Title,
-	Subtitle,
 } from "./styles";
 
 import ExamPageIllustrations from "../../../assets/images/svg/ExamPage/ExamPageIllustrations";
@@ -35,12 +35,13 @@ export default function ExamMenuPage() {
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
 	return (
+		//TODO WYPIERDOL STYLE I ZRÓB JAK W USERPAGE. DODAJ TAJLTLE I SUBTAJTLE DO ATOMÓW. POPRAW HEADER MOLEKUŁĘ
 		<PageTemplate header={<Navbar />}>
 			<Container>
 				<HeaderContainer>
 					<TitleContainer>
 						<Title>Egzamin</Title>
-						<Subtitle className="mb-[65px] max-w-prose">
+						<Subtitle>
 							Symulacja egzaminu to tryb, w którym możesz przetestować nabyte
 							przez siebie umiejętności w formie wzorowanej na państwowym
 							egzaminie. Pamiętaj, że w tym trybie nie możesz cofać pytań!
@@ -65,7 +66,7 @@ export default function ExamMenuPage() {
 							<IllustrationContainer>
 								<div className="block bg-exam-menu w-full h-[371px] bg-center bg-no-repeat bg-contain"></div>
 							</IllustrationContainer>
-							<div className="flex flex-row flex-wrap w-full  gap-4 justify-center p-[23px]">
+							<div className="flex flex-row flex-wrap w-full gap-4 justify-center">
 								<Button
 									primary
 									hover

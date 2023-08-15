@@ -16,7 +16,7 @@ const NavbarContainer = tw.div`
 	md:pr-24
 	md:pl-32
 	md:pb-8
-	bg-gradient-to-b from-[0px] from-[#FFF1DBff] via-[90px]  via-[#FFF1DBff] to-[#FFFBF300] to-[130px] 
+	md:bg-gradient-to-b from-[0px] from-[#FFF1DBff] via-[90px]  via-[#FFF1DBff] to-[#FFFBF300] to-[130px] 
 	${(props) =>
 		props.hamburgerExpand
 			? "max-md:via-[100px] max-md:to-[200px] pb-4"

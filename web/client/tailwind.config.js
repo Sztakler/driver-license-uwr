@@ -21,6 +21,9 @@ module.exports = {
 				140: "35rem",
 				148: "37rem",
 			},
+			maxWidth: {
+				subtitle: "538px",
+			},
 			height: {
 				double: "200%",
 				half: "50%",

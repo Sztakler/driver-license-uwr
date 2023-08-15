@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import ProtectedComponent from "../src/ui/components/utils/ProtectedComponent";
 import TrainingMenuPage from "../src/ui/pages/TrainingMenuPage";
+import TrainingFilters from "../src/ui/pages/TrainingFilters";
 import PracticePage from "../src/ui/pages/PracticePage";
 import TheoryPage from "../src/ui/pages/TheoryPage";
 import HomePage from "../src/ui/pages/HomePage";
@@ -58,6 +59,7 @@ function Routing() {
 						}
 					/>
 					<Route path="/trening" element={<TrainingMenuPage />} />
+					<Route path="/trening/filtry" element={<TrainingFilters />} />
 					<Route
 						path="/trening/praktyka"
 						element={

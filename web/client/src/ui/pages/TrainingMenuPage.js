@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import PageTemplate from "../components/templates/PageTemplate";
 import Navbar from "../components/organisms/Navbar";
-import Training from "../components/organisms/Training";
+import TrainingMenu from "../components/organisms/Training/TrainingMenu";
 
 export default function TrainingMenuPage() {
 	return (
 		<PageTemplate header={<Navbar />}>
-			<Training />
+			<TrainingMenu />
 		</PageTemplate>
 	);
 }
