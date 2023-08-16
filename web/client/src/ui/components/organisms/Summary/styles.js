@@ -5,26 +5,27 @@ const SummaryContainer = tw.div`
 	justify-center
 	items-center
 	w-full
-	max-2xl:p-2
+	max-2md:p-2
 	text-center
-	pt-12
-	max-xl:pt-0
+	max-md:pt-0
 	`;
 
 const InnerTextBox = tw.div`
 	relative
 	${(props) =>
 		props.positive
-			? "bg-positive-result max-xl:bg-positive-result-mobile"
-			: "bg-negative-result max-xl:bg-negative-result-mobile"}
+			? "xl:bg-positive-result max-md:bg-positive-result-mobile"
+			: "xl:bg-negative-result max-md:bg-negative-result-mobile"}
 	bg-no-repeat
 	bg-top
-	max-xl:bg-center
 	bg-contain
-	max-xl:bg-auto
+	max-md:bg-auto
+	max-md:bg-top
 	h-full
-	max-h-[823px]
-	min-h-[823px]
+	min-h-[calc(100vh-145px)]
+	max-h-[calc(100vh-145px)]
+	max-md:max-h-[calc(98vh-83px)]
+	max-md:min-h-[calc(98vh-83px)]
 	w-full
 
 	flex
@@ -36,33 +37,34 @@ const InnerTextBox = tw.div`
 const InsideBackground = tw.div`
 	flex 
 	flex-col 
-	xl:absolute
+	absolute
 	justify-center 
 	items-center 
-	max-xl:mt-16
+	max-md:mt-16
 	text-center 
-	max-w-[700px]
-	min-w-[700px]
+	md:max-w-[700px]
+	md:min-w-[700px]
 	break-words
 	text-8xl 
-	max-xl:text-4xl 
-
+	max-md:text-4xl 
+	max-md:top-[65px]
+	md:top-[50%]
+	md:-translate-y-[50%]
 `;
 
 const Table = tw.div`
 	flex
 	flex-row
-	max-xl:absolute
-	max-xl:top-72
-	max-xl:flex-col
+	max-md:flex-col
 	flex-wrap
 	justify-center
-	max-xl:gap-4
 	text-xl 
 	p-4
-	my-4
+	mt-4
+	mb-1
 	gap-4
 	font-semibold
+	max-md:gap-2
 `;
 
 const Row = tw.div`
@@ -72,11 +74,11 @@ const Row = tw.div`
 const StatisticContainer = tw.div`
 	flex
 	flex-col
-	max-xl:justify-between
-	max-xl:items-center
-	max-xl:flex-row
+	max-md:justify-between
+	max-md:items-center
+	max-md:flex-row
 	flex-[0_1_20%]
-	max-xl:gap-4
+	max-md:gap-4
 	gap-2
 `;
 
@@ -84,15 +86,15 @@ const Statistic = tw.span`
 	text-base
 	max-w-[125px]
 	break-words
-	max-xl:text-left
+	max-md:text-left
 `;
 
 const Points = tw.span`
 	flex
-	max-xl:items-center
+	max-md:items-center
 	justify-center
 	text-5xl
-	max-xl:text-right
+	max-md:text-right
 	self-center
 	w-[50px]
 `;

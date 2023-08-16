@@ -20,8 +20,8 @@ const ImageContainer = tw.div`
 `;
 
 const MobileHeroContainer = tw.div`
-min-h-[690px]
-max-h-[690px]
+max-md:max-h-[calc(98vh-83px)]
+max-md:min-h-[calc(98vh-83px)]
 w-full
 bg-auto
 bg-no-repeat
@@ -38,13 +38,13 @@ flex
 flex-col
 absolute
 gap-[3vh]
-bottom-[22.5%]
+top-[400px]
 `;
 
 const MobileTopContainer = tw.div`
 absolute
 max-w-prose
-top-[2.5%]
+top-[18px]
 `;
 
 export {

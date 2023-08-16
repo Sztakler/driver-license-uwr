@@ -13,12 +13,10 @@ const PageWrapper = tw.div`
 const MainContent = tw.div`
 	flex
 	flex-col
-	flex-[1_1_auto]
 	relative
 	w-full
 	pt-[115px]
 	max-md:pt-[2vh]
-
 `;
 
 export { PageWrapper, MainContent };

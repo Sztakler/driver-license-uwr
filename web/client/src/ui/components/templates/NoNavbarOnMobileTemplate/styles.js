@@ -4,30 +4,34 @@ const PageWrapper = tw.div`
 	flex 
 	flex-col
 	relative 
-	min-w-screen
-	bg-gradient-to-b from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[200px] to-[#FFFBF3] to-100%
+	bg-gradient-to-b max-md:from-[0px] max-md:from-[#FEDDAC] max-md:to-[#FFF8EB] max-md:to-100%
+	from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[200px] to-[#FFFBF3] to-100%
 	min-h-screen
+	w-full
+	max-w-screen
 	${(props) => (props.hamburgerView ? "pt-[210px]" : "pt-[80px]")}
+	max-md:max-h-screen
+	max-md:overflow-y-hidden
 `;
 
 const MainContent = tw.div`
 	flex
 	flex-col
-	flex-[1_1_auto]
 	self-center
 	w-full
 	items-center
-	min-h-screen
-	p-8
 `;
 
 const Wrapper = tw.div`
 	flex
 	flex-row
-	flex-wrap
+	max-xl:flex-col
+	xl:flex-wrap
 	gap-4
-
-	max-2xl:justify-center
+	max-2xl:justify-center 
+	max-md:max-h-[calc(100vh-150px)]
+	w-full
+	max-2xl:items-center
 `;
 
 export { PageWrapper, MainContent, Wrapper };

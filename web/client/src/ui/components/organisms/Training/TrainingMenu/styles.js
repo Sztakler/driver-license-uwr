@@ -5,6 +5,7 @@ const Container = tw.div`
 		flex-col
 		max-md:flex-col
 		items-center
+		w-full
 `;
 
 const HeaderContainer = tw.div`
@@ -12,14 +13,13 @@ const HeaderContainer = tw.div`
 		flex-col
 		w-full
 		max-w-[2648px]
-        max-md:bg-training-menu-mobile
+    max-md:bg-training-menu-mobile
 		max-md:max-h-[calc(98vh-83px)]
-        max-md:min-h-[calc(98vh-83px)]
+    max-md:min-h-[calc(98vh-83px)]
 		max-md:bg-no-repeat
 		max-md:bg-top
 		max-md:bg-auto
 		max-md:relative
-        
 `;
 
 const TitleContainer = tw.div`
@@ -115,15 +115,15 @@ const Panel = tw.div`
 `;
 
 export {
-    Container,
-    HeaderContainer,
-    MainContainer,
-    IllustrationContainer,
-    TitleContainer,
-    SidebarContainer,
-    Content,
-    Title,
-    Subtitle,
-    PanelsScroller,
-    Panel,
+	Container,
+	HeaderContainer,
+	MainContainer,
+	IllustrationContainer,
+	TitleContainer,
+	SidebarContainer,
+	Content,
+	Title,
+	Subtitle,
+	PanelsScroller,
+	Panel,
 };

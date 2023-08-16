@@ -10,6 +10,7 @@ import Image from "../../../atoms/Image";
 import Illustrations from "../../../../../assets/images/svg/icons/Illustrations";
 
 import { QuitOptions } from "./styles";
+import { useMediaQuery } from "react-responsive";
 
 export default function Quit({ isReview, isExam, result }) {
 	const navigate = useNavigate();
@@ -72,19 +73,19 @@ export default function Quit({ isReview, isExam, result }) {
 		return;
 	}
 
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
 	return (
 		<QuitOptions>
-			<Text>
-				{isReview
-					? "Wróć do podsumowania"
-					: isExam
-					? "Zakończ egzamin"
-					: "Zakończ trening"}
-			</Text>
-			<Button bubble hover size="m" onClick={() => setExitModalShow(true)}>
+			<Button
+				bubble
+				hover={isDesktop}
+				size="l"
+				className=""
+				onClick={() => setExitModalShow(true)}
+			>
 				<Image src={Illustrations.Cancel} />
 			</Button>
-
 			<Modal onClose={() => setExitModalShow(false)} show={exitModalShow}>
 				<Heading level={4}>
 					{isReview

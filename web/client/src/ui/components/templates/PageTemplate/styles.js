@@ -1,15 +1,15 @@
 import tw from "tailwind-styled-components";
 
 const PageWrapper = tw.div`
-	flex 
+	flex
 	flex-col
 	w-full
 	min-h-screen
 	bg-gradient-to-b from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[200px] to-[#FFFBF3] to-100%
 	overflow-y-auto
 	${(props) => (props.hamburgerView ? "max-md:pt-[210px]" : "pt-[70px]")}
-    max-md:max-h-screen
-    max-md:overflow-y-hidden
+  max-md:max-h-screen
+  max-md:overflow-y-hidden
 `;
 
 const HeroSection = tw.div`

@@ -14,7 +14,7 @@ const DiagramContainer = tw.div`
 	bg-[#FFFAED]
 	w-[600px]
 	h-[500px]
-	max-md:h-[350px]
+	max-md:h-[330px]
 	break-words
 	whitespace-normal
 

@@ -6,6 +6,7 @@ const TaskTopSection = tw.div`
 	relative
 	max-h-[611px]
 	max-2xl:w-full
+	max-md:pt-12
 `;
 
 const TaskInfo = tw.div`
@@ -26,16 +27,17 @@ const ImageBox = tw.div`
 	self-center
 	items-center
 	justify-center
-	w-[928px]
-	h-[522px]
+	h-auto
 	overflow-hidden
-	border-2
-	border-[#424242]
 	rounded-[39px]
-	bg-[#FFE5A3]
+	xl:w-[975px]
+	lg:w-[832px]
+	md:w-[640px]
+	max-md:min-w-screen
+	max-md:min-h-[calc(100vw*0.5625)]
 
-	max-2xl:w-full
-	max-2xl:h-auto
+	max-md:rounded-none
+	bg-[#FFE5A3]
 `;
 
 export { TaskTopSection, TaskInfo, ImageBox };

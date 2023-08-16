@@ -97,9 +97,8 @@ export default function TaskBottom({ isExam }) {
 
 	return (
 		<TaskBottomSection>
-			<Paragraph className="inline-block">{task.pytanie}</Paragraph>
+			<Paragraph style="inline-block max-md:px-2">{task.pytanie}</Paragraph>
 			{renderAnswers(task)}
-			{console.log("task", task)}
 		</TaskBottomSection>
 	);
 }

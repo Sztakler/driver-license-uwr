@@ -56,7 +56,7 @@ export default function Summary() {
 		<SummaryContainer>
 			<InnerTextBox positive={results.scoredPoints >= 68}>
 				<InsideBackground>
-					<Text className="font-[Barriecito] max-xl:text-[125%] text-[4vw] max-xl:max-w-[300px] max-w-[600px] break-words max-xl:absolute max-xl:top-[24%] ">
+					<Text className="font-[Barriecito] max-md:text-[125%] max-xl:text-[100%] text-[70%] max-md:max-w-[300px] max-xl:max-w-[800px] max-w-[500px] break-words">
 						{feedbackGenerator(results)}
 					</Text>
 					<Table>
@@ -87,7 +87,7 @@ export default function Summary() {
 						primary
 						hover
 						size="m"
-						className="mb-2 max-xl:absolute top-[72%] max-w-[280px]"
+						className="mb-2 max-w-[280px]"
 						onClick={() => {
 							navigate("/egzamin");
 						}}
@@ -96,7 +96,7 @@ export default function Summary() {
 					</Button>
 					<Button
 						blank
-						className="max-xl:absolute top-[79.5%]"
+						className=""
 						onClick={() => {
 							navigate(`/egzamin/przeglad-odpowiedzi/${id}`);
 						}}

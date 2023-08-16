@@ -66,7 +66,7 @@ const StyledButton = tw.button`
 	${(props) => props.bubble && buttonBubbleClasses}
   ${(props) => props.bold && buttonBoldClasses}
 	${(props) => props.full && "w-full"}
-  ${(props) => props.active && "bg-[#FFBC0D]"}
+  ${(props) => props.active && "bg-[#FFD363]"}
   ${(props) => props.picked && "bg-[#91CE6B]"}
   ${(props) =>
 		props.result === "skipped"

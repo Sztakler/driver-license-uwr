@@ -19,6 +19,7 @@ import {
 	NextPrevious,
 	KnowledgeLevel,
 } from "./styles";
+import { useMediaQuery } from "react-responsive";
 
 export default function Menu({ isExam }) {
 	const {
@@ -241,16 +242,28 @@ export default function Menu({ isExam }) {
 		return () => clearInterval(interval);
 	}, [taskStarted, questionTimer, videoIsPlaying]);
 
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
 	return (
 		<MenuContainer isReview={false}>
-			<Button
-				blank
-				className="justify-center items-center w-[200px]"
-				onClick={handleExplanationShowButton}
-			>
-				<Image src={Illustrations.Explanation} />
-				<Text className="text-[16px]">Pokaż wyjaśnienie</Text>
-			</Button>
+			{!isExam && (
+				<Button
+					blank
+					bubble={!isDesktop}
+					size={!isDesktop ? "l" : ""}
+					className="justify-center items-center w-[200px] order-3 max-md:absolute max-md:top-[70px] max-md:left-[20%] max-md:w-auto"
+					onClick={handleExplanationShowButton}
+				>
+					<Image
+						src={
+							isDesktop
+								? Illustrations.Explanation
+								: Illustrations.ExplanationMobile
+						}
+					/>
+					{isDesktop && <Text className="text-[16px]">Pokaż wyjaśnienie</Text>}
+				</Button>
+			)}
 			<Quit isReview={false} isExam={isExam} result={result} />
 			<Modal
 				onClose={() => setExplanationModalShow(false)}
@@ -271,7 +284,7 @@ export default function Menu({ isExam }) {
 					</Button>
 					<div className="relative w-full max-w-[332px]">
 						<Text className="absolute -top-6 left-[50%] -translate-x-1/2 whitespace-nowrap">
-							{getMessage()}
+							{isDesktop && getMessage()}
 						</Text>
 						<CustomTimer expired={questionTimer === 0}>
 							<Image src={Illustrations.Clock} />
@@ -301,21 +314,21 @@ export default function Menu({ isExam }) {
 			)}
 
 			<NextPrevious>
-				{!isExam ? (
+				{isExam ? (
 					<Button
 						blank
-						className="max-2xl:mt-auto max-2xl:justify-start"
+						className="max-2xl:mt-auto max-md:my-auto max-2xl:justify-start"
 						onClick={handlePreviousQuestionButton}
 					>
 						<Image src={Illustrations.ArrowLeft} />
-						<Text>Poprzednie pytanie</Text>
+						<Text className="max-md:text-base">Poprzednie pytanie</Text>
 					</Button>
 				) : (
 					<></>
 				)}
-				<Button full hover size="m" primary onClick={handleNextQuestionButton}>
+				<Button hover size="m" primary onClick={handleNextQuestionButton}>
 					<Text>Następne pytanie</Text>
-					<Image src={Illustrations.ArrowRight} />
+					{isDesktop && <Image src={Illustrations.ArrowRight} />}
 				</Button>
 			</NextPrevious>
 		</MenuContainer>

@@ -11,6 +11,7 @@ import ArrowRight from "./ArrowRight.svg";
 import Cancel from "./Cancel.svg";
 import Clock from "./Clock.svg";
 import Explanation from "./Explanation.svg";
+import ExplanationMobile from "./ExplanationMobile.svg";
 import SummaryBackground from "./SummaryBackground.svg";
 import User from "./User.svg";
 import PageLogo from "./PageLogo.svg";
@@ -30,6 +31,7 @@ export default {
 	Cancel,
 	Clock,
 	Explanation,
+	ExplanationMobile,
 	SummaryBackground,
 	User,
 	PageLogo,

@@ -155,9 +155,9 @@ export default function Navbar(props) {
 
 					<NavbarItem
 						className={
-							"relative rounded-t-[18px] hover:bg-[#FFBC0D] py-1 px-[18px]" +
+							"relative rounded-t-[18px] hover:bg-[#FFD363] py-1 px-[18px]" +
 							(isMenuHidden ? " rounded-b-[18px]" : " ") +
-							("/konto" === activePage ? "bg-[#FFBC0D]" : "")
+							("/konto" === activePage ? "bg-[#FFD363]" : "")
 						}
 						onMouseEnter={() => ToggleMenu(false)}
 						onMouseLeave={() => ToggleMenu(true)}
@@ -171,7 +171,7 @@ export default function Navbar(props) {
 								onClick={() => {
 									navigate("/konto");
 								}}
-								className={"group-hover:bg-[#FFDD87] px-3 "}
+								className={"group-hover:bg-[#FFD363] px-3 "}
 							>
 								<Image src={Illustrations.User} />
 							</Button>
@@ -184,7 +184,7 @@ export default function Navbar(props) {
 									navbarIcon
 									size={"xl"}
 									onClick={() => Logout()}
-									className="hover:bg-[#FFDD87] "
+									className="hover:bg-[#FFD363] "
 								>
 									Wyloguj
 								</Button>

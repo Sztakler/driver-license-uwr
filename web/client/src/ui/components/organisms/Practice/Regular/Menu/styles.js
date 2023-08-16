@@ -9,20 +9,26 @@ const MenuContainer = tw.div`
 	justify-start
 	gap-16
 	${(props) => (props.inReviewMode ? "gap-4" : "gap-16")}
-	bg-gradient-to-b from-[0px] from-[#FFDFA3] to-[#FFE8BC00] to-100%
+	md:bg-gradient-to-b md:from-[0px] md:from-[#FFDFA3] md:to-[#FFE8BC00] md:to-100%
 	text-center
 	p-4
 	mt-[36px]
 	rounded-[39px]
-	max-w-[528px]
+	max-md:rounded-none
+	max-w-[458px]
 	max-h-[558px]
 	ml-[112px]
-
+	
+	xl:w-[975px]
+	lg:w-[832px]
+	md:w-[640px]
 	max-2xl:flex-none
 	max-2xl:w-full
 	max-2xl:max-w-full
 	max-2xl:gap-4
 	max-2xl:m-0
+	max-md:px-2
+	max-md:py-0
 	overflow-hidden
 `;
 
@@ -33,6 +39,7 @@ const TimerContainer = tw.div`
 	justify-start
 	gap-2
 	w-full
+	max-md:order-1
 `;
 
 const CustomTimer = tw.div`
@@ -44,9 +51,7 @@ const CustomTimer = tw.div`
 	w-full
 	max-w-[332px]
 	h-12
-	${(props) => (props.expired ? "bg-red-600" : "bg-[#FFE49E]")}
-	border-[#8D8D8D]
-	border-2
+	${(props) => (props.expired ? "bg-red-600" : "bg-[#89E07B]")}
 	rounded-[3rem]
 	text-xl
 `;
@@ -70,11 +75,19 @@ const NextPrevious = tw.div`
 	flex
 	flex-col-reverse
 	items-start
-	gap-4
+	self-start
+	md:gap-4
 	w-full
+	max-md:order-4
 
 	max-2xl:flex-row
 	max-2xl:[&>*]:w-[50%]
+	max-md:[&>*]:w-auto
+	max-md:absolute
+	max-md:bottom-2
+	max-md:left-0
+	max-md:w-full
+	max-md:justify-around
 `;
 
 export {

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import NoNavbarTemplate from "../components/templates/NoNavbarTemplate";
+import NoNavbarOnMobileTemplate from "../components/templates/NoNavbarOnMobileTemplate";
 import Navbar from "../components/organisms/Navbar";
 import Footer from "../components/organisms/Footer";
 import TaskBottom from "../components/organisms/Practice/Regular/TaskBottom";
@@ -35,11 +35,7 @@ export default function ExamPage() {
 	}, []);
 
 	return (
-		<NoNavbarTemplate
-			header={<Navbar />}
-			footer={<Footer />}
-			count={task ? 3 : 1}
-		>
+		<NoNavbarOnMobileTemplate header={<Navbar />} count={task ? 3 : 1}>
 			{task ? (
 				<>
 					<TaskTop isExam={true} />
@@ -49,6 +45,6 @@ export default function ExamPage() {
 			) : (
 				<Loading />
 			)}
-		</NoNavbarTemplate>
+		</NoNavbarOnMobileTemplate>
 	);
 }

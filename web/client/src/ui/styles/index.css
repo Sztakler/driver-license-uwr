@@ -4,12 +4,12 @@
 
 @layer base {
 	@font-face {
-		font-family: 'JEZUSMARIA';
-		src: url('../src/assets/fonts/Rampart_One/Rampart_One_polskie_znaki.otf') format('opentype');
+		font-family: "JEZUSMARIA";
+		src: url("../src/assets/fonts/Rampart_One/Rampart_One_polskie_znaki.otf")
+			format("opentype");
 		/* Add more font formats if necessary */
 		font-weight: normal;
 		font-style: normal;
-
 	}
 	html,
 	body {
@@ -19,7 +19,6 @@
 	}
 	html {
 		font-family: "Inter", sans-serif;
-		
 	}
 	h1,
 	h2,

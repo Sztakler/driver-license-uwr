@@ -95,10 +95,11 @@ const TaskData = tw.div`
 const Answers = tw.div`
 	flex
 	gap-4
+	flex-col
 	${(props) =>
-	props.row
-		? "flex-row justify-center items-center"
-		: "flex-col"}
+		props.row
+			? "max-md:flex-row max-md:justify-center max-md:items-center max-md:flex-wrap"
+			: ""}
 `;
 
 const Answer = tw.div`
@@ -132,7 +133,7 @@ const Header = tw.div`
 	border-[#CECECE]
 	${(props) =>
 		props.mobileView
-			? "max-md:flex max-md:h-[calc(100vh-80px)] max-md:px-24 max-md:w-screen left-0 max-md:bg-gradient-to-t max-md:from-[#FFE9C8] max-md:to-[#FFF8EB] max-md:absolute max-md:justify-start max-md:items-center max-md:flex-col"
+			? "max-md:flex max-md:h-[calc(100vh-70px)] max-md:px-24 max-md:w-screen left-0 max-md:bg-gradient-to-t max-md:from-[#FFE9C8] max-md:to-[#FFF8EB] max-md:absolute max-md:justify-start max-md:items-center max-md:flex-col"
 			: "max-md:hidden"}
 `;
 

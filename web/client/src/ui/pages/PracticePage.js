@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import NoNavbarTemplate from "../components/templates/NoNavbarTemplate";
+import NoNavbarOnMobileTemplate from "../components/templates/NoNavbarOnMobileTemplate";
 import Navbar from "../components/organisms/Navbar";
-import Footer from "../components/organisms/Footer";
 import TaskBottom from "../components/organisms/Practice/Regular/TaskBottom";
 import Menu from "../components/organisms/Practice/Regular/Menu";
 import TaskTop from "../components/organisms/Practice/Regular/TaskTop";
@@ -44,11 +43,7 @@ export default function PracticePage() {
 	}, []);
 
 	return (
-		<NoNavbarTemplate
-			header={<Navbar />}
-			footer={<Footer />}
-			count={task ? 3 : 1}
-		>
+		<NoNavbarOnMobileTemplate header={<Navbar />} count={task ? 3 : 1}>
 			{task ? (
 				<>
 					<TaskTop isExam={false} />
@@ -58,6 +53,6 @@ export default function PracticePage() {
 			) : (
 				<Loading />
 			)}
-		</NoNavbarTemplate>
+		</NoNavbarOnMobileTemplate>
 	);
 }
