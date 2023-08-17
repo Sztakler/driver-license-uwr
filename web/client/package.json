@@ -1,5 +1,5 @@
 {
-	"homepage": "https://sztakler.github.io/driver-license-uwr/web/client/",
+	"homepage": "https://sztakler.github.io/driver-license-uwr/web/client/dist",
 	"name": "web",
 	"version": "1.0.0",
 	"proxy": "http://localhost:5000",
