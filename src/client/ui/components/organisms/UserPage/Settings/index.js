@@ -23,7 +23,7 @@ export default function Settings() {
 	const [providedPassword, setProvidedPassword] = useState("");
 
 	async function ConfirmChanges(form, formData) {
-		return fetch("http://localhost:5000/api/user-settings", {
+		return fetch("http://13.48.57.122:4000/api/user-settings", {
 			method: "POST",
 			body: JSON.stringify(formData),
 			credentials: "include",

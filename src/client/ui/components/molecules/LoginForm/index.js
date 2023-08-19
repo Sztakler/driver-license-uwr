@@ -32,7 +32,7 @@ export default function LoginForm(props) {
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
 		try {
-			const respond = await fetch("http://localhost:5000/login", {
+			const respond = await fetch("http://13.48.57.122:4000/login", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

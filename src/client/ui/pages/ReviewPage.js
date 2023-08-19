@@ -10,41 +10,41 @@ import Loading from "../components/molecules/Practice/Loading";
 import { useParams } from "react-router";
 
 export default function ReviewPage() {
-  const { task, setNewTask, setNewSavedQuestions, newSavedQuestions } =
-    useContext(TaskContext);
-  const { id } = useParams();
-  async function getExamResult() {
-    let res = await fetch(`http://localhost:5000/api/exam/results/${id}`).then(
-      (response) => response.json()
-    );
-    return res.questions;
-  }
+	const { task, setNewTask, setNewSavedQuestions, newSavedQuestions } =
+		useContext(TaskContext);
+	const { id } = useParams();
+	async function getExamResult() {
+		let res = await fetch(
+			`http://13.48.57.122:4000/api/exam/results/${id}`
+		).then((response) => response.json());
+		return res.questions;
+	}
 
-  useEffect(() => {
-    async function fetchDataAndSetIt() {
-      let res = await getExamResult();
-      setNewSavedQuestions(res);
-      setNewTask(res[0]);
-    }
+	useEffect(() => {
+		async function fetchDataAndSetIt() {
+			let res = await getExamResult();
+			setNewSavedQuestions(res);
+			setNewTask(res[0]);
+		}
 
-    fetchDataAndSetIt();
-  }, []);
+		fetchDataAndSetIt();
+	}, []);
 
-  return (
-    <NoNavbarOnMobileTemplate
-      header={<Navbar />}
-      footer={<Footer />}
-      count={task ? 3 : 1}
-    >
-      {task ? (
-        <>
-          <TaskTopReview />
-          <MenuReview isExam={true} />
-          <TaskBottomReview />
-        </>
-      ) : (
-        <Loading />
-      )}
-    </NoNavbarOnMobileTemplate>
-  );
+	return (
+		<NoNavbarOnMobileTemplate
+			header={<Navbar />}
+			footer={<Footer />}
+			count={task ? 3 : 1}
+		>
+			{task ? (
+				<>
+					<TaskTopReview />
+					<MenuReview isExam={true} />
+					<TaskBottomReview />
+				</>
+			) : (
+				<Loading />
+			)}
+		</NoNavbarOnMobileTemplate>
+	);
 }

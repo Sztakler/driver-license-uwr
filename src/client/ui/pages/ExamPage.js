@@ -8,42 +8,42 @@ import TaskContext from "../../../context/TaskContext";
 import Loading from "../components/molecules/Practice/Loading";
 
 export default function ExamPage() {
-  const { task, setNewTask, setNewSavedQuestions } = useContext(TaskContext);
+	const { task, setNewTask, setNewSavedQuestions } = useContext(TaskContext);
 
-  function getFullExam() {
-    return fetch("http://localhost:5000/api/exam")
-      .then((response) => response.json())
-      .then((data) => {
-        return data;
-      });
-  }
+	function getFullExam() {
+		return fetch("http://13.48.57.122:4000/api/exam")
+			.then((response) => response.json())
+			.then((data) => {
+				return data;
+			});
+	}
 
-  useEffect(() => {
-    const fetchRandomTask = async () => {
-      const questions = await getFullExam();
-      const modifiedQuestions = questions.map((question) => {
-        return { ...question, wybrana_odpowiedz: null };
-      });
+	useEffect(() => {
+		const fetchRandomTask = async () => {
+			const questions = await getFullExam();
+			const modifiedQuestions = questions.map((question) => {
+				return { ...question, wybrana_odpowiedz: null };
+			});
 
-      setNewSavedQuestions(modifiedQuestions);
-      setNewTask(modifiedQuestions[0]);
-    };
+			setNewSavedQuestions(modifiedQuestions);
+			setNewTask(modifiedQuestions[0]);
+		};
 
-    fetchRandomTask();
-    return;
-  }, []);
+		fetchRandomTask();
+		return;
+	}, []);
 
-  return (
-    <NoNavbarOnMobileTemplate header={<Navbar />} count={task ? 3 : 1}>
-      {task ? (
-        <>
-          <TaskTop isExam={true} />
-          <Menu isExam={true} />
-          <TaskBottom isExam={true} />
-        </>
-      ) : (
-        <Loading />
-      )}
-    </NoNavbarOnMobileTemplate>
-  );
+	return (
+		<NoNavbarOnMobileTemplate header={<Navbar />} count={task ? 3 : 1}>
+			{task ? (
+				<>
+					<TaskTop isExam={true} />
+					<Menu isExam={true} />
+					<TaskBottom isExam={true} />
+				</>
+			) : (
+				<Loading />
+			)}
+		</NoNavbarOnMobileTemplate>
+	);
 }

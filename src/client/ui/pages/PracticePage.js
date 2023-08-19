@@ -8,51 +8,51 @@ import TaskContext from "../../../context/TaskContext";
 import Loading from "../components/molecules/Practice/Loading";
 
 export default function PracticePage() {
-  const { task, setNewTask, setNewSavedQuestions, setNewTaskStarted } =
-    useContext(TaskContext);
+	const { task, setNewTask, setNewSavedQuestions, setNewTaskStarted } =
+		useContext(TaskContext);
 
-  function getPracticeQuestions() {
-    return fetch("http://localhost:5000/api/practice", {
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        return data;
-      });
-  }
+	function getPracticeQuestions() {
+		return fetch("http://13.48.57.122:4000/api/practice", {
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				return data;
+			});
+	}
 
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      const questions = await getPracticeQuestions();
-      const modifiedQuestions = questions.map((question) => {
-        return { ...question, wybrana_odpowiedz: null };
-      });
+	useEffect(() => {
+		const fetchQuestions = async () => {
+			const questions = await getPracticeQuestions();
+			const modifiedQuestions = questions.map((question) => {
+				return { ...question, wybrana_odpowiedz: null };
+			});
 
-      setNewSavedQuestions(modifiedQuestions);
-      setNewTask(modifiedQuestions[0]);
-      setNewTaskStarted(
-        modifiedQuestions[0].zakres_struktury == "PODSTAWOWY" ? false : true
-      );
-    };
+			setNewSavedQuestions(modifiedQuestions);
+			setNewTask(modifiedQuestions[0]);
+			setNewTaskStarted(
+				modifiedQuestions[0].zakres_struktury == "PODSTAWOWY" ? false : true
+			);
+		};
 
-    fetchQuestions();
-    return;
-  }, []);
+		fetchQuestions();
+		return;
+	}, []);
 
-  return (
-    <NoNavbarOnMobileTemplate header={<Navbar />} count={task ? 3 : 1}>
-      {task ? (
-        <>
-          <TaskTop isExam={false} />
-          <Menu isExam={false} />
-          <TaskBottom isExam={false} />
-        </>
-      ) : (
-        <Loading />
-      )}
-    </NoNavbarOnMobileTemplate>
-  );
+	return (
+		<NoNavbarOnMobileTemplate header={<Navbar />} count={task ? 3 : 1}>
+			{task ? (
+				<>
+					<TaskTop isExam={false} />
+					<Menu isExam={false} />
+					<TaskBottom isExam={false} />
+				</>
+			) : (
+				<Loading />
+			)}
+		</NoNavbarOnMobileTemplate>
+	);
 }
