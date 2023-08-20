@@ -37,9 +37,9 @@ export default function Summary() {
 	});
 
 	async function getExamResult() {
-		let res = await fetch(
-			`http://13.48.57.122:4000/api/exam/results/${id}`
-		).then((response) => response.json());
+		let res = await fetch(`http://13.48.57.122/api/exam/results/${id}`).then(
+			(response) => response.json()
+		);
 		return res.summary;
 	}
 

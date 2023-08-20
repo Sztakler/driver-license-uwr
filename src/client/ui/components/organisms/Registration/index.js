@@ -49,7 +49,7 @@ export default function Registration() {
 		e.preventDefault();
 		console.log(mail, password);
 		try {
-			let res = await fetch("http://13.48.57.122:4000/register", {
+			let res = await fetch("http://13.48.57.122/register", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

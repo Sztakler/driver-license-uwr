@@ -25,16 +25,13 @@ export default function Quit({ isReview, isExam, result }) {
 			summary: result,
 		};
 		try {
-			const response = await fetch(
-				"http://13.48.57.122:4000/api/exam/results",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(data),
-				}
-			);
+			const response = await fetch("http://13.48.57.122/api/exam/results", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data),
+			});
 
 			if (response.ok) {
 				console.log("Data submitted successfully");

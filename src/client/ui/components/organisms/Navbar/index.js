@@ -38,7 +38,7 @@ export default function Navbar(props) {
 			setIsAuthStatusChecked(false);
 			setIsLoggedIn(false);
 			try {
-				const response = await fetch("http://13.48.57.122:4000/check-auth", {
+				const response = await fetch("http://13.48.57.122/check-auth", {
 					credentials: "include",
 					headers: {
 						Accept: "application/json",
@@ -87,7 +87,7 @@ export default function Navbar(props) {
 	];
 
 	async function Logout() {
-		await fetch("http://13.48.57.122:4000/logout", {
+		await fetch("http://13.48.57.122/logout", {
 			method: "POST",
 			credentials: "include",
 			headers: {

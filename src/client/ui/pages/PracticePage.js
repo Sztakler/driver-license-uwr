@@ -12,7 +12,7 @@ export default function PracticePage() {
 		useContext(TaskContext);
 
 	function getPracticeQuestions() {
-		return fetch("http://13.48.57.122:4000/api/practice", {
+		return fetch("http://13.48.57.122/api/practice", {
 			credentials: "include",
 			headers: {
 				"Content-Type": "application/json",

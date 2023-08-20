@@ -11,7 +11,7 @@ export default function ExamPage() {
 	const { task, setNewTask, setNewSavedQuestions } = useContext(TaskContext);
 
 	function getFullExam() {
-		return fetch("http://13.48.57.122:4000/api/exam")
+		return fetch("http://13.48.57.122/api/exam")
 			.then((response) => response.json())
 			.then((data) => {
 				return data;

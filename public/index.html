@@ -32,14 +32,13 @@
 				}
 			})(window.location);
 		</script>
+		<meta
+			http-equiv="Content-Security-Policy"
+			content="upgrade-insecure-requests"
+		/>
 	</head>
 
 	<body>
-		<script
-			type="module"
-			src="../src/client/ui/components/utils/HackTimer.js"
-		></script>
 		<div id="root"></div>
-		<script type="module" src="../src/index.js"></script>
 	</body>
 </html>

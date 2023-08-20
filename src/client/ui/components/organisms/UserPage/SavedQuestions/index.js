@@ -89,7 +89,7 @@ export default function SavedQuestions() {
 	const [mobileFiltersDisplayed, setMobileFiltersDisplayed] = useState(false);
 
 	function getSavedQuestions() {
-		return fetch("http://13.48.57.122:4000/api/saved-questions", {
+		return fetch("http://13.48.57.122/api/saved-questions", {
 			method: "GET",
 			credentials: "include",
 			headers: {

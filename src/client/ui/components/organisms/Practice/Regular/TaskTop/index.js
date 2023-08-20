@@ -23,17 +23,14 @@ export default function TaskTop({ isExam, isReview }) {
 
 	async function setSavedQuestion(id) {
 		try {
-			const response = await fetch(
-				"http://13.48.57.122:4000/api/saved-questions",
-				{
-					method: "POST",
-					credentials: "include",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({ question_id: id }),
-				}
-			);
+			const response = await fetch("http://13.48.57.122/api/saved-questions", {
+				method: "POST",
+				credentials: "include",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ question_id: id }),
+			});
 
 			if (response.ok) {
 				setFavoriteTask((prevState) => {

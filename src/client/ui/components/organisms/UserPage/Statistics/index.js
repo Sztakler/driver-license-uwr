@@ -15,7 +15,7 @@ async function getStatistics(endDate) {
 	}-${endDate.getUTCDate()} 23:59:59`;
 	console.log(from, to);
 
-	return fetch(`http://13.48.57.122:4000/api/statistics/${from}/${to}`, {
+	return fetch(`http://13.48.57.122/api/statistics/${from}/${to}`, {
 		method: "GET",
 		credentials: "include",
 		headers: {

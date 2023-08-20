@@ -12,7 +12,7 @@ export default function ProtectedComponent() {
 			setIsAuthStatusChecked(false);
 			setIsLoggedIn(false);
 			try {
-				const response = await fetch("http://13.48.57.122:4000/check-auth", {
+				const response = await fetch("http://13.48.57.122/check-auth", {
 					credentials: "include",
 					headers: {
 						Accept: "application/json",

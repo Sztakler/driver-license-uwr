@@ -189,7 +189,7 @@ export default function Menu({ isExam }) {
 
 		try {
 			const response = await fetch(
-				"http://13.48.57.122:4000/api/user-knowledge-levels",
+				"http://13.48.57.122/api/user-knowledge-levels",
 				{
 					method: "POST",
 					credentials: "include",
