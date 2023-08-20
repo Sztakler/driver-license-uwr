@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/driver-license-uwr/static/css/main.c93268d8.css",
-    "main.js": "/driver-license-uwr/static/js/main.b6957c3a.js",
+    "main.js": "/driver-license-uwr/static/js/main.e8b2dc5a.js",
     "static/media/homepage-3.svg": "/driver-license-uwr/static/media/homepage-3.4b83aa9c319805225a3637cbbd4b64eb.svg",
     "static/media/graphic1.svg": "/driver-license-uwr/static/media/graphic1.7acf4ef0f96c9fd22519980b296616b3.svg",
     "static/media/homepage-1.svg": "/driver-license-uwr/static/media/homepage-1.1fa1089845fb17a1d0d642113957310f.svg",
@@ -44,10 +44,10 @@
     "static/media/ArrowRightAlternative.svg": "/driver-license-uwr/static/media/ArrowRightAlternative.39f2761f36d2d5d514f5bc38c19e57cc.svg",
     "static/media/ArrowLeftAlternative.svg": "/driver-license-uwr/static/media/ArrowLeftAlternative.06de0acae4fff63ebf1e3722c766b0d9.svg",
     "main.c93268d8.css.map": "/driver-license-uwr/static/css/main.c93268d8.css.map",
-    "main.b6957c3a.js.map": "/driver-license-uwr/static/js/main.b6957c3a.js.map"
+    "main.e8b2dc5a.js.map": "/driver-license-uwr/static/js/main.e8b2dc5a.js.map"
   },
   "entrypoints": [
     "static/css/main.c93268d8.css",
-    "static/js/main.b6957c3a.js"
+    "static/js/main.e8b2dc5a.js"
   ]
 }
