@@ -15,7 +15,7 @@ const fixedWidthClasses = "w-[300px]";
 const inputRadioClasses = "mr-4";
 
 const inputCheckboxClasses =
-	"appearance-none mr-4 bg-[#fffaed] hover:bg-[#ffd363aa] w-8 h-8 border border-[#0d0d0d] rounded-full checked:bg-[#ffd363] checked:after:content-['✓'] text-2xl text-center";
+	"appearance-none mr-4 bg-[#fffaed] hover:bg-[#ffd363aa] min-w-[32px] max-w-[32px] min-h-[32px] max-h-[32px] border border-[#0d0d0d] rounded-full checked:bg-[#ffd363] checked:after:content-['✓'] text-2xl text-center";
 
 export {
 	inputDefaultClasses,

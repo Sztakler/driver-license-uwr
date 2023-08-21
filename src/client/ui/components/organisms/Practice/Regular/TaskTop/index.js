@@ -13,9 +13,24 @@ import { lowerCaseAll } from "../../../../../../utils/utils";
 import { TaskTopSection, TaskInfo, ImageBox } from "./styles";
 
 export default function TaskTop({ isExam, isReview }) {
-	const { task, taskStarted, setNewVideoIsPlaying, setNewImageIsLoaded } =
-		useContext(TaskContext);
-	const [favoriteTask, setFavoriteTask] = useState(task.is_saved);
+	const {
+		task,
+		taskStarted,
+		setNewVideoIsPlaying,
+		setNewImageIsLoaded,
+		favoriteTask,
+		setNewFavoriteTask,
+	} = useContext(TaskContext);
+
+	const [isHoveringStar, setIsHoveringStar] = useState(false);
+
+	const handleMouseOver = () => {
+		setIsHoveringStar(true);
+	};
+
+	const handleMouseOut = () => {
+		setIsHoveringStar(false);
+	};
 
 	const mediaExtension = task.media.includes(".")
 		? task.media.split(".").pop()
@@ -23,17 +38,20 @@ export default function TaskTop({ isExam, isReview }) {
 
 	async function setSavedQuestion(id) {
 		try {
-			const response = await fetch("http://13.48.57.122/api/saved-questions", {
-				method: "POST",
-				credentials: "include",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ question_id: id }),
-			});
+			const response = await fetch(
+				"http://localhost:5000/api/saved-questions",
+				{
+					method: "POST",
+					credentials: "include",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ question_id: id }),
+				}
+			);
 
 			if (response.ok) {
-				setFavoriteTask((prevState) => {
+				setNewFavoriteTask((prevState) => {
 					return !prevState;
 				});
 				console.log("Data submitted successfully");
@@ -75,16 +93,20 @@ export default function TaskTop({ isExam, isReview }) {
 					</Text>
 				</div>
 			</TaskInfo>
-			<Button
-				bubble
-				onClick={() => {
-					setSavedQuestion(task.id);
-				}}
-				size="l"
-				className="absolute top-4 -right-16 max-md:fixed max-md:top-[70px] max-md:left-[2.5%]"
-			>
-				<Star picked={favoriteTask} />
-			</Button>
+			{!isExam && (
+				<Button
+					bubble
+					onClick={() => {
+						setSavedQuestion(task.id);
+					}}
+					onMouseOver={handleMouseOver}
+					onMouseOut={handleMouseOut}
+					size="l"
+					className="absolute top-8 -right-16 max-md:fixed max-md:top-[70px] max-md:left-[2.5%] md:border-2 md:border-[#ABA797]"
+				>
+					<Star picked={favoriteTask} hovered={isHoveringStar} />
+				</Button>
+			)}
 			<ImageBox>
 				{taskStarted || isReview ? (
 					mediaExtension === "mp4" ? (

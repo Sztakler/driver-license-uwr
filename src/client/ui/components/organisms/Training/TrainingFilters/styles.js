@@ -5,8 +5,8 @@ const Container = tw.div`
 		flex-col
 		max-md:flex-col
 		items-center
-        w-full
-        max-md:pt-8
+    w-full
+    max-md:pt-[2vh]
 `;
 
 const HeaderContainer = tw.div`
@@ -19,18 +19,18 @@ const HeaderContainer = tw.div`
 const TitleContainer = tw.div`
     flex 
     flex-col
-	w-full		
-`;
-
-const IllustrationContainer = tw.div`
-    flex
-    flex-col
+		w-full
 `;
 
 const MainContainer = tw.div`
-	hidden
     max-md:flex-col
     h-full
+		w-full
+		flex
+		flex-col
+		relative
+		justify-center
+		items-center
 `;
 
 const SidebarContainer = tw.div`
@@ -51,60 +51,33 @@ const Content = tw.div`
 const Title = tw.div`
         text-8xl
 		max-md:text-7xl
+		max-[300px]:text-5xl
 		text-[#0d0d0d]
         font-display
 		mb-2
         self-center
 `;
 
-
-const PanelsScroller = tw.div`
-    grid
-    grid-flow-col
-    auto-cols-[32%]
-    gap-6
-    pt-10
-    overflow-x-auto
-    overscroll-contain
-
-    snap-mandatory
-    snap-x
-    scroll-pl-10
-    scrollbar
-`;
-
-const Panel = tw.div`
-    flex
-    flex-col
-    gap-8
-    text-sm
-    mb-6
-    border
-    border-[#dcdcdc]
-    rounded-[39px]
-    p-6
-    bg-[#fffcf5]
-    max-w-[440px]
-    max-h-[590px]
-    aspect-[440/590]
-
-    snap-normal
-    snap-start
-`;
-
 const Form = tw.form`
     flex
-    flex-row
-    flex-wrap
+    flex-col
     align-center
     justify-center
     gap-12
-    px-8
+    px-4
     py-12
+		md:flex-row
     md:gap-48
     md:py-16
-    md:px-64
+    md:px-4
+		md:w-full
+		md:max-w-[calc(100vw-200px)]
     md:mb-14
+		max-md:overflow-y-auto
+		max-md:items-start
+		max-md:justify-between
+		max-md:gap-[3vh]
+		max-md:py-[3vh]
 `;
 
 const InputsWrapper = tw.div`
@@ -116,16 +89,13 @@ const InputsWrapper = tw.div`
 `;
 
 export {
-    Container,
-    HeaderContainer,
-    MainContainer,
-    IllustrationContainer,
-    TitleContainer,
-    SidebarContainer,
-    Content,
-    Title,
-    PanelsScroller,
-    Panel,
-    Form,
-    InputsWrapper,
+	Container,
+	HeaderContainer,
+	MainContainer,
+	TitleContainer,
+	SidebarContainer,
+	Content,
+	Title,
+	Form,
+	InputsWrapper,
 };

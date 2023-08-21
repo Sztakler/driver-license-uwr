@@ -6,7 +6,7 @@ import TaskBottomReview from "../components/organisms/Practice/Review/TaskBottom
 import MenuReview from "../components/organisms/Practice/Review/Menu";
 import TaskTopReview from "../components/organisms/Practice/Review/TaskTop";
 import TaskContext from "../../../context/TaskContext";
-import Loading from "../components/molecules/Practice/Loading";
+import Loading from "../components/molecules/Loading";
 import { useParams } from "react-router";
 
 export default function ReviewPage() {
@@ -14,7 +14,7 @@ export default function ReviewPage() {
 		useContext(TaskContext);
 	const { id } = useParams();
 	async function getExamResult() {
-		let res = await fetch(`http://13.48.57.122/api/exam/results/${id}`).then(
+		let res = await fetch(`http://localhost:5000/api/exam/results/${id}`).then(
 			(response) => response.json()
 		);
 		return res.questions;

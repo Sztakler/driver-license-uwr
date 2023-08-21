@@ -8,7 +8,7 @@ export default function BulletPoint(props) {
 
 	return (
 		<div className="flex flex-row gap-x-2">
-			<Bullet bullet={bullet}/>
+			<Bullet bullet={bullet} />
 			<Paragraph>{text}</Paragraph>
 		</div>
 	);

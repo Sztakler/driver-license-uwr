@@ -22,7 +22,6 @@ import Input from "../../atoms/Input";
 import Button from "../../atoms/Button";
 
 import RegisterPageIllustrations from "../../../../../assets/images/svg/RegisterPage/RegisterPageIllustrations";
-import Image from "../../atoms/Image";
 import { useNavigate } from "react-router";
 import Text from "../../atoms/Text";
 
@@ -47,9 +46,8 @@ export default function Registration() {
 
 	let registerUser = async (e) => {
 		e.preventDefault();
-		console.log(mail, password);
 		try {
-			let res = await fetch("http://13.48.57.122/register", {
+			let res = await fetch("http://localhost:5000/register", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -159,9 +157,9 @@ export default function Registration() {
 									primary
 									hover
 									type="submit"
-									className="text-[16px] w-full"
+									className="w-full font-medium py-[10px]"
 								>
-									Załóż konto
+									<Text>Załóż konto</Text>
 								</Button>
 							</SubmitButtonContainer>
 						</RegisterForm>
@@ -171,7 +169,7 @@ export default function Registration() {
 		);
 	} else {
 		return (
-			<div className="h-[calc(100vh-145px)] flex flex-col p-8">
+			<div className="h-[calc(100vh-78px)] flex flex-col px-8 pt-8 max-md:overflow-y-auto">
 				<RegisterFormContainer>
 					<Title className="text-[26px] font-medium pt-0">
 						Zarejestruj się
@@ -235,7 +233,7 @@ export default function Registration() {
 								primary
 								hover
 								type="submit"
-								className="text-[16px] font-medium w-full px-[50px] py-[13px] max-md:px-[50px] max-md:py-[13px]"
+								className="text-[16px] font-medium w-full px-[50px] py-[13px] h-[50px] bg-black"
 							>
 								Załóż konto
 							</Button>

@@ -7,11 +7,9 @@ export default function BulletList(props) {
 	const { points, bullet } = props;
 
 	return (
-		<div className="mt-2">
+		<div className="mt-2  text-[0.95vw]">
 			{points.map((text, index) => {
-				return (
-					<BulletPoint style="text-base" bullet={bullet} key={uuidv4 + index} text={text} />
-				);
+				return <BulletPoint bullet={bullet} key={uuidv4 + index} text={text} />;
 			})}
 		</div>
 	);

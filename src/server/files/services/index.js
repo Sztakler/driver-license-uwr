@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const dbRequests = require("../db");
 const { request } = require("express");
+const { shuffleArray } = require("../utils/utils");
 
 const checkRequestAuthentication = (isAuthenticated, user) => {
 	if (isAuthenticated) {
@@ -28,7 +29,11 @@ const practiceService = async (user_id) => {
 
 const examService = async () => {
 	try {
-		return await dbRequests.examQuestions();
+		let basicQuestions = await dbRequests.examBasicQuestions();
+		let specialistQuestions = await dbRequests.examSpecialistQuestions();
+		shuffleArray(basicQuestions.rows);
+		shuffleArray(specialistQuestions.rows);
+		return [...basicQuestions.rows, ...specialistQuestions.rows];
 	} catch (e) {
 		throw new Error(e.message);
 	}

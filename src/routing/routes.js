@@ -18,27 +18,17 @@ import ReviewPage from "../client/ui/pages/ReviewPage";
 import UserPage from "../client/ui/pages/UserPage";
 
 import { TaskProvider } from "../context/TaskContext";
+import { TrainingFiltersProvider } from "../context/TrainingFiltersContext";
 
 function Routing() {
 	return (
 		<BrowserRouter basename="/driver-license-uwr">
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-
-				<Route
-					path="/trening/podsumowanie"
-					element={<SummaryPage isTraining={true} />}
-				/>
-				<Route
-					path="/egzamin/podsumowanie/:id"
-					element={<SummaryPage isTraining={false} />}
-				/>
 				<Route path="/faq" element={<FaqPage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/register" element={<RegisterPage />} />
-
 				<Route path="*" element={<NotFound />} />
-
 				<Route element={<ProtectedComponent />}>
 					<Route path="/konto" element={<UserPage />} />
 					<Route path="/egzamin" element={<ExamMenuPage />} />
@@ -58,14 +48,31 @@ function Routing() {
 							</TaskProvider>
 						}
 					/>
+					<Route
+						path="/trening/podsumowanie"
+						element={<SummaryPage isTraining={true} />}
+					/>
+					<Route
+						path="/egzamin/podsumowanie/:id"
+						element={<SummaryPage isTraining={false} />}
+					/>
 					<Route path="/trening" element={<TrainingMenuPage />} />
-					<Route path="/trening/filtry" element={<TrainingFilters />} />
+					<Route
+						path="/trening/filtry"
+						element={
+							<TrainingFiltersProvider>
+								<TrainingFilters />
+							</TrainingFiltersProvider>
+						}
+					/>
 					<Route
 						path="/trening/praktyka"
 						element={
-							<TaskProvider>
-								<PracticePage />
-							</TaskProvider>
+							<TrainingFiltersProvider>
+								<TaskProvider>
+									<PracticePage />
+								</TaskProvider>
+							</TrainingFiltersProvider>
 						}
 					/>
 					<Route path="/trening/teoria" element={<TheoryPage />} />

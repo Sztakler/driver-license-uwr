@@ -46,7 +46,7 @@ const practiceController = async (req, res) => {
 const examController = async (req, res) => {
 	try {
 		const allTasks = await examService();
-		res.json(allTasks.rows);
+		res.json(allTasks);
 	} catch (err) {
 		console.error(err.message);
 	}

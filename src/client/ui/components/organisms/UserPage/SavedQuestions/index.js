@@ -89,7 +89,7 @@ export default function SavedQuestions() {
 	const [mobileFiltersDisplayed, setMobileFiltersDisplayed] = useState(false);
 
 	function getSavedQuestions() {
-		return fetch("http://13.48.57.122/api/saved-questions", {
+		return fetch("http://localhost:5000/api/saved-questions", {
 			method: "GET",
 			credentials: "include",
 			headers: {
@@ -108,6 +108,7 @@ export default function SavedQuestions() {
 			setTasks(questions);
 			setFilteredTasks(questions);
 			setQuestionsLoaded(true);
+			console.log(questions);
 		};
 		fetchQuestions();
 	}, []);
@@ -115,22 +116,6 @@ export default function SavedQuestions() {
 	useEffect(() => {
 		setFilteredTasks(
 			tasks.filter((task) => {
-				console.log(
-					"result",
-					task.zakres_struktury === "PODSTAWOWY"
-						? filtersPicked.PODSTAWOWE
-						: task.zakres_struktury === "SPECJALISTYCZNY"
-						? filtersPicked.SPECJALISTYCZNE
-						: false,
-					task.knowledge_level === 0 || task.knowledge_level === null
-						? filtersPicked.NISKI
-						: task.knowledge_level === 1
-						? filtersPicked.ŚREDNI
-						: task.knowledge_level === 2
-						? filtersPicked.WYSOKI
-						: false
-				);
-
 				return (
 					(task.zakres_struktury === "PODSTAWOWY"
 						? filtersPicked.PODSTAWOWE
@@ -404,9 +389,9 @@ export default function SavedQuestions() {
 													Znajomość pytania:{" "}
 													<Text className="font-light">
 														{capitalizeFirstLetter(
-															task.knowledge_level === 2
+															task.knowledge_level === 3
 																? "WYSOKI"
-																: task.knowledge_level === 1
+																: task.knowledge_level === 2
 																? "ŚREDNI"
 																: "NISKI"
 														)}

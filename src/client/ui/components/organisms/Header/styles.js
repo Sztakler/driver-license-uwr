@@ -22,11 +22,10 @@ const TitleContainer = tw.div`
 	flex 
 	flex-col
 	max-md:p-4
-	lg:px-[10vw]
+	md:pl-[10vw]
 	w-full
 	min-w-full
 	container
-	md:px-[10vw]
 	max-md:h-[300px]
 	max-md:absolute
 	max-md:justify-center
@@ -42,15 +41,13 @@ const IllustrationContainer = tw.div`
 	relative
 	items-center
 	w-full 
-	h-[full]
 	min-[768px]:bg-theory-menu
 	min-[768px]:bg-center
 	min-[768px]:bg-no-repeat
 	min-[768px]:bg-contain
-	my-8
-	block
 	h-[371px]
 	max-md:hidden
+	mb-8
 `;
 
 const Title = tw.div`
@@ -72,7 +69,6 @@ const Subtitle = tw.div`
 const Buttons = tw.div`
 	w-full
 	self-center
-	mt-6
 	max-md:absolute
 	max-md:top-[410px]
 `;

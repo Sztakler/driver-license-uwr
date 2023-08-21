@@ -5,14 +5,20 @@ import TaskBottom from "../components/organisms/Practice/Regular/TaskBottom";
 import Menu from "../components/organisms/Practice/Regular/Menu";
 import TaskTop from "../components/organisms/Practice/Regular/TaskTop";
 import TaskContext from "../../../context/TaskContext";
-import Loading from "../components/molecules/Practice/Loading";
+import Loading from "../components/molecules/Loading";
 
 export default function PracticePage() {
-	const { task, setNewTask, setNewSavedQuestions, setNewTaskStarted } =
-		useContext(TaskContext);
+	const {
+		task,
+		setNewTask,
+		setNewSavedQuestions,
+		setNewTaskStarted,
+		favoriteTask,
+		setNewFavoriteTask,
+	} = useContext(TaskContext);
 
 	function getPracticeQuestions() {
-		return fetch("http://13.48.57.122/api/practice", {
+		return fetch("http://localhost:5000/api/practice", {
 			credentials: "include",
 			headers: {
 				"Content-Type": "application/json",
@@ -36,6 +42,7 @@ export default function PracticePage() {
 			setNewTaskStarted(
 				modifiedQuestions[0].zakres_struktury == "PODSTAWOWY" ? false : true
 			);
+			setNewFavoriteTask(modifiedQuestions[0].is_saved);
 		};
 
 		fetchQuestions();

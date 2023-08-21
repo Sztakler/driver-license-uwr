@@ -37,7 +37,7 @@ export default function Summary() {
 	});
 
 	async function getExamResult() {
-		let res = await fetch(`http://13.48.57.122/api/exam/results/${id}`).then(
+		let res = await fetch(`http://localhost:5000/api/exam/results/${id}`).then(
 			(response) => response.json()
 		);
 		return res.summary;

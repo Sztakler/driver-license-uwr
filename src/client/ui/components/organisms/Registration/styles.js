@@ -5,13 +5,13 @@ const RegistrationContainer = tw.div`
 	justify-center
 	align-center
 	w-full
-	h-max
 	pt-6
 	h-[calc(100vh-115px)]
-	bg-contain
+	bg-auto
 	bg-no-repeat
 	bg-center
 	xl:pl-[35vw]
+	relative
 `;
 
 const InfoContainer = tw.div`
@@ -37,11 +37,15 @@ const ImageContainer = tw.div`
 `;
 
 const FormContainer = tw.div`
-	relative flex flex-col bg-gradient-to-b from-[#FFEDCAFF] from-[0%]  via-[#FFEDCAD9] via-[80%] to-[#FFEDCA00] rounded-[39px] px-32 aspect-[652/805] self-center h-[85vh]
+	relative flex flex-col bg-gradient-to-b from-[#FFEDCAFF] from-[0%]  via-[#FFEDCAD9] via-[80%] to-[#FFEDCA00] rounded-[39px] px-32 aspect-[652/805] self-center h-[805px]
 `;
 
 const RegisterFormContainer = tw.div`
+	flex
+	flex-col
 	w-full
+	max-w-[450px]
+	self-center
 `;
 
 const RegisterForm = tw.form`

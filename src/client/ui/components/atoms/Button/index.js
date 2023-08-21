@@ -3,8 +3,8 @@ import tw from "tailwind-styled-components";
 
 import {
 	buttonPrimaryClasses,
+	buttonSecondaryClasses,
 	buttonBlankClasses,
-	buttonHoverClasses,
 	buttonNavbarClasses,
 	buttonNavbarIconClasses,
 	buttonUnderscoredClasses,
@@ -58,19 +58,20 @@ const StyledButton = tw.button`
 			? assignBubbleSize(props.size).join(" ")
 			: assignButtonSize(props.size).join(" ")}
   ${(props) => props.primary && buttonPrimaryClasses}
+  ${(props) => props.secondary && buttonSecondaryClasses}
 	${(props) => props.blank && buttonBlankClasses}
-	${(props) => props.hover && buttonHoverClasses}
   ${(props) => props.navbar && buttonNavbarClasses}
   ${(props) => props.navbarIcon && buttonNavbarIconClasses}
   ${(props) => props.underscored && buttonUnderscoredClasses}
 	${(props) => props.bubble && buttonBubbleClasses}
   ${(props) => props.bold && buttonBoldClasses}
 	${(props) => props.full && "w-full"}
-  ${(props) => props.active && "bg-[#FFD363]"}
+  ${(props) => props.hover && "hover:bg-[#FFCB46]"}
+  ${(props) => props.active && "bg-[#FFBC0D]"}
   ${(props) => props.picked && "bg-[#91CE6B]"}
   ${(props) =>
 		props.result === "skipped"
-			? "bg-[#FBBD1F]"
+			? "bg-[#FFBC0D]"
 			: props.result === "correct"
 			? "bg-[#91CE6B]"
 			: props.result === "incorrect"

@@ -25,7 +25,8 @@ const TitleContainer = tw.div`
 	flex 
 	flex-col
 	container
-	md:px-[10vw]
+	md:pl-[10vw]
+	
 	max-md:h-[300px]
 	max-md:absolute
 	max-md:justify-center

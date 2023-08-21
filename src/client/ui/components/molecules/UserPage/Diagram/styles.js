@@ -20,6 +20,7 @@ const DiagramContainer = tw.div`
 
 	p-4
 	pt-16
+	pb-16
 	max-md:pt-0
 	max-md:px-2
 `;

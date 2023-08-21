@@ -38,7 +38,7 @@ export default function Navbar(props) {
 			setIsAuthStatusChecked(false);
 			setIsLoggedIn(false);
 			try {
-				const response = await fetch("http://13.48.57.122/check-auth", {
+				const response = await fetch("http://localhost:5000/check-auth", {
 					credentials: "include",
 					headers: {
 						Accept: "application/json",
@@ -87,7 +87,7 @@ export default function Navbar(props) {
 	];
 
 	async function Logout() {
-		await fetch("http://13.48.57.122/logout", {
+		await fetch("http://localhost:5000/logout", {
 			method: "POST",
 			credentials: "include",
 			headers: {
@@ -96,6 +96,7 @@ export default function Navbar(props) {
 		});
 
 		navigate("/");
+		navigate(0);
 	}
 
 	function ToggleMenu(newIsMenuHidden) {
@@ -155,28 +156,32 @@ export default function Navbar(props) {
 
 					<NavbarItem
 						className={
-							"relative rounded-t-[18px] hover:bg-[#FFD363] py-1 px-[18px]" +
+							"relative rounded-t-[18px]  py-1 px-[18px]" +
 							(isMenuHidden ? " rounded-b-[18px]" : " ") +
 							("/konto" === activePage ? "bg-[#FFD363]" : "")
 						}
 						onMouseEnter={() => ToggleMenu(false)}
 						onMouseLeave={() => ToggleMenu(true)}
 					>
-						<div className="group w-full rounded-[18px]">
+						<div
+							className={
+								"rounded-[18px] flex flex-col absolute min-w-[85px] max-w-[85px] min-h-[48px] -top-[18px] -right-12 items-center justify-center " +
+								("/konto" === activePage ? "bg-[#FFBC0D]" : "")
+							}
+						>
 							<Button
-								active={"/konto" === activePage ? true : false}
 								navbar
 								navbarIcon
 								size={"xl"}
 								onClick={() => {
 									navigate("/konto");
 								}}
-								className={"group-hover:bg-[#FFD363] px-3 "}
+								className={
+									" flex h-full my-1 mx-1 max-h-[40px] items-center justify-center p-2"
+								}
 							>
 								<Image src={Illustrations.User} />
 							</Button>
-						</div>
-						<div className="absolute top-full left-[50%] -translate-x-1/2 w-full bg-inherit pb-1 rounded-b-[18px]">
 							{isLoggedIn && isAuthStatusChecked && (
 								<Button
 									hidden={isMenuHidden}
@@ -184,7 +189,7 @@ export default function Navbar(props) {
 									navbarIcon
 									size={"xl"}
 									onClick={() => Logout()}
-									className="hover:bg-[#FFD363] "
+									className=" my-1 mx-1 h-[40px]"
 								>
 									Wyloguj
 								</Button>

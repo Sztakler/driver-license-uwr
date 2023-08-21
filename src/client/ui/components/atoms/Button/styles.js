@@ -1,10 +1,11 @@
 const buttonPrimaryClasses =
-	"flex items-center px-[50px] py-[13px] justify-center bg-[#FFDD87] rounded-[39px] gap-2 flex-wrap max-md:px-[10px] max-md:py-[4px]";
+	"flex items-center px-[50px] py-[6px] justify-center bg-[#FFDD87] rounded-[39px] gap-2 flex-wrap max-md:px-[10px] max-md:py-[4px]";
+
+const buttonSecondaryClasses =
+	"flex items-center px-[50px] py-[6px] justify-center bg-[#FFFCF5] border border-[#ABA797] rounded-[39px] gap-2 flex-wrap max-md:px-[10px] max-md:py-[4px]";
 
 const buttonBlankClasses =
 	"flex gap-2 items-center justify-center hover:font-semibold";
-
-const buttonHoverClasses = "hover:bg-[#FFBC0D]";
 
 const buttonNavbarClasses = "rounded-[18px] px-3 py-1 hover:bg-[#FFD363]";
 
@@ -20,8 +21,8 @@ const buttonBubbleClasses =
 
 export {
 	buttonPrimaryClasses,
+	buttonSecondaryClasses,
 	buttonBlankClasses,
-	buttonHoverClasses,
 	buttonNavbarClasses,
 	buttonUnderscoredClasses,
 	buttonBoldClasses,

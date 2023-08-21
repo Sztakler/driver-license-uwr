@@ -4,7 +4,7 @@ const questionsCount = () => {
 	return pool.query(
 		`
 		SELECT COUNT(*) AS record_count FROM questions;
-			`
+		`
 	);
 };
 
@@ -37,21 +37,61 @@ LIMIT 25;
 	);
 };
 
-const examQuestions = () => {
+const examBasicQuestions = () => {
 	return pool.query(
 		`(
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'PODSTAWOWY'
-      LIMIT 20
+      WHERE zakres_struktury = 'PODSTAWOWY' AND liczba_punktow = 3
+			ORDER BY RANDOM()
+      LIMIT 10
     )
     UNION ALL
+		(
+      SELECT *
+      FROM questions
+      WHERE zakres_struktury = 'PODSTAWOWY' AND liczba_punktow = 2
+			ORDER BY RANDOM()
+      LIMIT 6
+    )
+		UNION ALL
+		(
+      SELECT *
+      FROM questions
+      WHERE zakres_struktury = 'PODSTAWOWY' AND liczba_punktow = 1
+			ORDER BY RANDOM()
+      LIMIT 4
+    );`
+	);
+};
+
+const examSpecialistQuestions = () => {
+	return pool.query(
+		`
     (
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'SPECJALISTYCZNY'
-      LIMIT 12
-    );`
+      WHERE zakres_struktury = 'SPECJALISTYCZNY' AND liczba_punktow = 3
+			ORDER BY RANDOM()
+      LIMIT 6
+    )
+		UNION ALL
+		(
+      SELECT *
+      FROM questions
+      WHERE zakres_struktury = 'SPECJALISTYCZNY' AND liczba_punktow = 2
+			ORDER BY RANDOM()
+      LIMIT 4
+    )
+		UNION ALL
+		(
+      SELECT *
+      FROM questions
+      WHERE zakres_struktury = 'SPECJALISTYCZNY' and liczba_punktow = 1
+			ORDER BY RANDOM()
+      LIMIT 2
+    )
+		;`
 	);
 };
 
@@ -188,7 +228,8 @@ const updateUserKnowledgeLevels = (question_id, knowledgeLevel, user_id) => {
 
 module.exports.questionsCount = questionsCount;
 module.exports.practiceQuestions = practiceQuestions;
-module.exports.examQuestions = examQuestions;
+module.exports.examSpecialistQuestions = examSpecialistQuestions;
+module.exports.examBasicQuestions = examBasicQuestions;
 module.exports.examResults = examResults;
 module.exports.examResultsId = examResultsId;
 module.exports.highKnowledgeQuestionsCount = highKnowledgeQuestionsCount;

@@ -21,7 +21,7 @@ const NavbarContainer = tw.div`
 		props.hamburgerExpand
 			? "max-md:via-[100px] max-md:to-[200px] pb-4"
 			: "max-md:via-[50px] max-md:to-[90px]"}
-	`;
+`;
 
 const BrandTitle = tw.div`
 	block
@@ -83,6 +83,8 @@ const NavbarLinks = tw.ul`
 	items-center
 	max-md:items-center
 	max-md:flex-col
+	relative
+
 `;
 
 export {

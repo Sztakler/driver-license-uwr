@@ -13,6 +13,7 @@ import Image from "../../../../atoms/Image";
 
 import {
 	MenuContainer,
+	QuestionCounter,
 	TimerContainer,
 	CustomTimer,
 	Row,
@@ -32,7 +33,7 @@ export default function Menu({ isExam }) {
 		videoIsPlaying,
 		setNewVideoIsPlaying,
 		imageIsLoaded,
-		setNewImageIsLoaded,
+		setNewFavoriteTask,
 	} = useContext(TaskContext);
 
 	const [questionTimer, setQuestionTimer] = useState(
@@ -114,6 +115,7 @@ export default function Menu({ isExam }) {
 		setTaskIdx(newTaskIdx);
 		setNewVideoIsPlaying(false);
 		setQuestionTimer(isTaskBasic ? 20 : 50);
+		setNewFavoriteTask(savedQuestions[newTaskIdx].is_saved);
 
 		if (!isExam) {
 			const selectElement = document.getElementById("knowledge_level");
@@ -189,7 +191,7 @@ export default function Menu({ isExam }) {
 
 		try {
 			const response = await fetch(
-				"http://13.48.57.122/api/user-knowledge-levels",
+				"http://localhost:5000/api/user-knowledge-levels",
 				{
 					method: "POST",
 					credentials: "include",
@@ -253,7 +255,7 @@ export default function Menu({ isExam }) {
 					blank
 					bubble={!isDesktop}
 					size={!isDesktop ? "l" : ""}
-					className="justify-center items-center w-[200px] order-3 max-md:absolute max-md:top-[70px] max-md:left-[20%] max-md:w-auto"
+					className="max-md:justify-center md:justify-start items-center w-[224px] max-md:order-3 absolute max-md:top-[70px] max-md:left-[20%] md:top-6 md:left-4 max-md:w-auto"
 					onClick={handleExplanationShowButton}
 				>
 					<Image
@@ -265,6 +267,18 @@ export default function Menu({ isExam }) {
 					/>
 					{isDesktop && <Text className="text-[16px]">Pokaż wyjaśnienie</Text>}
 				</Button>
+			)}
+			{isExam && (
+				<QuestionCounter>
+					<Text>
+						Pytania podstawowe:{" "}
+						{result.questionCounter > 20 ? 20 : result.questionCounter}/20
+					</Text>
+					<Text>
+						Pytania specjalistyczne:{" "}
+						{result.questionCounter <= 20 ? 0 : result.questionCounter - 20}/12
+					</Text>
+				</QuestionCounter>
 			)}
 			<Quit isReview={false} isExam={isExam} result={result} />
 			<Modal
@@ -298,11 +312,13 @@ export default function Menu({ isExam }) {
 
 			{!isExam && (
 				<KnowledgeLevel>
-					<Text className="text-[16px] px-2">Poziom znajomości pytania</Text>
+					<Text className="text-[16px] px-2">
+						{isDesktop ? "Poziom znajomości pytania" : "Znajomość"}
+					</Text>
 					<Input
 						id="knowledge_level"
 						type="select"
-						className="bg-[#FFE49E] rounded-[39px] w-full px-2 py-1"
+						className="bg-[#FFE49E] max-md:bg-[#FFF0CB] rounded-[39px] w-full px-2 py-1"
 						onChange={handleChangeKnowledgeLevel}
 					>
 						<option hidden value={0}>
@@ -323,13 +339,19 @@ export default function Menu({ isExam }) {
 						onClick={handlePreviousQuestionButton}
 					>
 						<Image src={Illustrations.ArrowLeft} />
-						<Text className="max-md:text-base">Poprzednie pytanie</Text>
+						<Text className="hover:font-medium">Poprzednie pytanie</Text>
 					</Button>
 				) : (
 					<></>
 				)}
-				<Button hover size="m" primary onClick={handleNextQuestionButton}>
-					<Text>Następne pytanie</Text>
+				<Button
+					secondary
+					hover
+					size="m"
+					full
+					onClick={handleNextQuestionButton}
+				>
+					<Text className="my-auto font-medium">Następne pytanie</Text>
 					{isDesktop && <Image src={Illustrations.ArrowRight} />}
 				</Button>
 			</NextPrevious>

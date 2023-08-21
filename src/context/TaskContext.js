@@ -9,6 +9,7 @@ export const TaskProvider = ({ children }) => {
 	const [savedQuestions, setSavedQuestions] = useState([]);
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
 	const [imageIsLoaded, setImageIsLoaded] = useState(false);
+	const [favoriteTask, setFavoriteTask] = useState(false);
 
 	const setNewTask = (newTask) => {
 		setTask(newTask);
@@ -34,6 +35,10 @@ export const TaskProvider = ({ children }) => {
 		setImageIsLoaded(newImageIsLoaded);
 	};
 
+	const setNewFavoriteTask = (newFavoriteTask) => {
+		setFavoriteTask(newFavoriteTask);
+	};
+
 	return (
 		<TaskContext.Provider
 			value={{
@@ -49,6 +54,8 @@ export const TaskProvider = ({ children }) => {
 				setNewVideoIsPlaying,
 				imageIsLoaded,
 				setNewImageIsLoaded,
+				favoriteTask,
+				setNewFavoriteTask,
 			}}
 		>
 			{children}

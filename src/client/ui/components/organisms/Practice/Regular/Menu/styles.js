@@ -18,6 +18,7 @@ const MenuContainer = tw.div`
 	max-w-[458px]
 	max-h-[558px]
 	ml-[112px]
+	md:relative
 	
 	xl:w-[975px]
 	lg:w-[832px]
@@ -30,6 +31,18 @@ const MenuContainer = tw.div`
 	max-md:px-2
 	max-md:py-0
 	overflow-hidden
+`;
+
+const QuestionCounter = tw.div`
+	md:absolute
+	md:top-4
+	md:left-6
+	md:flex
+	md:flex-col
+	md:items-start
+	md:justify-center
+	md:font-medium
+	md:gap-1
 `;
 
 const TimerContainer = tw.div`
@@ -61,6 +74,15 @@ const KnowledgeLevel = tw.div`
 	flex-col
 	items-start
 	gap-2
+
+	max-md:absolute
+	max-md:top-[58px]
+	max-md:max-w-[150px]
+	max-md:w-[150px]
+	max-md:left-[39%]
+	max-md:items-center
+	max-md:justify-center
+	max-md:gap-1
 `;
 
 const Row = tw.div`
@@ -92,6 +114,7 @@ const NextPrevious = tw.div`
 
 export {
 	MenuContainer,
+	QuestionCounter,
 	TimerContainer,
 	CustomTimer,
 	KnowledgeLevel,
