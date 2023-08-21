@@ -20,13 +20,13 @@ export default function Quit({ isReview, isExam, result }) {
 
 	async function sendResultsToDatabase() {
 		let data = {
-			user_id: 34,
 			questions: savedQuestions,
 			summary: result,
 		};
 		try {
 			const response = await fetch("http://localhost:5000/api/exam/results", {
 				method: "POST",
+				credentials: "include",
 				headers: {
 					"Content-Type": "application/json",
 				},
@@ -36,7 +36,7 @@ export default function Quit({ isReview, isExam, result }) {
 			if (response.ok) {
 				console.log("Data submitted successfully");
 				const responseData = await response.json();
-
+				console.log("ID:" + responseData.id);
 				return responseData.id;
 				// Additional actions or state updates after successful submission
 			} else {

@@ -95,12 +95,12 @@ const examSpecialistQuestions = () => {
 	);
 };
 
-const examResults = () => {
-	return pool.query("SELECT * FROM results ORDER BY RANDOM() LIMIT 1;");
+const examResults = (userID) => {
+	return pool.query(`SELECT * FROM results WHERE user_id = ${userID} ORDER BY RANDOM() LIMIT 1;`);
 };
 
-const examResultsId = (itemId) => {
-	return pool.query(`SELECT * FROM results WHERE id = ${itemId}`);
+const examResultsId = (userID, itemId) => {
+	return pool.query(`SELECT * FROM results WHERE user_id = ${userID} and id = ${itemId}`);
 };
 
 const highKnowledgeQuestionsCount = (userId) => {

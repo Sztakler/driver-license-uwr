@@ -34,7 +34,7 @@ export default function TaskTopReview() {
           <Text className="font-normal">100</Text>
         </div>
       </TaskInfo>
-      <Button
+      {/* <Button
         bubble
         onClick={() => {
           setFavoriteTask((prevState) => {
@@ -49,7 +49,7 @@ export default function TaskTopReview() {
         ) : (
           <Image src={Illustrations.StarNotSet} />
         )}
-      </Button>
+      </Button> */}
       <ImageBox>
         {mediaExtension === "mp4" ? (
           <Video src={task.media} autoPlay></Video>

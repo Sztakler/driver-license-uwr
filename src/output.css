@@ -696,10 +696,6 @@ h6 {
   visibility: hidden;
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
@@ -1127,12 +1123,16 @@ h6 {
   height: 500px;
 }
 
+.h-\[50px\] {
+  height: 50px;
+}
+
 .h-\[522px\] {
   height: 522px;
 }
 
-.h-\[85vh\] {
-  height: 85vh;
+.h-\[805px\] {
+  height: 805px;
 }
 
 .h-\[95\%\] {
@@ -1147,8 +1147,8 @@ h6 {
   height: calc(100vh - 115px);
 }
 
-.h-\[calc\(100vh-145px\)\] {
-  height: calc(100vh - 145px);
+.h-\[calc\(100vh-78px\)\] {
+  height: calc(100vh - 78px);
 }
 
 .h-\[calc\(100vh-91px\)\] {
@@ -1161,30 +1161,6 @@ h6 {
 
 .h-full {
   height: 100%;
-}
-
-.h-\[calc\(100vh-113px\)\] {
-  height: calc(100vh - 113px);
-}
-
-.h-\[calc\(100vh-78px\)\] {
-  height: calc(100vh - 78px);
-}
-
-.h-\[652px\] {
-  height: 652px;
-}
-
-.h-\[805px\] {
-  height: 805px;
-}
-
-.h-\[50px\] {
-  height: 50px;
-}
-
-.h-\[400px\] {
-  height: 400px;
 }
 
 .max-h-\[300px\] {
@@ -1482,6 +1458,10 @@ h6 {
   max-width: 440px;
 }
 
+.max-w-\[450px\] {
+  max-width: 450px;
+}
+
 .max-w-\[458px\] {
   max-width: 458px;
 }
@@ -1490,8 +1470,8 @@ h6 {
   max-width: 48px;
 }
 
-.max-w-\[500px\] {
-  max-width: 500px;
+.max-w-\[520px\] {
+  max-width: 520px;
 }
 
 .max-w-\[528px\] {
@@ -1522,12 +1502,8 @@ h6 {
   max-width: 538px;
 }
 
-.max-w-\[\] {
-  max-width: ;
-}
-
-.max-w-\[450px\] {
-  max-width: 450px;
+.max-w-\[540px\] {
+  max-width: 540px;
 }
 
 .flex-1 {
@@ -2527,6 +2503,11 @@ h6 {
   padding-bottom: 1.8vh;
 }
 
+.py-\[10px\] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .py-\[13px\] {
   padding-top: 13px;
   padding-bottom: 13px;
@@ -2547,16 +2528,6 @@ h6 {
   padding-bottom: 6px;
 }
 
-.py-\[16px\] {
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-.py-\[10px\] {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -2571,6 +2542,10 @@ h6 {
 
 .pb-14 {
   padding-bottom: 3.5rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
 }
 
 .pb-2 {
@@ -2641,6 +2616,10 @@ h6 {
   padding-top: 1.5rem;
 }
 
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .pt-\[115px\] {
   padding-top: 115px;
 }
@@ -2673,14 +2652,6 @@ h6 {
   padding-top: 90px;
 }
 
-.pt-8 {
-  padding-top: 2rem;
-}
-
-.pb-16 {
-  padding-bottom: 4rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -2695,10 +2666,6 @@ h6 {
 
 .align-middle {
   vertical-align: middle;
-}
-
-.font-\[Barriecito\] {
-  font-family: Barriecito;
 }
 
 .font-display {
@@ -2810,10 +2777,6 @@ h6 {
   font-size: 70%;
 }
 
-.text-\[8vw\] {
-  font-size: 8vw;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -2837,10 +2800,6 @@ h6 {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[25vw\] {
-  font-size: 25vw;
 }
 
 .font-bold {
@@ -2981,11 +2940,6 @@ h6 {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.shadow-black {
-  --tw-shadow-color: #000;
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
 .filter {
   -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
           filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -3114,11 +3068,6 @@ h6 {
 
 .hover\:bg-\[\#ffd363aa\]:hover {
   background-color: #ffd363aa;
-}
-
-.hover\:bg-black:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .hover\:font-medium:hover {
@@ -3559,8 +3508,20 @@ h6 {
     max-width: 256px;
   }
 
-  .max-md\:max-w-\[300px\] {
-    max-width: 300px;
+  .max-md\:max-w-\[320px\] {
+    max-width: 320px;
+  }
+
+  .max-md\:max-w-\[340px\] {
+    max-width: 340px;
+  }
+
+  .max-md\:max-w-\[350px\] {
+    max-width: 350px;
+  }
+
+  .max-md\:max-w-\[360px\] {
+    max-width: 360px;
   }
 
   .max-md\:auto-cols-\[70\%\] {
@@ -3795,19 +3756,9 @@ h6 {
     padding-right: 13.84vw;
   }
 
-  .max-md\:px-\[50px\] {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-
   .max-md\:py-0 {
     padding-top: 0px;
     padding-bottom: 0px;
-  }
-
-  .max-md\:py-\[13px\] {
-    padding-top: 13px;
-    padding-bottom: 13px;
   }
 
   .max-md\:py-\[2vh\] {

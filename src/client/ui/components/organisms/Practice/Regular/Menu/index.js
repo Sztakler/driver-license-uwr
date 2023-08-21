@@ -45,7 +45,7 @@ export default function Menu({ isExam }) {
 		scoredPoints: 0,
 		correctAnswers: 0,
 		incorrectAnswers: 0,
-		skippedQuestions: 0,
+		skippedQuestions: 32,
 	});
 	const [taskIdx, setTaskIdx] = useState(0);
 	const [examFinished, setExamFinished] = useState(false);
@@ -145,7 +145,7 @@ export default function Menu({ isExam }) {
 			incorrectAnswers:
 				prevState.incorrectAnswers + (taskResult === "incorrect" ? 1 : 0),
 			skippedQuestions:
-				prevState.skippedQuestions + (taskResult === "skipped" ? 1 : 0),
+				prevState.skippedQuestions + (taskResult === "skipped" ? 0 : -1),
 		}));
 
 		return;
