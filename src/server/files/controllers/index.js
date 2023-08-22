@@ -74,11 +74,13 @@ const examResultsIdController = async (req, res) => {
 	try {
 		console.log("OOOOOOOOOOOOOOOOOOOOOOOOOO");
 		const examResult = await examResultsIdService(userID, itemId);
+		console.log("[controller]" + JSON.stringify(examResult));
 		if (examResult.status === 401) {
 			console.log("AAAAAAAAAAA");
 			res.status(examResult.status).json({ message: examResult.message });
+			return [];
 		}
-		console.log(examResult.rows[0]);
+		console.log("after if");
 		res.json(examResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);

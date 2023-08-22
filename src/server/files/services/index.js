@@ -54,9 +54,7 @@ const examResultsService = async (userID) => {
 const examResultsIdService = async (userID, itemId) => {
 	try {
 		let examResults = await dbRequests.examResultsId(userID, itemId);
-		console.log("BBBBBBBBBBBBBUUUUUUUUUUUUUUUUUUU")
-		console.log("EXAM RESULTS: " + examResults);
-		if (!examResults) {
+		if (examResults.rows.length <= 0) {
 			return { status: 401, message: `User ${userID} is not authorized to acces this data.` };
 		}
 		return examResults;

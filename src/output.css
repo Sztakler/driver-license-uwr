@@ -2149,6 +2149,11 @@ h6 {
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
 
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -2802,6 +2807,10 @@ h6 {
   line-height: 1rem;
 }
 
+.text-\[64px\] {
+  font-size: 64px;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -2820,6 +2829,10 @@ h6 {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-\[64px\] {
+  font-weight: 64px;
 }
 
 .italic {

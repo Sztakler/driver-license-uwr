@@ -9,7 +9,7 @@ import { fetchData } from "../../utils/utils"
 
 export default function SummaryPage() {
 	const { id } = useParams();
-	const [results, setResult] = useState({
+	const [results, setResults] = useState({
 		questionCounter: 0,
 		scoredPoints: 0,
 		correctAnswers: 0,
@@ -19,10 +19,8 @@ export default function SummaryPage() {
 
 	useEffect(() => {
 		const fetchAndSetData = async () => {
-			console.log("FETCHING");
 			let examResult = await fetchData(`/api/exam/results/${id}`, "include");
-			console.log(JSON.stringify(examResult));
-			setResult(examResult.summary);
+			setResults(examResult.summary);
 		};
 		fetchAndSetData();
 	}, []);
