@@ -8,26 +8,22 @@ import TaskTopReview from "../components/organisms/Practice/Review/TaskTop";
 import TaskContext from "../../../context/TaskContext";
 import Loading from "../components/molecules/Loading";
 import { useParams } from "react-router";
+import { fetchData } from "../../utils/utils";
 
 export default function ReviewPage() {
 	const { task, setNewTask, setNewSavedQuestions, newSavedQuestions } =
 		useContext(TaskContext);
 	const { id } = useParams();
-	async function getExamResult() {
-		let res = await fetch(`http://localhost:5000/api/exam/results/${id}`).then(
-			(response) => response.json()
-		);
-		return res.questions;
-	}
 
 	useEffect(() => {
-		async function fetchDataAndSetIt() {
-			let res = await getExamResult();
-			setNewSavedQuestions(res);
-			setNewTask(res[0]);
-		}
-
-		fetchDataAndSetIt();
+		const fetchAndSetData = async () => {
+			console.log("FETCHING");
+			let examResult = await fetchData(`/api/exam/results/${id}`, "include");
+			console.log(JSON.stringify(examResult));
+			setNewSavedQuestions(examResult.questions);
+			setNewTask(examResult.questions[0]);
+		};
+		fetchAndSetData();
 	}, []);
 
 	return (

@@ -56,8 +56,13 @@ const examController = async (req, res) => {
 };
 
 const examResultsController = async (req, res) => {
+	const userID = req.user.id;
 	try {
-		const randomResult = await examResultsService();
+		const randomResult = await examResultsService(userID);
+		if (randomResult.status === 401) {
+			res.status(randomResult.status).json({ message: randomResult.message });
+		}
+
 		res.json(randomResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
@@ -65,11 +70,21 @@ const examResultsController = async (req, res) => {
 };
 
 const examResultsIdController = async (req, res) => {
-	const itemId = req.params.id;
-
+	const itemId = req.params["id"];
+	const userID = req.user.id;
+	console.log("USER" + userID);
+	console.log("ITEMID" + itemId);
 	try {
-		const randomResult = await examResultsIdService(itemId);
-		res.json(randomResult.rows[0]);
+		console.log("OOOOOOOOOOOOOOOOOOOOOOOOOO");
+		const examResult = await examResultsIdService(userID, itemId);
+		console.log("[controller]" + JSON.stringify(examResult));
+		if (examResult.status === 401) {
+			console.log("AAAAAAAAAAA");
+			res.status(examResult.status).json({ message: examResult.message });
+			return [];
+		}
+		console.log("after if");
+		res.json(examResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
 	}
@@ -210,7 +225,8 @@ const logoutController = (req, res, next) => {
 
 const updateExamResultsController = async (req, res) => {
 	try {
-		const { user_id, questions, summary } = req.body;
+		const user_id = req.user.id;
+		const { questions, summary } = req.body;
 		const result = await updateExamResultsService(user_id, questions, summary);
 		res.json({ id: result.rows[0].id });
 	} catch (error) {

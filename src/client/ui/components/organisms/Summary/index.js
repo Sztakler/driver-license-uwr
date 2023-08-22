@@ -24,39 +24,17 @@ function feedbackGenerator(results) {
 	}
 }
 
-export default function Summary() {
+export default function Summary({ results }) {
 	const { id } = useParams();
 
 	const navigate = useNavigate();
-	const [results, setResult] = useState({
-		questionCounter: 0,
-		scoredPoints: 0,
-		correctAnswers: 0,
-		incorrectAnswers: 0,
-		skippedQuestions: 0,
-	});
-
-	async function getExamResult() {
-		let res = await fetch(`http://localhost:5000/api/exam/results/${id}`).then(
-			(response) => response.json()
-		);
-		return res.summary;
-	}
-
-	useEffect(() => {
-		async function fetchDataAndSetIt() {
-			let res = await getExamResult();
-			setResult(res);
-		}
-
-		fetchDataAndSetIt();
-	}, []);
+	
 
 	return (
 		<SummaryContainer>
 			<InnerTextBox positive={results.scoredPoints >= 68}>
 				<InsideBackground>
-					<Text className="font-[Barriecito] max-md:text-[125%] max-xl:text-[100%] text-[70%] max-md:max-w-[300px] max-xl:max-w-[800px] max-w-[500px] break-words">
+					<Text className="font-display max-md:text-[125%] max-xl:text-[100%] text-[70%] max-md:max-w-[360px] max-xl:max-w-[800px] max-w-[540px] break-words">
 						{feedbackGenerator(results)}
 					</Text>
 					<Table>

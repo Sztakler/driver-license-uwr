@@ -39,17 +39,25 @@ const examService = async () => {
 	}
 };
 
-const examResultsService = async () => {
+const examResultsService = async (userID) => {
 	try {
-		return await dbRequests.examResults();
+		let examResults = await dbRequests.examResults(userID);
+		if (!examResults) {
+			return { status: 401, message: `User ${userID} is not authorized to acces this data.` };
+		}
+		return examResults;
 	} catch (e) {
 		throw new Error(e.message);
 	}
 };
 
-const examResultsIdService = async (itemId) => {
+const examResultsIdService = async (userID, itemId) => {
 	try {
-		return await dbRequests.examResultsId(itemId);
+		let examResults = await dbRequests.examResultsId(userID, itemId);
+		if (examResults.rows.length <= 0) {
+			return { status: 401, message: `User ${userID} is not authorized to acces this data.` };
+		}
+		return examResults;
 	} catch (e) {
 		throw new Error(e.message);
 	}
