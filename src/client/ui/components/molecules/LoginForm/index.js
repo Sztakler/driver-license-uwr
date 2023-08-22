@@ -11,17 +11,21 @@ import {
 } from "./styles";
 import Button from "../../atoms/Button";
 import { useNavigate } from "react-router";
+import Text from "../../atoms/Text";
 
 export default function LoginForm(props) {
 	const [usernameInput, setUsernameInput] = useState("");
 	const [passwordInput, setPasswordInput] = useState("");
+	const [message, setMessage] = useState("");
 	const navigate = useNavigate();
 
 	function handleUsername(event) {
+		setMessage("");
 		setUsernameInput(event.target.value);
 	}
 
 	function handlePassword(event) {
+		setMessage("");
 		setPasswordInput(event.target.value);
 	}
 
@@ -31,6 +35,7 @@ export default function LoginForm(props) {
 		const form = event.target;
 		const formData = new FormData(form);
 		const formJson = Object.fromEntries(formData.entries());
+
 		try {
 			const respond = await fetch("http://localhost:5000/login", {
 				method: "POST",
@@ -47,6 +52,8 @@ export default function LoginForm(props) {
 					JSON.stringify({ id: res.id, name: res.name })
 				);
 				navigate("/");
+			} else {
+				setMessage("Nie istnieje użytkownik z podanym e-mailem lub hasłem!");
 			}
 		} catch (err) {
 			console.log(err);
@@ -97,10 +104,11 @@ export default function LoginForm(props) {
 				>
 					Zaloguj
 				</Button>
+				<Text className="text-[#FF6130] mt-4">{message}</Text>
 				<NoAccount>
 					Nie masz jeszcze konta?{" "}
 					<Button
-						className="text-black underline font-semibold "
+						className="text-black underline font-semibold underline-offset-2 "
 						onClick={() => {
 							navigate("/register");
 						}}

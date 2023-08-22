@@ -9,6 +9,7 @@ const {
 	examResultsIdService,
 	statisticsService,
 	savedQuestionsService,
+	savedQuestionsKnowledgesService,
 	userKnowledgeLevelsService,
 	registrationService,
 	updateExamResultsService,
@@ -35,8 +36,10 @@ const questionsCountController = async (req, res) => {
 };
 
 const practiceController = async (req, res) => {
+	const filters = req.query;
+
 	try {
-		const allTasks = await practiceService(req.user.id);
+		const allTasks = await practiceService(req.user.id, filters);
 		res.json(allTasks.rows);
 	} catch (err) {
 		console.error(err.message);
@@ -104,16 +107,52 @@ const savedQuestionsController = async (req, res) => {
 	}
 };
 
+const savedQuestionsKnowledgeLevelsController = async (req, res) => {
+	try {
+		const userId = req.user.id;
+		const results = await savedQuestionsKnowledgesService(userId);
+
+		let retrievedResult = { low_count: 0, medium_count: 0, high_count: 0 };
+		results.rows.forEach((row) => {
+			if (row.knowledge_level === 0 || row.knowledge_level === 1) {
+				retrievedResult.low_count = Number(row.count);
+			} else if (row.knowledge_level === 2) {
+				retrievedResult.medium_count = Number(row.count);
+			} else if (row.knowledge_level === 3) {
+				retrievedResult.high_count = Number(row.count);
+			}
+		});
+
+		res.json(retrievedResult);
+	} catch {
+		res.status(400).json({ message: "Error" });
+	}
+};
+
 const userKnowledgeLevelsController = async (req, res) => {
 	try {
 		const userId = req.user.id;
-		const { medium_knowledge_questions_count, high_knowledge_questions_count } =
-			await userKnowledgeLevelsService(userId);
+		const {
+			allQuestionsCountQueryResult,
+			mediumKnowledgeQuestionsCountQueryResult,
+			highKnowledgeQuestionsCountQueryResult,
+		} = await userKnowledgeLevelsService(userId);
+
+		let highCountNumber = Number(
+			highKnowledgeQuestionsCountQueryResult.rows[0].record_count
+		);
+		let mediumCountNumber = Number(
+			mediumKnowledgeQuestionsCountQueryResult.rows[0].record_count
+		);
+		let lowCountNumber =
+			Number(allQuestionsCountQueryResult.rows[0].record_count) -
+			highCountNumber -
+			mediumCountNumber;
+
 		res.json({
-			high_count: Number(high_knowledge_questions_count.rows[0].record_count),
-			medium_count: Number(
-				medium_knowledge_questions_count.rows[0].record_count
-			),
+			low_count: lowCountNumber,
+			medium_count: mediumCountNumber,
+			high_count: highCountNumber,
 		});
 	} catch (err) {
 		console.error(err.message);
@@ -238,6 +277,8 @@ module.exports.examResultsController = examResultsController;
 module.exports.examResultsIdController = examResultsIdController;
 module.exports.statisticsController = statisticsController;
 module.exports.savedQuestionsController = savedQuestionsController;
+module.exports.savedQuestionsKnowledgeLevelsController =
+	savedQuestionsKnowledgeLevelsController;
 module.exports.userKnowledgeLevelsController = userKnowledgeLevelsController;
 module.exports.registrationController = registrationController;
 module.exports.loginController = loginController;

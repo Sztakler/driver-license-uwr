@@ -30,6 +30,7 @@ export default function Registration() {
 	const [name, setName] = useState("");
 	const [mail, setMail] = useState("");
 	const [password, setPassword] = useState("");
+	const [message, setMessage] = useState("");
 	const [userAlreadyExistsAlert, setUserAlreadyExistsAlert] = useState(false);
 
 	const handleNameChange = (event) => {
@@ -59,7 +60,7 @@ export default function Registration() {
 				}),
 			});
 			if (res.status === 400) {
-				setUserAlreadyExistsAlert(true);
+				setMessage("Użytkownik o podanym mailu już istnieje!");
 			}
 
 			if (res.ok) {
@@ -133,11 +134,6 @@ export default function Registration() {
 										onChange={handlePasswordChange}
 									></Input>
 								</InputWrapper>
-								{userAlreadyExistsAlert && (
-									<Text className="text-red-600">
-										Użytkownik o podanym mailu już istnieje!
-									</Text>
-								)}
 							</InputsContainer>
 
 							<SubmitButtonContainer>
@@ -169,11 +165,9 @@ export default function Registration() {
 		);
 	} else {
 		return (
-			<div className="h-[calc(100vh-78px)] flex flex-col px-8 pt-8 max-md:overflow-y-auto">
+			<div className="h-[calc(100vh-78px)] flex flex-col max-md:px-[6vw] px-8 max-md:pt-[2vh] pt-8 max-md:overflow-y-auto">
 				<RegisterFormContainer>
-					<Title className="text-[26px] font-medium pt-0">
-						Zarejestruj się
-					</Title>
+					<Title className="pt-0">Zarejestruj się</Title>
 					<RegisterForm onSubmit={registerUser}>
 						<InputsContainer>
 							<InputWrapper for="name">
@@ -233,7 +227,7 @@ export default function Registration() {
 								primary
 								hover
 								type="submit"
-								className="text-[16px] font-medium w-full px-[50px] py-[13px] h-[50px] bg-black"
+								className="text-[16px] font-medium w-full px-[50px] py-[13px] h-[50px] "
 							>
 								Załóż konto
 							</Button>

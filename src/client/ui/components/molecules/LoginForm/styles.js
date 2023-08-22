@@ -44,8 +44,8 @@ const Heading = tw.h2`
 	self-start
 	md:mt-24
 	md:mb-16
-	max-md:mt-16
-	max-md:mb-8
+	max-md:mt-[7vh]
+	max-md:mb-[6vh]
 `;
 
 export {

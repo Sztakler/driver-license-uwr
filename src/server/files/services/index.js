@@ -19,9 +19,9 @@ const questionsCountService = async () => {
 	}
 };
 
-const practiceService = async (user_id) => {
+const practiceService = async (user_id, filters) => {
 	try {
-		return await dbRequests.practiceQuestions(user_id);
+		return await dbRequests.practiceQuestions(user_id, filters);
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -89,14 +89,27 @@ const savedQuestionsService = async (userId) => {
 	}
 };
 
+const savedQuestionsKnowledgesService = async (userId) => {
+	try {
+		return await dbRequests.savedQuestionsKnowledgeLevels(userId);
+	} catch (e) {
+		throw new Error(e.message);
+	}
+};
+
 const userKnowledgeLevelsService = async (userId) => {
 	try {
-		const medium_knowledge_questions_count =
+		const mediumKnowledgeQuestionsCountQueryResult =
 			await dbRequests.mediumKnowledgeQuestionsCount(userId);
-		const high_knowledge_questions_count =
+		const highKnowledgeQuestionsCountQueryResult =
 			await dbRequests.highKnowledgeQuestionsCount(userId);
+		const allQuestionsCountQueryResult = await dbRequests.questionsCount();
 
-		return { medium_knowledge_questions_count, high_knowledge_questions_count };
+		return {
+			allQuestionsCountQueryResult,
+			mediumKnowledgeQuestionsCountQueryResult,
+			highKnowledgeQuestionsCountQueryResult,
+		};
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -108,11 +121,11 @@ const registrationService = async (name, email, password) => {
 	if (existingUser.rows.length > 0) {
 		return { status: 400, message: "Email already in use" };
 	}
-
 	const hashedPassword = await bcrypt.hash(password, 10);
 	const result = await dbRequests.insertUser(name, email, hashedPassword);
 	const userId = result.rows[0].id;
 	await dbRequests.createSavedQuestionsEntryFor(userId);
+	console.log("got here");
 
 	return { status: 200, message: "Registration successful" };
 };
@@ -185,6 +198,7 @@ module.exports = {
 	examResultsIdService,
 	statisticsService,
 	savedQuestionsService,
+	savedQuestionsKnowledgesService,
 	userKnowledgeLevelsService,
 	registrationService,
 	updateExamResultsService,

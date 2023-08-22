@@ -122,11 +122,11 @@ export default function SavedQuestions() {
 						: task.zakres_struktury === "SPECJALISTYCZNY"
 						? filtersPicked.SPECJALISTYCZNE
 						: false) &&
-					(task.knowledge_level === 0 || task.knowledge_level === null
+					(task.knowledge_level === 1 || task.knowledge_level === 0
 						? filtersPicked.NISKI
-						: task.knowledge_level === 1
-						? filtersPicked.ŚREDNI
 						: task.knowledge_level === 2
+						? filtersPicked.ŚREDNI
+						: task.knowledge_level === 3
 						? filtersPicked.WYSOKI
 						: false)
 				);

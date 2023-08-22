@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import Button from "../../../atoms/Button";
@@ -17,24 +17,70 @@ import {
 	InputsWrapper,
 } from "./styles";
 import TrainingFiltersContext from "../../../../../../context/TrainingFiltersContext";
+import { createSearchParams } from "react-router-dom";
 
 export default function TrainingFilters({
 	data,
 	headings,
 	filtersValues,
+	savedQuestionsKnowledges,
 	...props
 }) {
 	const navigate = useNavigate();
 
-	function navigateToPractice() {
-		navigate("/trening/praktyka");
-	}
-
 	const { trainingFiltersPicked, setNewTrainingFiltersPicked } = useContext(
 		TrainingFiltersContext
 	);
+	const [filtersCorrect, setFiltersCorrect] = useState(false);
 
-	function handleCheckboxChange(changedFilter) {
+	function areFiltersCorrect(trainingFiltersPicked, filtersValues) {
+		if (trainingFiltersPicked.onlySavedQuestions) {
+			return (
+				filtersValues.savedQuestionsCount > 0 &&
+				((trainingFiltersPicked.lowKnowledgeQuestions &&
+					savedQuestionsKnowledges.lowKnowledgeCount > 0) ||
+					(trainingFiltersPicked.mediumKnowledgeQuestions &&
+						savedQuestionsKnowledges.mediumKnowledgeCount > 0) ||
+					(trainingFiltersPicked.highKnowledgeQuestions &&
+						savedQuestionsKnowledges.highKnowledgeCount > 0))
+			);
+		}
+
+		return (
+			(trainingFiltersPicked.lowKnowledgeQuestions &&
+				filtersValues.lowKnowledgeCount > 0) ||
+			(trainingFiltersPicked.mediumKnowledgeQuestions &&
+				filtersValues.mediumKnowledgeCount > 0) ||
+			(trainingFiltersPicked.highKnowledgeQuestions &&
+				filtersValues.highKnowledgeCount > 0)
+		);
+	}
+
+	function startTraining() {
+		navigate({
+			pathname: "/trening/praktyka",
+			search: `?${createSearchParams(trainingFiltersPicked)}`,
+		});
+	}
+
+	function handleSetCheckboxChange(changedFilter) {
+		if (
+			(!trainingFiltersPicked.onlySavedQuestions &&
+				changedFilter === "allQuestions") ||
+			(trainingFiltersPicked.onlySavedQuestions &&
+				changedFilter === "savedQuestions")
+		) {
+			return;
+		}
+		setNewTrainingFiltersPicked((prevState) => {
+			return {
+				...prevState,
+				onlySavedQuestions: !prevState["onlySavedQuestions"],
+			};
+		});
+	}
+
+	function handleKnowledgeCheckboxChange(changedFilter) {
 		setNewTrainingFiltersPicked((prevState) => {
 			return {
 				...prevState,
@@ -42,6 +88,11 @@ export default function TrainingFilters({
 			};
 		});
 	}
+
+	useEffect(() => {
+		console.log(trainingFiltersPicked);
+		setFiltersCorrect(areFiltersCorrect(trainingFiltersPicked, filtersValues));
+	}, [filtersValues, trainingFiltersPicked]);
 
 	return (
 		<Container>
@@ -58,7 +109,17 @@ export default function TrainingFilters({
 					<Form>
 						<InputsWrapper>
 							<Label for="all" className="flex flex-row pb-2">
-								<Input checkbox id="all" type="checkbox" value="all"></Input>
+								<Input
+									checkbox
+									defaultChecked
+									checked={!trainingFiltersPicked.onlySavedQuestions}
+									id="all"
+									type="checkbox"
+									value="all"
+									onChange={() => {
+										handleSetCheckboxChange("allQuestions");
+									}}
+								></Input>
 								<Paragraph style="text-2xl">
 									<Text className="font-medium md:font-semibold text-[18.3px]">
 										Wszystkie
@@ -73,9 +134,13 @@ export default function TrainingFilters({
 							<Label for="saved" className="flex flex-row pb-2">
 								<Input
 									checkbox
+									checked={trainingFiltersPicked.onlySavedQuestions}
 									id="saved"
 									type="checkbox"
 									value="saved"
+									onChange={() => {
+										handleSetCheckboxChange("savedQuestions");
+									}}
 								></Input>
 								<Paragraph style="text-2xl">
 									<Text className="font-medium md:font-semibold text-[18.3px]">
@@ -94,36 +159,78 @@ export default function TrainingFilters({
 							</Text>
 
 							<Label for="low" className="flex flex-row pb-2 items-center ">
-								<Input checkbox id="low" type="checkbox" value="low"></Input>
+								<Input
+									checkbox
+									defaultChecked
+									id="low"
+									type="checkbox"
+									value="low"
+									onChange={() => {
+										handleKnowledgeCheckboxChange("lowKnowledgeQuestions");
+									}}
+								></Input>
 								<Paragraph style="text-[16.1px]">
-									niski ({filtersValues.lowKnowledgeCount})
+									niski (
+									{trainingFiltersPicked.onlySavedQuestions
+										? savedQuestionsKnowledges.lowKnowledgeCount
+										: filtersValues.lowKnowledgeCount}
+									)
 								</Paragraph>
 							</Label>
 
 							<Label for="medium" className="flex flex-row pb-2 items-center ">
 								<Input
 									checkbox
+									defaultChecked
 									id="medium"
 									type="checkbox"
 									value="medium"
+									onChange={() => {
+										handleKnowledgeCheckboxChange("mediumKnowledgeQuestions");
+									}}
 								></Input>
 								<Paragraph style="text-[16.1px]">
-									średni ({filtersValues.mediumKnowledgeCount})
+									średni (
+									{trainingFiltersPicked.onlySavedQuestions
+										? savedQuestionsKnowledges.mediumKnowledgeCount
+										: filtersValues.mediumKnowledgeCount}
+									)
 								</Paragraph>
 							</Label>
 
 							<Label for="high" className="flex flex-row pb-2 items-center ">
-								<Input checkbox id="high" type="checkbox" value="high"></Input>
+								<Input
+									checkbox
+									defaultChecked
+									id="high"
+									type="checkbox"
+									value="high"
+									onChange={() => {
+										handleKnowledgeCheckboxChange("highKnowledgeQuestions");
+									}}
+								></Input>
 								<Paragraph style="text-[16.1px]">
-									wysoki ({filtersValues.highKnowledgeCount})
+									wysoki (
+									{trainingFiltersPicked.onlySavedQuestions
+										? savedQuestionsKnowledges.highKnowledgeCount
+										: filtersValues.highKnowledgeCount}
+									)
 								</Paragraph>
 							</Label>
 						</InputsWrapper>
 					</Form>
+					{filtersCorrect === false && (
+						<Text className="absolute bottom-24 font-medium text-[#FF6130]">
+							*Wybierz poprawne filtry{" "}
+						</Text>
+					)}
+
 					<Button
 						primary
 						hover
-						onClick={navigateToPractice}
+						onClick={() => {
+							filtersCorrect && startTraining();
+						}}
 						size="l"
 						className="max-md:font-medium max-md:max-w-[256px] max-md:h-[48px] max-md:text-[20px]"
 					>

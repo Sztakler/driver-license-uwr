@@ -4,11 +4,10 @@ const TrainingFiltersContext = createContext();
 
 export const TrainingFiltersProvider = ({ children }) => {
 	const [trainingFiltersPicked, setTrainingFiltersPicked] = useState({
-		questionCount: false,
-		savedQuestionsCount: false,
-		lowKnowledgeCount: false,
-		mediumKnowledgeCount: false,
-		highKnowledgeCount: false,
+		onlySavedQuestions: false,
+		lowKnowledgeQuestions: true,
+		mediumKnowledgeQuestions: true,
+		highKnowledgeQuestions: true,
 	});
 
 	const setNewTrainingFiltersPicked = (newFiltersPicked) => {

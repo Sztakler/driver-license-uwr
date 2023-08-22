@@ -49,7 +49,7 @@ const RegisterFormContainer = tw.div`
 `;
 
 const RegisterForm = tw.form`
-flex flex-col gap-y-6 pt-12
+flex flex-col gap-y-6 max-md:pt-[4vh] pt-12
 `;
 
 const InputsContainer = tw.div`

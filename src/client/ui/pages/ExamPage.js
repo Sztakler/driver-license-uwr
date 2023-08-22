@@ -25,7 +25,6 @@ export default function ExamPage() {
 			const modifiedQuestions = questions.map((question) => {
 				return { ...question, wybrana_odpowiedz: null };
 			});
-			console.log(modifiedQuestions[0]);
 			setNewSavedQuestions(modifiedQuestions);
 			setNewTask(modifiedQuestions[0]);
 			setNewFavoriteTask(modifiedQuestions[0].is_saved);

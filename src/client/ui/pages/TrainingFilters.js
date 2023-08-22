@@ -13,6 +13,11 @@ export default function TrainingFiltersPage() {
 		mediumKnowledgeCount: 0,
 		highKnowledgeCount: 0,
 	});
+	const [savedQuestionsKnowledges, setSavedQuestionsKnowledges] = useState({
+		lowKnowledgeCount: 0,
+		mediumKnowledgeCount: 0,
+		highKnowledgeCount: 0,
+	});
 	const [dataFetched, setDataFetched] = useState(false);
 
 	useEffect(() => {
@@ -21,23 +26,37 @@ export default function TrainingFiltersPage() {
 				"/api/questions-count",
 				"same-origin"
 			);
-			let highAndMediumKnowledge = await fetchData(
+			let knowledgeCounts = await fetchData(
 				"/api/user-knowledge-levels",
 				"include"
 			);
 			let savedQuestions = await fetchData("/api/saved-questions", "include");
-			let lowKnowledgeCount =
-				numberOfQuestion -
-				highAndMediumKnowledge.high_count -
-				highAndMediumKnowledge.medium_count;
-			let mediumKnowledgeCount = highAndMediumKnowledge.medium_count;
-			let highKnowledgeCount = highAndMediumKnowledge.high_count;
+
+			let savedQuestionKnowledges = await fetchData(
+				"/api/saved-questions/knowledge-levels",
+				"include"
+			);
+
+			let lowSavedQuestionsKnowledgeCount = savedQuestionKnowledges.low_count;
+			let mediumSavedQuestionsKnowledgeCount =
+				savedQuestionKnowledges.medium_count;
+			let highSavedQuestionsKnowledgeCount = savedQuestionKnowledges.high_count;
+
+			let lowKnowledgeCount = knowledgeCounts.low_count;
+			let mediumKnowledgeCount = knowledgeCounts.medium_count;
+			let highKnowledgeCount = knowledgeCounts.high_count;
+
 			setFiltersValues({
 				questionCount: numberOfQuestion,
 				savedQuestionsCount: savedQuestions.length,
 				lowKnowledgeCount: lowKnowledgeCount,
 				mediumKnowledgeCount: mediumKnowledgeCount,
 				highKnowledgeCount: highKnowledgeCount,
+			});
+			setSavedQuestionsKnowledges({
+				lowKnowledgeCount: lowSavedQuestionsKnowledgeCount,
+				mediumKnowledgeCount: mediumSavedQuestionsKnowledgeCount,
+				highKnowledgeCount: highSavedQuestionsKnowledgeCount,
 			});
 			setDataFetched(true);
 		};
@@ -48,7 +67,7 @@ export default function TrainingFiltersPage() {
 	return (
 		<ContentFillTemplate header={<Navbar />}>
 			{dataFetched ? (
-				<TrainingFilters filtersValues={filtersValues} />
+				<TrainingFilters filtersValues={filtersValues} savedQuestionsKnowledges={savedQuestionsKnowledges} />
 			) : (
 				<Loading />
 			)}

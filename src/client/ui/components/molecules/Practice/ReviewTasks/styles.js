@@ -5,8 +5,10 @@ const ReviewTasksContainer = tw.div`
 	flex-col
 	items-start
 	gap-2
-	h-full
 	w-full
+	max-md:max-h-[12vh]
+	overflow-y-auto
+	max-md:order-1
 `;
 
 const BubblesWrapper = tw.div`

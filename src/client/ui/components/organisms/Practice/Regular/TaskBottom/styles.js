@@ -22,6 +22,7 @@ const Answers = tw.div`
 	${(props) =>
 		props.row ? "flex-row justify-around" : "flex-col justify-around gap-4"}
 	mt-6
+	px-2
 `;
 
 const Answer = tw.div`

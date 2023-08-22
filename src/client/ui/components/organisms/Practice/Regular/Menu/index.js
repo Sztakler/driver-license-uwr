@@ -331,7 +331,7 @@ export default function Menu({ isExam }) {
 				</KnowledgeLevel>
 			)}
 
-			<NextPrevious>
+			<NextPrevious isExam={isExam}>
 				{!isExam ? (
 					<Button
 						blank

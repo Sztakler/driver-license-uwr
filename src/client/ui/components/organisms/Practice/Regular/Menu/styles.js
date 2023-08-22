@@ -34,15 +34,17 @@ const MenuContainer = tw.div`
 `;
 
 const QuestionCounter = tw.div`
-	md:absolute
+	absolute
 	md:top-4
 	md:left-6
-	md:flex
-	md:flex-col
-	md:items-start
-	md:justify-center
-	md:font-medium
+	flex
+	flex-col
+	items-start
+	justify-center
+	font-medium
 	md:gap-1
+	max-md:top-[70px]
+	max-md:left-[2.5%]
 `;
 
 const TimerContainer = tw.div`
@@ -105,6 +107,7 @@ const NextPrevious = tw.div`
 	max-2xl:flex-row
 	max-2xl:[&>*]:w-[50%]
 	max-md:[&>*]:w-auto
+	${(props) => props.isExam && "max-md:[&>*]:w-full px-2"}
 	max-md:absolute
 	max-md:bottom-2
 	max-md:left-0

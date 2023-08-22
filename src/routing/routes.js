@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedComponent from "../client/ui/components/utils/ProtectedComponent";
 import TrainingMenuPage from "../client/ui/pages/TrainingMenuPage";
 import TrainingFilters from "../client/ui/pages/TrainingFilters";
-import PracticePage from "../client/ui/pages/PracticePage";
+import PracticePage from "../client/ui/pages/TrainingPage";
 import TheoryPage from "../client/ui/pages/TheoryPage";
 import HomePage from "../client/ui/pages/HomePage";
 import ExamPage from "../client/ui/pages/ExamPage";

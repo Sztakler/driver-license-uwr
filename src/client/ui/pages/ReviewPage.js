@@ -31,11 +31,7 @@ export default function ReviewPage() {
 	}, []);
 
 	return (
-		<NoNavbarOnMobileTemplate
-			header={<Navbar />}
-			footer={<Footer />}
-			count={task ? 3 : 1}
-		>
+		<NoNavbarOnMobileTemplate header={<Navbar />} count={task ? 3 : 1}>
 			{task ? (
 				<>
 					<TaskTopReview />
