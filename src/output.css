@@ -873,6 +873,10 @@ h6 {
   top: 66%;
 }
 
+.top-10 {
+  top: 2.5rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1131,8 +1135,8 @@ h6 {
   height: 50px;
 }
 
-.h-\[805px\] {
-  height: 805px;
+.h-\[705px\] {
+  height: 705px;
 }
 
 .h-\[95\%\] {
@@ -1161,6 +1165,18 @@ h6 {
 
 .h-full {
   height: 100%;
+}
+
+.h-\[calc\(100vh-80px\)\] {
+  height: calc(100vh - 80px);
+}
+
+.h-\[calc\(100vh-90px\)\] {
+  height: calc(100vh - 90px);
+}
+
+.h-\[776px\] {
+  height: 776px;
 }
 
 .max-h-\[300px\] {
@@ -1753,10 +1769,6 @@ h6 {
   gap: 2rem;
 }
 
-.gap-\[200px\] {
-  gap: 200px;
-}
-
 .gap-\[36vh\] {
   gap: 36vh;
 }
@@ -2164,6 +2176,10 @@ h6 {
   background-image: url('/src/assets/images/svg/TrainingPage/trening.svg');
 }
 
+.bg-register {
+  background-image: url(/src/assets/images/svg/RegisterPage/załóż-darmowe-konto.svg);
+}
+
 .from-\[\#FEDDAC\] {
   --tw-gradient-from: #FEDDAC var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(254 221 172 / 0) var(--tw-gradient-to-position);
@@ -2311,10 +2327,6 @@ h6 {
 
 .p-10 {
   padding: 2.5rem;
-}
-
-.p-12 {
-  padding: 3rem;
 }
 
 .p-2 {
@@ -2563,6 +2575,10 @@ h6 {
   padding-left: 2rem;
 }
 
+.pl-\[650px\] {
+  padding-left: 650px;
+}
+
 .pr-5 {
   padding-right: 1.25rem;
 }
@@ -2601,10 +2617,6 @@ h6 {
 
 .pt-5 {
   padding-top: 1.25rem;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
 }
 
 .pt-8 {
@@ -2888,11 +2900,6 @@ h6 {
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity));
-}
-
-.text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -4010,6 +4017,14 @@ h6 {
     justify-self: end;
   }
 
+  .md\:overflow-x-auto {
+    overflow-x: auto;
+  }
+
+  .md\:overflow-y-auto {
+    overflow-y: auto;
+  }
+
   .md\:rounded-\[39px\] {
     border-radius: 39px;
   }
@@ -4186,10 +4201,6 @@ h6 {
 
   .xl\:bg-positive-result {
     background-image: url(/src/assets/images/svg/Results/wynik-pozytywny.svg);
-  }
-
-  .xl\:pl-\[35vw\] {
-    padding-left: 35vw;
   }
 
   .xl\:text-xl {

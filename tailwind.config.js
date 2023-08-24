@@ -68,6 +68,8 @@ module.exports = {
 					"url('/src/assets/images/svg/TrainingPage/trening.svg')",
 				"training-menu-mobile":
 					"url(/src/assets/images/svg/TrainingPage/trening-mobile.svg)",
+				register:
+					"url(/src/assets/images/svg/RegisterPage/załóż-darmowe-konto.svg)",
 				"exam-menu": "url(/src/assets/images/svg/ExamPage/egzamin.svg)",
 				"exam-menu-mobile":
 					"url(/src/assets/images/svg/ExamPage/egzamin-mobile.svg)",

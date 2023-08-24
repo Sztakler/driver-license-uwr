@@ -1,33 +1,34 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import ProtectedComponent from "../client/ui/components/utils/ProtectedComponent";
-import TrainingMenuPage from "../client/ui/pages/TrainingMenuPage";
-import TrainingFilters from "../client/ui/pages/TrainingFilters";
-import PracticePage from "../client/ui/pages/TrainingPage";
-import TheoryPage from "../client/ui/pages/TheoryPage";
-import HomePage from "../client/ui/pages/HomePage";
-import ExamPage from "../client/ui/pages/ExamPage";
-import ExamMenuPage from "../client/ui/pages/ExamMenu";
-import LoginPage from "../client/ui/pages/LoginPage";
-import FaqPage from "../client/ui/pages/FaqPage";
-import RegisterPage from "../client/ui/pages/RegisterPage";
-import SummaryPage from "../client/ui/pages/SummaryPage";
-import NotFound from "../client/ui/pages/NotFound";
-import ReviewPage from "../client/ui/pages/ReviewPage";
-import UserPage from "../client/ui/pages/UserPage";
+import ProtectedComponent from "client/utils/ProtectedComponent";
+import TrainingMenuPage from "client/pages/TrainingMenuPage";
+import TrainingFilters from "client/pages/TrainingFilters";
+import PracticePage from "client/pages/TrainingPage";
+import TheoryPage from "client/pages/TheoryPage";
+import HomePage from "client/pages/HomePage";
+import ExamPage from "client/pages/ExamPage";
+import ExamMenuPage from "client/pages/ExamMenu";
+import LoginPage from "client/pages/LoginPage";
+import RegisterPage from "client/pages/RegisterPage";
+import SummaryPage from "client/pages/SummaryPage";
+import NotFound from "client/pages/NotFound";
+import ReviewPage from "client/pages/ReviewPage";
+import UserPage from "client/pages/UserPage";
 
-import { TaskProvider } from "../context/TaskContext";
-import { TrainingFiltersProvider } from "../context/TrainingFiltersContext";
+import { TaskProvider } from "context/TaskContext";
+import { TrainingFiltersProvider } from "context/TrainingFiltersContext";
+import BlockedFromUser from "client/utils/BlockedFromUser";
 
 function Routing() {
 	return (
 		<BrowserRouter basename="/driver-license-uwr">
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-				<Route path="/faq" element={<FaqPage />} />
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/register" element={<RegisterPage />} />
+				<Route element={<BlockedFromUser />}>
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/register" element={<RegisterPage />} />
+				</Route>
 				<Route path="*" element={<NotFound />} />
 				<Route element={<ProtectedComponent />}>
 					<Route path="/konto" element={<UserPage />} />
