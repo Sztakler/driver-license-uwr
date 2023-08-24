@@ -52,7 +52,7 @@ const IllustrationContainer = tw.div`
 
 const Title = tw.div`
 	text-8xl
-	max-md:text-6xl
+	max-md:text-5xl
 	text-[#0d0d0d]
 	font-display
 	whitespace-break-spaces

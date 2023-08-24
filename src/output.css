@@ -3347,6 +3347,10 @@ h6 {
     top: 70px;
   }
 
+  .max-md\:top-\[200px\] {
+    top: 200px;
+  }
+
   .max-md\:order-1 {
     order: 1;
   }
@@ -3562,6 +3566,10 @@ h6 {
 
   .max-md\:gap-\[3vh\] {
     gap: 3vh;
+  }
+
+  .max-md\:self-center {
+    align-self: center;
   }
 
   .max-md\:overflow-y-auto {
@@ -3840,6 +3848,11 @@ h6 {
 
   .max-md\:text-\[20px\] {
     font-size: 20px;
+  }
+
+  .max-md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
   }
 
   .max-md\:font-medium {
@@ -4128,6 +4141,10 @@ h6 {
 
   .md\:pt-\[80px\] {
     padding-top: 80px;
+  }
+
+  .md\:pt-12 {
+    padding-top: 3rem;
   }
 
   .md\:font-semibold {

@@ -32,7 +32,7 @@ const TitleContainer = tw.div`
 	max-md:justify-center
 	max-md:items-center
 	max-md:text-center
-	max-md:top-[208px]
+	max-md:top-[200px]
 	max-md:px-3
 `;
 

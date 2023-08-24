@@ -17,9 +17,10 @@ const HeaderContainer = tw.div`
 `;
 
 const TitleContainer = tw.div`
-    flex 
-    flex-col
+		flex 
+		flex-col
 		w-full
+		md:pl-[10vw]
 `;
 
 const MainContainer = tw.div`
@@ -49,13 +50,13 @@ const Content = tw.div`
 `;
 
 const Title = tw.div`
-        text-8xl
-		max-md:text-7xl
-		max-[300px]:text-5xl
-		text-[#0d0d0d]
-        font-display
-		mb-2
-        self-center
+	text-8xl
+	max-md:text-6xl
+	text-[#0d0d0d]
+	font-display
+	mb-2
+	max-md:self-center
+
 `;
 
 const Form = tw.form`

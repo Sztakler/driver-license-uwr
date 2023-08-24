@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { createSearchParams } from "react-router-dom";
 import TrainingFiltersContext from "context/TrainingFiltersContext";
+import { useMediaQuery } from "react-responsive";
 
 import Button from "client/components/atoms/Button";
 import Label from "client/components/atoms/Label";
 import Input from "client/components/atoms/Input";
 import Paragraph from "client/components/atoms/Paragraph";
 import Text from "client/components/atoms/Text";
+import Subtitle from "client/components/atoms/Subtitle";
 
 import {
 	Container,
@@ -94,11 +96,19 @@ export default function TrainingFilters({
 		setFiltersCorrect(areFiltersCorrect(trainingFiltersPicked, filtersValues));
 	}, [filtersValues, trainingFiltersPicked]);
 
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 	return (
 		<Container>
 			<HeaderContainer>
 				<TitleContainer>
 					<Title>Trening</Title>
+					{isDesktop && (
+						<Subtitle>
+							Zapraszamy Cię na sesję treningową! TRENING to pytania
+							egzaminacyjne bez końca. Możesz użyć filtrów, aby wybrać pytania,
+							których chcesz się dziś uczyć.
+						</Subtitle>
+					)}
 				</TitleContainer>
 			</HeaderContainer>
 			<MainContainer id="MainContainer">
