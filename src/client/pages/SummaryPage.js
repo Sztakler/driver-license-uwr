@@ -6,6 +6,7 @@ import Navbar from "client/components/organisms/Navbar";
 import Summary from "client/components/organisms/Summary";
 
 import { fetchData } from "../utils/other";
+import Loading from "client/components/molecules/Loading";
 
 export default function SummaryPage() {
 	const { id } = useParams();
@@ -16,18 +17,24 @@ export default function SummaryPage() {
 		incorrectAnswers: 0,
 		skippedQuestions: 0,
 	});
+	const [resultsFetched, setResultsFetched] = useState(false);
 
 	useEffect(() => {
 		const fetchAndSetData = async () => {
 			let examResult = await fetchData(`/api/exam/results/${id}`, "include");
 			setResults(examResult.summary);
+			setResultsFetched(true);
 		};
 		fetchAndSetData();
 	}, []);
 
 	return (
 		<PageTemplate header={<Navbar />}>
-			<Summary results={results} />
+			{resultsFetched ? (
+				<Summary results={results} resultsFetched={resultsFetched} />
+			) : (
+				<Loading />
+			)}
 		</PageTemplate>
 	);
 }

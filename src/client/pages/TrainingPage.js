@@ -50,7 +50,6 @@ export default function PracticePage() {
 				navigate("/trening/filtry");
 				return;
 			}
-			console.log("REFRESH", questions);
 			const modifiedQuestions = questions.map((question) => {
 				return { ...question, wybrana_odpowiedz: null };
 			});

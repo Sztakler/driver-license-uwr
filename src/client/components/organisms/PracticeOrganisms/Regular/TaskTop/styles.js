@@ -10,6 +10,11 @@ const TaskTopSection = tw.div`
 `;
 
 const TaskInfo = tw.div`
+	whitespace-nowrap
+	overflow-hidden	
+`;
+
+const InfoWrapper = tw.div`
 	flex
 	flex-row
 	flex-wrap
@@ -21,23 +26,4 @@ const TaskInfo = tw.div`
 	mt-2
 `;
 
-const ImageBox = tw.div`
-	relative
-	flex
-	self-center
-	items-center
-	justify-center
-	h-auto
-	overflow-hidden
-	rounded-[39px]
-	xl:w-[975px]
-	lg:w-[832px]
-	md:w-[640px]
-	max-md:min-w-screen
-	max-md:min-h-[calc(100vw*0.5625)]
-
-	max-md:rounded-none
-	bg-[#FFE5A3]
-`;
-
-export { TaskTopSection, TaskInfo, ImageBox };
+export { TaskTopSection, TaskInfo, InfoWrapper };

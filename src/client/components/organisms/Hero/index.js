@@ -36,12 +36,12 @@ export default function Hero() {
 					bgImage={HomePageIllustrations.HeroImage1_Desktop}
 					scrollDown={scrollDown}
 				>
-					<div className="flex flex-col absolute top-[63%] left-[42%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
+					<div className="flex flex-col absolute top-[53%] left-[55%] w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
 						<Button
 							primary
 							hover
 							className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
-							onClick={() => navigate("/register")}
+							onClick={() => navigate("/trening")}
 						>
 							<Text className="text-[0.85vw] font-medium leading-none">
 								Trenuj z nami
@@ -55,12 +55,12 @@ export default function Hero() {
 					bgImage={HomePageIllustrations.HeroImage2_Desktop}
 					scrollDown={scrollDown}
 				>
-					<div className="flex flex-col absolute top-[66%] left-[67.3%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
+					<div className="flex flex-col absolute top-[60%] left-[67.3%] translate-x-1/2 -translate-y-1/2 w-[26%] gap-4 max-md:gap-2 max-sm:gap-0">
 						<Button
 							primary
 							hover
 							className="flex flex-row self-start px-[2.525vw] py-[1.8vh]"
-							onClick={() => navigate("/register")}
+							onClick={() => navigate("/trening")}
 						>
 							<Text className="text-[0.85vw] font-medium leading-none">
 								Trenuj z nami
@@ -140,9 +140,9 @@ export default function Hero() {
 			>
 				<MobileTopContainer>
 					<Text className="font-medium text-[6.66vw] leading-tight">
-						<span className="font-semibold">Przygotuj się</span>
+						<Text className="font-semibold">Przygotuj się</Text>
 						<br /> do egzaminu na prawo jazdy w{" "}
-						<span className="italic">ekspresowym</span> tempie.
+						<Text className="italic">ekspresowym</Text> tempie.
 					</Text>
 				</MobileTopContainer>
 				<MobileBottomContainer>

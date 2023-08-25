@@ -117,11 +117,15 @@ const examSpecialistQuestions = () => {
 };
 
 const examResults = (userID) => {
-	return pool.query(`SELECT * FROM results WHERE user_id = ${userID} ORDER BY RANDOM() LIMIT 1;`);
+	return pool.query(
+		`SELECT * FROM results WHERE user_id = ${userID} ORDER BY RANDOM() LIMIT 1;`
+	);
 };
 
 const examResultsId = (userID, itemId) => {
-	return pool.query(`SELECT * FROM results WHERE user_id = ${userID} and id = ${itemId}`);
+	return pool.query(
+		`SELECT * FROM results WHERE user_id = ${userID} and id = ${itemId}`
+	);
 };
 
 const highKnowledgeQuestionsCount = (userId) => {
@@ -136,8 +140,8 @@ const highKnowledgeQuestionsCount = (userId) => {
 	);
 };
 
-const mediumKnowledgeQuestionsCount = (userId) => {
-	return pool.query(
+const mediumKnowledgeQuestionsCount = async (userId) => {
+	return await pool.query(
 		`
 	SELECT COUNT(*)
 	AS record_count

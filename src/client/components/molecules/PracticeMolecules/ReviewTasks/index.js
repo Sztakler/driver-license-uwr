@@ -39,10 +39,10 @@ export default function ReviewTasks({
 					return (
 						<Button
 							bubble
+							activeBubble={index === taskIdx}
 							size="m"
 							result={getTaskResult(answer)}
 							onClick={() => handleBubbleSelect(index)}
-							className={index === taskIdx ? "border-[3px] font-semibold" : ""}
 						>
 							{index + 1}
 						</Button>
@@ -57,12 +57,10 @@ export default function ReviewTasks({
 					return (
 						<Button
 							bubble
+							activeBubble={adjustedIndex === taskIdx}
 							size="m"
 							result={getTaskResult(answer)}
 							onClick={() => handleBubbleSelect(adjustedIndex)}
-							className={
-								adjustedIndex === taskIdx ? "border-[3px] font-semibold" : ""
-							}
 						>
 							{index + 1}
 						</Button>

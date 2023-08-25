@@ -10,6 +10,7 @@ export const TaskProvider = ({ children }) => {
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
 	const [imageIsLoaded, setImageIsLoaded] = useState(false);
 	const [favoriteTask, setFavoriteTask] = useState(false);
+	const [knowledgeLevel, setKnowledgeLevel] = useState("-");
 
 	const setNewTask = (newTask) => {
 		setTask(newTask);
@@ -39,6 +40,21 @@ export const TaskProvider = ({ children }) => {
 		setFavoriteTask(newFavoriteTask);
 	};
 
+	const setNewKnowledgeLevel = (newKnowledgeLevel) => {
+		setKnowledgeLevel(newKnowledgeLevel);
+	};
+
+	useEffect(() => {
+		console.log("change", task);
+		setTaskStarted(false);
+		setImageIsLoaded(false);
+		setVideoIsPlaying(false);
+		if (task) {
+			setFavoriteTask(task.is_saved);
+			setKnowledgeLevel(task.knowledge_level);
+		}
+	}, [task]);
+
 	return (
 		<TaskContext.Provider
 			value={{
@@ -56,6 +72,8 @@ export const TaskProvider = ({ children }) => {
 				setNewImageIsLoaded,
 				favoriteTask,
 				setNewFavoriteTask,
+				knowledgeLevel,
+				setNewKnowledgeLevel,
 			}}
 		>
 			{children}

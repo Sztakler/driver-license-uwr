@@ -17,7 +17,7 @@ import {
 } from "./styles";
 
 function feedbackGenerator(results) {
-	if (results.scoredPoints > 75) {
+	if (results.scoredPoints >= 68) {
 		return "EGZAMIN ZALICZONY";
 	} else {
 		return "EGZAMIN NIEZALICZONY";
@@ -69,7 +69,7 @@ export default function Summary({ results }) {
 							navigate("/egzamin");
 						}}
 					>
-						{"NOWY EGZAMIN"}
+						NOWY EGZAMIN
 					</Button>
 					<Button
 						blank

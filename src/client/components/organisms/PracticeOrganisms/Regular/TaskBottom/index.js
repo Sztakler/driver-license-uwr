@@ -35,7 +35,6 @@ export default function TaskBottom({ isExam }) {
 									primary
 									hover
 									onClick={() => {
-										console.log("her,", index === task.wybrana_odpowiedz);
 										if (!isExam && task.wybrana_odpowiedz !== null) return;
 										setNewTask((prevState) => {
 											const newState = {

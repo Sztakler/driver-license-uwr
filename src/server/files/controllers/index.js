@@ -130,7 +130,7 @@ const savedQuestionsKnowledgeLevelsController = async (req, res) => {
 		let retrievedResult = { low_count: 0, medium_count: 0, high_count: 0 };
 		results.rows.forEach((row) => {
 			if (row.knowledge_level === 0 || row.knowledge_level === 1) {
-				retrievedResult.low_count = Number(row.count);
+				retrievedResult.low_count += Number(row.count);
 			} else if (row.knowledge_level === 2) {
 				retrievedResult.medium_count = Number(row.count);
 			} else if (row.knowledge_level === 3) {

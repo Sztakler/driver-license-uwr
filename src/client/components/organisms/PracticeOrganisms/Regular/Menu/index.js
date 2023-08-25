@@ -21,8 +21,10 @@ import {
 	KnowledgeLevel,
 } from "./styles";
 import { useMediaQuery } from "react-responsive";
+import { fetchData } from "client/utils/other";
 
 export default function Menu({ isExam }) {
+	// Context and State
 	const {
 		task,
 		setNewTask,
@@ -31,9 +33,8 @@ export default function Menu({ isExam }) {
 		savedQuestions,
 		setNewSavedQuestions,
 		videoIsPlaying,
-		setNewVideoIsPlaying,
 		imageIsLoaded,
-		setNewFavoriteTask,
+		setNewKnowledgeLevel,
 	} = useContext(TaskContext);
 
 	const [questionTimer, setQuestionTimer] = useState(
@@ -48,10 +49,10 @@ export default function Menu({ isExam }) {
 		skippedQuestions: 32,
 	});
 	const [taskIdx, setTaskIdx] = useState(0);
-	const [examFinished, setExamFinished] = useState(false);
-	const [knowledgeLevel, setKnowledgeLevel] = useState("-");
+	const [examFinished, setExamFinished] = useState(false); // move it to ExamContext and make molecule quit, finish exam on last question
 
-	function decrementTimer() {
+	// Timer controller
+	function controlTimer() {
 		if (
 			(videoIsPlaying && taskStarted) ||
 			(task.wybrana_odpowiedz && !isExam)
@@ -74,6 +75,7 @@ export default function Menu({ isExam }) {
 		}
 	}
 
+	// Load next question
 	function nextQuestion() {
 		if (examFinished) {
 			return;
@@ -102,20 +104,15 @@ export default function Menu({ isExam }) {
 			updatedQuestions[changedItemIndex] = task;
 			setNewSavedQuestions(updatedQuestions);
 		} else {
-			console.log("Item not found.");
+			console.error("Question not found");
 		}
 
 		let isTaskBasic =
 			savedQuestions[newTaskIdx].zakres_struktury === "PODSTAWOWY";
 
-		console.log("typ taska", savedQuestions[newTaskIdx], isTaskBasic);
-
 		setNewTask(savedQuestions[newTaskIdx]);
-		setNewTaskStarted(!isTaskBasic);
 		setTaskIdx(newTaskIdx);
-		setNewVideoIsPlaying(false);
 		setQuestionTimer(isTaskBasic ? 20 : 50);
-		setNewFavoriteTask(savedQuestions[newTaskIdx].is_saved);
 
 		if (!isExam) {
 			const selectElement = document.getElementById("knowledge_level");
@@ -123,6 +120,7 @@ export default function Menu({ isExam }) {
 		}
 	}
 
+	// Load previous question
 	function previousQuestion() {
 		let newTaskIdx = taskIdx > 0 ? taskIdx - 1 : taskIdx;
 		setTaskIdx(newTaskIdx);
@@ -132,7 +130,8 @@ export default function Menu({ isExam }) {
 		selectElement.selectedIndex = savedQuestions[newTaskIdx].knowledge_level;
 	}
 
-	function verifyAnswer(pickedAnswer) {
+	// Answer Verification
+	function verifyAnswer() {
 		const taskResult = getTaskResult();
 
 		setResult((prevState) => ({
@@ -147,8 +146,6 @@ export default function Menu({ isExam }) {
 			skippedQuestions:
 				prevState.skippedQuestions + (taskResult === "skipped" ? 0 : -1),
 		}));
-
-		return;
 	}
 
 	function getTaskResult() {
@@ -161,6 +158,7 @@ export default function Menu({ isExam }) {
 		return "incorrect";
 	}
 
+	// Handle Start Button
 	function handleStartButton() {
 		if (taskStarted) {
 			return;
@@ -169,13 +167,15 @@ export default function Menu({ isExam }) {
 		setQuestionTimer(15);
 	}
 
+	// Handle Explanation Button
 	function handleExplanationShowButton() {
 		taskStarted && setExplanationModalShow(true);
 	}
 
+	// Handle Knowledge Level Change
 	async function handleChangeKnowledgeLevel(e) {
 		let newKnowledgeLevel = Number(e.target.value);
-		setKnowledgeLevel(newKnowledgeLevel);
+		setNewKnowledgeLevel(newKnowledgeLevel);
 
 		const changedItemIndex = savedQuestions.findIndex(
 			(item) => item.id === task.id
@@ -186,45 +186,37 @@ export default function Menu({ isExam }) {
 			updatedQuestions[changedItemIndex].knowledge_level = newKnowledgeLevel;
 			setNewSavedQuestions(updatedQuestions);
 		} else {
-			console.log("Item not found.");
+			console.error("Question not found");
+			return;
 		}
-
 		try {
-			const response = await fetch(
-				"http://localhost:5000/api/user-knowledge-levels",
-				{
-					method: "POST",
-					credentials: "include",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						question_id: task.id,
-						knowledgeLevel: newKnowledgeLevel,
-					}),
-				}
-			);
-
-			if (response.ok) {
-				console.log("Data submitted successfully");
-			} else {
-				console.error("Error submitting data");
-			}
+			await fetch("http://localhost:5000/api/user-knowledge-levels", {
+				method: "POST",
+				credentials: "include",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					question_id: task.id,
+					knowledgeLevel: newKnowledgeLevel,
+				}),
+			});
 		} catch (error) {
 			console.error("Network error:", error);
 		}
-
-		return 0;
 	}
 
+	// Handle Next Question Button
 	function handleNextQuestionButton() {
 		nextQuestion();
 	}
 
+	// Handle Previous Question Button
 	function handlePreviousQuestionButton() {
 		previousQuestion();
 	}
 
+	// Get Message for Timer
 	function getMessage() {
 		if (taskStarted) {
 			if (videoIsPlaying) {
@@ -241,8 +233,9 @@ export default function Menu({ isExam }) {
 		return "Czas na zapoznanie się z pytaniem";
 	}
 
+	// Timer Effect
 	useEffect(() => {
-		const interval = setInterval(decrementTimer, 1001);
+		const interval = setInterval(controlTimer, 1001);
 		return () => clearInterval(interval);
 	}, [taskStarted, questionTimer, videoIsPlaying]);
 
@@ -309,7 +302,6 @@ export default function Menu({ isExam }) {
 					</div>
 				</Row>
 			</TimerContainer>
-
 			{!isExam && (
 				<KnowledgeLevel>
 					<Text className="text-[16px] px-2">
@@ -330,7 +322,6 @@ export default function Menu({ isExam }) {
 					</Input>
 				</KnowledgeLevel>
 			)}
-
 			<NextPrevious isExam={isExam}>
 				{!isExam ? (
 					<Button
