@@ -1,46 +1,73 @@
 import tw from "tailwind-styled-components";
 
-const LoginFormContainer = tw.form`
-	flex
-	flex-col
-	items-center
-	justify-center
-	h-full
-	w-1/3
-	rounded-[39px]
-	p-6
-`;
-
-const InnerWrapper = tw.div`
+const RegisterFormContainer = tw.div`
 	flex
 	flex-col
 	w-full
-	mb-10
+	max-w-[450px]
+	self-center
 `;
 
-const LabelSection = tw.div`
+const RegisterForm = tw.form`
 	flex
-	flex-row
-	w-full
+	flex-col
+	gap-y-6
+	max-md:pt-[4vh]
+	pt-12
 `;
 
-const InputSection = tw.div`
-	relative
+const InputsContainer = tw.div`
 	flex
-	flex-row
-	items-center
-	w-full
-	h-20
+	flex-col
+	gap-y-6
 `;
 
-const Heading = tw.h2`
-	mb-10
+const InputWrapper = tw.label`
+	flex
+	flex-col
+	pb-2
+`;
+
+const InputLabelText = tw.p`
+	text-[16px]
+	font-semibold
+`;
+
+const SubmitButtonContainer = tw.button`
+
+`;
+
+const LoginButtonContainer = tw.div`
+	xl:absolute
+	xl:top-6
+	xl:right-8
+`;
+
+const TextGrayedSpan = tw.span`
+	text-[#808080]
+`;
+
+const TextUnderlineSpan = tw.span`
+	underline
+`;
+
+const Disclaimer = tw.p`
+	text-xs
+	text-[#808080]
+	text-left
+	max-w-prose
+	mr-auto
 `;
 
 export {
-	LoginFormContainer,
-	InnerWrapper,
-	LabelSection,
-	InputSection,
-	Heading,
+	RegisterFormContainer,
+	RegisterForm,
+	InputsContainer,
+	InputWrapper,
+	InputLabelText,
+	SubmitButtonContainer,
+	LoginButtonContainer,
+	TextGrayedSpan,
+	TextUnderlineSpan,
+	Disclaimer,
 };

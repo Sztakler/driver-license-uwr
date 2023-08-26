@@ -1,89 +1,130 @@
 import React, { useState } from "react";
 
-import Label from "client/components/atoms/Label";
 import Input from "client/components/atoms/Input";
-import {
-	LoginFormContainer,
-	InnerWrapper,
-	InputSection,
-	Heading,
-} from "./styles";
-import Image from "client/components/atoms/Image";
 import Button from "client/components/atoms/Button";
+import Text from "client/components/atoms/Text";
 
-export default function RegistrationForm(props) {
-	const [usernameInput, setUsernameInput] = useState("");
-	const [passwordInput, setPasswordInput] = useState("");
-	const [emailInput, setEmailInput] = useState("");
+import {
+	RegisterFormContainer,
+	RegisterForm,
+	InputsContainer,
+	InputWrapper,
+	InputLabelText,
+	SubmitButtonContainer,
+	TextUnderlineSpan,
+	Disclaimer,
+} from "./styles";
 
-	function handleUsername(event) {
-		setUsernameInput(event.target.value);
-	}
+import { useNavigate } from "react-router";
 
-	function handlePassword(event) {
-		setPasswordInput(event.target.value);
-	}
+export default function RegistrationForm() {
+	const navigate = useNavigate();
 
-	function handleEmail(event) {
-		setEmailInput(event.target.value);
-	}
+	const [name, setName] = useState("");
+	const [mail, setMail] = useState("");
+	const [password, setPassword] = useState("");
+	const [message, setMessage] = useState("");
 
-	function handleSubmit(event) {
-		event.preventDefault();
-		alert("[Registration] not implemented");
-	}
+	const handleNameChange = (event) => {
+		setName(event.target.value);
+	};
+
+	const handleMailChange = (event) => {
+		setMail(event.target.value);
+		setMessage("");
+	};
+
+	const handlePasswordChange = (event) => {
+		setPassword(event.target.value);
+	};
+
+	let registerUser = async (e) => {
+		e.preventDefault();
+		try {
+			let res = await fetch("http://localhost:5000/register", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					name: name,
+					email: mail,
+					password: password,
+				}),
+			});
+			if (res.status === 400) {
+				setMessage("Użytkownik o podanym adresie e-mail już istnieje!");
+			}
+
+			if (res.ok) {
+				navigate("/login");
+			} else {
+				navigate("/register");
+			}
+		} catch (err) {
+			console.log("ERROR");
+		}
+	};
 
 	return (
-		<LoginFormContainer onSubmit={handleSubmit}>
-			<Heading>Zarejestruj się</Heading>
-			<InnerWrapper>
-				<Label size="2xl">E-mail</Label>
-				<InputSection>
-					<Image icon src={require("assets/images/mail.png")} />
-					<Input
-						login
-						id="emailInput"
-						type="email"
-						value={emailInput}
-						onChange={handleEmail}
-						placeholder="example@mail.com"
-					/>
-				</InputSection>
-			</InnerWrapper>
-			<InnerWrapper>
-				<Label size="2xl">Login</Label>
-				<InputSection>
-					<Image icon src={require("assets/images/mail.png")} />
-					<Input
-						login
-						id="usernameInput"
-						type="text"
-						value={usernameInput}
-						onChange={handleUsername}
-						placeholder="Username"
-					/>
-				</InputSection>
-			</InnerWrapper>
-			<InnerWrapper>
-				<Label size="2xl">Hasło</Label>
-				<InputSection>
-					<Image icon src={require("assets/images/lock.png")} />
-					<Input
-						login
-						id="passwordInput"
-						type="password"
-						value={passwordInput}
-						onChange={handlePassword}
-						placeholder="******************"
-					/>
-				</InputSection>
-			</InnerWrapper>
-
-			<InnerWrapper>
-				<Button type="submit" className="bg-orange-600 text-white text-xl">
-					Zarejestruj
-				</Button>
-			</InnerWrapper>
-		</LoginFormContainer>
+		<RegisterFormContainer>
+			<RegisterForm onSubmit={registerUser}>
+				<InputsContainer>
+					<InputWrapper for="name">
+						<InputLabelText>Imię</InputLabelText>
+						<Input
+							register
+							id="name"
+							type="text"
+							value={name}
+							onChange={handleNameChange}
+						></Input>
+					</InputWrapper>
+					<InputWrapper for="email">
+						<InputLabelText>E-mail</InputLabelText>
+						<Text className="text-[#FF6130]">{message}</Text>
+						<Input
+							register
+							required
+							id="email"
+							type="email"
+							value={mail}
+							onChange={handleMailChange}
+						></Input>
+					</InputWrapper>
+					<InputWrapper for="password">
+						<InputLabelText>Hasło</InputLabelText>
+						<Input
+							register
+							required
+							id="password"
+							type="password"
+							placeholder="min. 8 liter"
+							value={password}
+							onChange={handlePasswordChange}
+						></Input>
+					</InputWrapper>
+				</InputsContainer>
+				<Disclaimer onClick={() => {}}>
+					Klikając przycisk Załóż konto, akceptujesz nasz&nbsp;
+					<TextUnderlineSpan>Regulamin</TextUnderlineSpan>,&nbsp;
+					<TextUnderlineSpan>
+						zasady ochrony prywatności&nbsp;
+					</TextUnderlineSpan>
+					i&nbsp;
+					<TextUnderlineSpan>zasady dotyczące plików cookie</TextUnderlineSpan>.
+				</Disclaimer>
+				<SubmitButtonContainer>
+					<Button
+						primary
+						hover
+						type="submit"
+						className="font-medium w-full px-[50px] py-[13px] h-[50px]"
+					>
+						<Text>Załóż konto</Text>
+					</Button>
+				</SubmitButtonContainer>
+			</RegisterForm>
+		</RegisterFormContainer>
 	);
 }

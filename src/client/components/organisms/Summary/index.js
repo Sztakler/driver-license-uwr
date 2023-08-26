@@ -10,11 +10,11 @@ import {
 	SummaryContainer,
 	InnerTextBox,
 	InsideBackground,
-	Table,
 	StatisticContainer,
 	Statistic,
 	Points,
 } from "./styles";
+import ResultsTable from "client/components/molecules/ResultsTable";
 
 function feedbackGenerator(results) {
 	if (results.scoredPoints >= 68) {
@@ -29,37 +29,37 @@ export default function Summary({ results }) {
 
 	const navigate = useNavigate();
 
+	const data = [
+		{
+			header: "zdobyte punkty:",
+			number: results.scoredPoints,
+			numberColor: "",
+		},
+		{
+			header: "poprawne odpowiedzi:",
+			number: results.correctAnswers,
+			numberColor: "text-[#518402]",
+		},
+		{
+			header: "błędne odpowiedzi:",
+			number: results.incorrectAnswers,
+			numberColor: "text-[#FF4412]",
+		},
+		{
+			header: "pominięte odpowiedzi:",
+			number: results.skippedQuestions,
+			numberColor: "text-[#FBBD1F]",
+		},
+	];
+
 	return (
 		<SummaryContainer>
 			<InnerTextBox positive={results.scoredPoints >= 68}>
 				<InsideBackground>
-					<Text className="font-display max-md:text-[125%] max-xl:text-[100%] text-[70%] max-md:max-w-[360px] max-xl:max-w-[800px] max-w-[540px] break-words">
+					<Text className="font-display max-md:text-[125%] max-xl:text-[100%] max-[300px]:text-[85%] text-[70%] max-md:max-w-[360px] max-xl:max-w-[800px] max-w-[540px] break-words leading-2">
 						{feedbackGenerator(results)}
 					</Text>
-					<Table>
-						<StatisticContainer>
-							<Statistic>zdobyte punkty:</Statistic>
-							<Points>{results.scoredPoints}</Points>
-						</StatisticContainer>
-						<StatisticContainer>
-							<Statistic>dobre odpowiedzi:</Statistic>
-							<Points className="text-[#518402]">
-								{results.correctAnswers}
-							</Points>
-						</StatisticContainer>
-						<StatisticContainer>
-							<Statistic>błędne odpowiedzi:</Statistic>
-							<Points className="text-[#FF4412]">
-								{results.incorrectAnswers}
-							</Points>
-						</StatisticContainer>
-						<StatisticContainer>
-							<Statistic>pominięte odpowiedzi:</Statistic>
-							<Points className="text-[#FBBD1F]">
-								{results.skippedQuestions}
-							</Points>
-						</StatisticContainer>
-					</Table>
+					<ResultsTable data={data} />
 					<Button
 						primary
 						hover

@@ -22,11 +22,12 @@ const InnerTextBox = tw.div`
 	max-md:bg-auto
 	max-md:bg-top
 	h-full
-	min-h-[calc(100vh-145px)]
+	min-h-[807px]
 	max-h-[calc(100vh-145px)]
 	max-md:max-h-[calc(98vh-83px)]
 	max-md:min-h-[calc(98vh-83px)]
 	w-full
+	max-w-[2000px]
 
 	flex
 	flex-col
@@ -47,9 +48,10 @@ const InsideBackground = tw.div`
 	break-words
 	text-8xl 
 	max-md:text-4xl 
-	max-md:top-[65px]
-	md:top-[50%]
-	md:-translate-y-[50%]
+	max-md:top-[70px]
+	top-[5%]
+	xl:top-[50%]
+	xl:-translate-y-[50%]
 `;
 
 const Table = tw.div`
