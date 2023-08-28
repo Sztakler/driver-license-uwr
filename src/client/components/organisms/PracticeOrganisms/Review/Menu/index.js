@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 import Illustrations from "assets/images/svg/icons/Illustrations";
 
 import Heading from "client/components/atoms/Heading";
@@ -16,7 +16,7 @@ import { useMediaQuery } from "react-responsive";
 
 export default function MenuReview({ isExam }) {
 	const { setNewTask, setNewPickedAnswer, savedQuestions } =
-		useContext(TaskContext);
+		useContext(PracticeContext);
 	const [explanationModalShow, setExplanationModalShow] = useState(false);
 	const [result] = useState({
 		questionCounter: 0,

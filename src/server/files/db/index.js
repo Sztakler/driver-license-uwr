@@ -200,9 +200,19 @@ const savedQuestionsKnowledgeLevels = (userId) => {
 	);
 };
 
+const userName = (userId) => {
+	return pool.query(
+		`
+	SELECT name FROM users WHERE id=$1
+	`,
+		[userId]
+	);
+};
+
 const existingUserByEmail = (email) => {
+	console.log("nowy mail", email);
 	return pool.query(`
-	SELECT * FROM USERS WHERE email = '${email}';
+	SELECT * FROM users WHERE email = '${email}';
 	`);
 };
 
@@ -238,12 +248,13 @@ const updateExamResults = (user_id, questions, summary) => {
 
 const existingUserById = (user_id) => {
 	return pool.query(`
-	SELECT * FROM USERS WHERE user_id = '${user_id}';
+	SELECT * FROM users WHERE id = '${user_id}';
 	`);
 };
 
-const updateUserData = (newData, user_id) => {
-	return pool.query(
+const updateUserData = async (newData, user_id) => {
+	console.log("entered");
+	let x = await pool.query(
 		`
     UPDATE users
     SET name = $1,
@@ -252,6 +263,7 @@ const updateUserData = (newData, user_id) => {
     WHERE id = ${user_id};`,
 		[newData.name, newData.email, newData.password]
 	);
+	console.log(x);
 };
 
 const updateSavedQuestion = (question_id, user_id) => {
@@ -287,6 +299,7 @@ module.exports.mediumKnowledgeQuestionsCount = mediumKnowledgeQuestionsCount;
 module.exports.weeklyExams = weeklyExams;
 module.exports.savedQuestions = savedQuestions;
 module.exports.savedQuestionsKnowledgeLevels = savedQuestionsKnowledgeLevels;
+module.exports.userName = userName;
 module.exports.existingUserByEmail = existingUserByEmail;
 module.exports.insertUser = insertUser;
 module.exports.createSavedQuestionsEntryFor = createSavedQuestionsEntryFor;

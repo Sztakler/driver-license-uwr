@@ -101,7 +101,6 @@ export default function Navbar(props) {
 
 	function ToggleMenu(newIsMenuHidden) {
 		setIsMenuHidden(newIsMenuHidden);
-		console.log("toggluje menu!" + isMenuHidden);
 	}
 
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });

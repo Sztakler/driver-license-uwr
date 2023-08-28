@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 
 import NoNavbarOnMobileTemplate from "client/components/templates/NoNavbarOnMobileTemplate";
 import Navbar from "client/components/organisms/Navbar";
@@ -17,7 +17,7 @@ export default function PracticePage() {
 		setNewSavedQuestions,
 		setNewTaskStarted,
 		setNewFavoriteTask,
-	} = useContext(TaskContext);
+	} = useContext(PracticeContext);
 
 	const navigate = useNavigate();
 

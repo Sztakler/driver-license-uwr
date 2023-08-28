@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 import Label from "client/components/atoms/Label";
 import Heading from "client/components/atoms/Heading";
@@ -15,6 +16,8 @@ import {
 } from "./styles";
 
 export default function Settings() {
+	const navigate = useNavigate();
+
 	async function ConfirmChanges(form, formData) {
 		return fetch("http://localhost:5000/api/user-settings", {
 			method: "POST",
@@ -37,6 +40,19 @@ export default function Settings() {
 		}
 	}
 
+	async function Logout() {
+		await fetch("http://localhost:5000/logout", {
+			method: "POST",
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		navigate("/");
+		navigate(0);
+	}
+
 	async function handleSubmit(e) {
 		e.preventDefault();
 
@@ -46,7 +62,16 @@ export default function Settings() {
 
 		if (ValidateFields(formJson) === false) return;
 
-		return await ConfirmChanges(form, formJson);
+		let result = await ConfirmChanges(form, formJson);
+		alert(result.message);
+
+		if (result.sensitiveData) {
+			Logout();
+		}
+
+		if (result.correct) {
+			navigate(0);
+		}
 	}
 
 	return (
@@ -116,7 +141,8 @@ export default function Settings() {
 							type="submit"
 							primary
 							hover
-							className="w-[300px] h-[42px] self-end max-md:absolute bottom-4"
+							full
+							className="h-[42px] self-end max-md:absolute bottom-4 md:mt-4"
 						>
 							Zapisz zmiany
 						</Button>

@@ -19,6 +19,7 @@ router.get(
 	"/api/user-knowledge-levels",
 	controllers.userKnowledgeLevelsController
 );
+router.get("/api/user/user-name", controllers.userNameController);
 
 router.post("/register", controllers.registrationController);
 router.post("/login", controllers.loginController);

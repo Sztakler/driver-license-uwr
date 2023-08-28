@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 
 import Button from "client/components/atoms/Button";
 import Text from "client/components/atoms/Text";
@@ -12,7 +12,7 @@ export default function ReviewTasks({
 	updateTaskIdx,
 	savedQuestions,
 }) {
-	const { setNewTask, setNewPickedAnswer } = useContext(TaskContext);
+	const { setNewTask, setNewPickedAnswer } = useContext(PracticeContext);
 
 	function handleBubbleSelect(index) {
 		updateTaskIdx(index);

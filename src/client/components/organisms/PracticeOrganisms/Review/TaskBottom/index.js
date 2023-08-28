@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 import Button from "client/components/atoms/Button";
 import Text from "client/components/atoms/Text";
 import Paragraph from "client/components/atoms/Paragraph";
@@ -8,7 +8,7 @@ import Paragraph from "client/components/atoms/Paragraph";
 import { Answers, Answer, TaskBottomSection } from "./styles";
 
 export default function TaskBottomReview() {
-	const { task } = useContext(TaskContext);
+	const { task } = useContext(PracticeContext);
 
 	function getTaskResult(answer) {
 		if (task.poprawna_odpowiedz === answer) {

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 import Illustrations from "assets/images/svg/icons/Illustrations";
 
 import Button from "client/components/atoms/Button";
@@ -21,10 +21,8 @@ import {
 	KnowledgeLevel,
 } from "./styles";
 import { useMediaQuery } from "react-responsive";
-import { fetchData } from "client/utils/other";
 
 export default function Menu({ isExam }) {
-	// Context and State
 	const {
 		task,
 		setNewTask,
@@ -35,7 +33,11 @@ export default function Menu({ isExam }) {
 		videoIsPlaying,
 		imageIsLoaded,
 		setNewKnowledgeLevel,
-	} = useContext(TaskContext);
+		setNewImageIsLoaded,
+		setNewVideoIsPlaying,
+		examFinished,
+		setNewExamFinished,
+	} = useContext(PracticeContext);
 
 	const [questionTimer, setQuestionTimer] = useState(
 		task.zakres_struktury === "PODSTAWOWY" ? 20 : 50
@@ -49,7 +51,6 @@ export default function Menu({ isExam }) {
 		skippedQuestions: 32,
 	});
 	const [taskIdx, setTaskIdx] = useState(0);
-	const [examFinished, setExamFinished] = useState(false); // move it to ExamContext and make molecule quit, finish exam on last question
 
 	// Timer controller
 	function controlTimer() {
@@ -84,7 +85,7 @@ export default function Menu({ isExam }) {
 		if (isExam) {
 			verifyAnswer(task.wybrana_odpowiedz);
 			if (taskIdx === savedQuestions.length - 1) {
-				setExamFinished(true);
+				setNewExamFinished(true);
 			}
 		}
 
@@ -113,6 +114,9 @@ export default function Menu({ isExam }) {
 		setNewTask(savedQuestions[newTaskIdx]);
 		setTaskIdx(newTaskIdx);
 		setQuestionTimer(isTaskBasic ? 20 : 50);
+		setNewTaskStarted(false);
+		setNewImageIsLoaded(false);
+		setNewVideoIsPlaying(false);
 
 		if (!isExam) {
 			const selectElement = document.getElementById("knowledge_level");
@@ -342,8 +346,16 @@ export default function Menu({ isExam }) {
 					full
 					onClick={handleNextQuestionButton}
 				>
-					<Text className="my-auto font-medium">Następne pytanie</Text>
-					{isDesktop && <Image src={Illustrations.ArrowRight} />}
+					{!isExam || taskIdx !== savedQuestions.length - 1 ? (
+						<>
+							<Text className="my-auto font-medium">Następne pytanie</Text>
+							{isDesktop && <Image src={Illustrations.ArrowRight} />}
+						</>
+					) : (
+						<>
+							<Text className="my-auto font-medium">Zakończ egzamin</Text>
+						</>
+					)}
 				</Button>
 			</NextPrevious>
 		</MenuContainer>

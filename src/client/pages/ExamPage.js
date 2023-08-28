@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 
 import NoNavbarOnMobileTemplate from "client/components/templates/NoNavbarOnMobileTemplate";
 import Navbar from "client/components/organisms/Navbar";
@@ -10,7 +10,7 @@ import Loading from "client/components/molecules/Loading";
 
 export default function ExamPage() {
 	const { task, setNewTask, setNewSavedQuestions, setNewFavoriteTask } =
-		useContext(TaskContext);
+		useContext(PracticeContext);
 
 	function getFullExam() {
 		return fetch("http://localhost:5000/api/exam")

@@ -129,6 +129,15 @@ const userKnowledgeLevelsService = async (userId) => {
 	}
 };
 
+const userNameService = async (userId) => {
+	try {
+		const userName = await dbRequests.userName(userId);
+		return userName.rows[0];
+	} catch (e) {
+		throw new Error(e.message);
+	}
+};
+
 const registrationService = async (name, email, password) => {
 	const existingUser = await dbRequests.existingUserByEmail(email);
 
@@ -139,7 +148,6 @@ const registrationService = async (name, email, password) => {
 	const result = await dbRequests.insertUser(name, email, hashedPassword);
 	const userId = result.rows[0].id;
 	await dbRequests.createSavedQuestionsEntryFor(userId);
-	console.log("got here");
 
 	return { status: 200, message: "Registration successful" };
 };
@@ -157,29 +165,54 @@ const updateUserSettingsService = async (
 	user_id,
 	requestBody
 ) => {
+	console.log(requestBody);
 	let userData = await dbRequests.existingUserById(user_id);
-	let result = await bcrypt.compare(
-		providedPassword,
-		userData.rows[0].password
-	);
 
-	if (result === false) {
-		return { status: 400, message: "Wprowadzone hasło jest niepoprawne" };
+	if (!(await bcrypt.compare(providedPassword, userData.rows[0].password))) {
+		return { status: 400, message: "Wprowadzone stare hasło jest niepoprawne" };
+	}
+
+	if (
+		(await dbRequests.existingUserByEmail(requestBody.userEmail)).rows.length >
+		0
+	) {
+		return {
+			status: 400,
+			message: "Podany nowy adres e-mail występuje już w bazie danych!",
+		};
+	}
+
+	if (
+		await bcrypt.compare(requestBody.newPassword, userData.rows[0].password)
+	) {
+		return {
+			status: 400,
+			message: "Wprowadzone nowe hasło musi się róznić od starego!",
+		};
 	}
 
 	let newName =
-		request.userName !== "" ? request.userName : userData.rows[0].name;
+		requestBody.userName !== "" ? requestBody.userName : userData.rows[0].name;
 	let newEmail =
-		request.userEmail !== "" ? request.userEmail : userData.rows[0].email;
+		requestBody.userEmail !== ""
+			? requestBody.userEmail
+			: userData.rows[0].email;
+
 	let newPassword =
-		request.newPassword !== ""
-			? await bcrypt.hash(request.newPassword, 10)
+		requestBody.newPassword !== ""
+			? await bcrypt.hash(requestBody.newPassword, 10)
 			: userData.rows[0].password;
 
 	const newData = { name: newName, email: newEmail, password: newPassword };
 
 	await dbRequests.updateUserData(newData, user_id);
-	return { status: 200, message: "Poprawnie zmodyfikowano dane użytkownika" };
+	console.log(newData);
+	return {
+		status: 200,
+		message: "Poprawnie zmodyfikowano dane użytkownika",
+		sensitiveData:
+			requestBody.newPassword !== "" || requestBody.userEmail !== "",
+	};
 };
 
 const updateSavedQuestionsService = async (question_id, user_id) => {
@@ -214,6 +247,7 @@ module.exports = {
 	savedQuestionsService,
 	savedQuestionsKnowledgesService,
 	userKnowledgeLevelsService,
+	userNameService,
 	registrationService,
 	updateExamResultsService,
 	updateUserSettingsService,

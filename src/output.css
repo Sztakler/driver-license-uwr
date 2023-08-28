@@ -4040,6 +4040,10 @@ h6 {
     margin-top: 6rem;
   }
 
+  .md\:mt-4 {
+    margin-top: 1rem;
+  }
+
   .md\:hidden {
     display: none;
   }

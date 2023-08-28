@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 
 import Text from "client/components/atoms/Text";
 import Button from "client/components/atoms/Button";
@@ -11,7 +11,8 @@ import { lowerCaseAll } from "client/components/../utils/other";
 import { TaskTopSection, TaskInfo, InfoWrapper } from "./styles";
 
 export default function TaskTop({ isExam }) {
-	const { task, favoriteTask, setNewFavoriteTask } = useContext(TaskContext);
+	const { task, favoriteTask, setNewFavoriteTask } =
+		useContext(PracticeContext);
 
 	const [isHoveringStar, setIsHoveringStar] = useState(false);
 

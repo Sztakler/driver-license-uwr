@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 
-const TaskContext = createContext();
+const PracticeContext = createContext();
 
-export const TaskProvider = ({ children }) => {
+export const PracticeProvider = ({ children }) => {
 	const [task, setTask] = useState(null);
 	const [pickedAnswer, setPickedAnswer] = useState(null);
 	const [taskStarted, setTaskStarted] = useState(false);
@@ -11,6 +11,7 @@ export const TaskProvider = ({ children }) => {
 	const [imageIsLoaded, setImageIsLoaded] = useState(false);
 	const [favoriteTask, setFavoriteTask] = useState(false);
 	const [knowledgeLevel, setKnowledgeLevel] = useState("-");
+	const [examFinished, setExamFinished] = useState(false);
 
 	const setNewTask = (newTask) => {
 		setTask(newTask);
@@ -44,11 +45,11 @@ export const TaskProvider = ({ children }) => {
 		setKnowledgeLevel(newKnowledgeLevel);
 	};
 
+	const setNewExamFinished = (newExamFinished) => {
+		setExamFinished(newExamFinished);
+	};
+
 	useEffect(() => {
-		console.log("change", task);
-		setTaskStarted(false);
-		setImageIsLoaded(false);
-		setVideoIsPlaying(false);
 		if (task) {
 			setFavoriteTask(task.is_saved);
 			setKnowledgeLevel(task.knowledge_level);
@@ -56,7 +57,7 @@ export const TaskProvider = ({ children }) => {
 	}, [task]);
 
 	return (
-		<TaskContext.Provider
+		<PracticeContext.Provider
 			value={{
 				task,
 				setNewTask,
@@ -74,11 +75,13 @@ export const TaskProvider = ({ children }) => {
 				setNewFavoriteTask,
 				knowledgeLevel,
 				setNewKnowledgeLevel,
+				examFinished,
+				setNewExamFinished,
 			}}
 		>
 			{children}
-		</TaskContext.Provider>
+		</PracticeContext.Provider>
 	);
 };
 
-export default TaskContext;
+export default PracticeContext;

@@ -6,7 +6,7 @@ import Image from "client/components/atoms/Image";
 
 import { UserContainer, Info, ImageBox } from "./styles";
 
-export default function User() {
+export default function User({ name }) {
 	return (
 		<UserContainer>
 			<ImageBox>
@@ -16,8 +16,11 @@ export default function User() {
 				/>
 			</ImageBox>
 			<Info>
-				<Text className="text-[19.4px] font-normal">Kursantka</Text>
-				<Text className="text-[20.4px] font-medium">Jan Kowalski</Text>
+				<Text className="text-[20.4px]">Hej </Text>
+				<Text className="text-[20.4px] font-medium">
+					{name}
+					<Text className="text-[20.4px]">!</Text>
+				</Text>
 			</Info>
 		</UserContainer>
 	);

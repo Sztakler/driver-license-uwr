@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 
 import Modal from "client/components/molecules/Modal";
 import Button from "client/components/atoms/Button";
@@ -14,7 +14,8 @@ import { useMediaQuery } from "react-responsive";
 export default function Quit({ isReview, isExam, result }) {
 	const navigate = useNavigate();
 	const [exitModalShow, setExitModalShow] = useState(false);
-	const { savedQuestions } = useContext(TaskContext);
+	const { savedQuestions, examFinished, setNewExamFinished } =
+		useContext(PracticeContext);
 
 	let { id } = useParams();
 
@@ -71,6 +72,18 @@ export default function Quit({ isReview, isExam, result }) {
 		}
 		return;
 	}
+
+	useEffect(() => {
+		const sendData = async () => {
+			let id = await sendResultsToDatabase();
+			setNewExamFinished(false);
+			navigate(`/egzamin/podsumowanie/${id}`);
+			return;
+		};
+		if (examFinished) {
+			sendData();
+		}
+	}, [examFinished]);
 
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 

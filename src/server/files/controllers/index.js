@@ -11,6 +11,7 @@ const {
 	savedQuestionsService,
 	savedQuestionsKnowledgesService,
 	userKnowledgeLevelsService,
+	userNameService,
 	registrationService,
 	updateExamResultsService,
 	updateUserSettingsService,
@@ -72,18 +73,12 @@ const examResultsController = async (req, res) => {
 const examResultsIdController = async (req, res) => {
 	const itemId = req.params["id"];
 	const userID = req.user.id;
-	console.log("USER" + userID);
-	console.log("ITEMID" + itemId);
 	try {
-		console.log("OOOOOOOOOOOOOOOOOOOOOOOOOO");
 		const examResult = await examResultsIdService(userID, itemId);
-		console.log("[controller]" + JSON.stringify(examResult));
 		if (examResult.status === 401) {
-			console.log("AAAAAAAAAAA");
 			res.status(examResult.status).json({ message: examResult.message });
 			return [];
 		}
-		console.log("after if");
 		res.json(examResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
@@ -174,6 +169,16 @@ const userKnowledgeLevelsController = async (req, res) => {
 	}
 };
 
+const userNameController = async (req, res) => {
+	try {
+		const userId = req.user.id;
+		let name = await userNameService(userId);
+		res.json(name);
+	} catch (err) {
+		console.error(err.message);
+	}
+};
+
 const registrationController = async (req, res) => {
 	try {
 		const { name, email, password } = req.body;
@@ -239,12 +244,18 @@ const updateUserSettingsController = async (req, res) => {
 		const providedPassword = req.body.providedPassword;
 		const requestBody = req.body;
 		const user_id = req.user.id;
-		const { status, message } = await updateUserSettingsService(
+		const { status, message, sensitiveData } = await updateUserSettingsService(
 			providedPassword,
 			user_id,
 			requestBody
 		);
-		res.status(status).json({ message: message });
+		res
+			.status(status)
+			.json({
+				message: message,
+				sensitiveData: sensitiveData,
+				correct: status === 200,
+			});
 	} catch {
 		res.status(400).json({ message: "Error" });
 	}
@@ -296,6 +307,7 @@ module.exports.savedQuestionsController = savedQuestionsController;
 module.exports.savedQuestionsKnowledgeLevelsController =
 	savedQuestionsKnowledgeLevelsController;
 module.exports.userKnowledgeLevelsController = userKnowledgeLevelsController;
+module.exports.userNameController = userNameController;
 module.exports.registrationController = registrationController;
 module.exports.loginController = loginController;
 module.exports.logoutController = logoutController;

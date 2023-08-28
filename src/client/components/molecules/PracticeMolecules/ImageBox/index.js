@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 
 import Image from "client/components/atoms/Image";
 import Video from "client/components/atoms/Video";
@@ -10,7 +10,7 @@ import { ImageContainer } from "./styles";
 
 export default function ImageBox({ isReview, media }) {
 	const { task, taskStarted, setNewVideoIsPlaying, setNewImageIsLoaded } =
-		useContext(TaskContext);
+		useContext(PracticeContext);
 
 	function handleVideoPlay() {
 		setNewVideoIsPlaying(true);

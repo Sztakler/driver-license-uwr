@@ -16,7 +16,7 @@ import NotFound from "client/pages/NotFound";
 import ReviewPage from "client/pages/ReviewPage";
 import UserPage from "client/pages/UserPage";
 
-import { TaskProvider } from "context/TaskContext";
+import { PracticeProvider } from "context/PracticeContext";
 import { TrainingFiltersProvider } from "context/TrainingFiltersContext";
 import BlockedFromUser from "client/utils/BlockedFromUser";
 
@@ -36,17 +36,17 @@ function Routing() {
 					<Route
 						path="/egzamin/test"
 						element={
-							<TaskProvider>
+							<PracticeProvider>
 								<ExamPage />
-							</TaskProvider>
+							</PracticeProvider>
 						}
 					/>
 					<Route
 						path="/egzamin/przeglad-odpowiedzi/:id"
 						element={
-							<TaskProvider>
+							<PracticeProvider>
 								<ReviewPage />
-							</TaskProvider>
+							</PracticeProvider>
 						}
 					/>
 					<Route
@@ -70,9 +70,9 @@ function Routing() {
 						path="/trening/praktyka"
 						element={
 							<TrainingFiltersProvider>
-								<TaskProvider>
+								<PracticeProvider>
 									<PracticePage />
-								</TaskProvider>
+								</PracticeProvider>
 							</TrainingFiltersProvider>
 						}
 					/>

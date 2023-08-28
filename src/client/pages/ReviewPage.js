@@ -6,13 +6,14 @@ import Navbar from "client/components/organisms/Navbar";
 import TaskBottomReview from "client/components/organisms/PracticeOrganisms/Review/TaskBottom";
 import MenuReview from "client/components/organisms/PracticeOrganisms/Review/Menu";
 import TaskTopReview from "client/components/organisms/PracticeOrganisms/Review/TaskTop";
-import TaskContext from "context/TaskContext";
+import PracticeContext from "context/PracticeContext";
 import Loading from "client/components/molecules/Loading";
 
 import { fetchData } from "../utils/other";
 
 export default function ReviewPage() {
-	const { task, setNewTask, setNewSavedQuestions } = useContext(TaskContext);
+	const { task, setNewTask, setNewSavedQuestions } =
+		useContext(PracticeContext);
 	const { id } = useParams();
 
 	useEffect(() => {
