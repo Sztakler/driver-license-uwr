@@ -67,22 +67,46 @@ export default function Navbar(props) {
 			id: uuidv4,
 			name: "Egzamin",
 			navigationTarget: "/egzamin",
+			logoutAction: false,
 			fontSize: "xl",
 			visibleInMobile: false,
+			visibleInDesktop: true,
 		},
 		{
 			id: uuidv4,
 			name: "Trening",
 			navigationTarget: "/trening",
+			logoutAction: false,
 			fontSize: "xl",
 			visibleInMobile: true,
+			visibleInDesktop: true,
 		},
 		{
 			id: uuidv4,
 			name: "Podręcznik",
 			navigationTarget: "/podrecznik",
+			logoutAction: false,
 			fontSize: "xl",
 			visibleInMobile: true,
+			visibleInDesktop: true,
+		},
+		{
+			id: uuidv4,
+			name: "Konto",
+			navigationTarget: "/konto",
+			logoutAction: false,
+			fontSize: "xl",
+			visibleInMobile: true,
+			visibleInDesktop: false,
+		},
+		{
+			id: uuidv4,
+			name: "Wyloguj",
+			navigationTarget: "/",
+			logoutAction: true,
+			fontSize: "xl",
+			visibleInMobile: true,
+			visibleInDesktop: false,
 		},
 	];
 
@@ -130,9 +154,13 @@ export default function Navbar(props) {
 				</Shortcut>
 			)}
 			<NavigationArea hamburgerExpand={hamburgerView}>
-				<NavbarLinks>
+				<NavbarLinks hamburgerExpand={hamburgerView}>
 					{navigationLinks.slice().map((link, index) => {
-						if (!link.visibleInMobile && !isDesktop) return;
+						if (
+							(!link.visibleInMobile && !isDesktop) ||
+							(!link.visibleInDesktop && isDesktop)
+						)
+							return;
 						return (
 							<NavbarItem
 								active={link.navigationTarget === activePage ? true : false}
@@ -143,6 +171,10 @@ export default function Navbar(props) {
 									navbar
 									size={link.fontSize}
 									onClick={() => {
+										if (link.logoutAction) {
+											Logout();
+											navigate(link.navigationTarget);
+										}
 										navigate(link.navigationTarget);
 										setNewHamburgerView(false);
 									}}
@@ -153,48 +185,50 @@ export default function Navbar(props) {
 						);
 					})}
 
-					<NavbarItem
-						className={
-							"relative rounded-t-[18px]  py-1 px-[18px]" +
-							(isMenuHidden ? " rounded-b-[18px]" : " ") +
-							("/konto" === activePage ? "bg-[#FFD363]" : "")
-						}
-						onMouseEnter={() => ToggleMenu(false)}
-						onMouseLeave={() => ToggleMenu(true)}
-					>
-						<div
+					{isDesktop && (
+						<NavbarItem
 							className={
-								"rounded-[18px] flex flex-col absolute min-w-[85px] max-w-[85px] min-h-[48px] -top-[18px] -right-12 items-center justify-center " +
-								("/konto" === activePage ? "bg-[#FFBC0D]" : "")
+								"relative md:rounded-t-[18px] md:py-1 md:px-[18px] max-md:h-[40px] max-md:w-full" +
+								(isMenuHidden ? " md:rounded-b-[18px]" : " ") +
+								("/konto" === activePage ? "bg-[#FFD363]" : "")
 							}
+							onMouseEnter={() => ToggleMenu(false)}
+							onMouseLeave={() => ToggleMenu(true)}
 						>
-							<Button
-								navbar
-								navbarIcon
-								size={"xl"}
-								onClick={() => {
-									navigate("/konto");
-								}}
+							<div
 								className={
-									" flex h-full my-1 mx-1 max-h-[40px] items-center justify-center p-2"
+									"md:rounded-[18px] flex flex-col max-md:h-full md:absolute max-md:w-full min-w-[85px] md:max-w-[85px] md:min-h-[48px] -top-[18px] -right-12 items-center justify-center " +
+									("/konto" === activePage ? "bg-[#FFBC0D]" : "")
 								}
 							>
-								<Image src={Illustrations.User} />
-							</Button>
-							{isLoggedIn && isAuthStatusChecked && (
 								<Button
-									hidden={isMenuHidden}
 									navbar
 									navbarIcon
 									size={"xl"}
-									onClick={() => Logout()}
-									className=" my-1 mx-1 h-[40px]"
+									onClick={() => {
+										navigate("/konto");
+									}}
+									className={
+										" flex h-full md:my-1 md:mx-1 md:max-h-[40px] items-center justify-center md:p-2"
+									}
 								>
-									Wyloguj
+									{isDesktop ? <Image src={Illustrations.User} /> : "Konto"}
 								</Button>
-							)}
-						</div>
-					</NavbarItem>
+								{isDesktop && isLoggedIn && isAuthStatusChecked && (
+									<Button
+										hidden={isMenuHidden}
+										navbar
+										navbarIcon
+										size={"xl"}
+										onClick={() => Logout()}
+										className=" my-1 mx-1 h-[40px]"
+									>
+										Wyloguj
+									</Button>
+								)}
+							</div>
+						</NavbarItem>
+					)}
 				</NavbarLinks>
 			</NavigationArea>
 		</NavbarContainer>

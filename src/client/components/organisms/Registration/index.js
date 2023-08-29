@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router";
 
-import Input from "client/components/atoms/Input";
-import Button from "client/components/atoms/Button";
-import Text from "client/components/atoms/Text";
+import RegistrationForm from "client/components/molecules/RegistrationForm";
 
 import {
 	RegistrationContainer,
@@ -14,7 +12,6 @@ import {
 	TextGrayedSpan,
 	LoginButton,
 } from "./styles";
-import RegistrationForm from "client/components/molecules/RegistrationForm";
 
 export default function Registration() {
 	const navigate = useNavigate();

@@ -13,7 +13,6 @@ async function getStatistics(endDate) {
 	let to = `${endDate.getUTCFullYear()}-${
 		endDate.getUTCMonth() + 1
 	}-${endDate.getUTCDate()} 23:59:59`;
-	console.log(from, to);
 
 	return fetch(`http://localhost:5000/api/statistics/${from}/${to}`, {
 		method: "GET",
@@ -109,13 +108,13 @@ export default function Statistics() {
 	useEffect(() => {
 		setDoughnutData({
 			labels: [
-				"Materiał nieopanowany",
-				"Materiał do powtórki",
-				"Materiał w pełni opanowany",
+				"Wysoki poziom znajomości",
+				"Średni poziom znajomości",
+				"Niski poziom znajomości",
 			],
 			datasets: [
 				{
-					label: "Procent opanowanego materiału",
+					label: "Liczba pytań o danym poziomie znajomości",
 					data: prepareMaterialProgress(),
 					backgroundColor: ["#FF6230", "#FFC120", "#A4E057"],
 					borderColor: ["#0D0D0D", "#0D0D0D", "#0D0D0D"],
@@ -181,7 +180,7 @@ export default function Statistics() {
 					<Diagram
 						type="doughnut"
 						data={doughnutData}
-						diagramTitle={"Procent przerobionego materiału"}
+						diagramTitle={"Liczba pytań o danym poziomie znajomości"}
 						pickRightDiagram={pickRightDiagram}
 					/>
 				) : (

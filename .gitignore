@@ -12,6 +12,7 @@ web-build/
 .vscode/
 *.lock
 -lock.json
+.clocignore
 
 # macOS
 .DS_Store

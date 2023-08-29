@@ -9,7 +9,7 @@ const PageWrapper = tw.div`
 	min-h-screen
 	w-full
 	max-w-screen
-	${(props) => (props.hamburgerView ? "pt-[210px]" : "pt-[80px]")}
+	pt-[80px]
 	max-md:max-h-screen
 	max-md:overflow-y-hidden
 `;

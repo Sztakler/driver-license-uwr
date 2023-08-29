@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Sidebar from "client/components/molecules/Sidebar";
 import PanelsScroller from "client/components/molecules/PanelScroller";
@@ -11,7 +11,6 @@ import {
 	Subtitle,
 	SidebarArrowButton,
 	SidebarArrowButtonParagraph,
-	SidebarButtonInvisibleCheckbox,
 } from "./styles";
 
 import Paragraph from "client/components/atoms/Paragraph";

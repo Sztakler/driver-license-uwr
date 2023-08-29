@@ -10,15 +10,8 @@ const TaskTopSection = tw.div`
 `;
 
 const TaskInfo = tw.div`
-	flex
-	flex-row
-	flex-wrap
-	items-end
-	self-center
- 	justify-around
-	w-full
-	pb-1
-	mt-2
+	whitespace-nowrap
+	overflow-hidden	
 `;
 
 const InfoWrapper = tw.div`

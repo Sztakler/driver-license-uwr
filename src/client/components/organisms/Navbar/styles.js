@@ -4,7 +4,7 @@ const NavbarContainer = tw.div`
 	fixed
 	top-0
 	w-full
-	z-10
+	z-50
 	flex 
 	flex-[0_1_auto]
 	max-md:flex-col
@@ -19,7 +19,7 @@ const NavbarContainer = tw.div`
 	md:bg-gradient-to-b from-[0px] from-[#FFF1DBff] via-[90px]  via-[#FFF1DBff] to-[#FFFBF300] to-[130px] 
 	${(props) =>
 		props.hamburgerExpand
-			? "max-md:via-[100px] max-md:to-[200px] pb-4"
+			? "max-md:via-[60%] max-md:bg-gradient-to-b max-md:min-h-screen max-md:justify-start max-md:max-h-screen max-md:to-100% max-md:to-[#ffecd26f] pb-8"
 			: "max-md:via-[50px] max-md:to-[90px]"}
 `;
 
@@ -47,7 +47,7 @@ const NavigationArea = tw.div`
 	h-full
 	${(props) =>
 		props.hamburgerExpand
-			? "max-md:w-full max-md:flex pt-[50px]"
+			? "max-md:w-full max-md:flex max-md:pt-[58px]"
 			: " max-md:hidden"}
 `;
 
@@ -61,6 +61,9 @@ const NavbarItem = tw.li`
 
 	md:h-full
 	max-md:w-full
+	max-md:h-[40px]
+	max-md:odd:bg-[#FFEBB8]
+	max-md:p-6
 `;
 
 const HamburgerOptionArea = tw.div`
@@ -79,12 +82,10 @@ const NavbarLinks = tw.ul`
 	flex
 	gap-x-[8px]
 	max-md:w-full
-	max-h-min
 	items-center
 	max-md:items-center
 	max-md:flex-col
 	relative
-
 `;
 
 export {

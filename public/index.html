@@ -13,6 +13,8 @@
 			href="https://fonts.googleapis.com/css2?family=Barriecito&family=Inter:wght@100;200;300;400;500;600;700;800&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
 			rel="stylesheet"
 		/>
+		<link rel="icon" type="image/png" href=".%PUBLIC_URL%/logo.png" />
+		<meta name="theme-color" content="#FFF1DB" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script type="text/javascript">
 			(function (l) {
@@ -36,9 +38,31 @@
 			http-equiv="Content-Security-Policy"
 			content="upgrade-insecure-requests"
 		/>
+		<link rel="manifest" href=".%PUBLIC_URL%/manifest.json" />
 	</head>
 
 	<body>
+		<script>
+			if ("serviceWorker" in navigator) {
+				window.addEventListener("load", function () {
+					navigator.serviceWorker
+						.register(".%PUBLIC_URL%/serviceWorker.js")
+						.then(
+							function (registration) {
+								// Registration was successful
+								console.log(
+									"ServiceWorker registration successful with scope: ",
+									registration.scope
+								);
+							},
+							function (err) {
+								// registration failed :(
+								console.log("ServiceWorker registration failed: ", err);
+							}
+						);
+				});
+			}
+		</script>
 		<div id="root"></div>
 	</body>
 </html>
