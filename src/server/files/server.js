@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./DatabaseConfiguration/database");
-const bcrypt = require("bcrypt");
 const passport = require("passport");
 const session = require("express-session");
 const pgSession = require("connect-pg-simple")(session);
@@ -64,3 +63,5 @@ app.use("", routes);
 app.listen(5000, () => {
 	console.log("SERVER STARTED PORT:5000");
 });
+
+module.exports = app;

@@ -2,5 +2,10 @@
 	"compilerOptions": {
 		"baseUrl": "src"
 	},
-	"include": ["src/**/*"]
+	"include": [
+		"src/**/*",
+		"src/service-worker.js",
+		"src/serviceWorkerRegistration.js",
+		"public/serviceWorkerRegistration.js"
+	]
 }

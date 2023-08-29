@@ -38,31 +38,10 @@
 			http-equiv="Content-Security-Policy"
 			content="upgrade-insecure-requests"
 		/>
-		<link rel="manifest" href=".%PUBLIC_URL%/manifest.json" />
+		<link rel="manifest" href="/manifest.json" />
 	</head>
 
 	<body>
-		<script>
-			if ("serviceWorker" in navigator) {
-				window.addEventListener("load", function () {
-					navigator.serviceWorker
-						.register(".%PUBLIC_URL%/serviceWorker.js")
-						.then(
-							function (registration) {
-								// Registration was successful
-								console.log(
-									"ServiceWorker registration successful with scope: ",
-									registration.scope
-								);
-							},
-							function (err) {
-								// registration failed :(
-								console.log("ServiceWorker registration failed: ", err);
-							}
-						);
-				});
-			}
-		</script>
 		<div id="root"></div>
 	</body>
 </html>

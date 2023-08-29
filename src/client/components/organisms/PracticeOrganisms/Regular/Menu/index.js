@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import PracticeContext from "context/PracticeContext";
 import Illustrations from "assets/images/svg/icons/Illustrations";
@@ -20,7 +21,6 @@ import {
 	NextPrevious,
 	KnowledgeLevel,
 } from "./styles";
-import { useMediaQuery } from "react-responsive";
 
 export default function Menu({ isExam }) {
 	const {
@@ -212,6 +212,7 @@ export default function Menu({ isExam }) {
 
 	// Handle Next Question Button
 	function handleNextQuestionButton() {
+		console.log("next");
 		nextQuestion();
 	}
 
