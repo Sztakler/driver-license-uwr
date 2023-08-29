@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/driver-license-uwr/static/css/main.c0360047.css",
-    "main.js": "/driver-license-uwr/static/js/main.8519919d.js",
+    "main.js": "/driver-license-uwr/static/js/main.1f05cee1.js",
     "static/media/homepage-3.svg": "/driver-license-uwr/static/media/homepage-3.4b83aa9c319805225a3637cbbd4b64eb.svg",
     "static/media/załóż-darmowe-konto.svg": "/driver-license-uwr/static/media/załóż-darmowe-konto.24c009df5d1a73368b70.svg",
     "static/media/homepage-1.svg": "/driver-license-uwr/static/media/homepage-1.1fa1089845fb17a1d0d642113957310f.svg",
@@ -45,10 +45,10 @@
     "static/media/ArrowRightAlternative.svg": "/driver-license-uwr/static/media/ArrowRightAlternative.39f2761f36d2d5d514f5bc38c19e57cc.svg",
     "static/media/ArrowLeftAlternative.svg": "/driver-license-uwr/static/media/ArrowLeftAlternative.06de0acae4fff63ebf1e3722c766b0d9.svg",
     "main.c0360047.css.map": "/driver-license-uwr/static/css/main.c0360047.css.map",
-    "main.8519919d.js.map": "/driver-license-uwr/static/js/main.8519919d.js.map"
+    "main.1f05cee1.js.map": "/driver-license-uwr/static/js/main.1f05cee1.js.map"
   },
   "entrypoints": [
     "static/css/main.c0360047.css",
-    "static/js/main.8519919d.js"
+    "static/js/main.1f05cee1.js"
   ]
 }
