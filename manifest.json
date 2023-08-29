@@ -1,10 +1,10 @@
 {
 	"name": "PWA demo",
 	"short_name": "Demo",
-	"start_url": "/index.html",
+	"start_url": "/",
 	"icons": [
 		{
-			"src": "/logo.png",
+			"src": "./logo.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any maskable"
