@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { urlToServer } from "client/configure_build";
 
 import Input from "client/components/atoms/Input";
 import Button from "client/components/atoms/Button";
@@ -41,7 +42,7 @@ export default function RegistrationForm() {
 	let registerUser = async (e) => {
 		e.preventDefault();
 		try {
-			let res = await fetch("http://localhost:5000/register", {
+			let res = await fetch(`${urlToServer}//register`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

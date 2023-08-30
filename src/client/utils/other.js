@@ -1,3 +1,5 @@
+import { urlToServer } from "client/configure_build";
+
 export function lowerCaseAll(text, isDesktop) {
 	let res = text.toLowerCase();
 
@@ -12,8 +14,8 @@ export class UnauthorizedAccessError extends Error {
 }
 
 export async function fetchData(path, credentials, body, method = "GET") {
-	console.log(credentials, `http://localhost:5000${path}`);
-	return await fetch(`http://localhost:5000${path}`, {
+	console.log(credentials, `${urlToServer}${path}`);
+	return await fetch(`${urlToServer}${path}`, {
 		method: method,
 		credentials: credentials,
 		headers: {

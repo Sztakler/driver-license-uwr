@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StatisticsAlign, InnerContainer } from "./styles";
 import Diagram from "client/components/molecules/UserMolecules/Diagram";
 import { useMediaQuery } from "react-responsive";
+import { urlToServer } from "client/configure_build";
 
 async function getStatistics(endDate) {
 	let tempDate = new Date(endDate.getTime());
@@ -14,7 +15,7 @@ async function getStatistics(endDate) {
 		endDate.getUTCMonth() + 1
 	}-${endDate.getUTCDate()} 23:59:59`;
 
-	return fetch(`http://localhost:5000/api/statistics/${from}/${to}`, {
+	return fetch(`${urlToServer}/api/statistics/${from}/${to}`, {
 		method: "GET",
 		credentials: "include",
 		headers: {

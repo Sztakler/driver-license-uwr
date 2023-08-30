@@ -22,7 +22,7 @@ import BlockedFromUser from "client/utils/BlockedFromUser";
 
 function Routing() {
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename="/driver-license-uwr">
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route element={<BlockedFromUser />}>

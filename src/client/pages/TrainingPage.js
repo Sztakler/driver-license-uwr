@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { urlToServer } from "client/configure_build";
 
 import PracticeContext from "context/PracticeContext";
 
@@ -23,7 +24,7 @@ export default function PracticePage() {
 
 	function getPracticeQuestions(filters) {
 		return fetch(
-			`http://localhost:5000/api/practice?onlySavedQuestions=${filters.onlySavedQuestions}&
+			`${urlToServer}/api/practice?onlySavedQuestions=${filters.onlySavedQuestions}&
 																					lowKnowledgeQuestions=${filters.lowKnowledgeQuestions}&
 																					mediumKnowledgeQuestions=${filters.mediumKnowledgeQuestions}&
 																					highKnowledgeQuestions=${filters.highKnowledgeQuestions}`,

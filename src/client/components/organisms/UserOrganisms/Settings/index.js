@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { urlToServer } from "client/configure_build";
 
 import Label from "client/components/atoms/Label";
 import Heading from "client/components/atoms/Heading";
@@ -19,7 +20,7 @@ export default function Settings() {
 	const navigate = useNavigate();
 
 	async function ConfirmChanges(form, formData) {
-		return fetch("http://localhost:5000/api/user-settings", {
+		return fetch(`${urlToServer}/api/user-settings`, {
 			method: "POST",
 			body: JSON.stringify(formData),
 			credentials: "include",
@@ -41,7 +42,7 @@ export default function Settings() {
 	}
 
 	async function Logout() {
-		await fetch("http://localhost:5000/logout", {
+		await fetch(`${urlToServer}/logout`, {
 			method: "POST",
 			credentials: "include",
 			headers: {

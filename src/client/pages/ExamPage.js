@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import PracticeContext from "context/PracticeContext";
+import { urlToServer } from "client/configure_build";
 
 import NoNavbarOnMobileTemplate from "client/components/templates/NoNavbarOnMobileTemplate";
 import Navbar from "client/components/organisms/Navbar";
@@ -13,7 +14,7 @@ export default function ExamPage() {
 		useContext(PracticeContext);
 
 	function getFullExam() {
-		return fetch("http://localhost:5000/api/exam")
+		return fetch(`${urlToServer}/api/exam`)
 			.then((response) => response.json())
 			.then((data) => {
 				return data;

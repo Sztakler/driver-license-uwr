@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { urlToServer } from "client/configure_build";
 
 import Label from "client/components/atoms/Label";
 import Input from "client/components/atoms/Input";
@@ -37,7 +38,7 @@ export default function LoginForm(props) {
 		const formJson = Object.fromEntries(formData.entries());
 
 		try {
-			const respond = await fetch("http://localhost:5000/login", {
+			const respond = await fetch(`${urlToServer}/login`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import PracticeContext from "context/PracticeContext";
+import { urlToServer } from "client/configure_build";
 
 import Modal from "client/components/molecules/Modal";
 import Button from "client/components/atoms/Button";
@@ -25,7 +26,7 @@ export default function Quit({ isReview, isExam, result }) {
 			summary: result,
 		};
 		try {
-			const response = await fetch("http://localhost:5000/api/exam/results", {
+			const response = await fetch(`${urlToServer}/api/exam/results`, {
 				method: "POST",
 				credentials: "include",
 				headers: {

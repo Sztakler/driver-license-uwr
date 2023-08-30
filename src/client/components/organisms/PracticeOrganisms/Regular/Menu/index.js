@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-
+import { urlToServer } from "client/configure_build";
 import PracticeContext from "context/PracticeContext";
-import Illustrations from "assets/images/svg/icons/Illustrations";
 
 import Button from "client/components/atoms/Button";
 import Text from "client/components/atoms/Text";
@@ -11,6 +10,8 @@ import Quit from "client/components/molecules/PracticeMolecules/Quit";
 import Heading from "client/components/atoms/Heading";
 import Input from "client/components/atoms/Input";
 import Image from "client/components/atoms/Image";
+
+import Illustrations from "assets/images/svg/icons/Illustrations";
 
 import {
 	MenuContainer,
@@ -194,7 +195,7 @@ export default function Menu({ isExam }) {
 			return;
 		}
 		try {
-			await fetch("http://localhost:5000/api/user-knowledge-levels", {
+			await fetch(`${urlToServer}/api/user-knowledge-levels`, {
 				method: "POST",
 				credentials: "include",
 				headers: {

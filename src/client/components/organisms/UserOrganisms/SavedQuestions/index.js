@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { urlToServer } from "client/configure_build";
 
-import Illustrations from "assets/images/svg/icons/Illustrations";
 
 import Text from "client/components/atoms/Text";
 import Input from "client/components/atoms/Input";
 import Image from "client/components/atoms/Image";
 import Video from "client/components/atoms/Video";
 import Button from "client/components/atoms/Button";
+
+import Illustrations from "assets/images/svg/icons/Illustrations";
 
 import {
 	ListAlign,
@@ -89,7 +91,7 @@ export default function SavedQuestions() {
 	const [mobileFiltersDisplayed, setMobileFiltersDisplayed] = useState(false);
 
 	function getSavedQuestions() {
-		return fetch("http://localhost:5000/api/saved-questions", {
+		return fetch(`${urlToServer}/api/saved-questions`, {
 			method: "GET",
 			credentials: "include",
 			headers: {

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import HamburgerContext from "context/HamburgerViewContext";
+import { urlToServer } from "client/configure_build";
 
 import Illustrations from "assets/images/svg/icons/Illustrations";
 import Button from "client/components/atoms/Button";
@@ -38,7 +39,7 @@ export default function Navbar(props) {
 			setIsAuthStatusChecked(false);
 			setIsLoggedIn(false);
 			try {
-				const response = await fetch("http://localhost:5000/check-auth", {
+				const response = await fetch(`${urlToServer}/check-auth`, {
 					credentials: "include",
 					headers: {
 						Accept: "application/json",
@@ -111,7 +112,7 @@ export default function Navbar(props) {
 	];
 
 	async function Logout() {
-		await fetch("http://localhost:5000/logout", {
+		await fetch(`${urlToServer}/logout`, {
 			method: "POST",
 			credentials: "include",
 			headers: {

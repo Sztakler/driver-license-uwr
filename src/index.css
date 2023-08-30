@@ -3,74 +3,75 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "JEZUSMARIA";
-    src: url("/src/assets/fonts/Rampart_One/RampartOne600-Regular.ttf")
-      format("truetype");
-    /* Add more font formats if necessary */
-    font-weight: normal;
-    font-style: normal;
-  }
-  html,
-  body {
-    margin: 0;
-    min-height: 100% !important;
-    height: 100%;
-  }
-  html {
-    font-family: "Inter", sans-serif;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply mt-0 mb-2 font-medium leading-tight;
-  }
-  h1 {
-    @apply text-5xl;
-  }
-  h2 {
-    @apply text-4xl;
-  }
-  h3 {
-    @apply text-3xl;
-  }
-  h4 {
-    @apply text-2xl;
-  }
-  h5 {
-    @apply text-xl;
-  }
-  h6 {
-    @apply text-base;
-  }
+	@font-face {
+		font-family: "JEZUSMARIA";
+		src: url("/src/assets/fonts/Rampart_One/RampartOne600-Regular.ttf")
+			format("truetype");
+		/* Add more font formats if necessary */
+		font-weight: normal;
+		font-style: normal;
+	}
+	html,
+	body {
+		margin: 0;
+		min-height: 100% !important;
+		height: 100%;
+		overflow-x: hidden;
+	}
+	html {
+		font-family: "Inter", sans-serif;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply mt-0 mb-2 font-medium leading-tight;
+	}
+	h1 {
+		@apply text-5xl;
+	}
+	h2 {
+		@apply text-4xl;
+	}
+	h3 {
+		@apply text-3xl;
+	}
+	h4 {
+		@apply text-2xl;
+	}
+	h5 {
+		@apply text-xl;
+	}
+	h6 {
+		@apply text-base;
+	}
 }
 
 @layer utilities {
-  .scrollbar::-webkit-scrollbar {
-    width: 20px;
-    height: 20px;
-    z-index: 1000;
-  }
+	.scrollbar::-webkit-scrollbar {
+		width: 20px;
+		height: 20px;
+		z-index: 1000;
+	}
 
-  .scrollbar::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    border: 1px solid #8d8d8d;
-    background: #fffaed;
-    z-index: 1000;
-  }
+	.scrollbar::-webkit-scrollbar-track {
+		border-radius: 100vh;
+		border: 1px solid #8d8d8d;
+		background: #fffaed;
+		z-index: 1000;
+	}
 
-  .scrollbar::-webkit-scrollbar-thumb {
-    background: #fffaed;
-    border-radius: 100vh;
-    border: 1px solid #8d8d8d;
-    z-index: 1000;
-  }
+	.scrollbar::-webkit-scrollbar-thumb {
+		background: #fffaed;
+		border-radius: 100vh;
+		border: 1px solid #8d8d8d;
+		z-index: 1000;
+	}
 
-  .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #ffedbe;
-    z-index: 1000;
-  }
+	.scrollbar::-webkit-scrollbar-thumb:hover {
+		background: #ffedbe;
+		z-index: 1000;
+	}
 }

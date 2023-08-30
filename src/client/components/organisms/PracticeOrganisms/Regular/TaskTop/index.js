@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import PracticeContext from "context/PracticeContext";
+import { urlToServer } from "client/configure_build";
 
 import Text from "client/components/atoms/Text";
 import Button from "client/components/atoms/Button";
@@ -26,17 +27,14 @@ export default function TaskTop({ isExam }) {
 
 	async function setSavedQuestion(id) {
 		try {
-			const response = await fetch(
-				"http://localhost:5000/api/saved-questions",
-				{
-					method: "POST",
-					credentials: "include",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({ question_id: id }),
-				}
-			);
+			const response = await fetch(`${urlToServer}/api/saved-questions`, {
+				method: "POST",
+				credentials: "include",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ question_id: id }),
+			});
 
 			if (response.ok) {
 				setNewFavoriteTask((prevState) => {
