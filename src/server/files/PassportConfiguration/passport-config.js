@@ -11,7 +11,6 @@ function initializePassport(passport, getUserByEmail, getUserById) {
 			if (await bcrypt.compare(password, user.password)) {
 				return done(null, user);
 			} else {
-				console.log("ZŁE HASŁO");
 				return done(null, false, { message: "Incorrect password" });
 			}
 		} catch (err) {
@@ -32,7 +31,6 @@ function initializePassport(passport, getUserByEmail, getUserById) {
 
 	passport.deserializeUser(async (id, done) => {
 		const user = await getUserById(id);
-		console.log(user, id);
 		return done(null, user);
 	});
 }

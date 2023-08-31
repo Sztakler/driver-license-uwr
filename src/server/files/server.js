@@ -60,8 +60,8 @@ initializePassport(passport, emailExists, userExists);
 
 app.use("", routes);
 
-app.listen(5000, () => {
-	console.log("SERVER STARTEDD PORT:5000");
+app.listen(3000, () => {
+	console.log("SERVER STARTED PORT:3000");
 });
 
 module.exports = app;

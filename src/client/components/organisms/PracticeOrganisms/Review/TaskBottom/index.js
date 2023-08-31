@@ -11,11 +11,11 @@ export default function TaskBottomReview() {
 	const { task } = useContext(PracticeContext);
 
 	function getTaskResult(answer) {
-		if (task.poprawna_odpowiedz === answer) {
+		if (task.correct_answer === answer) {
 			return "correct";
 		} else if (
 			answer === task.wybrana_odpowiedz &&
-			task.poprawna_odpowiedz !== task.wybrana_odpowiedz
+			task.correct_answer !== task.wybrana_odpowiedz
 		) {
 			return "incorrect";
 		}
@@ -24,11 +24,10 @@ export default function TaskBottomReview() {
 	}
 
 	function renderAnswers(task) {
-		console.log(task);
-		if (task.zakres_struktury === "PODSTAWOWY") {
+		if (task.structure_scope === "PODSTAWOWY") {
 			return (
 				<Answers row={true}>
-					{task.odpowiedzi.map((answer, index) => {
+					{task.answers.map((answer, index) => {
 						return (
 							<Answer>
 								<Button
@@ -44,10 +43,10 @@ export default function TaskBottomReview() {
 					})}
 				</Answers>
 			);
-		} else if (task.zakres_struktury === "SPECJALISTYCZNY") {
+		} else if (task.structure_scope === "SPECJALISTYCZNY") {
 			return (
 				<Answers row={false}>
-					{task.odpowiedzi.map((answer, index) => {
+					{task.answers.map((answer, index) => {
 						return (
 							<Answer>
 								<Button
@@ -69,7 +68,7 @@ export default function TaskBottomReview() {
 
 	return (
 		<TaskBottomSection>
-			<Paragraph style="inline-block max-md:px-2">{task.pytanie}</Paragraph>
+			<Paragraph style="inline-block max-md:px-2">{task.question}</Paragraph>
 			{renderAnswers(task)}
 		</TaskBottomSection>
 	);

@@ -4,6 +4,9 @@ import { urlToServer } from "client/configure_build";
 
 import LoadingPage from "client/pages/LoadingPage";
 
+/*
+Like protected component but it actually blocks logged user from entering pages like "/login", "/register"
+*/
 export default function BlockedFromUser() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isAuthStatusChecked, setIsAuthStatusChecked] = useState(false);

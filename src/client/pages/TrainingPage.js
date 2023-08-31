@@ -7,9 +7,9 @@ import PracticeContext from "context/PracticeContext";
 import NoNavbarOnMobileTemplate from "client/components/templates/NoNavbarOnMobileTemplate";
 import Navbar from "client/components/organisms/Navbar";
 import TaskBottom from "client/components/organisms/PracticeOrganisms/Regular/TaskBottom";
-import Menu from "client/components/organisms/PracticeOrganisms/Regular/Menu";
 import TaskTop from "client/components/organisms/PracticeOrganisms/Regular/TaskTop";
 import Loading from "client/components/molecules/Loading";
+import SideMenu from "client/components/organisms/PracticeOrganisms/Regular/SideMenu";
 
 export default function PracticePage() {
 	const {
@@ -58,7 +58,7 @@ export default function PracticePage() {
 			setNewSavedQuestions(modifiedQuestions);
 			setNewTask(modifiedQuestions[0]);
 			setNewTaskStarted(
-				modifiedQuestions[0].zakres_struktury === "PODSTAWOWY" ? false : true
+				modifiedQuestions[0].structure_scope === "PODSTAWOWY" ? false : true
 			);
 			setNewFavoriteTask(modifiedQuestions[0].is_saved);
 			const selectElement = document.getElementById("knowledge_level");
@@ -74,7 +74,7 @@ export default function PracticePage() {
 			{task ? (
 				<>
 					<TaskTop isExam={false} />
-					<Menu isExam={false} />
+					<SideMenu isExam={false} />
 					<TaskBottom isExam={false} />
 				</>
 			) : (

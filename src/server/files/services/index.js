@@ -84,7 +84,6 @@ const statisticsService = async (userId, from, to) => {
 		let high_count = Number(
 			high_knowledge_questions_count.rows[0].record_count
 		);
-		console.log("we read", total_count, medium_count, high_count);
 		let low_count = total_count - medium_count - high_count;
 
 		const weekly_exams = await dbRequests.weeklyExams(userId, from, to);
@@ -165,7 +164,6 @@ const updateUserSettingsService = async (
 	user_id,
 	requestBody
 ) => {
-	console.log(requestBody);
 	let userData = await dbRequests.existingUserById(user_id);
 
 	if (!(await bcrypt.compare(providedPassword, userData.rows[0].password))) {
@@ -206,7 +204,6 @@ const updateUserSettingsService = async (
 	const newData = { name: newName, email: newEmail, password: newPassword };
 
 	await dbRequests.updateUserData(newData, user_id);
-	console.log(newData);
 	return {
 		status: 200,
 		message: "Poprawnie zmodyfikowano dane użytkownika",

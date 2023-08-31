@@ -36,9 +36,7 @@ export default function Quit({ isReview, isExam, result }) {
 			});
 
 			if (response.ok) {
-				console.log("Data submitted successfully");
 				const responseData = await response.json();
-				console.log("ID:" + responseData.id);
 				return responseData.id;
 				// Additional actions or state updates after successful submission
 			} else {

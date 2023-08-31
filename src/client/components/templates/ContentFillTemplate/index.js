@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import { PageWrapper, MainContent } from "./styles";
-import HamburgerContext from "context/HamburgerViewContext";
 export default function ContentFillTemplate({
 	header,
 	children,
@@ -11,11 +10,9 @@ export default function ContentFillTemplate({
 	...props
 }) {
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
-	const { hamburgerView } = useContext(HamburgerContext);
 
 	return (
 		<PageWrapper
-			hamburgerView={hamburgerView}
 			{...props}
 			className={
 				isDesktop

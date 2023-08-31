@@ -109,9 +109,9 @@ export default function Statistics() {
 	useEffect(() => {
 		setDoughnutData({
 			labels: [
-				"Wysoki poziom znajomości",
-				"Średni poziom znajomości",
 				"Niski poziom znajomości",
+				"Średni poziom znajomości",
+				"Wysoki poziom znajomości",
 			],
 			datasets: [
 				{
@@ -191,7 +191,7 @@ export default function Statistics() {
 					<Diagram
 						type="vertical-bar"
 						data={verticalData}
-						diagramTitle={"Liczba ukończonych egzaminów"}
+						diagramTitle={"Liczba przerobionych egzaminów"}
 						moveByWeekBackwards={moveByWeekBackwards}
 						moveByWeekForwards={moveByWeekForwards}
 						endDate={endDate}

@@ -6,7 +6,6 @@ const Container = tw.div`
 	auto-cols-[20%]
 	max-md:auto-cols-[70%]
 	gap-4
-	pt-10
 	overflow-x-auto
 	overscroll-contain
 	snap-mandatory

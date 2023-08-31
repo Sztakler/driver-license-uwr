@@ -5,7 +5,7 @@ import { urlToServer } from "client/configure_build";
 import NoNavbarOnMobileTemplate from "client/components/templates/NoNavbarOnMobileTemplate";
 import Navbar from "client/components/organisms/Navbar";
 import TaskBottom from "client/components/organisms/PracticeOrganisms/Regular/TaskBottom";
-import Menu from "client/components/organisms/PracticeOrganisms/Regular/Menu";
+import SideMenu from "client/components/organisms/PracticeOrganisms/Regular/SideMenu";
 import TaskTop from "client/components/organisms/PracticeOrganisms/Regular/TaskTop";
 import Loading from "client/components/molecules/Loading";
 
@@ -41,7 +41,7 @@ export default function ExamPage() {
 			{task ? (
 				<>
 					<TaskTop isExam={true} />
-					<Menu isExam={true} />
+					<SideMenu isExam={true} />
 					<TaskBottom isExam={true} />
 				</>
 			) : (

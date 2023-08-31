@@ -6,6 +6,7 @@
 		"src/**/*",
 		"src/service-worker.js",
 		"src/serviceWorkerRegistration.js",
-		"public/serviceWorkerRegistration.js"
+		"public/serviceWorkerRegistration.js",
+		"src/client/utils/HackTimer.js"
 	]
 }

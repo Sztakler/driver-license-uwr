@@ -1,3 +1,10 @@
+/*
+https://github.com/turuslan/HackTimer
+we used this library to fix timer being slower on inactive tabs,
+explorers were saving resources affecting regular timer so we decided to use
+HackTimer from repo above. It's overriding actual timer.
+*/
+
 (function (workerScript) {
 	if (!/MSIE 10/i.test(navigator.userAgent)) {
 		try {

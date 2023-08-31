@@ -7,7 +7,7 @@ const PageWrapper = tw.div`
 	min-h-screen
 	bg-gradient-to-b from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[200px] to-[#FFFBF3] to-100%
 	overflow-y-auto
-	${(props) => (props.hamburgerView ? "max-md:pt-[210px]" : "pt-[70px]")}
+	pt-[70px]
   max-md:max-h-screen
   max-md:overflow-y-hidden
 `;

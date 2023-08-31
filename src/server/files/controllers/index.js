@@ -198,17 +198,16 @@ const registrationController = async (req, res) => {
 const loginController = (req, res, next) => {
 	passport.authenticate("local", (err, user, info) => {
 		if (err) {
-			console.log("ERROR");
+			console.error("ERROR");
 			throw err;
 		}
 		if (!user) {
-			console.log("USER NOT FOUND");
+			console.error("USER NOT FOUND");
 			res.status(400).json({ message: "User does not exist!" });
 		} else {
 			req.logIn(user, (err) => {
 				if (err) throw err;
 				req.session.user = user;
-				console.log("USER AUTHENTICATED");
 				res.status(200).json(user);
 				return;
 			});
@@ -220,10 +219,9 @@ const loginController = (req, res, next) => {
 const logoutController = (req, res, next) => {
 	req.logout((err) => {
 		if (err) {
-			console.log("LOGOUT ERROR");
+			console.error("LOGOUT ERROR");
 			throw err;
 		}
-		console.log("LOGOUT SUCCESSFUL");
 		res.status(200).send();
 	});
 };
@@ -249,13 +247,11 @@ const updateUserSettingsController = async (req, res) => {
 			user_id,
 			requestBody
 		);
-		res
-			.status(status)
-			.json({
-				message: message,
-				sensitiveData: sensitiveData,
-				correct: status === 200,
-			});
+		res.status(status).json({
+			message: message,
+			sensitiveData: sensitiveData,
+			correct: status === 200,
+		});
 	} catch {
 		res.status(400).json({ message: "Error" });
 	}

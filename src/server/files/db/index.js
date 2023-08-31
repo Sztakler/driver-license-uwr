@@ -63,7 +63,7 @@ const examBasicQuestions = () => {
 		`(
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'PODSTAWOWY' AND liczba_punktow = 3
+      WHERE structure_scope = 'PODSTAWOWY' AND points = 3
 			ORDER BY RANDOM()
       LIMIT 10
     )
@@ -71,7 +71,7 @@ const examBasicQuestions = () => {
 		(
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'PODSTAWOWY' AND liczba_punktow = 2
+      WHERE structure_scope = 'PODSTAWOWY' AND points = 2
 			ORDER BY RANDOM()
       LIMIT 6
     )
@@ -79,7 +79,7 @@ const examBasicQuestions = () => {
 		(
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'PODSTAWOWY' AND liczba_punktow = 1
+      WHERE structure_scope = 'PODSTAWOWY' AND points = 1
 			ORDER BY RANDOM()
       LIMIT 4
     );`
@@ -92,7 +92,7 @@ const examSpecialistQuestions = () => {
     (
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'SPECJALISTYCZNY' AND liczba_punktow = 3
+      WHERE structure_scope = 'SPECJALISTYCZNY' AND points = 3
 			ORDER BY RANDOM()
       LIMIT 6
     )
@@ -100,7 +100,7 @@ const examSpecialistQuestions = () => {
 		(
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'SPECJALISTYCZNY' AND liczba_punktow = 2
+      WHERE structure_scope = 'SPECJALISTYCZNY' AND points = 2
 			ORDER BY RANDOM()
       LIMIT 4
     )
@@ -108,7 +108,7 @@ const examSpecialistQuestions = () => {
 		(
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'SPECJALISTYCZNY' and liczba_punktow = 1
+      WHERE structure_scope = 'SPECJALISTYCZNY' and points = 1
 			ORDER BY RANDOM()
       LIMIT 2
     )
@@ -210,7 +210,6 @@ const userName = (userId) => {
 };
 
 const existingUserByEmail = (email) => {
-	console.log("nowy mail", email);
 	return pool.query(`
 	SELECT * FROM users WHERE email = '${email}';
 	`);
@@ -252,9 +251,8 @@ const existingUserById = (user_id) => {
 	`);
 };
 
-const updateUserData = async (newData, user_id) => {
-	console.log("entered");
-	let x = await pool.query(
+const updateUserData = (newData, user_id) => {
+	return pool.query(
 		`
     UPDATE users
     SET name = $1,
@@ -263,7 +261,6 @@ const updateUserData = async (newData, user_id) => {
     WHERE id = ${user_id};`,
 		[newData.name, newData.email, newData.password]
 	);
-	console.log(x);
 };
 
 const updateSavedQuestion = (question_id, user_id) => {
@@ -277,7 +274,6 @@ const updateSavedQuestion = (question_id, user_id) => {
 };
 
 const updateUserKnowledgeLevels = (question_id, knowledgeLevel, user_id) => {
-	console.log("updating", question_id, knowledgeLevel, user_id);
 	return pool.query(
 		`      
   INSERT INTO user_knowledge_levels (user_id, question_id, knowledge_level)

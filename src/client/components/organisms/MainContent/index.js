@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import Sidebar from "client/components/molecules/Sidebar";
-import PanelsScroller from "client/components/molecules/PanelScroller";
 
 import {
 	Container,
@@ -13,16 +13,28 @@ import {
 	SidebarArrowButtonParagraph,
 } from "./styles";
 
-import Paragraph from "client/components/atoms/Paragraph";
-
-export default function MainContent({ navigation, panelsContents }) {
+export default function MainContent({
+	navigation,
+	panelsContents,
+	pageContent,
+}) {
 	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 	const [sidebarSticky, setSidebarSticky] = useState(false);
+
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
 	function Arrow(props) {
 		return (
 			<svg
-				className={props.sidebarHidden ? "rotate-180" : ""}
+				className={
+					props.sidebarHidden && props.isDesktop
+						? "rotate-180"
+						: props.sidebarHidden
+						? "-rotate-90"
+						: props.isDesktop
+						? "rotate-0"
+						: "rotate-90"
+				}
 				width="29"
 				height="22"
 				viewBox="0 0 29 22"
@@ -60,15 +72,20 @@ export default function MainContent({ navigation, panelsContents }) {
 				sidebarHidden={props.sidebarHidden}
 				sidebarSticky={sidebarSticky}
 			>
-				{props.sidebarHidden ? <Arrow sidebarHidden /> : <Arrow />}
+				{props.sidebarHidden ? (
+					<Arrow sidebarHidden={true} isDesktop={isDesktop} />
+				) : (
+					<Arrow sidebarHidden={false} isDesktop={isDesktop} />
+				)}
+
 				<SidebarArrowButtonParagraph
 					className={
 						props.sidebarHidden
-							? "translate-y-16 -translate-x-14 "
+							? "md:left-0 md:bottom-60 "
 							: "whitespace-nowrap"
 					}
 				>
-					Zwiń spis treści
+					{props.sidebarHidden ? "Rozwiń spis treści" : "Zwiń spis treści"}
 				</SidebarArrowButtonParagraph>
 			</SidebarArrowButton>
 		);
@@ -87,26 +104,23 @@ export default function MainContent({ navigation, panelsContents }) {
 	return (
 		<Container id="MainContent">
 			{isSidebarVisible ? (
-				<SidebarContainer id="sidebar" sticky={sidebarSticky}>
-					<ToggleSidebarButton />
+				<SidebarContainer
+					id="sidebar"
+					sticky={sidebarSticky}
+					sidebarHidden={!isSidebarVisible}
+				>
 					<Sidebar navigation={navigation}></Sidebar>
+					<ToggleSidebarButton />
 				</SidebarContainer>
 			) : (
-				<ToggleSidebarButton sidebarHidden />
+				<SidebarContainer id="sidebar" sticky={sidebarSticky}>
+					<ToggleSidebarButton sidebarHidden />
+				</SidebarContainer>
 			)}
-			<Content moveRight={isSidebarVisible}>
-				<Title>Znaki ostrzegawcze</Title>
-				<Subtitle>rozdział: Znaki pionowe</Subtitle>
-				<Paragraph
-					style="text-[#0d0d0d] max-w-prose text-lg text-left"
-					content=""
-				>
-					Znaki te wskazują kierującemu jak powinien się zachować w miejscu, do
-					którego się zbliża. Znaki nakazujące kierunek jazdy mogą być
-					umieszczone na przedłużeniu osi jezdni (drogi) lub na samej jezdni
-					(drodze).
-				</Paragraph>
-				<PanelsScroller panelsContents={panelsContents} />
+			<Content moveRight={isSidebarVisible} sidebarHidden={!isSidebarVisible}>
+				<Title>{pageContent.title}</Title>
+				<Subtitle>{pageContent.subtitle}</Subtitle>
+				{pageContent.body}
 			</Content>
 		</Container>
 	);

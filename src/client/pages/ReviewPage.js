@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import NoNavbarOnMobileTemplate from "client/components/templates/NoNavbarOnMobileTemplate";
 import Navbar from "client/components/organisms/Navbar";
 import TaskBottomReview from "client/components/organisms/PracticeOrganisms/Review/TaskBottom";
-import MenuReview from "client/components/organisms/PracticeOrganisms/Review/Menu";
+import SideMenuReview from "client/components/organisms/PracticeOrganisms/Review/SideMenu";
 import TaskTopReview from "client/components/organisms/PracticeOrganisms/Review/TaskTop";
 import PracticeContext from "context/PracticeContext";
 import Loading from "client/components/molecules/Loading";
@@ -30,7 +30,7 @@ export default function ReviewPage() {
 			{task ? (
 				<>
 					<TaskTopReview />
-					<MenuReview isExam={true} />
+					<SideMenuReview isExam={true} />
 					<TaskBottomReview />
 				</>
 			) : (

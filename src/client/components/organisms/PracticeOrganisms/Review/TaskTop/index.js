@@ -17,12 +17,12 @@ export default function TaskTopReview() {
 			<InfoWrapper>
 				<TaskInfo>
 					<Text className="font-light">Wartość punktowa: </Text>
-					<Text className="font-normal">{task.liczba_punktow} pkt</Text>
+					<Text className="font-normal">{task.points} pkt</Text>
 				</TaskInfo>
 				<TaskInfo>
 					<Text className="font-light">Typ pytania: </Text>
 					<Text className="font-normal ">
-						{lowerCaseAll(task.zakres_struktury, isDesktop)}
+						{lowerCaseAll(task.structure_scope, isDesktop)}
 					</Text>
 				</TaskInfo>
 			</InfoWrapper>

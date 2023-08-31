@@ -5,9 +5,9 @@ const PageWrapper = tw.div`
 	flex-col
 	relative
 	min-h-screen
-	${(props) => (props.hamburgerView ? "max-md:pt-[150px]" : "pt-[70px]")}
-    max-md:max-h-screen
-    max-md:overflow-y-hidden
+	pt-[70px]
+  max-md:max-h-screen
+  max-md:overflow-y-hidden
 `;
 
 const MainContent = tw.div`

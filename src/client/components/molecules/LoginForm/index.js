@@ -57,7 +57,7 @@ export default function LoginForm(props) {
 				setMessage("Nie istnieje użytkownik z podanym e-mailem lub hasłem!");
 			}
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 		}
 	}
 

@@ -4,7 +4,7 @@ const Container = tw.div`
 	flex
 	min-w-[20rem]
 	max-w-[20rem]
-	bg-gradient-to-b
+	md:bg-gradient-to-b
 	from-[#FFF6E4]
 	to-[#FFFBF3]
 		max-md:min-w-full
@@ -20,10 +20,10 @@ const Navigation = tw.aside`
 
 const ChapterTitle = tw.div`
 	flex
-	${(props) => (props.active ? "text-[#8d8d8d]" : "text-[#0d0d0d]")}
+	${(props) => (props.active ? "font-medium" : "text-[#0d0d0d]")}
 	text-base
 	cursor-pointer
-	hover:text-[#8d8d8d]
+	hover:font-medium
 	items-center
 `;
 

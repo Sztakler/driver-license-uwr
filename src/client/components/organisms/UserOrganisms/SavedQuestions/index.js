@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { urlToServer } from "client/configure_build";
-
+import { scrollToElement } from "client/utils/Scroller";
 
 import Text from "client/components/atoms/Text";
 import Input from "client/components/atoms/Input";
 import Image from "client/components/atoms/Image";
-import Video from "client/components/atoms/Video";
 import Button from "client/components/atoms/Button";
+import ImageBox from "client/components/molecules/PracticeMolecules/ImageBox";
 
 import Illustrations from "assets/images/svg/icons/Illustrations";
 
@@ -22,7 +22,6 @@ import {
 	Name,
 	ItemHeader,
 	ItemBody,
-	ImageBox,
 	TaskData,
 	Answers,
 	Answer,
@@ -31,16 +30,14 @@ import {
 } from "./styles";
 
 function renderAnswers(task) {
-	if (task.zakres_struktury === "PODSTAWOWY") {
+	if (task.structure_scope === "PODSTAWOWY") {
 		return (
 			<Answers row={true}>
-				{task.odpowiedzi.map((answer, index) => {
+				{task.answers.map((answer, index) => {
 					return (
 						<Answer>
 							<Button
-								className={
-									index === task.poprawna_odpowiedz ? "bg-[#91CE6B]" : ""
-								}
+								className={index === task.correct_answer ? "bg-[#91CE6B]" : ""}
 								primary
 								size="s"
 							>
@@ -51,16 +48,14 @@ function renderAnswers(task) {
 				})}
 			</Answers>
 		);
-	} else if (task.zakres_struktury === "SPECJALISTYCZNY") {
+	} else if (task.structure_scope === "SPECJALISTYCZNY") {
 		return (
 			<Answers row={false}>
-				{task.odpowiedzi.map((answer, index) => {
+				{task.answers.map((answer, index) => {
 					return (
 						<Answer>
 							<Button
-								className={
-									index === task.poprawna_odpowiedz ? "bg-[#91CE6B]" : ""
-								}
+								className={index === task.correct_answer ? "bg-[#91CE6B]" : ""}
 								bubble
 								size="m"
 							>
@@ -110,7 +105,6 @@ export default function SavedQuestions() {
 			setTasks(questions);
 			setFilteredTasks(questions);
 			setQuestionsLoaded(true);
-			console.log(questions);
 		};
 		fetchQuestions();
 	}, []);
@@ -119,12 +113,12 @@ export default function SavedQuestions() {
 		setFilteredTasks(
 			tasks.filter((task) => {
 				return (
-					(task.zakres_struktury === "PODSTAWOWY"
+					(task.structure_scope === "PODSTAWOWY"
 						? filtersPicked.PODSTAWOWE
-						: task.zakres_struktury === "SPECJALISTYCZNY"
+						: task.structure_scope === "SPECJALISTYCZNY"
 						? filtersPicked.SPECJALISTYCZNE
 						: false) &&
-					(task.knowledge_level === 1 || task.knowledge_level === 0
+					(task.knowledge_level === 1 || task.knowledge_level === null
 						? filtersPicked.NISKI
 						: task.knowledge_level === 2
 						? filtersPicked.ŚREDNI
@@ -150,56 +144,12 @@ export default function SavedQuestions() {
 		});
 	}
 
-	function getRelativePos(elm) {
-		var pPos = elm.parentNode.getBoundingClientRect(), // parent pos
-			cPos = elm.getBoundingClientRect(), // target pos
-			pos = { top: 0, right: 0, bottom: 0, left: 0 };
-
-		pos.top = cPos.top - pPos.top + elm.parentNode.scrollTop;
-		pos.right = cPos.right - pPos.right;
-		pos.bottom = cPos.bottom - pPos.bottom;
-		pos.left = cPos.left - pPos.left;
-
-		return pos;
-	}
-
-	function scrollToElm(container, elm, duration) {
-		var pos = getRelativePos(elm);
-		scrollTo(container, pos.top, duration); // duration in seconds
-	}
-
 	function scrollElement(id) {
-		scrollToElm(
+		scrollToElement(
 			document.getElementById("scrollable"),
 			document.getElementById("div" + id),
 			1
 		);
-	}
-
-	function scrollTo(element, to, duration, onDone) {
-		var start = element.scrollTop,
-			change = to - start,
-			startTime = performance.now(),
-			val,
-			now,
-			elapsed,
-			t;
-
-		function animateScroll() {
-			now = performance.now();
-			elapsed = (now - startTime) / 1000;
-			t = elapsed / duration;
-
-			element.scrollTop = start + change * easeInOutQuad(t);
-
-			if (t < 1) window.requestAnimationFrame(animateScroll);
-			else onDone && onDone();
-		}
-
-		animateScroll();
-	}
-	function easeInOutQuad(t) {
-		return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 	}
 
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
@@ -369,12 +319,12 @@ export default function SavedQuestions() {
 													<Text className="font-normal">
 														(
 														{capitalizeFirstLetter(
-															task.zakres_struktury.slice(0, 1)
+															task.structure_scope.slice(0, 1)
 														)}
 														){" "}
 													</Text>
 												)}
-												{task.pytanie}
+												{task.question}
 											</Text>
 										</div>
 										<div className="flex flex-col text-left self-end w-[230px]">
@@ -382,7 +332,7 @@ export default function SavedQuestions() {
 												<Text className="font-normal text-[15px]">
 													Rodzaj pytania:{" "}
 													<Text className="font-light">
-														{capitalizeFirstLetter(task.zakres_struktury)}
+														{capitalizeFirstLetter(task.structure_scope)}
 													</Text>
 												</Text>
 											)}
@@ -404,29 +354,12 @@ export default function SavedQuestions() {
 									</ItemHeader>
 									{expandedTaskIdx === index && (
 										<ItemBody>
-											<ImageBox>
-												{task.media.endsWith(".mp4") ? (
-													<Video src={task.media} id="media-video" controls />
-												) : (
-													<Image exam src={task.media} />
-												)}
-											</ImageBox>
-											<TaskData>
-												{renderAnswers(task)}
-												<Button
-													blank
-													bubble={!isDesktop}
-													size={!isDesktop ? "l" : ""}
-													className="self-start max-md:absolute max-md:right-0 max-md:bottom-0 max-md:p-3"
-												>
-													<Image src={Illustrations.Explanation} />
-													{isDesktop && (
-														<Text className="text-[16px]">
-															Pokaż wyjaśnienie
-														</Text>
-													)}
-												</Button>
-											</TaskData>
+											<ImageBox
+												isReview={true}
+												media={task.media}
+												savedQuestionsView={true}
+											/>
+											<TaskData>{renderAnswers(task)}</TaskData>
 										</ItemBody>
 									)}
 								</ListItem>

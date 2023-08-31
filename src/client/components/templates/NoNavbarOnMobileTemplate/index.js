@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
-import HamburgerContext from "context/HamburgerViewContext";
+import React from "react";
+import { useMediaQuery } from "react-responsive";
 
 import BrandAbsoluted from "client/components/molecules/BrandAbsoluted";
 
 import { PageWrapper, MainContent, Wrapper } from "./styles";
-import { useMediaQuery } from "react-responsive";
 
 export default function NoNavbarOnMobileTemplate({
 	hero,
@@ -14,12 +13,10 @@ export default function NoNavbarOnMobileTemplate({
 	count,
 	...props
 }) {
-	const { hamburgerView } = useContext(HamburgerContext);
-
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
 	return (
-		<PageWrapper hamburgerView={hamburgerView} {...props}>
+		<PageWrapper {...props}>
 			{isDesktop ? <BrandAbsoluted /> : header}
 			{children && (
 				<MainContent>

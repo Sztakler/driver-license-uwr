@@ -63,7 +63,7 @@ export default function RegistrationForm() {
 				navigate("/register");
 			}
 		} catch (err) {
-			console.log("ERROR");
+			console.error(err);
 		}
 	};
 

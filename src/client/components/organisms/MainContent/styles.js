@@ -11,45 +11,60 @@ const SidebarContainer = tw.div`
 	flex
 	flex-col
 	h-full
-	bg-gradient-to-r
+	md:bg-gradient-to-r
 	from-[#FFF6E4]
 	to-[#FFFBF3]
 	self-start
 	md:-left-2
 	${(props) => (props.sticky ? "md:fixed md:pt-[80px]" : "md:absolute md:top-0")}
 	top-0
+	max-md:top-12
+	max-md:w-full
 	left-0
 	`;
 
 const SidebarArrowButton = tw.div`
-  max-md:hidden
-	absolute
+	md:absolute
 	left-[350px]
-	h-[250px]
-	w-[25px]
+	h-[450px]
+	w-[50px]
+	max-md:h-[50px]
+	max-md:w-full
 	hover:font-semibold
 	flex
 	flex-col
+	max-md:flex-row
+	max-md:px-2
+	max-md:gap-2
 	cursor-pointer
-	pt-[25px]
-	${(props) =>
-		props.sidebarSticky ? " md:fixed md:pt-[40px]  md:left-[340px]" : ""}
+	md:pt-[25px]
+	${(props) => (props.sidebarSticky ? " md:fixed md:pt-[40px] " : "")}
 	${(props) => (props.sidebarHidden ? " left-[24px]" : "")}
 `;
 
 const Content = tw.div`
 	grid
 	grid-rows-auto
-	pl-24
-	max-md:pl-4
-	pt-[30px]
+	md:pl-24
+	md:pr-40
+	max-md:max-h-[calc(100vh-320px)]
+	${(props) =>
+		props.sidebarHidden
+			? "max-md:max-h-[calc(100vh-138px)]"
+			: "max-md:max-h-[calc(100vh-320px)]"}
+	break-words
+	pt-[30px]	
+	max-md:overflow-y-scroll
+	max-md:px-6
+
 	${(props) => (props.moveRight ? "md:ml-[320px]" : "")}
 	`;
 
 const Title = tw.div`
-	text-[56px]
+	text-5xl
+	max-md:text-4xl
 	text-[#0d0d0d]
-	font-display
+	font-sans
 `;
 
 const Subtitle = tw.div`
@@ -96,9 +111,14 @@ const Panel = tw.div`
 `;
 
 const SidebarArrowButtonParagraph = tw.div`
-rotate-90
-inline-block
-mt-2
+md:absolute
+md:-left-0
+md:bottom-64
+md:min-w-[140px]
+md:min-h-[140px]
+md:transform
+md:rotate-[270deg]
+md:inline-block
 `;
 
 const SidebarButtonInvisibleCheckbox = tw.input`

@@ -9,7 +9,7 @@ const PageWrapper = tw.div`
 	min-h-screen
 	w-full
 	max-w-screen
-	pt-[80px]
+	pt-[70px]
 	max-md:max-h-screen
 	max-md:overflow-y-hidden
 `;

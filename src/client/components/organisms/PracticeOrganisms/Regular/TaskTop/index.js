@@ -6,14 +6,19 @@ import { urlToServer } from "client/configure_build";
 import Text from "client/components/atoms/Text";
 import Button from "client/components/atoms/Button";
 import ImageBox from "client/components/molecules/PracticeMolecules/ImageBox";
-import Star from "assets/images/svg/icons/Star";
 import { lowerCaseAll } from "client/components/../utils/other";
+import Star from "assets/images/svg/icons/Star";
 
 import { TaskTopSection, TaskInfo, InfoWrapper } from "./styles";
 
 export default function TaskTop({ isExam }) {
-	const { task, favoriteTask, setNewFavoriteTask } =
-		useContext(PracticeContext);
+	const {
+		task,
+		favoriteTask,
+		setNewFavoriteTask,
+		savedQuestions,
+		setNewSavedQuestions,
+	} = useContext(PracticeContext);
 
 	const [isHoveringStar, setIsHoveringStar] = useState(false);
 
@@ -37,10 +42,21 @@ export default function TaskTop({ isExam }) {
 			});
 
 			if (response.ok) {
+				const changedItemIndex = savedQuestions.findIndex(
+					(item) => item.id === task.id
+				);
+				if (changedItemIndex !== -1) {
+					const updatedQuestions = [...savedQuestions];
+					updatedQuestions[changedItemIndex].is_saved = !favoriteTask;
+					setNewSavedQuestions(updatedQuestions);
+				} else {
+					console.error("Question not found");
+					return;
+				}
+
 				setNewFavoriteTask((prevState) => {
 					return !prevState;
 				});
-				console.log("Data submitted successfully");
 			} else {
 				console.error("Error submitting data");
 			}
@@ -58,12 +74,12 @@ export default function TaskTop({ isExam }) {
 			<InfoWrapper>
 				<TaskInfo>
 					<Text className="font-light">Wartość punktowa: </Text>
-					<Text className="font-normal">{task.liczba_punktow} pkt</Text>
+					<Text className="font-normal">{task.points} pkt</Text>
 				</TaskInfo>
 				<TaskInfo className="whitespace-nowrap overflow-hidden">
 					<Text className="font-light">Typ pytania: </Text>
 					<Text className="font-normal ">
-						{lowerCaseAll(task.zakres_struktury, isDesktop)}
+						{lowerCaseAll(task.structure_scope, isDesktop)}
 					</Text>
 				</TaskInfo>
 			</InfoWrapper>

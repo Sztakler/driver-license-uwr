@@ -4,6 +4,10 @@ import { urlToServer } from "client/configure_build";
 
 import LoadingPage from "../pages/LoadingPage";
 
+/*
+This component check's if user is authorized to enter route.
+If he is then we are showing component and if he's not we redirect him to login page.
+*/
 export default function ProtectedComponent() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isAuthStatusChecked, setIsAuthStatusChecked] = useState(false);

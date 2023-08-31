@@ -14,7 +14,6 @@ export class UnauthorizedAccessError extends Error {
 }
 
 export async function fetchData(path, credentials, body, method = "GET") {
-	console.log(credentials, `${urlToServer}${path}`);
 	return await fetch(`${urlToServer}${path}`, {
 		method: method,
 		credentials: credentials,

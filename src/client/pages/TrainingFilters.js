@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "client/components/organisms/Navbar";
-import TrainingFilters from "client/components/organisms/Training/TrainingFilters";
+import TrainingFilters from "client/components/organisms/TrainingFilters";
 import ContentFillTemplate from "client/components/templates/ContentFillTemplate";
 import { fetchData } from "../utils/other";
 import Loading from "client/components/molecules/Loading";

@@ -25,7 +25,7 @@ export default function ReviewTasks({
 			return "skipped";
 		}
 
-		if (answer.wybrana_odpowiedz === answer.poprawna_odpowiedz) {
+		if (answer.wybrana_odpowiedz === answer.correct_answer) {
 			return "correct";
 		}
 		return "incorrect";

@@ -2,7 +2,7 @@ module.exports = {
 	content: ["./src/client/**/*.{js,jsx,ts,tsx,html}"],
 	theme: {
 		fontFamily: {
-			display: ["JEZUSMARIA", "sans-serif"],
+			display: ["Rampart", "sans-serif"],
 			sans: ["Inter", "sans-serif"],
 			altInter: ["Inter", "cursive"],
 			rampart: ["Rampart One", "cursive"],

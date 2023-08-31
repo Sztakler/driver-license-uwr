@@ -8,6 +8,7 @@ const ListAlign = tw.div`
 	max-lg:px-8
 	max-md:px-4
 	max-md:mb-0
+	overflow-y-hidden
 	`;
 
 const InnerContainer = tw.div`
@@ -20,7 +21,7 @@ const InnerContainer = tw.div`
 	max-lg:max-h-[calc(100vh-357px)]
 	max-md:border-t
 	max-md:border-[#CECECE]
-	md:rounded-[39px]
+	md:rounded-l-[39px]
 	`;
 
 const Questions = tw.div`
@@ -28,7 +29,6 @@ const Questions = tw.div`
 	flex-col
 	h-full
 	pb-32
-
 `;
 
 const ListItem = tw.div`
@@ -64,20 +64,18 @@ const ItemBody = tw.div`
 	border-b
 	border-[#CECECE]
 
-	max-md:px-4
+	max-md:px-0
 `;
 
 const ImageBox = tw.div`
 	flex
 	aspect-[758/428]
 	max-lg:min-w-[86vw]
-	lg:min-w-[526px]
-	lg:min-h-[296px]
+	lg:min-w-[606px]
+	lg:min-h-[341px]
 	max-h-[300px]
 
 	overflow-hidden
-	border-2
-	border-[#424242]
 	rounded-[39px]
 	bg-[#FFE5A3]
 `;
@@ -168,6 +166,7 @@ const Placeholder = tw.div`
 	text-4xl
 	items-center
 	justify-center
+	p-4
 `;
 
 export {

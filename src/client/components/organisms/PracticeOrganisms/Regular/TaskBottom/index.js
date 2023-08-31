@@ -12,11 +12,11 @@ export default function TaskBottom({ isExam }) {
 	const { task, setNewTask } = useContext(PracticeContext);
 
 	function getTaskResult(answer) {
-		if (task.poprawna_odpowiedz === answer) {
+		if (task.correct_answer === answer) {
 			return "correct";
 		} else if (
 			answer === task.wybrana_odpowiedz &&
-			task.poprawna_odpowiedz !== task.wybrana_odpowiedz
+			task.correct_answer !== task.wybrana_odpowiedz
 		) {
 			return "incorrect";
 		}
@@ -25,15 +25,15 @@ export default function TaskBottom({ isExam }) {
 	}
 
 	function renderAnswers(task) {
-		if (task.zakres_struktury === "PODSTAWOWY") {
+		if (task.structure_scope === "PODSTAWOWY") {
 			return (
 				<Answers row={true}>
-					{task.odpowiedzi.map((answer, index) => {
+					{task.answers.map((answer, index) => {
 						return (
 							<Answer>
 								<Button
 									primary
-									hover
+									hover={isExam || (!isExam && task.wybrana_odpowiedz === null)}
 									onClick={() => {
 										if (!isExam && task.wybrana_odpowiedz !== null) return;
 										setNewTask((prevState) => {
@@ -59,14 +59,15 @@ export default function TaskBottom({ isExam }) {
 					})}
 				</Answers>
 			);
-		} else if (task.zakres_struktury === "SPECJALISTYCZNY") {
+		} else if (task.structure_scope === "SPECJALISTYCZNY") {
 			return (
 				<Answers row={false}>
-					{task.odpowiedzi.map((answer, index) => {
+					{task.answers.map((answer, index) => {
 						return (
 							<Answer>
 								<Button
 									bubble
+									hover={isExam || (!isExam && task.wybrana_odpowiedz === null)}
 									onClick={() => {
 										if (!isExam && task.wybrana_odpowiedz !== null) return;
 										setNewTask((prevState) => {
@@ -98,7 +99,7 @@ export default function TaskBottom({ isExam }) {
 
 	return (
 		<TaskBottomSection>
-			<Paragraph style="inline-block max-md:px-2">{task.pytanie}</Paragraph>
+			<Paragraph style="inline-block max-md:px-2">{task.question}</Paragraph>
 			{renderAnswers(task)}
 		</TaskBottomSection>
 	);
