@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/driver-license-uwr/static/css/main.c0360047.css",
-    "main.js": "/driver-license-uwr/static/js/main.ba69d42a.js",
+    "main.css": "/driver-license-uwr/static/css/main.82912948.css",
+    "main.js": "/driver-license-uwr/static/js/main.827d8631.js",
     "static/media/homepage-3.svg": "/driver-license-uwr/static/media/homepage-3.4b83aa9c319805225a3637cbbd4b64eb.svg",
     "static/media/załóż-darmowe-konto.svg": "/driver-license-uwr/static/media/załóż-darmowe-konto.24c009df5d1a73368b70.svg",
     "static/media/homepage-1.svg": "/driver-license-uwr/static/media/homepage-1.1fa1089845fb17a1d0d642113957310f.svg",
@@ -10,12 +10,12 @@
     "static/media/zaloguj-się.svg": "/driver-license-uwr/static/media/zaloguj-się.39608dd94323029fe868.svg",
     "static/media/zaloguj-się-mobile.svg": "/driver-license-uwr/static/media/zaloguj-się-mobile.9e9e22c9ccc54a77bc0a.svg",
     "service-worker.js": "/driver-license-uwr/service-worker.js",
+    "static/media/lights.jpg": "/driver-license-uwr/static/media/lights.c692a6fa07a1451821fe.jpg",
     "static/media/egzamin-mobile.svg": "/driver-license-uwr/static/media/egzamin-mobile.b46367cbd6c49f276134.svg",
     "static/media/egzamin.svg": "/driver-license-uwr/static/media/egzamin.c1cfec8a20a4205b0e41.svg",
     "static/media/trening-mobile.svg": "/driver-license-uwr/static/media/trening-mobile.e7bed8721e0ee2dee8b6.svg",
-    "static/media/podręcznik.svg": "/driver-license-uwr/static/media/podręcznik.44853f64aa2ab22af1369493ec5088c3.svg",
-    "static/media/graphic1.svg": "/driver-license-uwr/static/media/graphic1.7acf4ef0f96c9fd22519980b296616b3.svg",
-    "static/media/podręcznik-mobile.svg": "/driver-license-uwr/static/media/podręcznik-mobile.52c1082d5c2ab31623f28bfb7849e3a4.svg",
+    "static/media/podręcznik.svg": "/driver-license-uwr/static/media/podręcznik.44853f64aa2ab22af136.svg",
+    "static/media/podręcznik-mobile.svg": "/driver-license-uwr/static/media/podręcznik-mobile.52c1082d5c2ab31623f2.svg",
     "static/media/trening.svg": "/driver-license-uwr/static/media/trening.ae03c1d8917197126de3.svg",
     "static/media/UserIcon.svg": "/driver-license-uwr/static/media/UserIcon.0b04a08bc53fc505e7eef62a2f0f77ed.svg",
     "static/media/homepage-mobile.svg": "/driver-license-uwr/static/media/homepage-mobile.ef8881c1a1d9ad5d219f6063055d2571.svg",
@@ -24,7 +24,6 @@
     "static/media/wynik-pozytywny.svg": "/driver-license-uwr/static/media/wynik-pozytywny.f30ed68a1aecb6226b86.svg",
     "static/media/wynik-negatywny.svg": "/driver-license-uwr/static/media/wynik-negatywny.d5e1777d4d924a6da0bc.svg",
     "static/media/SummaryBackground.svg": "/driver-license-uwr/static/media/SummaryBackground.1cb9796032f1f2962f75c95edf9419d2.svg",
-    "static/media/example.svg": "/driver-license-uwr/static/media/example.d8ed90082cebf5b61fa4584a8e221fab.svg",
     "static/media/Settings.svg": "/driver-license-uwr/static/media/Settings.61eaef54ee2110b35f9e106dd2cab07f.svg",
     "index.html": "/driver-license-uwr/index.html",
     "static/media/wynik-negatywny-mobile.svg": "/driver-license-uwr/static/media/wynik-negatywny-mobile.8c26c0b490ddf0a6028e.svg",
@@ -44,11 +43,11 @@
     "static/media/arrow-down.svg": "/driver-license-uwr/static/media/arrow-down.8c115b236f2f75f73db69cac5510aab0.svg",
     "static/media/ArrowRightAlternative.svg": "/driver-license-uwr/static/media/ArrowRightAlternative.39f2761f36d2d5d514f5bc38c19e57cc.svg",
     "static/media/ArrowLeftAlternative.svg": "/driver-license-uwr/static/media/ArrowLeftAlternative.06de0acae4fff63ebf1e3722c766b0d9.svg",
-    "main.c0360047.css.map": "/driver-license-uwr/static/css/main.c0360047.css.map",
-    "main.ba69d42a.js.map": "/driver-license-uwr/static/js/main.ba69d42a.js.map"
+    "main.82912948.css.map": "/driver-license-uwr/static/css/main.82912948.css.map",
+    "main.827d8631.js.map": "/driver-license-uwr/static/js/main.827d8631.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0360047.css",
-    "static/js/main.ba69d42a.js"
+    "static/css/main.82912948.css",
+    "static/js/main.827d8631.js"
   ]
 }
