@@ -72,6 +72,8 @@ export default function Navbar(props) {
 			fontSize: "xl",
 			visibleInMobile: false,
 			visibleInDesktop: true,
+			visibleForNotLoggedIn: true,
+			visibleForLoggedIn: true,
 		},
 		{
 			id: uuidv4,
@@ -81,6 +83,8 @@ export default function Navbar(props) {
 			fontSize: "xl",
 			visibleInMobile: true,
 			visibleInDesktop: true,
+			visibleForNotLoggedIn: true,
+			visibleForLoggedIn: true,
 		},
 		{
 			id: uuidv4,
@@ -90,6 +94,8 @@ export default function Navbar(props) {
 			fontSize: "xl",
 			visibleInMobile: true,
 			visibleInDesktop: true,
+			visibleForNotLoggedIn: true,
+			visibleForLoggedIn: true,
 		},
 		{
 			id: uuidv4,
@@ -99,6 +105,8 @@ export default function Navbar(props) {
 			fontSize: "xl",
 			visibleInMobile: true,
 			visibleInDesktop: false,
+			visibleForNotLoggedIn: false,
+			visibleForLoggedIn: true,
 		},
 		{
 			id: uuidv4,
@@ -108,6 +116,19 @@ export default function Navbar(props) {
 			fontSize: "xl",
 			visibleInMobile: true,
 			visibleInDesktop: false,
+			visibleForNotLoggedIn: false,
+			visibleForLoggedIn: true,
+		},
+		{
+			id: uuidv4,
+			name: "Zaloguj się",
+			navigationTarget: "/login",
+			logoutAction: false,
+			fontSize: "xl",
+			visibleInMobile: true,
+			visibleInDesktop: false,
+			visibleForNotLoggedIn: true,
+			visibleForLoggedIn: false,
 		},
 	];
 
@@ -159,16 +180,21 @@ export default function Navbar(props) {
 					{navigationLinks.slice().map((link, index) => {
 						if (
 							(!link.visibleInMobile && !isDesktop) ||
-							(!link.visibleInDesktop && isDesktop)
+							(!link.visibleInDesktop && isDesktop) ||
+							(!link.visibleForNotLoggedIn &&
+								!isLoggedIn &&
+								isAuthStatusChecked) ||
+							(!link.visibleForLoggedIn && isAuthStatusChecked && isLoggedIn)
 						)
 							return;
+
 						return (
-							<NavbarItem
-								active={link.navigationTarget === activePage ? true : false}
-								key={uuidv4 + index}
-							>
+							<NavbarItem key={uuidv4 + index}>
 								<Button
-									active={link.navigationTarget === activePage ? true : false}
+									active={
+										(link.navigationTarget === activePage ? true : false) &&
+										!link.logoutAction
+									}
 									navbar
 									size={link.fontSize}
 									onClick={() => {

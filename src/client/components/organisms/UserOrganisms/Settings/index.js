@@ -143,7 +143,7 @@ export default function Settings() {
 							primary
 							hover
 							full
-							className="h-[42px] self-end max-md:absolute bottom-4 md:mt-4"
+							className="h-[42px] self-end max-md:absolute bottom-4 md:mt-4 max-md:left-[50%] max-md:-translate-x-1/2 max-md:max-w-[calc(100vw-40px)]"
 						>
 							Zapisz zmiany
 						</Button>

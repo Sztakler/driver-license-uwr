@@ -229,7 +229,7 @@ export default function TrainingFilters({
 						</InputsWrapper>
 					</Form>
 					{filtersCorrect === false && (
-						<Text className="absolute bottom-24 font-medium text-[#FF6130]">
+						<Text className="absolute bottom-24 max-md:bottom-[74px] font-medium text-[#FF6130]">
 							*Wybierz poprawne filtry{" "}
 						</Text>
 					)}

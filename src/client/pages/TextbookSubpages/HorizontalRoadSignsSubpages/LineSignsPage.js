@@ -136,6 +136,7 @@ const body = (
 		</p>
 		<br />
 		<PanelsScroller panelsContents={panelsContents} />
+		<br />
 	</>
 );
 

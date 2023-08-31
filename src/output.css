@@ -2892,6 +2892,34 @@ h6 {
     top: 70px;
   }
 
+  .max-md\:bottom-16 {
+    bottom: 4rem;
+  }
+
+  .max-md\:bottom-20 {
+    bottom: 5rem;
+  }
+
+  .max-md\:bottom-\[90px\] {
+    bottom: 90px;
+  }
+
+  .max-md\:bottom-\[84px\] {
+    bottom: 84px;
+  }
+
+  .max-md\:bottom-\[78px\] {
+    bottom: 78px;
+  }
+
+  .max-md\:bottom-\[74px\] {
+    bottom: 74px;
+  }
+
+  .max-md\:left-\[50\%\] {
+    left: 50%;
+  }
+
   .max-md\:order-1 {
     order: 1;
   }
@@ -3092,6 +3120,20 @@ h6 {
 
   .max-md\:max-w-\[360px\] {
     max-width: 360px;
+  }
+
+  .max-md\:max-w-\[calc\(100vw-20px\)\] {
+    max-width: calc(100vw - 20px);
+  }
+
+  .max-md\:max-w-\[calc\(100vw-40px\)\] {
+    max-width: calc(100vw - 40px);
+  }
+
+  .max-md\:-translate-x-1\/2 {
+    --tw-translate-x: -50%;
+    -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .max-md\:auto-cols-\[70\%\] {

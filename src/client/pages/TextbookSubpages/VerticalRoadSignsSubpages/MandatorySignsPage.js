@@ -90,7 +90,8 @@ const body = (
 			</p>
 			<br />
 			<PanelsScroller panelsContents={panelsContents} />
-			<h3>Główne zasady stosowania się do znaków zakazu</h3>
+			<br />
+			<h3>Główne zasady stosowania się do znaków nakazu</h3>
 			<ul className="flex flex-col flex-[1_1_100%] gap-4 pr-8 pt-2 list-decimal">
 				<li>
 					<div>

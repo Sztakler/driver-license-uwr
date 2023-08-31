@@ -139,6 +139,7 @@ const body = (
 		<br />
 		<h3>Jakie mamy znaki ostrzegawcze?</h3>
 		<PanelsScroller panelsContents={panelsContents} />
+		<br />
 	</>
 );
 

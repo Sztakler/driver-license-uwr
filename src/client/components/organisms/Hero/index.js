@@ -140,9 +140,9 @@ export default function Hero() {
 			>
 				<MobileTopContainer>
 					<Text className="font-medium text-[6.66vw] leading-tight">
-						<Text className="font-semibold">Przygotuj się</Text>
+						<Text className="font-semibold text-[6.66vw]">Przygotuj się</Text>
 						<br /> do egzaminu na prawo jazdy w{" "}
-						<Text className="italic">ekspresowym</Text> tempie.
+						<Text className="italic text-[6.66vw]">ekspresowym</Text> tempie.
 					</Text>
 				</MobileTopContainer>
 				<MobileBottomContainer>
