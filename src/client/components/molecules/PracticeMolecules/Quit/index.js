@@ -12,6 +12,8 @@ import Illustrations from "assets/images/svg/icons/Illustrations";
 import { QuitOptions } from "./styles";
 import { useMediaQuery } from "react-responsive";
 
+// Exam/Training quit component, checks if we are in exam (then send result to DB)
+// and if we are in training it just navigate us to homepage
 export default function Quit({ isReview, isExam, result }) {
 	const navigate = useNavigate();
 	const [exitModalShow, setExitModalShow] = useState(false);
@@ -38,7 +40,6 @@ export default function Quit({ isReview, isExam, result }) {
 			if (response.ok) {
 				const responseData = await response.json();
 				return responseData.id;
-				// Additional actions or state updates after successful submission
 			} else {
 				console.error("Error submitting data");
 			}

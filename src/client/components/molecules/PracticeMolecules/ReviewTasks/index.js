@@ -7,6 +7,8 @@ import Text from "client/components/atoms/Text";
 
 import { ReviewTasksContainer, BubblesWrapper } from "./styles";
 
+// Component only used for ExamReview, it shows all questions (as bubbles)
+// with color depending on task result
 export default function ReviewTasks({
 	taskIdx,
 	updateTaskIdx,

@@ -4,6 +4,7 @@ import Text from "client/components/atoms/Text";
 
 import { LoadingContainer } from "./styles";
 
+// Loading screen, shown when we are waiting for backend response
 export default function Loading() {
 	return (
 		<LoadingContainer>

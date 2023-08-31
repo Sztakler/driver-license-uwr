@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { urlToServer } from "client/configure_build";
+import { useNavigate } from "react-router";
 
 import Label from "client/components/atoms/Label";
 import Input from "client/components/atoms/Input";
+import Button from "client/components/atoms/Button";
+import Text from "client/components/atoms/Text";
+
 import {
 	LoginFormContainer,
 	NoAccount,
@@ -10,26 +14,26 @@ import {
 	InputSection,
 	Heading,
 } from "./styles";
-import Button from "client/components/atoms/Button";
-import { useNavigate } from "react-router";
-import Text from "client/components/atoms/Text";
 
-export default function LoginForm(props) {
+export default function LoginForm() {
 	const [usernameInput, setUsernameInput] = useState("");
 	const [passwordInput, setPasswordInput] = useState("");
 	const [message, setMessage] = useState("");
 	const navigate = useNavigate();
 
+	// Update username input, clear message on change
 	function handleUsername(event) {
 		setMessage("");
 		setUsernameInput(event.target.value);
 	}
 
+	// Update password input, clear message on change
 	function handlePassword(event) {
 		setMessage("");
 		setPasswordInput(event.target.value);
 	}
 
+	// Function that will communicate with backend user data to log in
 	async function handleSubmit(event) {
 		event.preventDefault();
 

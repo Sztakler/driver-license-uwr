@@ -6,6 +6,8 @@ import HomePageIllustrations from "assets/images/svg/HomePage/HomePageIllustrati
 
 import { SlideContainer, ImageContainer, ArrowDown } from "./styles";
 
+// Views on home page are called slides, this is universal component to
+// construct them
 export default function Slide({
 	id,
 	scrollDown,

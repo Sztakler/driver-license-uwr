@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 
 import {
 	ResultsTableContainer,
@@ -6,8 +7,8 @@ import {
 	TableRow,
 	TableData,
 } from "./styles";
-import { useMediaQuery } from "react-responsive";
 
+// Table showing exam result, changing orientation according to view width
 export default function ResultsTable({ data }) {
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 

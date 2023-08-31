@@ -26,19 +26,23 @@ export default function RegistrationForm() {
 	const [password, setPassword] = useState("");
 	const [message, setMessage] = useState("");
 
+	// Name change
 	const handleNameChange = (event) => {
 		setName(event.target.value);
 	};
 
+	// Email change
 	const handleMailChange = (event) => {
 		setMail(event.target.value);
 		setMessage("");
 	};
 
+	// Password change
 	const handlePasswordChange = (event) => {
 		setPassword(event.target.value);
 	};
 
+	// Communication with server - POST request with data set by user in form
 	let registerUser = async (e) => {
 		e.preventDefault();
 		try {

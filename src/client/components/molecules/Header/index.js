@@ -10,6 +10,7 @@ import {
 	Buttons,
 } from "./styles";
 
+// Component used to build MenuPages
 export default function Header({
 	title,
 	subtitle,

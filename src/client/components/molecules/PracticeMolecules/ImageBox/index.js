@@ -8,14 +8,10 @@ import { getMediaExtension } from "client/utils/other";
 
 import { ImageContainer } from "./styles";
 
+// Universal ImageBox for tasks media
 export default function ImageBox({ isReview, media, savedQuestionsView }) {
-	const {
-		task,
-		taskStarted,
-		setNewTaskStarted,
-		setNewVideoIsPlaying,
-		setNewImageIsLoaded,
-	} = useContext(PracticeContext);
+	const { task, taskStarted, setNewVideoIsPlaying, setNewImageIsLoaded } =
+		useContext(PracticeContext);
 
 	function handleVideoPlay() {
 		setNewVideoIsPlaying(true);

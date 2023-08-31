@@ -18,6 +18,7 @@ import Illustrations from "assets/images/svg/icons/Illustrations";
 
 import { DiagramContainer, Header, DateRange } from "./styles";
 
+// React chartJS diagram
 export default function Diagram({
 	type,
 	diagramTitle,
@@ -79,6 +80,7 @@ export default function Diagram({
 			  }
 			: {};
 
+	// Diagram options
 	let o = {
 		scales: tickConfiguration,
 		plugins: {
@@ -100,6 +102,7 @@ export default function Diagram({
 		},
 	};
 
+	// Change range of watched date according to user change
 	useEffect(() => {
 		setStartDateString(() => {
 			if (!endDate) return null;

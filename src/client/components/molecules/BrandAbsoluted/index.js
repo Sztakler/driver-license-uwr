@@ -6,6 +6,7 @@ import Image from "client/components/atoms/Image";
 
 import { BrandTitle } from "./styles";
 
+// Just logo of our page absoluted
 export default function BrandAbsoluted() {
 	const navigate = useNavigate();
 
