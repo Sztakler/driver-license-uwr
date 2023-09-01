@@ -49,15 +49,20 @@ export default function SideMenuReview({ isExam }) {
 			<NextPrevious>
 				<Button
 					blank
-					className="max-2xl:mt-auto max-md:my-auto max-2xl:justify-start"
+					className="max-2xl:mt-auto max-md:my-auto max-2xl:justify-start max-[290px]:gap-0"
 					onClick={handlePreviousQuestionButton}
 				>
 					<Image src={Illustrations.ArrowLeft} />
 					<Text>Poprzednie pytanie</Text>
 				</Button>
-				<Button full hover size="m" primary onClick={handleNextQuestionButton}>
+				<Button
+					secondary
+					hover
+					size="m"
+					full
+					onClick={handleNextQuestionButton}
+				>
 					<Text>Następne pytanie</Text>
-					<Image src={Illustrations.ArrowRight} />
 				</Button>
 			</NextPrevious>
 			<ReviewTasks

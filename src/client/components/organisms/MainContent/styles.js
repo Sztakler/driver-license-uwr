@@ -47,24 +47,25 @@ const Content = tw.div`
 	grid-rows-auto
 	md:pl-24
 	md:pr-40
-	max-md:max-h-[calc(100vh-320px)]
 	${(props) =>
 		props.sidebarHidden
 			? "max-md:max-h-[calc(100vh-138px)]"
 			: "max-md:max-h-[calc(100vh-320px)]"}
-	break-words
 	pt-[30px]	
 	max-md:overflow-y-scroll
 	max-md:px-6
+	break-words
 
 	${(props) => (props.moveRight ? "md:ml-[320px]" : "")}
 	`;
 
-const Title = tw.div`
+const Title = tw.h2`
 	text-5xl
 	max-md:text-4xl
+	max-sm:text-3xl
 	text-[#0d0d0d]
 	font-sans
+	block
 `;
 
 const Subtitle = tw.div`

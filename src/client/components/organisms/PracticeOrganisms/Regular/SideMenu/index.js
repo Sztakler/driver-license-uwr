@@ -358,7 +358,7 @@ export default function SideMenu({ isExam }) {
 				<Button
 					secondary
 					hover
-					size="m"
+					size="s"
 					full
 					onClick={handleNextQuestionButton}
 					title="Następne pytanie"

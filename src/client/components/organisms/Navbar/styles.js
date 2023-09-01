@@ -2,6 +2,7 @@ import tw from "tailwind-styled-components";
 
 const NavbarContainer = tw.div`
 	fixed
+	max-md:absolute
 	top-0
 	w-full
 	z-50

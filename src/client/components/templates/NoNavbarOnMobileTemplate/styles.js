@@ -9,7 +9,7 @@ const PageWrapper = tw.div`
 	min-h-screen
 	w-full
 	max-w-screen
-	pt-[70px]
+	pt-[65px]
 	max-md:max-h-screen
 	max-md:overflow-y-hidden
 `;
@@ -29,7 +29,7 @@ const Wrapper = tw.div`
 	xl:flex-wrap
 	gap-4
 	max-2xl:justify-center 
-	max-md:max-h-[calc(100vh-150px)]
+	max-md:max-h-[calc(100vh-140px)]
 	w-full
 	max-2xl:items-center
 `;

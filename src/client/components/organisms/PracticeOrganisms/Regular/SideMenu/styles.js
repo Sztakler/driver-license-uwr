@@ -78,10 +78,10 @@ const KnowledgeLevel = tw.div`
 	gap-2
 
 	max-md:absolute
-	max-md:top-[58px]
+	max-md:top-[52px]
 	max-md:max-w-[150px]
 	max-md:w-[150px]
-	max-md:left-[39%]
+	max-md:left-[28.5%]
 	max-md:items-center
 	max-md:justify-center
 	max-md:gap-1

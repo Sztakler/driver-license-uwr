@@ -6,6 +6,7 @@ import Button from "client/components/atoms/Button";
 import Text from "client/components/atoms/Text";
 
 import { ReviewTasksContainer, BubblesWrapper } from "./styles";
+import { useMediaQuery } from "react-responsive";
 
 // Component only used for ExamReview, it shows all questions (as bubbles)
 // with color depending on task result
@@ -33,6 +34,8 @@ export default function ReviewTasks({
 		return "incorrect";
 	}
 
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
 	return (
 		<ReviewTasksContainer>
 			<Text>Pytania podstawowe</Text>
@@ -42,7 +45,7 @@ export default function ReviewTasks({
 						<Button
 							bubble
 							activeBubble={index === taskIdx}
-							size="m"
+							size={isDesktop ? "m" : "s"}
 							result={getTaskResult(answer)}
 							onClick={() => handleBubbleSelect(index)}
 						>
@@ -60,7 +63,7 @@ export default function ReviewTasks({
 						<Button
 							bubble
 							activeBubble={adjustedIndex === taskIdx}
-							size="m"
+							size={isDesktop ? "m" : "s"}
 							result={getTaskResult(answer)}
 							onClick={() => handleBubbleSelect(adjustedIndex)}
 						>

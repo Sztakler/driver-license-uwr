@@ -8,14 +8,13 @@ const HeaderContainer = tw.div`
 	w-full
 	items-center
 	max-w-[2648px]
-
-	${(props) => `${props.mobileBgImage}`}
 	max-md:min-h-[662px]
 	max-md:max-h-[662px]
 	max-md:bg-no-repeat
 	max-md:bg-top
 	max-md:bg-auto
 	max-md:relative
+	${(props) => `${props.mobileBgImage}`}
 `;
 
 const TitleContainer = tw.div`
@@ -41,13 +40,16 @@ const IllustrationContainer = tw.div`
 	relative
 	items-center
 	w-full 
-	${(props) => props.desktopBgImage && `${props.desktopBgImage}`}
 	md:bg-center
 	md:bg-no-repeat
 	md:bg-contain
 	h-[371px]
+	max-2xl:h-[271px]
+	aspect-[2036/371]
+	max-
 	max-md:hidden
 	mb-8
+	${(props) => props.desktopBgImage && `${props.desktopBgImage}`}
 `;
 
 const Title = tw.div`

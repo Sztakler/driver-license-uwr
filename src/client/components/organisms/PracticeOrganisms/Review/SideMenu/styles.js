@@ -51,6 +51,7 @@ const NextPrevious = tw.div`
 	max-md:left-0
 	max-md:w-full
 	max-md:justify-around
+	max-md:px-2
 
 `;
 

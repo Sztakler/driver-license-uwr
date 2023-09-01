@@ -8,7 +8,6 @@ const PageWrapper = tw.div`
 	bg-gradient-to-b from-[91px] from-[#FFF1DB]  via-[#FFFBF3] via-[200px] to-[#FFFBF3] to-100%
 	overflow-y-auto
 	pt-[70px]
-  max-md:max-h-screen
   max-md:overflow-y-hidden
 `;
 
@@ -21,6 +20,7 @@ const MainContent = tw.div`
 	w-full
 	pt-12
 	max-md:pt-[2vh]
+	pb-6
 `;
 
 export { PageWrapper, MainContent };

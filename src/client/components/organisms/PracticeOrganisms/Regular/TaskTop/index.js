@@ -91,7 +91,7 @@ export default function TaskTop({ isExam }) {
 					}}
 					onMouseOver={handleMouseOver}
 					onMouseOut={handleMouseOut}
-					size="l"
+					size={isDesktop ? "l" : "m"}
 					className="absolute top-8 -right-16 max-md:fixed max-md:top-[70px] max-md:left-[2.5%] md:border-2 md:border-[#ABA797]"
 					title="Oznacz pytanie jako zapisane"
 				>

@@ -7,6 +7,7 @@ import Text from "client/components/atoms/Text";
 import Paragraph from "client/components/atoms/Paragraph";
 
 import { Answers, Answer, TaskBottomSection } from "./styles";
+import { useMediaQuery } from "react-responsive";
 
 export default function TaskBottom({ isExam }) {
 	const { task, setNewTask } = useContext(PracticeContext);
@@ -23,6 +24,8 @@ export default function TaskBottom({ isExam }) {
 
 		return "";
 	}
+
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
 	function renderAnswers(task) {
 		if (task.structure_scope === "PODSTAWOWY") {
@@ -78,7 +81,7 @@ export default function TaskBottom({ isExam }) {
 											return newState;
 										});
 									}}
-									size="m"
+									size={isDesktop ? "m" : "s"}
 									result={
 										task.wybrana_odpowiedz !== null && !isExam
 											? getTaskResult(index)

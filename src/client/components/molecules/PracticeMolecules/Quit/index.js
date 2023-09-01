@@ -92,7 +92,7 @@ export default function Quit({ isReview, isExam, result }) {
 			<Button
 				bubble
 				hover={isDesktop}
-				size="l"
+				size={!isDesktop ? "m" : "l"}
 				className=""
 				onClick={() => setExitModalShow(true)}
 				title="Zakończ trening"

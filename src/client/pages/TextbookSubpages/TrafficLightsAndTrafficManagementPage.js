@@ -5,9 +5,9 @@ import TextbookTemplate from "client/components/templates/TextbookTemplate";
 import Navbar from "client/components/organisms/Navbar";
 
 const body = (
-	<div className="">
-		<h3>Sygnalizacja świetlna</h3>
-		<p className="text-base">
+	<>
+		<h3 className="break-words">Sygnalizacja świetlna</h3>
+		<p className="text-base inline-block">
 			Sygnalizacja świetlna odgrywa kluczową rolę w regulowaniu ruchu drogowego.
 			Składa się z różnych kolorów i kombinacji świateł, które kierowcy muszą
 			zrozumieć i przestrzegać. Poniżej znajdziesz najważniejsze informacje
@@ -155,7 +155,7 @@ const body = (
 			</li>
 		</ul>
 		<br />
-	</div>
+	</>
 );
 
 const pageContent = {

@@ -6,9 +6,12 @@ import Text from "client/components/atoms/Text";
 import Paragraph from "client/components/atoms/Paragraph";
 
 import { Answers, Answer, TaskBottomSection } from "./styles";
+import { useMediaQuery } from "react-responsive";
 
 export default function TaskBottomReview() {
 	const { task } = useContext(PracticeContext);
+
+	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
 	function getTaskResult(answer) {
 		if (task.correct_answer === answer) {
@@ -32,7 +35,7 @@ export default function TaskBottomReview() {
 							<Answer>
 								<Button
 									primary
-									size="s"
+									size={isDesktop ? "m" : "s"}
 									picked={index === task.wybrana_odpowiedz}
 									result={getTaskResult(index)}
 								>
@@ -51,7 +54,7 @@ export default function TaskBottomReview() {
 							<Answer>
 								<Button
 									bubble
-									size="m"
+									size={isDesktop ? "m" : "s"}
 									picked={index === task.wybrana_odpowiedz}
 									result={getTaskResult(index)}
 								>

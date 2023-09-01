@@ -18,10 +18,12 @@ export default function MainContent({
 	panelsContents,
 	pageContent,
 }) {
-	const [isSidebarVisible, setIsSidebarVisible] = useState(true);
-	const [sidebarSticky, setSidebarSticky] = useState(false);
-
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+
+	const [isSidebarVisible, setIsSidebarVisible] = useState(
+		isDesktop ? true : false
+	);
+	const [sidebarSticky, setSidebarSticky] = useState(false);
 
 	function Arrow(props) {
 		return (
