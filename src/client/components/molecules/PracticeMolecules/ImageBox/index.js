@@ -45,7 +45,7 @@ export default function ImageBox({ isReview, media, savedQuestionsView }) {
 			return getMediaExtension(media) === "mp4" ? (
 				<Video
 					src={media}
-					className="h-full w-full"
+					className="h-full w-full object-cover"
 					autoPlay
 					controls={savedQuestionsView || isReview}
 					onPlay={!savedQuestionsView ? handleVideoPlay : null}
@@ -54,9 +54,9 @@ export default function ImageBox({ isReview, media, savedQuestionsView }) {
 			) : (
 				<Image
 					exam
+					className="h-full w-full object-cover"
 					src={media}
 					onLoad={!savedQuestionsView ? handleImageLoad : null}
-					className=""
 				></Image>
 			);
 		}

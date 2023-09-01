@@ -52,6 +52,7 @@ const Content = tw.div`
 			? "max-md:max-h-[calc(100vh-138px)]"
 			: "max-md:max-h-[calc(100vh-320px)]"}
 	pt-[30px]	
+	pb-12
 	max-md:overflow-y-scroll
 	max-md:px-6
 	break-words
