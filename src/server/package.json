@@ -4,9 +4,9 @@
 	"description": "",
 	"main": "files/server.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node server",
-		"dev": "nodemon server"
+		"dev": "nodemon server",
+		"test": "mocha tests/**/*.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -27,6 +27,10 @@
 		"session": "^0.1.0"
 	},
 	"devDependencies": {
-		"nodemon": "^2.0.22"
+		"chai": "^4.3.8",
+		"chai-http": "^4.4.0",
+		"mocha": "^10.2.0",
+		"nodemon": "^2.0.22",
+		"supertest": "^6.3.3"
 	}
 }

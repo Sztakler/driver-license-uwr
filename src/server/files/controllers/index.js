@@ -9,7 +9,9 @@ const {
 	examResultsIdService,
 	statisticsService,
 	savedQuestionsService,
+	savedQuestionsKnowledgesService,
 	userKnowledgeLevelsService,
+	userNameService,
 	registrationService,
 	updateExamResultsService,
 	updateUserSettingsService,
@@ -35,8 +37,10 @@ const questionsCountController = async (req, res) => {
 };
 
 const practiceController = async (req, res) => {
+	const filters = req.query;
+
 	try {
-		const allTasks = await practiceService(req.user.id);
+		const allTasks = await practiceService(req.user.id, filters);
 		res.json(allTasks.rows);
 	} catch (err) {
 		console.error(err.message);
@@ -46,15 +50,20 @@ const practiceController = async (req, res) => {
 const examController = async (req, res) => {
 	try {
 		const allTasks = await examService();
-		res.json(allTasks.rows);
+		res.json(allTasks);
 	} catch (err) {
 		console.error(err.message);
 	}
 };
 
 const examResultsController = async (req, res) => {
+	const userID = req.user.id;
 	try {
-		const randomResult = await examResultsService();
+		const randomResult = await examResultsService(userID);
+		if (randomResult.status === 401) {
+			res.status(randomResult.status).json({ message: randomResult.message });
+		}
+
 		res.json(randomResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
@@ -62,11 +71,15 @@ const examResultsController = async (req, res) => {
 };
 
 const examResultsIdController = async (req, res) => {
-	const itemId = req.params.id;
-
+	const itemId = req.params["id"];
+	const userID = req.user.id;
 	try {
-		const randomResult = await examResultsIdService(itemId);
-		res.json(randomResult.rows[0]);
+		const examResult = await examResultsIdService(userID, itemId);
+		if (examResult.status === 401) {
+			res.status(examResult.status).json({ message: examResult.message });
+			return [];
+		}
+		res.json(examResult.rows[0]);
 	} catch (err) {
 		console.error(err.message);
 	}
@@ -104,17 +117,63 @@ const savedQuestionsController = async (req, res) => {
 	}
 };
 
+const savedQuestionsKnowledgeLevelsController = async (req, res) => {
+	try {
+		const userId = req.user.id;
+		const results = await savedQuestionsKnowledgesService(userId);
+
+		let retrievedResult = { low_count: 0, medium_count: 0, high_count: 0 };
+		results.rows.forEach((row) => {
+			if (row.knowledge_level === 0 || row.knowledge_level === 1) {
+				retrievedResult.low_count += Number(row.count);
+			} else if (row.knowledge_level === 2) {
+				retrievedResult.medium_count = Number(row.count);
+			} else if (row.knowledge_level === 3) {
+				retrievedResult.high_count = Number(row.count);
+			}
+		});
+
+		res.json(retrievedResult);
+	} catch {
+		res.status(400).json({ message: "Error" });
+	}
+};
+
 const userKnowledgeLevelsController = async (req, res) => {
 	try {
 		const userId = req.user.id;
-		const { medium_knowledge_questions_count, high_knowledge_questions_count } =
-			await userKnowledgeLevelsService(userId);
+		const {
+			allQuestionsCountQueryResult,
+			mediumKnowledgeQuestionsCountQueryResult,
+			highKnowledgeQuestionsCountQueryResult,
+		} = await userKnowledgeLevelsService(userId);
+
+		let highCountNumber = Number(
+			highKnowledgeQuestionsCountQueryResult.rows[0].record_count
+		);
+		let mediumCountNumber = Number(
+			mediumKnowledgeQuestionsCountQueryResult.rows[0].record_count
+		);
+		let lowCountNumber =
+			Number(allQuestionsCountQueryResult.rows[0].record_count) -
+			highCountNumber -
+			mediumCountNumber;
+
 		res.json({
-			high_count: Number(high_knowledge_questions_count.rows[0].record_count),
-			medium_count: Number(
-				medium_knowledge_questions_count.rows[0].record_count
-			),
+			low_count: lowCountNumber,
+			medium_count: mediumCountNumber,
+			high_count: highCountNumber,
 		});
+	} catch (err) {
+		console.error(err.message);
+	}
+};
+
+const userNameController = async (req, res) => {
+	try {
+		const userId = req.user.id;
+		let name = await userNameService(userId);
+		res.json(name);
 	} catch (err) {
 		console.error(err.message);
 	}
@@ -139,17 +198,16 @@ const registrationController = async (req, res) => {
 const loginController = (req, res, next) => {
 	passport.authenticate("local", (err, user, info) => {
 		if (err) {
-			console.log("ERROR");
+			console.error("ERROR");
 			throw err;
 		}
 		if (!user) {
-			console.log("USER NOT FOUND");
+			console.error("USER NOT FOUND");
 			res.status(400).json({ message: "User does not exist!" });
 		} else {
 			req.logIn(user, (err) => {
 				if (err) throw err;
 				req.session.user = user;
-				console.log("USER AUTHENTICATED");
 				res.status(200).json(user);
 				return;
 			});
@@ -161,17 +219,17 @@ const loginController = (req, res, next) => {
 const logoutController = (req, res, next) => {
 	req.logout((err) => {
 		if (err) {
-			console.log("LOGOUT ERROR");
+			console.error("LOGOUT ERROR");
 			throw err;
 		}
-		console.log("LOGOUT SUCCESSFUL");
 		res.status(200).send();
 	});
 };
 
 const updateExamResultsController = async (req, res) => {
 	try {
-		const { user_id, questions, summary } = req.body;
+		const user_id = req.user.id;
+		const { questions, summary } = req.body;
 		const result = await updateExamResultsService(user_id, questions, summary);
 		res.json({ id: result.rows[0].id });
 	} catch (error) {
@@ -184,12 +242,16 @@ const updateUserSettingsController = async (req, res) => {
 		const providedPassword = req.body.providedPassword;
 		const requestBody = req.body;
 		const user_id = req.user.id;
-		const { status, message } = await updateUserSettingsService(
+		const { status, message, sensitiveData } = await updateUserSettingsService(
 			providedPassword,
 			user_id,
 			requestBody
 		);
-		res.status(status).json({ message: message });
+		res.status(status).json({
+			message: message,
+			sensitiveData: sensitiveData,
+			correct: status === 200,
+		});
 	} catch {
 		res.status(400).json({ message: "Error" });
 	}
@@ -238,7 +300,10 @@ module.exports.examResultsController = examResultsController;
 module.exports.examResultsIdController = examResultsIdController;
 module.exports.statisticsController = statisticsController;
 module.exports.savedQuestionsController = savedQuestionsController;
+module.exports.savedQuestionsKnowledgeLevelsController =
+	savedQuestionsKnowledgeLevelsController;
 module.exports.userKnowledgeLevelsController = userKnowledgeLevelsController;
+module.exports.userNameController = userNameController;
 module.exports.registrationController = registrationController;
 module.exports.loginController = loginController;
 module.exports.logoutController = logoutController;

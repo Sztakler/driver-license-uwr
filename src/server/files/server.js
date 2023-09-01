@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./DatabaseConfiguration/database");
-const bcrypt = require("bcrypt");
 const passport = require("passport");
 const session = require("express-session");
 const pgSession = require("connect-pg-simple")(session);
@@ -15,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
 	cors({
-		origin: "http://localhost:1234",
+		origin: "http://localhost:3000",
 		credentials: true,
 		allowedHeaders: ["Content-Type", "Authorization"], // this is needed for sending JSON
 	})
@@ -52,7 +51,7 @@ const emailExists = async (email) => {
 const userExists = async (id) => {
 	const data = await pool.query("SELECT * FROM users WHERE id=$1", [id]);
 
-	if (data.rowCount == 0) return false;
+	if (data.rowCount === 0) return false;
 	return data.rows[0];
 };
 
@@ -61,6 +60,8 @@ initializePassport(passport, emailExists, userExists);
 
 app.use("", routes);
 
-app.listen(5000, () => {
-	console.log("SERVER STARTED PORT:5000");
+app.listen(4000, () => {
+	console.log("SERVER STARTED PORT:4000");
 });
+
+module.exports = app;

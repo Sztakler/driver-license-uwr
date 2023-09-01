@@ -4,63 +4,128 @@ const questionsCount = () => {
 	return pool.query(
 		`
 		SELECT COUNT(*) AS record_count FROM questions;
-			`
+		`
 	);
 };
 
-const practiceQuestions = (user_id) => {
+const practiceQuestions = (user_id, filters) => {
+	let acceptedKnowledgeLevels = [];
+
+	if (filters.lowKnowledgeQuestions === "true") {
+		acceptedKnowledgeLevels.push("0", "1");
+	}
+	if (filters.mediumKnowledgeQuestions === "true") {
+		acceptedKnowledgeLevels.push("2");
+	}
+	if (filters.highKnowledgeQuestions === "true") {
+		acceptedKnowledgeLevels.push("3");
+	}
+
 	return pool.query(
 		`
-SELECT 
-    questions.*, 
-    saved_questions.user_id IS NOT NULL AS is_saved,
-    COALESCE(user_knowledge_levels.knowledge_level, 0) AS knowledge_level
-FROM 
-    questions
-LEFT JOIN 
-    (SELECT user_id, questions 
-    FROM saved_questions 
-    WHERE user_id = $1) AS saved_questions 
-ON 
-    questions.id = ANY(saved_questions.questions)
-LEFT JOIN 
-  (SELECT *
-    FROM user_knowledge_levels 
-    WHERE user_id = $1) AS user_knowledge_levels
-ON
-    questions.id = user_knowledge_levels.question_id
-ORDER BY
-    RANDOM()
-LIMIT 25;
-    `,
-		[user_id]
+		WITH all_questions AS (
+			SELECT 
+					questions.*, 
+					CASE
+							WHEN saved_questions.user_id IS NOT NULL THEN true
+							ELSE false
+					END AS is_saved
+			FROM 
+					questions
+			LEFT JOIN
+					saved_questions
+			ON
+					questions.id = ANY(saved_questions.questions)
+					AND saved_questions.user_id = $2
+	), result AS (SELECT * FROM all_questions
+		WHERE $1 = true OR is_saved = true)
+	
+	SELECT 
+			result.*, 
+			COALESCE(user_knowledge_levels.knowledge_level, 0) AS knowledge_level
+	FROM 
+			result
+	LEFT JOIN 
+			user_knowledge_levels
+	ON 
+			user_knowledge_levels.user_id = $2 AND user_knowledge_levels.question_id = result.id 
+	WHERE COALESCE(user_knowledge_levels.knowledge_level, 0) = ANY($3)
+	ORDER BY
+			RANDOM();
+	
+`,
+		[filters.onlySavedQuestions === "false", user_id, acceptedKnowledgeLevels]
 	);
 };
 
-const examQuestions = () => {
+const examBasicQuestions = () => {
 	return pool.query(
 		`(
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'PODSTAWOWY'
-      LIMIT 20
+      WHERE structure_scope = 'PODSTAWOWY' AND points = 3
+			ORDER BY RANDOM()
+      LIMIT 10
     )
     UNION ALL
-    (
+		(
       SELECT *
       FROM questions
-      WHERE zakres_struktury = 'SPECJALISTYCZNY'
-      LIMIT 12
+      WHERE structure_scope = 'PODSTAWOWY' AND points = 2
+			ORDER BY RANDOM()
+      LIMIT 6
+    )
+		UNION ALL
+		(
+      SELECT *
+      FROM questions
+      WHERE structure_scope = 'PODSTAWOWY' AND points = 1
+			ORDER BY RANDOM()
+      LIMIT 4
     );`
 	);
 };
 
-const examResults = () => {
-	return pool.query("SELECT * FROM results ORDER BY RANDOM() LIMIT 1;");
+const examSpecialistQuestions = () => {
+	return pool.query(
+		`
+    (
+      SELECT *
+      FROM questions
+      WHERE structure_scope = 'SPECJALISTYCZNY' AND points = 3
+			ORDER BY RANDOM()
+      LIMIT 6
+    )
+		UNION ALL
+		(
+      SELECT *
+      FROM questions
+      WHERE structure_scope = 'SPECJALISTYCZNY' AND points = 2
+			ORDER BY RANDOM()
+      LIMIT 4
+    )
+		UNION ALL
+		(
+      SELECT *
+      FROM questions
+      WHERE structure_scope = 'SPECJALISTYCZNY' and points = 1
+			ORDER BY RANDOM()
+      LIMIT 2
+    )
+		;`
+	);
 };
 
-const examResultsId = (itemId) => {
-	return pool.query(`SELECT * FROM results WHERE id = ${itemId}`);
+const examResults = (userID) => {
+	return pool.query(
+		`SELECT * FROM results WHERE user_id = ${userID} ORDER BY RANDOM() LIMIT 1;`
+	);
+};
+
+const examResultsId = (userID, itemId) => {
+	return pool.query(
+		`SELECT * FROM results WHERE user_id = ${userID} and id = ${itemId}`
+	);
 };
 
 const highKnowledgeQuestionsCount = (userId) => {
@@ -75,8 +140,8 @@ const highKnowledgeQuestionsCount = (userId) => {
 	);
 };
 
-const mediumKnowledgeQuestionsCount = (userId) => {
-	return pool.query(
+const mediumKnowledgeQuestionsCount = async (userId) => {
+	return await pool.query(
 		`
 	SELECT COUNT(*)
 	AS record_count
@@ -110,9 +175,43 @@ const savedQuestions = (userId) => {
 	);
 };
 
+const savedQuestionsKnowledgeLevels = (userId) => {
+	return pool.query(
+		`
+	WITH saved_questions_with_knowledge AS (SELECT COALESCE(user_knowledge_levels.knowledge_level, 0) AS knowledge_level
+			FROM questions q
+	INNER JOIN (SELECT user_id, questions 
+			FROM saved_questions 
+			WHERE user_id = $1) AS saved_questions
+	ON 
+		q.id = ANY(saved_questions.questions)
+	LEFT JOIN (SELECT * 
+			FROM user_knowledge_levels
+			WHERE user_id = $1) AS user_knowledge_levels
+	ON 
+		q.id = user_knowledge_levels.question_id)
+
+	SELECT knowledge_level, COUNT(*) 
+		FROM saved_questions_with_knowledge
+	GROUP BY knowledge_level
+	ORDER BY knowledge_level;
+	`,
+		[userId]
+	);
+};
+
+const userName = (userId) => {
+	return pool.query(
+		`
+	SELECT name FROM users WHERE id=$1
+	`,
+		[userId]
+	);
+};
+
 const existingUserByEmail = (email) => {
 	return pool.query(`
-	SELECT * FROM USERS WHERE email = '${email}';
+	SELECT * FROM users WHERE email = '${email}';
 	`);
 };
 
@@ -130,7 +229,7 @@ const insertUser = (name, email, hashedPassword) => {
 
 const createSavedQuestionsEntryFor = (userId) => {
 	return pool.query(
-		`INSERT INTO saved_questions (user_id) VALUES ('${userId}');`
+		`INSERT INTO saved_questions (user_id, questions) VALUES ('${userId}', '{}');`
 	);
 };
 
@@ -148,7 +247,7 @@ const updateExamResults = (user_id, questions, summary) => {
 
 const existingUserById = (user_id) => {
 	return pool.query(`
-	SELECT * FROM USERS WHERE user_id = '${user_id}';
+	SELECT * FROM users WHERE id = '${user_id}';
 	`);
 };
 
@@ -175,7 +274,6 @@ const updateSavedQuestion = (question_id, user_id) => {
 };
 
 const updateUserKnowledgeLevels = (question_id, knowledgeLevel, user_id) => {
-	console.log("updating", question_id, knowledgeLevel, user_id);
 	return pool.query(
 		`      
   INSERT INTO user_knowledge_levels (user_id, question_id, knowledge_level)
@@ -188,13 +286,16 @@ const updateUserKnowledgeLevels = (question_id, knowledgeLevel, user_id) => {
 
 module.exports.questionsCount = questionsCount;
 module.exports.practiceQuestions = practiceQuestions;
-module.exports.examQuestions = examQuestions;
+module.exports.examSpecialistQuestions = examSpecialistQuestions;
+module.exports.examBasicQuestions = examBasicQuestions;
 module.exports.examResults = examResults;
 module.exports.examResultsId = examResultsId;
 module.exports.highKnowledgeQuestionsCount = highKnowledgeQuestionsCount;
 module.exports.mediumKnowledgeQuestionsCount = mediumKnowledgeQuestionsCount;
 module.exports.weeklyExams = weeklyExams;
 module.exports.savedQuestions = savedQuestions;
+module.exports.savedQuestionsKnowledgeLevels = savedQuestionsKnowledgeLevels;
+module.exports.userName = userName;
 module.exports.existingUserByEmail = existingUserByEmail;
 module.exports.insertUser = insertUser;
 module.exports.createSavedQuestionsEntryFor = createSavedQuestionsEntryFor;

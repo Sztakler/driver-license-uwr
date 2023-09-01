@@ -1,92 +1,117 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import ProtectedComponent from "../client/ui/components/utils/ProtectedComponent";
-import TrainingMenuPage from "../client/ui/pages/TrainingMenuPage";
-import TrainingFilters from "../client/ui/pages/TrainingFilters";
-import PracticePage from "../client/ui/pages/PracticePage";
-import TheoryPage from "../client/ui/pages/TheoryPage";
-import HomePage from "../client/ui/pages/HomePage";
-import ExamPage from "../client/ui/pages/ExamPage";
-import ExamMenuPage from "../client/ui/pages/ExamMenu";
-import LoginPage from "../client/ui/pages/LoginPage";
-import FaqPage from "../client/ui/pages/FaqPage";
-import RegisterPage from "../client/ui/pages/RegisterPage";
-import SummaryPage from "../client/ui/pages/SummaryPage";
-import NotFound from "../client/ui/pages/NotFound";
-import ReviewPage from "../client/ui/pages/ReviewPage";
-import UserPage from "../client/ui/pages/UserPage";
+import ProtectedComponent from "client/utils/ProtectedComponent";
+import TrainingMenuPage from "client/pages/TrainingMenuPage";
+import TrainingFilters from "client/pages/TrainingFilters";
+import PracticePage from "client/pages/TrainingPage";
+import TheoryPage from "client/pages/TheoryMenuPage";
+import HomePage from "client/pages/HomePage";
+import ExamPage from "client/pages/ExamPage";
+import ExamMenuPage from "client/pages/ExamMenuPage";
+import LoginPage from "client/pages/LoginPage";
+import RegisterPage from "client/pages/RegisterPage";
+import SummaryPage from "client/pages/SummaryPage";
+import NotFound from "client/pages/NotFound";
+import ReviewPage from "client/pages/ReviewPage";
+import UserPage from "client/pages/UserPage";
 
-import { TaskProvider } from "../context/TaskContext";
+import { PracticeProvider } from "context/PracticeContext";
+import { TrainingFiltersProvider } from "context/TrainingFiltersContext";
+import BlockedFromUser from "client/utils/BlockedFromUser";
+import TheoryIntroductionPage from "client/pages/TextbookSubpages/TheoryIntroductionPage";
+import WarningSignsPage from "client/pages/TextbookSubpages/VerticalRoadSignsSubpages/WarningSignsPage";
+import MandatorySignsPage from "client/pages/TextbookSubpages/VerticalRoadSignsSubpages/MandatorySignsPage";
+import ProhibitorySignsPage from "client/pages/TextbookSubpages/VerticalRoadSignsSubpages/ProhibitorySignsPage";
+import LineSignsPage from "client/pages/TextbookSubpages/HorizontalRoadSignsSubpages/LineSignsPage";
+import TrafficLightsAndTrafficManagementPage from "client/pages/TextbookSubpages/TrafficLightsAndTrafficManagementPage";
 
 function Routing() {
 	return (
 		<BrowserRouter basename="/driver-license-uwr">
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-
-				<Route
-					path="/trening/podsumowanie"
-					element={<SummaryPage isTraining={true} />}
-				/>
-				<Route
-					path="/egzamin/podsumowanie/:id"
-					element={<SummaryPage isTraining={false} />}
-				/>
-				<Route path="/faq" element={<FaqPage />} />
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/register" element={<RegisterPage />} />
-
+				<Route element={<BlockedFromUser />}>
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/register" element={<RegisterPage />} />
+				</Route>
 				<Route path="*" element={<NotFound />} />
-
 				<Route element={<ProtectedComponent />}>
-					<Route path="/konto" element={<UserPage />} />
+					<Route
+						path="/konto"
+						element={
+							<PracticeProvider>
+								<UserPage />
+							</PracticeProvider>
+						}
+					/>
 					<Route path="/egzamin" element={<ExamMenuPage />} />
 					<Route
 						path="/egzamin/test"
 						element={
-							<TaskProvider>
+							<PracticeProvider>
 								<ExamPage />
-							</TaskProvider>
+							</PracticeProvider>
 						}
 					/>
 					<Route
 						path="/egzamin/przeglad-odpowiedzi/:id"
 						element={
-							<TaskProvider>
+							<PracticeProvider>
 								<ReviewPage />
-							</TaskProvider>
+							</PracticeProvider>
 						}
 					/>
+					<Route
+						path="/trening/podsumowanie"
+						element={<SummaryPage isTraining={true} />}
+					/>
+					<Route
+						path="/egzamin/podsumowanie/:id"
+						element={<SummaryPage isTraining={false} />}
+					/>
 					<Route path="/trening" element={<TrainingMenuPage />} />
-					<Route path="/trening/filtry" element={<TrainingFilters />} />
+					<Route
+						path="/trening/filtry"
+						element={
+							<TrainingFiltersProvider>
+								<TrainingFilters />
+							</TrainingFiltersProvider>
+						}
+					/>
 					<Route
 						path="/trening/praktyka"
 						element={
-							<TaskProvider>
-								<PracticePage />
-							</TaskProvider>
+							<TrainingFiltersProvider>
+								<PracticeProvider>
+									<PracticePage />
+								</PracticeProvider>
+							</TrainingFiltersProvider>
 						}
 					/>
 					<Route path="/trening/teoria" element={<TheoryPage />} />
 					<Route path="/podrecznik/" element={<TheoryPage />} />
 					<Route
+						path="/podrecznik/wstep"
+						element={<TheoryIntroductionPage />}
+					/>
+
+					<Route
 						path="/podrecznik/znaki-ostrzegawcze"
-						element={<TheoryPage />}
-					/>
-					<Route path="/podrecznik/znaki-nakazu" element={<TheoryPage />} />
-					<Route path="/podrecznik/znaki-zakazu" element={<TheoryPage />} />
-					<Route
-						path="/podrecznik/znaki-kierunku-i-miejscowosci"
-						element={<TheoryPage />}
+						element={<WarningSignsPage />}
 					/>
 					<Route
-						path="/podrecznik/znaki-informacyjne"
-						element={<TheoryPage />}
+						path="/podrecznik/znaki-nakazu"
+						element={<MandatorySignsPage />}
 					/>
 					<Route
-						path="/podrecznik/znaki-uzupelniajace"
-						element={<TheoryPage />}
+						path="/podrecznik/znaki-zakazu"
+						element={<ProhibitorySignsPage />}
+					/>
+					<Route path="/podrecznik/znaki-linie" element={<LineSignsPage />} />
+					<Route
+						path="/podrecznik/sygnalizacja-swietlna-i-kierowanie-ruchem"
+						element={<TrafficLightsAndTrafficManagementPage />}
 					/>
 				</Route>
 			</Routes>
