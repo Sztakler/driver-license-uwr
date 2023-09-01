@@ -93,6 +93,7 @@ export default function TaskTop({ isExam }) {
 					onMouseOut={handleMouseOut}
 					size="l"
 					className="absolute top-8 -right-16 max-md:fixed max-md:top-[70px] max-md:left-[2.5%] md:border-2 md:border-[#ABA797]"
+					title="Oznacz pytanie jako zapisane"
 				>
 					<Star picked={favoriteTask} hovered={isHoveringStar} />
 				</Button>

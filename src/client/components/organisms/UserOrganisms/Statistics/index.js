@@ -8,12 +8,12 @@ async function getStatistics(endDate) {
 	let tempDate = new Date(endDate.getTime());
 	let startDate = new Date(tempDate.setDate(tempDate.getDate() - 6));
 
-	let from = `${startDate.getUTCFullYear()}-${
-		startDate.getUTCMonth() + 1
-	}-${startDate.getUTCDate()} 00:00:00`;
-	let to = `${endDate.getUTCFullYear()}-${
-		endDate.getUTCMonth() + 1
-	}-${endDate.getUTCDate()} 23:59:59`;
+	let from = `${startDate.getFullYear()}-${
+		startDate.getMonth() + 1
+	}-${startDate.getDate()} 00:00:00`;
+	let to = `${endDate.getFullYear()}-${
+		endDate.getMonth() + 1
+	}-${endDate.getDate()} 23:59:59`;
 
 	return fetch(`${urlToServer}/api/statistics/${from}/${to}`, {
 		method: "GET",
@@ -83,7 +83,7 @@ export default function Statistics() {
 		let tempDate = new Date(Date.now());
 		let startDate = new Date(tempDate.setDate(tempDate.getDate() - 6));
 		for (let i = 0; i < 7; i++) {
-			labels.push(mapIntDayWeekToString(startDate.getUTCDay()));
+			labels.push(mapIntDayWeekToString(startDate.getDay()));
 			startDate.setDate(startDate.getDate() + 1);
 		}
 		setVerticalLabels(labels);
@@ -133,8 +133,7 @@ export default function Statistics() {
 				let newState = {};
 				statistics.weekly_exams.forEach((date) => {
 					let tempDate = new Date(date.created_at);
-					let key = mapIntDayWeekToString(tempDate.getUTCDay());
-
+					let key = mapIntDayWeekToString(tempDate.getDay());
 					newState[key] = Number.isInteger(newState[key])
 						? newState[key] + 1
 						: 1;
@@ -155,9 +154,9 @@ export default function Statistics() {
 		let actualDate = new Date(Date.now());
 
 		if (
-			tempDate.getUTCFullYear() === actualDate.getFullYear() &&
-			tempDate.getUTCMonth() === actualDate.getUTCMonth() &&
-			tempDate.getUTCDate() === actualDate.getUTCDate()
+			tempDate.getFullYear() === actualDate.getFullYear() &&
+			tempDate.getMonth() === actualDate.getMonth() &&
+			tempDate.getDate() === actualDate.getDate()
 		) {
 			return;
 		}

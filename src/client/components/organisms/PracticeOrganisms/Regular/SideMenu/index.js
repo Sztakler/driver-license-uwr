@@ -53,24 +53,25 @@ export default function SideMenu({ isExam }) {
 
 	// Timer controller
 	function controlTimer() {
-		if (
-			(videoIsPlaying && taskStarted) ||
-			(task.wybrana_odpowiedz && !isExam)
-		) {
+		if (videoIsPlaying && taskStarted) {
 			return;
 		}
 
 		if (questionTimer > 0) {
 			setQuestionTimer(questionTimer - 1);
 		} else if (questionTimer === 0) {
+			if (isExam) {
+				nextQuestion();
+			}
+
+			if (task.wybrana_odpowiedz !== null) {
+				return;
+			}
+
 			if (!taskStarted) {
 				setNewTaskStarted(true);
 				setQuestionTimer(20);
 				return;
-			}
-
-			if (isExam) {
-				nextQuestion();
 			}
 		}
 	}
@@ -104,6 +105,7 @@ export default function SideMenu({ isExam }) {
 			setNewExamFinished(true);
 			return;
 		}
+
 		let newTaskIdx = lastTask ? 0 : taskIdx + 1;
 
 		if (lastTask) {
@@ -117,11 +119,17 @@ export default function SideMenu({ isExam }) {
 
 		let isTaskBasic =
 			savedQuestions[newTaskIdx].structure_scope === "PODSTAWOWY";
+		let taskBeenDone = savedQuestions[newTaskIdx].wybrana_odpowiedz !== null;
 
 		setNewTask(savedQuestions[newTaskIdx]);
 		setTaskIdx(newTaskIdx);
-		setQuestionTimer(isTaskBasic ? 20 : 50);
-		setNewTaskStarted(isTaskBasic ? false : true);
+		if (taskBeenDone) {
+			setQuestionTimer(0);
+			setNewTaskStarted(true);
+		} else {
+			setQuestionTimer(isTaskBasic ? 20 : 50);
+			setNewTaskStarted(isTaskBasic ? false : true);
+		}
 		setNewImageIsLoaded(false);
 		setNewVideoIsPlaying(false);
 
@@ -133,29 +141,35 @@ export default function SideMenu({ isExam }) {
 
 	// Load next question
 	function nextQuestion() {
-		if (examFinished) {
-			return;
+		if (isExam) {
+			verifyAnswer(task.wybrana_odpowiedz);
 		}
 
-		if (!isLastTask(taskIdx + 1)) {
-			if (isExam) {
-				verifyAnswer(task.wybrana_odpowiedz);
-			}
-
-			updateQuestionState();
-		}
+		updateQuestionState();
 
 		prepareNewTask();
 	}
 
 	// Load previous question
 	function previousQuestion() {
+		let newTaskIdx = taskIdx > 0 ? taskIdx - 1 : taskIdx;
+		if (newTaskIdx === taskIdx) {
+			return;
+		}
+
 		updateQuestionState();
 
-		let newTaskIdx = taskIdx > 0 ? taskIdx - 1 : taskIdx;
 		setTaskIdx(newTaskIdx);
 		setNewTask(savedQuestions[newTaskIdx]);
-		setQuestionTimer(0);
+		if (savedQuestions[newTaskIdx].wybrana_odpowiedz === null) {
+			setQuestionTimer(
+				savedQuestions[newTaskIdx].structure_scope === "PODSTAWOWY" ? 20 : 50
+			);
+			setNewTaskStarted(false);
+		} else {
+			setNewTaskStarted(true);
+			setQuestionTimer(0);
+		}
 		const selectElement = document.getElementById("knowledge_level");
 		selectElement.selectedIndex = savedQuestions[newTaskIdx].knowledge_level;
 	}
@@ -242,6 +256,10 @@ export default function SideMenu({ isExam }) {
 
 	// Get Message for Timer
 	function getMessage() {
+		if (questionTimer === 0) {
+			return "Czas na udzielenie odpowiedzi";
+		}
+
 		if (taskStarted) {
 			if (videoIsPlaying) {
 				return "Trwa odtwarzanie filmu";
@@ -262,6 +280,12 @@ export default function SideMenu({ isExam }) {
 		const interval = setInterval(controlTimer, 1001);
 		return () => clearInterval(interval);
 	}, [taskStarted, questionTimer, videoIsPlaying]);
+
+	useEffect(() => {
+		if (!isExam && task.wybrana_odpowiedz !== null) {
+			setQuestionTimer(0);
+		}
+	}, [task.wybrana_odpowiedz]);
 
 	const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
 
@@ -306,6 +330,7 @@ export default function SideMenu({ isExam }) {
 						type="select"
 						className="bg-[#FFE49E] max-md:bg-[#FFF0CB] rounded-[39px] w-full px-2 py-1"
 						onChange={handleChangeKnowledgeLevel}
+						title="Wybierz poziom znajomości pytania"
 					>
 						<option hidden value={0}>
 							-
@@ -322,6 +347,7 @@ export default function SideMenu({ isExam }) {
 						blank
 						className="max-2xl:mt-auto max-md:my-auto max-2xl:justify-start"
 						onClick={handlePreviousQuestionButton}
+						title="Poprzednie pytanie"
 					>
 						<Image src={Illustrations.ArrowLeft} />
 						<Text className="hover:font-medium">Poprzednie pytanie</Text>
@@ -335,6 +361,7 @@ export default function SideMenu({ isExam }) {
 					size="m"
 					full
 					onClick={handleNextQuestionButton}
+					title="Następne pytanie"
 				>
 					{!isExam || taskIdx !== savedQuestions.length - 1 ? (
 						<>

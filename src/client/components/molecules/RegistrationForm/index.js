@@ -104,6 +104,7 @@ export default function RegistrationForm() {
 							required
 							id="password"
 							type="password"
+							minLength="8"
 							placeholder="min. 8 liter"
 							value={password}
 							onChange={handlePasswordChange}

@@ -16,11 +16,15 @@ export default function User({ name }) {
 				/>
 			</ImageBox>
 			<Info>
-				<Text className="text-[20.4px]">Hej, </Text>
-				<Text className="text-[20.4px] font-medium">
-					{name}
-					<Text className="text-[20.4px]">!</Text>
-				</Text>
+				{name && (
+					<>
+						<Text className="text-[20.4px]">Hej, </Text>
+						<Text className="text-[20.4px] font-medium">
+							{name}
+							<Text className="text-[20.4px]">!</Text>
+						</Text>
+					</>
+				)}
 			</Info>
 		</UserContainer>
 	);

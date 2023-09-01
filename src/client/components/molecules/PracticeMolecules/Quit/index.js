@@ -95,6 +95,7 @@ export default function Quit({ isReview, isExam, result }) {
 				size="l"
 				className=""
 				onClick={() => setExitModalShow(true)}
+				title="Zakończ trening"
 			>
 				<Image src={Illustrations.Cancel} />
 			</Button>

@@ -36,8 +36,8 @@ export default function Diagram({
 				: `0${date.getUTCDate()}`;
 		let month =
 			date.getUTCMonth() >= 10
-				? String(date.getUTCMonth())
-				: `0${date.getUTCMonth()}`;
+				? String(date.getUTCMonth() + 1)
+				: `0${date.getUTCMonth() + 1}`;
 
 		return day + "." + month;
 	}

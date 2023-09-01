@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import PracticeContext from "context/PracticeContext";
 
 import Image from "client/components/atoms/Image";
@@ -10,7 +10,7 @@ import { ImageContainer } from "./styles";
 
 // Universal ImageBox for tasks media
 export default function ImageBox({ isReview, media, savedQuestionsView }) {
-	const { task, taskStarted, setNewVideoIsPlaying, setNewImageIsLoaded } =
+	const { taskStarted, setNewVideoIsPlaying, setNewImageIsLoaded } =
 		useContext(PracticeContext);
 
 	function handleVideoPlay() {
@@ -74,14 +74,6 @@ export default function ImageBox({ isReview, media, savedQuestionsView }) {
 			</>
 		);
 	}
-
-	useEffect(() => {
-		if (savedQuestionsView) {
-			return;
-		}
-		setNewVideoIsPlaying(false);
-		setNewImageIsLoaded(false);
-	}, [task]);
 
 	return (
 		<ImageContainer savedQuestionsView={savedQuestionsView}>
