@@ -24,7 +24,7 @@ This project is a comprehensive full-stack web application designed to help indi
 
 Get a quick overview of the application's features and user interface by watching our demo video:
 
-[![Podgląd dema - kliknij, aby odtworzyć](assets/homepage.png)](assets/alejazda.webm)
+[Watch app demonstration video!](https://sztakler.github.io/portfolio/assets/videos/alejazda.webm)
 
 <h2 id="motivation-section">Motivation ✨</h2>
 
